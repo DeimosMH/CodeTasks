@@ -1,16 +1,15 @@
 # Daily Coding Habit Challenge
-<span style="color:green"> Start: 17.04.2023! \
+<span style="color:green"> Start: 22.05.2023! \
 Break: \
 End: </span>
 
 ## Used editors/IDE's:
- - [Visual Studio Code](https://code.visualstudio.com/) 
+ - [MS Visual Studio Code](https://code.visualstudio.com/) 
  - [MS Visual Studio](https://visualstudio.microsoft.com/) 
  - [VIM](https://www.vim.org/download.php) 
  - [Typora](https://typora.io/)
  - [Unity](https://unity.com/)
  - [Unreal Engine 5](https://www.unrealengine.com/en-US)
- - [Godot](https://godotengine.org/)
 
 ## Habits Maintenance
  - [Habitica](https://habitica.com/)
@@ -59,7 +58,7 @@ End: </span>
 ## Other
 
 ### Solutions Template
-
+```
 // -----  MY SOLUTION  ----- //
 
 
@@ -70,3 +69,4 @@ End: </span>
 
 
 */
+```
