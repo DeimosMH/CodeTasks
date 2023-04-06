@@ -1,11 +1,11 @@
 # Daily Coding Habit Challenge
-<span style="color:green"> Start: 01.09.2022! \
+<span style="color:green"> Start: 17.04.2023! \
 Break: \
 End: </span>
 
 ## Used editors/IDE's:
  - [Visual Studio Code](https://code.visualstudio.com/) 
- - [MS Visual Studio 2022](https://visualstudio.microsoft.com/) 
+ - [MS Visual Studio](https://visualstudio.microsoft.com/) 
  - [VIM](https://www.vim.org/download.php) 
  - [Typora](https://typora.io/)
  - [Unity](https://unity.com/)
@@ -37,23 +37,36 @@ End: </span>
 ### Used Sites
 
 ### Books
-#### C/C++ 
-* "C++ Primer Plus", Sixth Edition, 2012, Stephan Prata
+#### C~C++ 
+* **"C++ Primer Plus", Sixth Edition, 2012, Stephan Prata**
 
 #### C# 
+* **"Essential C# 8.0", Seventh Edition, 2021, Mark Michaelis**
 * "C# Programming Cookbook", 2016, Dirk Strauss
 
 #### Bash & Security 
-* "Linux® Command Line and Shell Scripting Bible", Third Edition, 2015, John Wiley & Sons
+* **"Linux® Command Line and Shell Scripting Bible", Third Edition, 2015, John Wiley & Sons**
 * "Hacklog Volume 1 Anonymity IT Security & Ethical Hacking Handbook", 2017, Stefano Novelli
 * "Gray Hat Hacking The Ethical Hacker’s Handbook", 2018, McGraw-Hill
 * "Beginning Ethical Hacking with Kali Linux Computational Techniques for Resolving Security Issues", 2018, Sanjib Sinha
 
 #### Unity
+* **"Unity In Action, Multiplatform game developement in C#", 2018, Joseph Hocking** 
 * "C# Game Programming Cookbook for Unity 3D", 2014,Jeff W. Murray
-* "Unity in Action_ Multiplatform game development in C#", 2019, Jared Halpern
-* "Unity In Action, Multiplatform game developement in C#", 2018, Joseph Hocking 
 
 ----
 
 ## Other
+
+### Solutions Template
+
+// -----  MY SOLUTION  ----- //
+
+
+
+// ----- BEST SOLUTION ----- //
+
+/* 
+
+
+*/
