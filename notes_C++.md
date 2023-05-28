@@ -997,3 +997,111 @@ You can use the Internet to get more recent figures.
 
 [7.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_7.cpp) Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S. style of miles per gallon. Note that in addition to using different units of measurement, the U.S. approach (distance / fuel) is the inverse of the European approach (fuel / distance).
 Note that 100 kilometers is 62.14 miles, and 1 gallon is 3.875 liters.Thus, 19 mpg is about 12.4 l/100 km, and 27 mpg is about 8.7 l/100 km.
+
+
+## Chapter 4: Compound Types
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;">
+        List of what you will learn
+    </summary>
+
+```
+Creating and using arrays
+Creating and using C-style strings
+Creating and using string-class strings
+Using the getline() and get() methods for reading strings
+Mixing string and numeric input
+Creating and using structures
+Creating and using unions
+Creating and using enumerations
+Creating and using pointers
+Managing dynamic memory with new and delete
+Creating dynamic arrays
+Creating dynamic structures
+Automatic, static, and dynamic storage
+The vector and array classes (an introduction)
+```
+</details>
+
+## Arrays
+Data form that can hold many values of one type. Declaration should indicate three things:
+
+- The type of value to be stored in each element
+- The name of the array
+- The number of elements in the array
+
+`typeName arrayName[arraySize];` - *arraySize* cannot be a variable whose value is set while the program is running. However, later in this chapter you’ll learn how to use `the` new operator to get around that restriction
+
+```cpp
+short months[12]; // creates array of 12 short
+```
+
+An array is called a `compound` type because it is built from some other type. (C uses the term `derived` type, but because C++ uses the term `derived` for class relationships, it had to come up with a new term.)
+
+You can access array elements individually.The way to do this is to use a `subscript`, or an `index`, to number the elements. C++ array numbering starts with zero. **The `index` of the last element is one less than the size of the `array`**
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Array.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
+*Declaring* an `array`, *assigning values* to `array` elements, and *initializing* an `array`:
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus\arrayone.cpp"> arrayone.cpp </a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus\arrayone.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+### Array Initialization 
+
+You can use the initialization form only when defining the array.You cannot use it later, and you cannot assign one array wholesale to another:
+
+```cpp
+int cards[4] = {3, 6, 8, 10};   // okay
+int hand[4];                    // okay
+hand[4] = {5, 6, 7, 9};         // not allowed
+hand = cards;                   // not allowed
+
+// If you partially initialize an array, 
+// the compiler sets the remaining elements to zero.
+float hotelTips[5] = {5.0, 2.5};
+
+// If you leave the square brackets ([]) empty 
+// when you initialize an array, the C++ compiler
+// counts the elements for you.
+short things[] = {1, 5, 3, 8};
+```
+
+
+Often, letting the compiler count the number of elements is poor practice because its count can be different from what you think it should be. You could, for instance, accidently omit an initial value from the list. However, this approach can be a safe one for initializing a character array to a string, as you’ll soon see. And if your main concern is that the program, not you, knows how large an array is, you can do something like this:
+```cpp
+short things[] = {1, 5, 3, 8};
+int num_elements = sizeof things / sizeof (short);
+```
+
+#### C++11 Array Initialization
+
+```cpp
+// 1. You can drop the = sign when initializing an array:
+double earnings[4] {1.2e4, 1.6e4, 1.1e4, 1.7e4}; // okay with C++11
+
+// 2. You can use empty braces to set all the elements to 0:
+unsigned int counts[10] = {}; // all elements set to 0
+float balances[100] {}; // all elements set to 0
+
+// 3. List-initialization protects against narrowing (As in Chapter 3):
+long plifs[] = {25, 92, 3.0}; // not allowed
+char slifs[4] {'h', 'i', 1122011, '\0'}; // not allowed
+char tlifs[4] {'h', 'i', 112, '\0'}; // allowed
+```
+
+`vector` - STL alternative for arrays 
+`array` template class - C++11 alternative for arrays

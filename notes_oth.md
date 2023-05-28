@@ -33,8 +33,7 @@ Remember password at the end!
 Then: https://discourse.pi-hole.net/t/how-do-i-configure-my-devices-to-use-pi-hole-as-their-dns-server/245
 
 - Router config DHCP: (gateway - IP_router, DNS - IP_PI_HOLE):
-
-![image-20230130040452828](.oth_data\image-20230130040452828.png)
+<img src=".oth_data\image-20230130040452828.png" alt="Image description" style="display: block; margin: auto; width: 100%; height: auto; border-radius: 8px;">
 
 # SAMBASHARE (SAFE) - port 445
 

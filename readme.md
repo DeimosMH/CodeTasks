@@ -79,18 +79,13 @@ You wonΓÇÖt regret it!
 ## Other
 
 ### Solutions Template
-```
+
+```cpp
 // -----  MY SOLUTION  ----- //
 
-
-
 // ----- BEST SOLUTION ----- //
-
-/* 
-
-
-*/
 ```
+
 
 ### Data fetch & display template (necessary security off)
 
