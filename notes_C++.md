@@ -1024,7 +1024,7 @@ The vector and array classes (an introduction)
 ```
 </details>
 
-## Arrays
+### Arrays
 Data form that can hold many values of one type. Declaration should indicate three things:
 
 - The type of value to be stored in each element
@@ -1055,12 +1055,12 @@ You can access array elements individually.The way to do this is to use a `subsc
             frameborder="10" 
             allowfullscreen="true" 
             height="250px"
-            width="100%">
+            width="80%">
         </iframe>
     </figure>
 </details>
 
-### Array Initialization 
+#### Array Initialization 
 
 You can use the initialization form only when defining the array.You cannot use it later, and you cannot assign one array wholesale to another:
 
@@ -1087,7 +1087,7 @@ short things[] = {1, 5, 3, 8};
 int num_elements = sizeof things / sizeof (short);
 ```
 
-#### C++11 Array Initialization
+##### C++11 Array Initialization
 
 ```cpp
 // 1. You can drop the = sign when initializing an array:
@@ -1105,3 +1105,284 @@ char tlifs[4] {'h', 'i', 112, '\0'}; // allowed
 
 `vector` - STL alternative for arrays 
 `array` template class - C++11 alternative for arrays
+
+### Strings
+Series of characters stored in consecutive bytes of memory.
+
+#### C-style strings
+C-style strings have a special feature:The last character of every string is the null
+character, written `\0`.
+```cpp
+char dog[8] = { 'b', 'e', 'a', 'u', 'x', ' ', 'I', 'I'}; // not a string!
+char cat[8] = {'f', 'a', 't', 'e', 's', 's', 'a', '\0'}; // a string!
+char bird[11] = "Mr. Cheeps"; // the \0 is understood
+char fish[] = "Bubbles"; // let the compiler count
+```
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4CString.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
+
+```cpp
+char shirt_size = 'S'; // this is fine
+char shirt_size = "S"; // illegal type mismatch
+```
+But `"S"` is not a character constant; it represents the string consisting of two characters, the `S` and the `\0` characters. Even worse, `"S"` actually represents the memory address at which the string is stored. So a statement like the following attempts to assign a memory address to shirt_size.
+
+##### Concatenating String Literals
+C++ enables
+you to concatenate string literals—that is, to combine two quoted  strings into one. `\0` character from the first string is replaced by the first character of the second string.
+The following output statements are equivalent to each other:
+```cpp
+cout << "I'd give my right arm to be" " a great violinist.\n";
+cout << "I'd give my right arm to be a great violinist.\n";
+cout << "I'd give my right ar"
+"m to be a great violinist.\n";
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus\strings.cpp"> Strings in an Array strings.cpp </a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus\strings.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus\instr1.cpp"> Problem 1: instr1.cpp, reading string input via cin</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus\instr1.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4CString2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus\instr2.cpp"> Solution 1: instr2.cpp, Line-Oriented Input with getline()</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus\instr2.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus\instr3.cpp"> Solution 2: instr3.cpp, Line-Oriented Input with get()</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus\instr3.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus\numstr.cpp"> numstr.cpp, Mixing String and Numeric Input</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus\numstr.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+<br>
+
+In short: 
+```cpp
+cin.getline(dessert, ArSize);
+
+cin.getline(name1, ArSize).getline(name2, ArSize); // overloading 
+
+cin.get(name, ArSize);
+cin.get(dessert, Arsize); // a problem ()
+
+cin.get(name, ArSize); // read first line
+cin.get(); // read newline
+cin.get(dessert, Arsize); // read second line
+
+cin.get(name, ArSize).get(); // concatenate member functions
+
+// get() (but not getline()) reads an empty
+// line, it sets something called the failbit.The implications of 
+// this act are that further input is blocked, but you can restore 
+// input with the following command:
+cin.clear();
+
+// You can also use
+cin.get(); // or cin.get(ch);
+(cin >> year).get(); // or (cin >> year).get(ch);
+```
+
+### `string` Class
+
+To use the string class, a program has to include the string header file.
+
+
+You should learn from this example that, in many ways, you can use a string object in
+the same manner as a character array:
+
+- You can initialize a string object to a C-style string.
+- You can use cin to store keyboard input in a string object.
+- You can use cout to display a string object.
+- You can use array notation to access individual characters stored in a string object.
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype1.cpp"> strtype1.cpp, differences between string objects and character arrays.</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus/strtype1.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+C++11 string initialization 
+
+```cpp
+char first_date[] = {"Le Chapon Dodu"};
+char second_date[] {"The Elegant Plate"};
+string third_date = {"The Bread Bowl"};
+string fourth_date {"Hank's Fine Eats"};
+```
+
+#### Assignment, Concatenation, and Appending
+
+String class make *some* operations simpler. you can’t simply assign one array to  nother. But you can assign one string object to another:
+
+```cpp
+char charr1[20];            // create an empty array
+char charr2[20] = "jaguar"; // create an initialized array
+string str1;                // create an empty string object
+string str2 = "panther";    // create an initialized string
+charr1 = charr2;            // INVALID, no array assignment
+str1 = str2;                // VALID, object assignment ok
+
+string str3;
+str3 = str1 + str2;         // assign str3 the joined strings
+str1 += str2;               // add str2 to the end of str1
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype2.cpp"> strtype2.cpp, assigning, adding, and appending strings.</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus/strtype2.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+#### More `string` Class operations
+
+You can use the `strcpy()` function to copy a string to a character array, and you can use the `strcat()` function to append a string to a character array:
+
+```cpp 
+strcpy(charr1, charr2);     // copy charr2 to charr1
+strcat(charr1, charr2);     // append contents of charr2 to char1
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype3.cpp"> strtype3.cpp, compares techniques used with string objects with techniques used with character arrays.</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus/strtype3.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+#### More `string` Class I/O 
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype4.cpp"> strtype4.cpp, reading a line at a time instead of a word at time uses a different syn-
+tax (class and not class).</a>
+    </summary>
+    <figure>
+        <iframe 
+            src=".refs_notes/notes_C++_C++PrimerPlus/strtype4.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+#### Other Forms of `string` Literals
+C++ adds: `wchar_t` in addition to `char`
+C++11 adds: `char16_t`, `char32_t` + raw string (*R* prefix) + support UTF-8 (*u8* prefix)
+
+Use literals with L, u, and U prefixes:
+```cpp
+wchar_t title[] = L"Chief Astrogator";      // w_char string
+char16_t name[] = u"Felonia Ripova";        // char_16 string
+char32_t car[] = U"Humber Super Snipe";     // char_32 string
+```
+
+Raw string
+
+`cout << R"(Jim "King" Tutt uses "\n" instead of endl.)" << '\n';`
+   This would display the following: `Jim "King" Tutt uses \n instead of endl.`
+
+The standard string literal equivalent would be this:
+`cout << "Jim \"King\" Tutt uses \" \\n\" instead of endl." << '\n';`
+
+Raw string syntax allows you to place additional characters between the opening - the statement: 
+`cout << R"+*("(Who wouldn't?)", she whispered.)+*" << endl;`
+would display the following: `"(Who wouldn't?)", she whispered.`
+
+-------------
+```sh
+./.refs_notes/notes_C++_C++PrimerPlus/
+str 140 - introducing structures
+```
