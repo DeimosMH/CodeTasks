@@ -1041,7 +1041,7 @@ An array is called a `compound` type because it is built from some other type. (
 
 You can access array elements individually.The way to do this is to use a `subscript`, or an `index`, to number the elements. C++ array numbering starts with zero. **The `index` of the last element is one less than the size of the `array`**
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Array.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Array.png" alt="Image description" style="display: block; margin: auto; width: 35%; height: auto; border-radius: 8px;">
 
 *Declaring* an `array`, *assigning values* to `array` elements, and *initializing* an `array`:
 
@@ -1344,8 +1344,7 @@ strcat(charr1, charr2);     // append contents of charr2 to char1
 
 <details style="margin-left: 35px;">
     <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype4.cpp"> strtype4.cpp, reading a line at a time instead of a word at time uses a different syn-
-tax (class and not class).</a>
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype4.cpp"> strtype4.cpp, reading a line at a time instead of a word at time uses a different syntax (class and not class).</a>
     </summary>
     <figure>
         <iframe 
@@ -1381,8 +1380,993 @@ Raw string syntax allows you to place additional characters between the opening 
 `cout << R"+*("(Who wouldn't?)", she whispered.)+*" << endl;`
 would display the following: `"(Who wouldn't?)", she whispered.`
 
+### Structures
+
+`array` can store only one type of data
+`structure`  can store different types of data at the same time
+
+```cpp
+#include <string>
+struct inflatable_string // structure definition
+{
+    std::string name;
+    float volume;
+    double price;
+};
+
+struct inflatable // structure declaration with 'inflatible' identifier/tag
+{
+    char name[20];
+    float volume;
+    double price;
+};
+
+inflatable hat;             // hat is a structure variable of type inflatable
+inflatable woopie_cushion;  // type inflatable variable
+inflatable mainframe;       // type inflatable variable
+
+struct inflatable goose;    // keyword struct required in C
+inflatable vincent;         // keyword struct not required in C++
+```
+
+Given that `hat` is type inflatable, you use the membership operator (.) to access individual members. For example, `hat.volume` refers to the `volume` member of the structure, and `hat.price` refers to the `price` member.
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Structure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/structur.cpp"> structur.cpp, example use of structure.</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/structur.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+`structures` can be declared outside any function, which is called `external declaration`
+
+#### C++11 Initialization
+
+```cpp
+inflatable duck {"Daphne", 0.12, 9.98}; // can omit the = in C++11
+inflatable mayor {}; // individual members being set to 0
+```
+Narrowing is not allowed.
+
+#### Other `structure` properties
+
+`memberwise assignment` - you can use the assignment operator (=) to assign one structure to another of the same type.
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/assgn_st.cpp"> assgn_st.cpp, example use of memberwise assignment.</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/assgn_st.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Arrays of Structures
+
+```cpp
+inflatable gifts[100]; // array of 100 inflatable structures
+...
+cin >> gifts[0].volume; // use volume member of first struct
+cout << gifts[99].price << endl; // display price member of last struct
+
+inflatable guests[2] = // initializing an array of structs
+{
+    {"Bambi", 0.5, 21.99}, // first structure in array
+    {"Godzilla", 2000, 565.99} // next structure in array
+};
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/arrstruct.cpp"> arrstruct.cpp, array of structures.</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/arrstruct.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Bit Fields in Structures
+
+C++, like C, enables you to specify structure members that occupy a particular number of bits
+
+```cpp
+struct torgle_register
+{
+    u`nsigned int SN : 4; // 4 bits for SN value
+    unsigned int : 4; // 4 bits unused
+    bool goodIn : 1; // valid input (1 bit)
+    b`ool goodTorgle : 1; // successful torgling
+};
+
+torgle_register tr = { 14, true, false };
+...
+if (tr.goodIn)
+```
+
+#### Unions 
+
+A union is a data format that can hold different data types but only one type at a time
+
+```cpp
+union one4all
+{
+    int int_val;
+    long long_val;
+    double double_val;
+};
+
+one4all pail;
+pail.int_val = 15; // store an int
+cout << pail.int_val;
+pail.double_val = 1.38; // store a double, int value is lost
+cout << pail.double_val;
+```
+
+`anonymous union` - has no name; in essence, its members become variables that share
+the same address.
+
+```cpp
+struct widget
+{
+    char brand[20];
+    int type;
+    union // anonymous union
+    {
+        long id_num; // type 1 widgets
+        char id_char[20]; // other widgets
+    };
+};
+...
+widget prize;
+...
+if (prize.type == 1)
+cin >> prize.id_num;
+else
+cin >> prize.id_char;
+```
+
+#### Enumerations
+
+`enum` facility provides an alternative to `const` for creating symbolic constants
+
+```cpp
+enum spectrum {red, orange, yellow, green, blue, violet, indigo, ultraviolet};
+```
+ - It makes spectrum the name of a new type; spectrum is termed an enumeration, much as a struct variable is called a structure.
+- It establishes red, orange, yellow, and so on, as symbolic constants for the integer values 0–7.These constants are called enumerators.
+
+```cpp
+spectrum band; // band a variable of type spectrum
+
+band = blue; // valid, blue is an enumerator
+band = 2000; // invalid, 2000 not an enumerator
+
+band = orange; // valid
+++band; // not valid, ++ discussed in Chapter 5
+band = orange + red; // not valid, but a little tricky
+
+int color = blue; // valid, spectrum type promoted to int
+band = 3; // invalid, int not converted to spectrum
+color = 3 + red; // valid, red converted to int
+
+band = spectrum(3); // typecast 3 to type spectrum
+band = spectrum(40003); // undefined
+```
+
+#### Setting Enumerator Values
+
+```cpp
+enum bits{one = 1, two = 2, four = 4, eight = 8};
+enum bigstep{first, second = 100, third};
+enum {zero, null = 0, one, numero_uno = 1};
+```
+ **Range of enumerations**
+
+```cpp
+enum bits{one = 1, two = 2, four = 4, eight = 8};
+bits myflag;
+// In this case, the following is valid:
+myflag = bits(6); // valid, because 6 is in bits range
+```
+Here 6 is not one of the enumerations, but it lies in the range the enumerations define.
+The range is defined as follows. First, to find the upper limit, you take the largest enumerator value.Then you find the smallest power of two greater than this largest value and subtract one; the result is the upper end of the range (For example, the largest `bigstep` value, as previously defined, is 101.The smallest power of two greater than this is 128, so the upper end of the range is 127.)
+
+#### Pointers and the Free Store
+
+**address operator**, represented by `&` to a variable to get its location; if `home` is a variable, `&home` is its address
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/address.cpp"> address.cpp</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/address.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	Pointers and the C++ Philosophy 
+    </summary>
+Object-oriented programming differs from traditional procedural programming in that OOP
+emphasizes making decisions during runtime instead of during compile time. Runtime
+means while a program is running, and compile time means when the compiler is putting a
+program together. A runtime decision is like, when on vacation, choosing what sights to see
+depending on the weather and your mood at the moment, whereas a compile-time decision
+is more like adhering to a preset schedule, regardless of the conditions.
+Runtime decisions provide the flexibility to adjust to current circumstances. For example,
+consider allocating memory for an array. The traditional way is to declare an array. To
+declare an array in C++, you have to commit yourself to a particular array size. Thus, the
+array size is set when the program is compiled; it is a compile-time decision. Perhaps you
+think an array of 20 elements is sufficient 80% of the time but that occasionally the program
+will need to handle 200 elements. To be safe, you use an array with 200 elements.
+This results in your program wasting memory most of the time it’s used. OOP tries to make
+a program more flexible by delaying such decisions until runtime. That way, after the program
+is running, you can tell it you need only 20 elements one time or that you need 205
+elements another time.
+In short, with OOP you would like to make the array size a runtime decision. To make this
+approach possible, the language has to allow you to create an array—or the equivalent—
+while the program runs. The C++ method, as you soon see, involves using the keyword new
+to request the correct amount of memory and using pointers to keep track of where the
+newly allocated memory is found.
+Making runtime decisions is not unique to OOP. But C++ makes writing the code a bit more
+straightforward than does C.
+</details><br>
+
+A special type of variable the `pointer` — holds the address of a value. Thus, the name of the pointer represents the location
+
+Applying the `*` operator, called the indirect value or the dereferencing operator, yields the value at the location.
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/pointer.cpp"> pointer.cpp</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/pointer.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Pointer.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Pointer2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
+In C++, the combination `int *` is a compound type, pointer-to-int.
+``` cpp
+int * p_updates;
+
+// the following declaration creates one pointer (p1) and one ordinary int (p2):
+int* p1, p2;
+
+double * tax_ptr; // tax_ptr points to type double
+char * str; // str points to type char
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/init_ptr.cpp"> init_ptr.cpp, initialize a pointer to an address.</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/init_ptr.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Pointer Danger
+
+```cpp
+long * fellow; // create a pointer-to-long
+*fellow = 223323; // place a value in never-never land
+
+// Pointer Golden Rule: Always initialize a pointer to a definite and appropriate address before
+// you apply the dereferencing operator (*) to it.
+
+int * pt;
+pt = 0xB8000000; // type mismatch
+
+int * pt;
+pt = (int *) 0xB8000000; // types now match
+```
+
+#### Allocating Memory with `new`
+In C, you can allocate memory with the library function `malloc()`
+
+```cpp
+// typeName * pointer_name = new typeName;
+int * pn = new int;
+
+// for comparison
+int higgens;
+int * pt = &higgens;
+```
+
+We say that `pn` points to a `data object`
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/use_new.cpp"> use_new.cpp, use new.</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/use_new.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	Out of Memory?
+    </summary>
+It’s possible that a computer might not have sufficient memory available to satisfy a new
+request. When that is the case, new normally responds by throwing an exception, an errorhandling
+technique discussed in Chapter 15, “Friends, Exceptions, and More.” In older implementations
+new returns the value 0. In C++, a pointer with the value 0 is called the null
+pointer. C++ guarantees that the null pointer never points to valid data, so it is often used to
+indicate failure for operators or functions that otherwise return usable pointers. The if
+statement, discussed in Chapter 6, helps you deal with this possibility. For now, the important
+point is that C++ provides the tools to detect and respond to allocation failures.
+</details><br>
+
+#### Freeing Memory with `delete`
+This removes the memory to which ps points; it doesn’t remove the pointer ps itself.
+Memory that you return, or `free`, can then be reused by other parts of the program
+
+```cpp
+int * ps = new int; // allocate memory with new
+. . . // use the memory
+delete ps; // free memory with delete when done
+
+int * ps = new int; // ok
+delete ps; // ok
+delete ps; // not ok now
+int jugs = 5; // ok
+int * pi = &jugs; // ok
+delete pi; // not allowed, memory not allocated by new
+
+// Ordinarily, you won’t create two pointers to the same block of memory because that
+// raises the possibility that you will mistakenly try to delete the same block twice.
+int * ps = new int; // allocate memory
+int * pq = ps; // set second pointer to same block
+delete pq; // delete with second pointer
+```
+
+#### Using `new` to Create Dynamic Arrays
+
+```cpp
+//type_name * pointer_name = new type_name [num_elements];
+int * psome = new int [10]; // get a block of 10 ints
+delete [] psome; // free a dynamic array
+
+int * pt = new int;
+short * ps = new short [500];
+delete [] pt; // effect is undefined, don't do it
+delete ps; // effect is undefined, don't do it
+```
+
+- Don’t use delete to free memory that new didn’t allocate.
+- Don’t use delete to free the same block of memory twice in succession.
+- Use delete [] if you used new [] to allocate an array.
+- Use delete (no brackets) if you used new to allocate a single entity.
+- It’s safe to apply delete to the null pointer (nothing happens).
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/arraynew.cpp"> arraynew.cpp, use dynamic array</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/arraynew.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Pointers, Arrays, and Pointer Arithmetic
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/addpntrs.cpp"> addpntrs.cpp, pointer addition</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/addpntrs.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4PointerAddition.png" alt="Image description" style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	The Address of an Array
+    </summary>
+
+Taking the address of an array is another case in which the name of an array is not interpreted
+as its address. But wait, isn’t the name of an array interpreted as the address of the
+array? Not quite—the name of the array is interpreted as the address of the first element of
+an array, whereas applying the address operator yields the address of the whole array:
+
+`short tell[10]; // tell an array of 20 bytes`
+`cout << tell << endl; // displays &tell[0]`
+`cout << &tell << endl; // displays address of whole array`
+
+Numerically, these two addresses are the same, but conceptually `&tell[0]`, and hence
+tell, is the address of a 2-byte block of memory, whereas `&tell` is the address of a 20-
+byte block of memory. So the expression tell + 1 adds 2 to the address value, whereas
+`&tell + 1` adds 20 to the address value. Another way of expressing this is to say that
+tell is type pointer-to-short, or `short *`, and `&tell` is type pointer-to-array-of-20-shorts,
+or short (*)[20].
+Now you might be wondering about the genesis of that last type description. First, here is
+how you could declare and initialize a pointer of that type:
+
+`short (*pas)[20] = &tell; // pas points to array of 20 shorts`
+
+If you omit the parentheses, precedence rules would first associate [20] with pas, making
+pas an array of 20 pointers-to-short, so the parentheses are necessary. Next, if you wish to
+describe the type of a variable, you can use the declaration of that variable as a guide and
+remove the variable name. Thus, the type of pas is `short (*)[20]`. Also note that
+because pas is set to `&tell`, *pas is equivalent to tell, so `(*pas)[0]` would be the first
+element of the `tell` array.
+</details><br>
+
+#### `pointer` Summary
+
+##### Declaring Pointers
+To declare a pointer to a particular type, use this form:
+```cpp
+typeName * pointerName;
+```
+
+Here are some examples:
+```cpp
+double * pn; // pn can point to a double value
+char * pc; // pc can point to a char value
+```
+
+Here pn and pc are pointers, and double * and char * are the C++ notations for the types pointer-to-double and pointer-to-char.
+
+##### Assigning Values to Pointers
+You should assign a memory address to a pointer.You can apply the & operator to a variable name to get an address of named memory, and the new operator returns the address of unnamed memory.
+
+Here are some examples:
+```cpp
+double * pn; // pn can point to a double value
+double * pa; // so can pa
+char * pc; // pc can point to a char value
+double bubble = 3.2;
+pn = &bubble; // assign address of bubble to pn
+pc = new char; // assign address of newly allocated char memory to pc
+pa = new double[30]; // assign address of 1st element of array of 30 double to pa
+```
+
+##### Dereferencing Pointers
+Dereferencing a pointer means referring to the pointed-to value.You apply the dereferencing, or indirect value, operator (*) to a pointer to dereference it.Thus, if pn is a pointer to bubble, as in the preceding example, then *pn is the pointed-to value, or 3.2, in this case.
+Here are some examples:
+```cpp
+cout << *pn; // print the value of bubble
+*pc = 'S'; // place 'S' into the memory location whose address is pc
+```
+Array notation is a second way to dereference a pointer; for instance, pn[0] is the same as *pn.You should never dereference a pointer that has not been initialized to a proper address.
+
+##### Distinguishing Between a Pointer and the Pointed-to Value
+Remember, if pt is a pointer-to-int, *pt is not a pointer-to-int; instead, *pt is the complete equivalent to a type int variable. It is pt that is the pointer.
+Here are some examples:
+```cpp
+int * pt = new int; // assigns an address to the pointer pt
+*pt = 5; // stores the value 5 at that address
+```
+
+##### Array Names
+In most contexts, C++ treats the name of an array as equivalent to the address of the first element of an array.
+```cpp
+Here is an example:
+int tacos[10]; // now tacos is the same as &tacos[0]
+```
+One exception is when you use the name of an array with the sizeof operator. In that
+case, sizeof returns the size of the entire array, in bytes.
+
+##### Pointer Arithmetic
+C++ allows you to add an integer to a pointer.The result of adding one equals the original address value plus a value equal to the number of bytes in the pointed-to object. You can also subtract an integer from a pointer to take the difference between two pointers. The last operation, which yields an integer, is meaningful only if the two pointers point into the same array (pointing to one position past the end is allowed, too); it then yields the separation between the two elements.
+Here are some examples:
+```cpp
+int tacos[10] = {5,2,8,4,1,2,2,4,6,8};
+int * pt = tacos; // suppose pf and tacos are the address 3000
+pt = pt + 1; // now pt is 3004 if a int is 4 bytes
+int *pe = &tacos[9]; // pe is 3036 if an int is 4 bytes
+pe = pe - 1; // now pe is 3032, the address of tacos[8]
+int diff = pe - pt; // diff is 7, the separation between
+// tacos[8] and tacos[1]
+```
+
+##### Dynamic Binding and Static Binding for Arrays
+You can use an array declaration to create an array with static binding—that is, an array
+whose size is set during the compilation process:
+
+```cpp
+int tacos[10]; // static binding, size fixed at compile time
+```
+
+You use the new [] operator to create an array with dynamic binding (a dynamic array) that is, an array that is allocated and whose size can be set during runtime. You free the memory with delete [] when you are done:
+```cpp
+int size;
+cin >> size;
+int * pz = new int [size]; // dynamic binding, size set at run time
+...
+delete [] pz; // free memory when finished
+```
+
+##### Structure pointers
+
+If the data object is a `structure` initialized with `new`, you can use the pointer dereferencing operator (`->`) to access structure members
+
+#### Pointers and Strings
+
+With cout and with most C++ expressions, the name of an array of char, a pointer-tochar, and a quoted string constant are all interpreted as the address of the first character of a string.
+
+The `strcpy(var_dest, var_copyFrom)` function copies a string from one location to another.
+The `strncpy(var_dest, var_copyFrom, int_sizeof_var_copyFrom)` function copies a string from one location to another with the new size of it.
+The `strlen()` function returns the length of a string, not counting the null character
+When using these functions, you include the `cstring` or the `string.h` header file.
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/ptrstr.cpp"> ptrstr.cpp</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/ptrstr.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+```cpp
+const char * bird = "wren"; // bird holds address of string
+
+// you can use the pointer bird just as you would use the string "wren", as in this example:
+cout << "A concerned " << bird << " speaks\n";
+
+char food[20] = "carrots"; // initialization
+strcpy(food, "flan"); // otherwise
+
+
+ps = animal; // set ps to point to string
+...
+cout << animal << " at " << (int *) animal << endl;
+cout << ps << " at " << (int *) ps << endl;
+
+// It produces the following output:
+// fox at 0x0065fd30
+// fox at 0x0065fd30
+```
+
+#### Using new to Create Dynamic Structures
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4NewStructure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/newstrct.cpp"> newstrct.cpp</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/newstrct.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+##### Using `new` and `delete`
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/delete.cpp"> delete.cpp</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/delete.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Automatic Storage, Static Storage, and Dynamic Storage
+
+Ordinary variables defined inside a function use automatic storage and are called automatic variables.
+Automatic variables typically are stored on a `stack`.
+
+Static storage is storage that exists throughout the execution of an entire program. There are two ways to make a variable static.
+
+The new and delete operators provide a more flexible approach than automatic and static variables.They manage a pool of memory, which C++ refers to as the `free` store or `heap`.
+
+#### Combinations of Types
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/mixtypes.cpp"> mixtypes.cpp</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/mixtypes.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Array Alternatives - `vector`
+
+`vector` class does use new and delete to manage memory, but it does so automatically.
+
+```cpp
+vector<typeName> vt(n_elem);
+```
+
+```cpp
+#include <vector>
+...
+using namespace std;
+vector<int> vi; // create a zero-size array of int
+int n;
+cin >> n;
+vector<double> vd(n); // create an array of n doubles
+```
+We say that vi is an object of type vector<int> and that vd is an object of type vector<double>.
+
+**C++11 `array` Template Class**
+
+Comparing Arrays, Vector Objects, and Array Objects
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/choices.cpp"> choices.cpp</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/choices.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+Pointers and arrays are closely connected. If ar is an array name, then the expression `ar[i] `is interpreted as `*(ar + i)`, with the array name interpreted as the address of the first element of the array. Thus, the array name plays the same role as a pointer.
+
+**Assign safety**
+
+```cpp
+// a2[-2] = .5; // still allowed (out of range)
+a2.at(1) = 2.3; // assign 2.3 to a2[1] 
+```
+
+The difference between using bracket notation and the `at()` member function is that if you use `at()`, an invalid index is caught during runtime and the program, by default, aborts.
+
+
+### Chapter Review
+
+<!-- -------------------------------------------- -->
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+1. How would you declare each of the following?
+
+```
+a. actors is an array of 30 char.
+b. betsie is an array of 100 short.
+c. chuck is an array of 13 float.
+d. dipsea is an array of 64 long double.
+```
+
+</summary>
+
+```cpp
+char actors[30];
+short betsie[100];
+float chuck[13];
+long double dipsea[64];
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+2. Do Chapter Review Question 1 and use the array template class instead of built-in arrays.
+    </summary>
+
+```cpp
+array<char, 30> actors;
+array<short, 100> betsie;
+array<float, 13> chuck;
+array<long double, 64> dipsea;
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+3. Declare an array of five ints and initialize it to the first five odd positive integers
+    </summary>
+
+```cpp
+int oddly[5] = {1, 3, 5, 7, 9};
+array<int, 5> at {1, 3, 5, 7, 9}; // also correct
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+4. Write a statement that assigns the sum of the first and last elements of the array in Question 3 to the variable even.
+    </summary>
+
+```cpp
+int even = array[0] + array[4]; 
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+5. Write a statement that displays the value of the second element in the float array ideas.
+    </summary>
+
+```cpp
+std::cout << ideas[1];
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+6. Declare an array of char and initialize it to the string "cheeseburger".
+    </summary>
+
+```cpp
+char food[] {"cheeseburger"};
+// or
+char lunch[13] = "cheeseburger"; // number of characters + 1
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+7. Declare a string object and initialize it to the string "Waldorf Salad".
+    </summary>
+
+```cpp
+std::string obj = "Waldorf Salad";
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+8. Devise a structure declaration that describes a fish.The structure should include the kind, the weight in whole ounces, and the length in fractional inches.
+    </summary>
+
+```cpp
+struct fish {
+    char kind[20];
+    int weight;
+    float length;
+};
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+9. Declare a variable of the type defined in Question 8 and initialize it.
+    </summary>
+
+```cpp
+fish petes =
+{
+    "trout",
+    12,
+    26.25
+};
+
+// fish flounder; //??
+// flounder.kind = "fishy";
+// flounder.weight = 21;
+// flounder.length = 21;
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+10.  Use enum to define a type called Response with the possible values Yes, No, and Maybe. Yes should be 1, No should be 0, and Maybe should be 2.
+    </summary>
+
+```cpp
+enum response {No, Yes, Maybe};
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+11.  Suppose ted is a double variable. Declare a pointer that points to ted and use the pointer to display ted’s value.
+    </summary>
+
+```cpp
+double *ptrTed = &ted;
+std::cout << *ptrTed;
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+12.  Suppose treacle is an array of 10 floats. Declare a pointer that points to the first element of treacle and use the pointer to display the first and last elements of the array.
+    </summary>
+
+</details>
+
+```cpp
+float *ptrTreacle = &treacle; // or = &treacle[0]
+cout << pf[0] << " " << pf[9] << "\n";
+std::cout << ptrTreacle[0] << "last" << ptrTreacle[9];
+// or use:
+// std::cout << *(ptrTreacle + 1) << "last" << *(ptrTreacle + 9);
+```
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+13. Write a code fragment that asks the user to enter a positive integer and then creates a dynamic array of that many ints. Do this by using new, then again using a vector object.
+    </summary>
+
+```cpp
+unsigned int iUsr {};
+cout << "Enter a positive integer: ";
+std::cin >> iUsr;
+
+int *sth = new int[iUsr];
+vector<int> sth(iUsr);
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+14. Is the following valid code? If so, what does it print?
+
+```cpp
+cout << (int *) “Home of the jolly bytes”;
+```
+</summary>
+
+//Yes
+//Start of memory of this Literal 
+Yes, it is valid.The expression "Home of the jolly bytes" is a string constant;
+hence it evaluates as the address of the beginning of the string.The cout object
+interprets the address of a char as an invitation to print a string, but the type cast
+(int *) converts the address to type pointer-to-int, which is then printed as an
+address. In short, the statement prints the address of the string, assuming the int
+type is wide enough to hold an address.
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+15. Write a code fragment that dynamically allocates a structure of the type described in Question 8 and then reads a value for the `kind` member of the structure.
+    </summary>
+
+```cpp
+struct fish
+{
+    char kind[20];
+    int weight;
+    float length;
+};
+
+int main(){
+    fish * pole = new fish;    
+
+    std::cout << "Enter kind of fish: ";
+    std::cin >> pole->kind;
+}
+```
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+16. Listing 4.6 illustrates a problem created by following numeric input with line-oriented string input. How would replacing:
+
+```cpp
+// this:
+cin.getline(address,80);
+// with this:
+cin >> address;
+// affect the working of this program?
+```
+</summary>
+
+//cin >> address will read from user only to the space. Data after space will be in the queue;
+Using cin >> address causes a program to skip over whitespace until it finds nonwhitespace.
+It then reads characters until it encounters whitespace again.Thus, it
+will skip over the newline following the numeric input, avoiding that problem. On
+the other hand, it will read just a single word, not an entire line.
+</details>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+17. Declare a vector object of 10 string objects and an array object of 10 string objects. Show the necessary header files and don’t use using. Do use a const for the number of strings.
+</summary>
+
+```cpp
+#include <string>
+#include <vector>
+#include <array>
+
+// vector<string> vSth(10);
+// array<string, 10> aSth;
+
+const int Str_num {10}; // or = 10
+...
+std::vector<std::string> vstr(Str_num);
+std::array<std::string, Str_num> astr;
+```
+
+</details>
+
 -------------
 ```sh
 ./.refs_notes/notes_C++_C++PrimerPlus/
-str 140 - introducing structures
+str 146 - introducing structures -> 190 Summary - NOTE!
 ```
