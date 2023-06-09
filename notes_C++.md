@@ -2417,8 +2417,487 @@ Devise a structure that can hold this information and write a program that uses 
 
 [10.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_10.cpp) Write a program that requests the user to enter three times for the 40-yd dash (or 40-meter, if you prefer) and then displays the times and the average. Use an array object to hold the data. (Use a built-in array if array is not available.)
 
+## Chapter 5: Loops and Relational Expressions
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;">
+        List of what you will learn
+    </summary>
+
+```
+ - The for loop 
+ - Expressions and statements 
+ - The increment and decrement operators: ++ and -- 
+ - Combination assignment operators 
+ - Compound statements (blocks) 
+ - The comma operator 
+ - Relational operators: >, >=, ==, <=, <, and != 
+ - The while loop 
+ - The typedef facility 
+ - The do while loop 
+ - The get() character input method 
+ - The end-of-file condition 
+ - Nested loops and two-dimensional arrays 
+```
+
+</details> <br>
+
+### Loops, Expressions and Statements
+
+You can’t assign a for loop to a variable. In the following example, the for loop is not an expression, so it has no value and you can’t assign it:
+```cpp
+int fx = for (i = 0; i< 4; i++)
+cout >> i; // not possible
+
+for (expression; expression; expression)
+    statement
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/formore.cpp"> formore.cpp - factorials in cpp </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/formore.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/forstr1.cpp"> forstr1.cpp - (string) letters in reverse order </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/forstr1.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+Consider this statement:
+```cpp
+y = (4 + x++) + (6 + x++);
+```
+
+The expression `4 + x++` is not a full expression, so C++ does not guarantee that `x` will be incremented immediately after the subexpression `4 + x++` is evaluated. Here the full expression is the entire assignment statement, and the semicolon marks the sequence point, so all that C++ guarantees is that x will have been incremented twice by the time the program moves to the following statement. C++ does not specify whether x is incremented after each subexpression is evaluated or only after all the expressions have been evaluated, which is why you should avoid statements of this kind.
+
+### Prefix & Postfix
+
+postfix version works by first stashing a copy of the value, incrementing the value, and then returning the stashed copy.Thus, for classes, the prefix version is a bit more efficient than the postfix version.
+
+In short, for built-in types, it most likely makes no difference which form you use. For user-defined types having user-defined increment and decrement operators, the prefix form is more efficient.
+
+The right-to-left association rule for prefix operators implies that `*++pt` means first apply `++` to `pt` (because the `++` is to the right of the `*`) and then apply `*` to the new value of pt:
+```cpp
+double x = *++pt; // increment pointer, take the value; i.e., arr[2], or 23.4
+++*pt; // increment the pointed to value; i.e., change 23.4 to 24.4
+(*pt)++; // increment pointed-to value
+x = *pt++; // dereference original location, then increment pointer
+```
+**Incrementing and decrementing pointers follow pointer arithmetic rules. Thus, if pt points to the first member of an array, ++pt changes pt so that it points to the second member.**
+
+----------
+
+**Assignment Operators**
+```cpp
++= Assigns L + R to L
+-= Assigns L - R to L
+*= Assigns L * R to L
+/= Assigns L / R to L
+%= Assigns L % R to L
+```
+
+**Relational Operators**
+```cpp
+<< Is less than
+<= Is less than or equal to
+== Is equal to
+> Is greater than
+>= Is greater than or equal to
+!= Is not equal to
+```
+
+
+### Compound Statements, or Blocks, Syntax Tricks
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/block.cpp"> block.cpp - Example of local code block </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/block.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+```cpp
+++j, --i // two expressions count as one for syntax purposes
+int i, j; // comma is a separator here, not an operator
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/forstr2.cpp"> forstr2.cpp - Example of comma separator trick </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/forstr2.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+The relational operators have a lower precedence than the arithmetic operators.That
+means this expression:
+`x + 3 > y - 2 // Expression 1`
+corresponds to this:
+`(x + 3) > (y - 2) // Expression 2`
+and not to the following:
+`x + (3 > y) - 2 // Expression 3`
+
+```cpp
+strcmp(word, "mate") != 0 // strings are not the same
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/compstr1.cpp"> compstr1.cpp - Example comparison c-string in search for word </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/compstr1.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/compstr2.cpp"> compstr2.cpp - Example comparison string class in search for word </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/compstr2.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### When use other loop forms
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/while.cpp"> while.cpp - while for verticalized and ASCIIized string class input </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/while.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+You can rewrite the while line this way:
+```cpp
+while (name[i])
+```
+because when `name[i]` is an ordinary character, its value is the character code, which is nonzero, or true. But when name[i] is the null character, its character-code value is 0, or false.This notation is more concise (and more commonly used)
+
+### Time-Delay Loop
+ctime header file (time.h on less current implementations) provides solution:
+- First, it defines a symbolic constant, CLOCKS_PER_SEC, that equals the number of system time units per second. (So dividing the system time by this value yields seconds)
+- Or you can multiply seconds by CLOCKS_PER_SEC to get time in the system units.
+- ctime establishes clock_t as an alias for the clock() return type. (See the sidebar “Type Aliases,” later in this chapter.) This means you can declare a variable as type clock_t, and the compiler converts it to long or unsigned int or whatever is the proper type for your system.
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/waiting.cpp"> waiting.cpp - using clock() in a time-delay loop </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/waiting.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	Type Aliases
+    </summary>
+
+C++ has two ways to establish a new name as an alias for a type. One is to use the preprocessor:
+
+```cpp
+#define BYTE char // preprocessor replaces BYTE with char
+```
+
+The preprocessor then replaces all occurrences of BYTE with char when you compile a program, thus making `BYTE` an alias for `char`.
+The second method is to use the C++ (and C) keyword `typedef` to create an alias. For example, to make byte an alias for `char`, you use this:
+
+```cpp
+typedef char byte; // makes byte an alias for char
+typedef typeName aliasName; // general form
+```
+
+In other words, if you want `aliasName` to be an alias for a particular type, you declare `aliasName` as if it were a variable of that type and then prefix the declaration with the `typedef` keyword. For example, to make `byte_pointer` an alias for pointer-to-char, you could declare `byte_pointer` as a pointer-to-char and then stick `typedef` in front:
+```cpp
+typedef char * byte_pointer; // pointer to char type
+```
+
+You could try something similar with #define, but that wouldn’t work if you declared a list
+of variables. For example, consider the following
+```cpp
+#define FLOAT_POINTER float *
+FLOAT_POINTER pa, pb;
+
+//Preprocessor substitution converts the declaration to this:
+float * pa, pb; // pa a pointer to float, pb just a float
+```
+
+The `typedef` approach doesn’t have that problem. Its ability to handle more complex type
+aliases makes using `typedef` a better choice than #define—and sometimes it is the
+only choice.
+
+Notice that `typedef` doesn’t create a new type. It just creates a new name for an old type.
+If you make `word` an alias for `int`, `cout` treats a type `word` value as the `int` it really is.
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/dowhile.cpp"> dowhile.cpp - for user input in loop (instead strange for loops) </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/dowhile.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### The Range-Based `for` Loop (C++11)
+
+```cpp
+double prices[5] = {4.99, 10.99, 6.87, 7.99, 8.49};
+for (double x : prices)
+    cout << x << std::endl; // Here x initially represents the first member of the prices array
+```
+
+To modify array values, you need a different syntax for the loop variable: 
+```cpp
+for (double &x : prices)
+x = x * 0.80; //20% off sale
+```
+
+It can be used with initialization lists
+```cpp
+for (int x : {3, 5, 2, 8, 6})
+cout << x << " ";
+cout << ‘\n’;
+```
+
+### Loops and Text Input
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin1.cpp"> textin1.cpp - reading chars with a while loop, enter # to quit - cin() PROBLEMS </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/textin1.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin2.cpp"> textin2.cpp - reading chars with a while loop, enter # to quit - cin.get(char) SOLUTION </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/textin2.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### End-of-File Condition 
+
+The program to take input from the `fishtale` file instead of from the **keyboard**. The `<` symbol is the redirection operator for both Unix and the Windows Command Prompt mode.
+```sh
+gofish <fishtale
+```
+
+When `cin` detects the `EOF`, it sets two bits (the `eofbit` and the `failbit`) to 1.You can use a member function named `eof()` to see whether the `eofbit` has been set; the call `cin.eof()` returns the bool value true if the `EOF` has been detected and false otherwise
+
+Some systems do not support simulated EOF from the keyboard. Other systems support it imperfectly. If you have been using cin.get() to freeze the screen until you can read it, that won’t work here because detecting the EOF turns off further attempts to read input.
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin3.cpp"> textin3.cpp - reading chars till EOF (keyboard break) </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/textin3.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+The following is the essential design of a loop intended to read text a character at a time until EOF:
+```cpp
+cin.get(ch); // attempt to read a char
+while (cin.fail() == false) // test for EOF
+{
+    ... // do stuff
+    cin.get(ch); // attempt to read another char
+}
+
+// you can use instead:
+while (!cin.fail()) // while input has not failed  (`!` - 'not true' operator)
+
+// This is a bit more general than using !cin.fail() or !cin.eof() because it detects
+// other possible causes of failure, such as disk failure
+while (cin) // while input is successful
+```
+
+`cin.get(ch)` can condense loop above: 
+Here, `cin.get(char)` is called once in the test condition instead of twice—once
+before the loop and once at the end of the loop.
+```cpp
+while (cin.get(ch)) // while input is successful
+{
+... // do stuff
+}
+```
+
+The cin.get() member function with no arguments returns the next character from
+the input.That is, you use it in this way: `ch = cin.get();` (Recall that cin.get(ch) returns an object, not the character read.)
+Similarly, you can use the `cout.put(ch)`
+
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp"> textin4.cpp - incorporates the cin.get() and codense code </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+
+
+|Property|`cin.get(ch)`|`ch=cin.get()`|
+|---|---|---|
+|Method for conveying input character|Assign to argument ch|Use function return value to assign to `ch`|
+|Function return value for character input|A class `istream` object (true after `bool` conversion)|Code for character as type `int` value|
+|Function return value at EOF|A class `istream` object (false after `bool` conversion)|EOF|
+
+### Nested Loops and Two-Dimensional Arrays
+ 
+ Initialize
+
+```cpp
+int maxtemps[4][5] = // 2-D array
+{
+{96, 100, 87, 101, 105}, // values for maxtemps[0]
+{96, 98, 91, 107, 104}, // values for maxtemps[1]
+{97, 101, 93, 108, 107}, // values for maxtemps[2]
+{98, 103, 95, 109, 108} // values for maxtemps[3]
+};
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp"> nested.cpp - nested loops and 2-D array </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Chapter Review
+
+<!-- -------------------------------------------- -->
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    </summary>
+
+</details>
+
 -------------
 ```sh
 ./.refs_notes/notes_C++_C++PrimerPlus/
-str 146 - introducing structures -> 190 Summary - NOTE!
+str 250 Summary - NOTE! -> 254 Branching Statements and Logical Operators 
+
+### Chapter Review
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    !!!!!Question!!!!!
+    </summary>
+ !!!!!Answer!!!!!
+</details>
+
+### Programming Exercises
+[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_1.cpp)
 ```
