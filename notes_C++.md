@@ -3130,10 +3130,339 @@ Enter number of rows: 5
 *****
 ```
 
+## Chapter 6: Branching Statements and Logical Operators
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;">
+        List of what you will learn
+    </summary>
+
+```
+ - The `if` statement
+ - The `if else` statement
+ - Logical operators: `&&`, `||`, and `!`
+ - The `cctype` library of character functions
+ - The conditional operator: `?:`
+ - The switch statement
+ - The continue and break statements
+ - Number-reading loops
+ - Basic file input/output
+```
+</details>
+
+### Statements and logical operators
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/if.cpp"> if.cpp - (count spaces in while) simple use of if statement</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/if.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/ifelse.cpp"> ifelse.cpp - (simplest cipher from keyboard) simple use of if else statement</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/ifelse.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/ifelseif.cpp"> ifelseif.cpp -  simple use of if elseif else statement for guess game</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/ifelseif.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Conditional Operators and Bug Prevention
+
+Many programmers reverse the more intuitive expression `variable == value` to `value ==
+variable` in order to catch errors where the equality is mistyped as an assignment operator. For example, entering the conditional as follows is valid and will work properly:
+`if (3 == myNumber)`
+However, if you happen to mistype as follows, the compiler will generate an error message because it believes you are attempting to assign a value to a literal (3 always equals 3 and can’t be assigned another value):
+`if (3 = myNumber)`
+Suppose you made a similar mistake, using the former notation:
+`if (myNumber = 3)`
+The compiler would simply assign the value 3 to myNumber, and the block within the if would run—a very common error, and a difficult error to find. (However, many compilers will issue a warning, which you would be wise to heed.) As a general rule, writing code that allows the compiler to find errors is much easier than repairing the causes of mysterious faulty results.
+
+### Logical expressions
+
+`||` - Logical OR Operator is true, when one or both of two conditions satisfy a requirement.
+`&&` - Logical AND Operator is true only if both of the original expressions are true.
+`!` - Logical NOT Operator negates, or reverses the truth value of, the expression that follows it.
+
+logical OR and logical AND operators have a lower precedence than relational operators.This means that an expression such as this: `x > 5 && x < 10` is interpreted this way: `(x > 5) && (x < 10)`
+
+The logical AND operator has a higher precedence than the logical OR, Thus this expression: `age > 30 && age < 45 || weight > 300`, means the following: `(age > 30 && age < 45) || weight > 300`
+
+C++ guarantees that when a program evaluates a logical expression, it evaluates it from left to right and stops evaluation as soon as it knows what the answer is.
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/or.cpp"> or.cpp - simple use of the logical OR operator</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/or.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/and.cpp"> and.cpp - simple use of the logical AND operator</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/and.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/more_and.cpp"> more_and.cpp - range using AND operator</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/more_and.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/not.cpp"> not.cpp - simple use of NOT operator</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/not.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Range Tests 
+Note that each part of a range test should use the AND operator to join two complete relational expressions:
+`if (age > 17 && age < 35) // OK`
+Don’t borrow from mathematics and use the following notation:
+`if (17 < age < 35) // Don't do this!`
+If you make this mistake, the compiler won’t catch it as an error because it is still valid C++ syntax. The `<` operator associates from left to right, so the previous expression means the following:
+`if ( (17 < age) < 35)`
+But `17 < age` is either `true`, or `1`, or else `false`, or `0`. In either case, the expression `17 < age` is less than 35, so the entire test is always true!
+
+### `cctype` library of Character Functions
+simplify such tasks as determining whether a character is an uppercase letter or a digit or punctuation
+
+Using these functions is more convenient than using the AND and OR operators. For example, here’s how you might use AND and OR to test whether a character ch is an alphabetic character:
+```cpp
+if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+```
+Is equivalent to:
+```cpp
+if (isalpha(ch))
+```
+
+In program `cctypes.cpp` below
+`isalpha()`,  tests for alphabetic characters; 
+`isdigits()`,  tests for digit characters, such as 3; 
+`isspace()`, tests for whitespace characters, such as newlines, spaces, and tabs;
+`ispunct()`,  tests for punctuation characters
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/cctypes.cpp"> cctypes.cpp - demonstrates some functions of the ctype.h library</a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/cctypes.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+Function Name 
+ - `isalnum()` - returns true if the argument is alphanumeric (that is, a letter or a digit).
+ - `isalpha()` - returns true if the argument is alphabetic.
+ - `isblank()` - returns true if the argument is a space or a horizontal tab.
+ - `iscntrl()` - returns true if the argument is a control character.
+ - `isdigit()` - returns true if the argument is a decimal digit (0–9).
+ - `isgraph()` - returns true if the argument is any printing character other than a space.
+ - `islower()` - returns true if the argument is a lowercase letter.
+ - `isprint()` - returns true if the argument is any printing character, including a space.
+ - `ispunct()` - returns true if the argument is a punctuation character.
+ - `isspace()` - returns true if the argument is a standard whitespace character (that is, a space, formfeed, newline, carriage return, horizontal tab, vertical tab).
+ - `isupper()` - returns true if the argument is an uppercase letter.
+ - `isxdigit()` - returns true if the argument is a hexadecimal digit character (that is, 0–9, a–f, or A–F).
+ - `tolower()` - If the argument is an uppercase character, tolower() returns the lowercase version of that character; otherwise, it returns the argument unaltered.
+ - `toupper()` - If the argument is a lowercase character, toupper() returns the uppercase version of that character; otherwise, it returns the argument unaltered.
+
+### The `?:` Operator
+
+`expression1 ? expression2 : expression3`
+If `expression1` is `true`, then the value of the whole conditional expression is the value of `expression2`. Otherwise, the value of the whole expression is the value of `expression3`.
+
+```cpp
+5 > 3 ? 10 : 12 // 5 > 3 is true, so expression value is 10
+3 == 9 ? 25 : 18 // 3 == 9 is false, so expression value is 18
+```
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/condit.cpp"> condit.cpp - example of ?: use </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/condit.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### The `switch` Statement
+
+<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch6SwitchCase.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;"> <br>
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/switch.cpp"> switch.cpp - menu program, example of switch use </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/switch.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/enum.cpp"> enum.cpp - menu program with enum labels </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/enum.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### The break and continue Statements
+
+`break` statement causes program execution to pass to the next statement following the switch or the loop
+`continue` statement is used in loops and causes a program to skip the rest of the body of the loop
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/jump.cpp"> jump.cpp - using continue and break </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/jump.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/cinfish.cpp"> cinfish.cpp - to terminate input before filling the array example </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/cinfish.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/cingolf.cpp"> cingolf.cpp - to terminate input before filling the array example and reset cin to accept new input. </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/cingolf.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### File Input/Output
+
+
 -------------
 ```sh
 ./.refs_notes/notes_C++_C++PrimerPlus/
-str 250 Summary - NOTE! -> 254 Branching Statements and Logical Operators 
+str 287 File I/O -> 298 Summary 
+Chapter 6 Review : 9
+Chapter 6 Exercises: 9
 
 ### Chapter Review
 
