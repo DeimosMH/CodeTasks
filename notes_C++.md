@@ -2876,11 +2876,153 @@ int maxtemps[4][5] = // 2-D array
 ### Chapter Review
 
 <!-- -------------------------------------------- -->
-
 <details style="margin-left: 35px;">
     <summary style="margin-left: -35px;"> 
+1. What’s the difference between an entry-condition loop and an exit-condition loop?
+Which kind is each of the C++ loops?
     </summary>
+// entry-condition loop - check condition before entering the loop <br>
+// exit-condition loop -  check condition at the end of loop, making at least 1 loop<br><br>
 
+An entry-condition loop evaluates a test expression before entering the body of the
+loop. If the condition is initially false, the loop never executes its body.An exitcondition
+loop evaluates a test expression after processing the body of the loop.
+Thus, the loop body is executed once, even if the test expression is initially false.
+The for and while loops are entry-condition loops, and the do while loop is an
+exit-condition loop
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;">
+2. What would the following code fragment print if it were part of a valid program? 
+
+```cpp
+int i;
+for (i = 0; i < 5; i++)
+    cout << i;
+    cout << endl;
+```
+</summary>
+01234
+
+Note that cout << endl; is not part of the loop body (because there are no
+braces).
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+3. What would the following code fragment print if it were part of a valid program?
+
+```cpp
+int j;
+for (j = 0; j < 11; j += 3)
+    cout << j;
+cout << endl << j << endl;
+```
+</summary>
+It would print the following:<br>
+0369<br>
+12<br>
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+4. What would the following code fragment print if it were part of a valid program?
+
+```cpp
+int j = 5;
+while ( ++j < 9)
+    cout << j++ << endl;
+```
+</summary>
+It would print the following:<br>
+6<br>
+8
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+5. What would the following code fragment print if it were part of a valid program?
+
+```cpp
+int k = 8;
+do
+    cout <<" k = " << k << endl;
+while (k++ < 5);
+```
+</summary>
+It would print the following:<br>
+k = 8
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+6. Write a `for` loop that prints the values 1 2 4 8 16 32 64 by increasing the value of
+a counting variable by a factor of two in each cycle.
+    </summary>
+It’s simplest to use the *= operator:<br>
+
+```cpp
+for(int i {}; i < 65; i *= 2)
+    cout << i << " ";
+```
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+7. How do you make a loop body include more than one statement?
+    </summary>
+//add curly braces {} <br>
+
+You enclose the statements within paired braces to form a single compound statement,
+or block.
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+8. Is the following statement valid? If not, why not? If so, what does it do?
+
+```cpp
+int x = (1,024);
+```
+What about the following?
+```cpp
+int y;
+y = 1,024;
+```    
+</summary>
+//1st is valid, but 1 will be assigned to x due to precedence and first value will do nothing <br>
+//in 2nd 1 will be assigned to y, and 024 will do nothing, but confuse. <br><br>
+
+Yes, the first statement is valid.The expression 1,024 consists of two expressions—1
+and 024—joined by a comma operator.The value is the value of the right-hand
+expression.This is 024, which is octal for 20, so the declaration assigns the value 20
+to x.The second statement is also valid. However, operator precedence causes it to
+be evaluated as follows:
+```cpp
+(y = 1), 024;
+```
+That is, the left expression sets y to 1, and the value of the entire expression, which
+isn’t used, is `024`, or `20`.
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;">
+9. How does cin >> ch differ from cin.get(ch) and ch=cin.get() in how it views
+input?
+    </summary>
+//cin>>ch will omit spaces, cin.get(ch) will return bool true, false if EOF, ch=cin.get() will assign int value and EOF if EOF <br><br>
+
+The `cin >> ch` form skips over spaces, newlines, and tabs when it encounters them.The other two forms read those characters
 </details>
 
 -------------
