@@ -3456,7 +3456,138 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 
 ### File Input/Output
 
+#### Write to file
 
+You have to declare your own `ofstream` object, choosing a name for it and associating it with a file.
+
+Declaration:
+```cpp
+ofstream outFile; // outFile an ofstream object
+ofstream fout; // fout an ofstream object
+```
+Association with file (`open()` method requires a C-style string as its argument):
+```cpp
+outFile.open("fish.txt"); // outFile used to write to the fish.txt file
+char filename[50];
+cin >> filename; // user specifies a name
+fout.open(filename); // fout used to read specified file
+```
+Use created object (after you’ve declared an ofstream object and associated it with a file, you use it exactly as you would use cout):
+```cpp
+double wt = 125.8;
+outFile << wt; // write a number to fish.txt
+char line[81] = "Objects are closer than they appear.";
+fout << line << endl; // write a line of text
+```
+
+Main steps for using file output:
+1. Include the fstream header file.
+2. Create an ofstream object.
+3. Associate the ofstream object with a file.
+4. Use the ofstream object in the same manner you would use cout.
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/outfile.cpp"> outfile.cpp - write data to file. </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/outfile.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+#### Read from file
+
+You have to declare your own `ifstream` object, choosing a name for it and associating it with a file
+
+Declaration:
+
+```cpp
+ifstream inFile; // inFile an ifstream object
+ifstream fin; // fin an ifstream object
+```
+
+Association with file (open() method requires a C-style string as its argument):
+
+```cpp
+inFile.open("bowling.txt"); // inFile used to read bowling.txt file
+char filename[50];
+cin >> filename; // user specifies a name
+fin.open(filename); // fin used to read specified file
+```
+
+Use created object:
+```cpp
+double wt;
+inFile >> wt; // read a number from bowling.txt
+char line[81];
+fin.getline(line, 81); // read a line of text
+```
+
+Check for nonexisting file (`is_open()` method)
+```cpp
+inFile.open("bowling.txt");
+if (!inFile.is_open()){
+    exit(EXIT_FAILURE);
+}
+```
+
+For program below - write `datsumafile.txt`, that should be local, or `.refs_notes\notes_C++_C++PrimerPlus\datsumafile.txt` if compiled in `$PATH$`
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp"> sumafile.cpp - reading double data from file. </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+    	<a href=".refs_notes/notes_C++_C++PrimerPlus/datsumafile.txt"> datsumafile.txt - data for program. </a>
+    </summary>
+<figure>
+        <iframe 
+        src=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp" 
+            frameborder="10" 
+            allowfullscreen="true" 
+            height="250px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+```cpp
+// standard file-reading loop design
+inFile >> value; // get first value
+while (inFile.good()) // while input good and not at EOF
+{
+    // loop body goes here
+    inFile >> value; // get next value
+}
+```
+
+`inFile`, when placed in a context in which a `bool` value is expected, evaluates to `inFile.good()` — that is, to `true` or `false`, thus you can make above code more concise:
+```cpp
+// abbreviated file-reading loop design
+// omit pre-loop input
+while (inFile >> value) // read and test for success
+{
+    // loop body goes here
+    // omit end-of-loop input
+}
+```
 -------------
 ```sh
 ./.refs_notes/notes_C++_C++PrimerPlus/
