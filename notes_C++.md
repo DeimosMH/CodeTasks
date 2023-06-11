@@ -1951,6 +1951,21 @@ delete [] pz; // free memory when finished
 
 If the data object is a `structure` initialized with `new`, you can use the pointer dereferencing operator (`->`) to access structure members
 
+```cpp
+BOP *stBOP = new BOP[5];
+
+strcpy(stBOP[0].fullname, "Wimp Macho");
+strcpy(stBOP[1].fullname, "Wimp Macho");
+
+bop *stBOP = new bop;
+strcpy(stBOP->fullname, "Wimp Macho");
+```
+The `.` operator works instead of the `->` operator because you are accessing the members of the `bop struct` using an `array` of `structs` (`stBOP`), not a `pointer` to a `struct`.
+
+When you use the array notation `stBOP[0]`, it refers to the first element of the array, which is an object of the `bop` `struct`. Therefore, you can use the `.` operator to access its members directly.
+
+**Use the `.` operator to access members of a `struct` or `class` directly, and use the `->` operator to access members through a pointer to a `struct` or `class`.**
+
 #### Pointers and Strings
 
 With cout and with most C++ expressions, the name of an array of char, a pointer-tochar, and a quoted string constant are all interpreted as the address of the first character of a string.
@@ -1996,6 +2011,7 @@ cout << ps << " at " << (int *) ps << endl;
 ```
 
 #### Using new to Create Dynamic Structures
+
 
 ```cpp
 inflatable * ps = new inflatable;
@@ -2506,7 +2522,6 @@ x = *pt++; // dereference original location, then increment pointer
 **Incrementing and decrementing pointers follow pointer arithmetic rules. Thus, if pt points to the first member of an array, ++pt changes pt so that it points to the second member.**
 
 ----------
-
 **Assignment Operators**
 ```cpp
 += Assigns L + R to L
@@ -2762,7 +2777,7 @@ cout << ‘\n’;
     </figure>
 </details><br>
 
-### End-of-File Condition 
+### End-of-File Condition and Read data from keyboard
 
 The program to take input from the `fishtale` file instead of from the **keyboard**. The `<` symbol is the redirection operator for both Unix and the Windows Command Prompt mode.
 ```sh
