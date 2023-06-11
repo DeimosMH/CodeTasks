@@ -3588,6 +3588,451 @@ while (inFile >> value) // read and test for success
     // omit end-of-loop input
 }
 ```
+
+### Chapter Review
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+1. Consider the following two code fragments for counting spaces and newlines
+
+```cpp
+// Version 1
+while (cin.get(ch)) // quit on eof
+{
+    if (ch == ' ')
+        spaces++;
+    if (ch == '\n')
+        newlines++;
+}
+// Version 2
+while (cin.get(ch)) // quit on eof
+{
+    if (ch == ' ')
+        spaces++;
+    else if (ch == '\n')
+        newlines++;
+}
+```
+What advantages, if any, does the second form have over the first?
+</summary>
+// Because version 1 checks every times both conditions, thus it's less efficient. <br>
+// Version 2 checks 2 condition only if first is not true.<br><br>
+
+Both versions give the same answers, but the if else version is more efficient.
+Consider what happens, for example, when ch is a space.Version 1, after incrementing
+spaces, tests whether the character is a newline.This wastes time because the
+program has already established that ch is a space and hence could not be a newline.
+Version 2, in the same situation, skips the newline test.
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+2. In Listing 6.2, what is the effect of replacing ++ch with ch+1?
+
+```cpp
+Listing 6.2 ifelse.cpp
+// ifelse.cpp -- using the if else statement
+#include <iostream>
+    int
+    main()
+{
+    char ch;
+    std::cout << "Type, and I shall repeat.\n";
+    std::cin.get(ch);
+    while (ch != '.')
+    {
+        if (ch == '\n')
+            std::cout << ch; // done if newline
+        else
+            std::cout << ++ch; // done otherwise
+        std::cin.get(ch);
+    }
+    std::cout << "\nPlease excuse the slight confusion.\n";
+    return 0;
+}
+```
+</summary>
+
+// The `char` is promoted to `int`, and display numbers
+
+Both `++ch` and `ch + 1` have the same numerical value. But `++ch` is type char and
+prints as a character, while `ch + 1`, because it adds a `char` to an `int`, is type `int` and
+prints as a number.
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+3. Carefully consider the following program:
+
+```cpp
+#include <iostream>
+using namespace std;
+int main()
+{
+    char ch;
+    int ct1, ct2;
+    ct1 = ct2 = 0;
+    while ((ch = cin.get()) != '$')
+    {
+        cout << ch;
+        ct1++;
+        if (ch = '$')
+            ct2++;
+        cout << ch;
+    }
+    cout << "ct1 = " << ct1 << ", ct2 = " << ct2 << "\n";
+    return 0;
+}
+```
+
+Suppose you provide the following input, pressing the Enter key at the end of each line:
+```
+Hi!
+Send $10 or $20 now!
+```
+What is the output? (Recall that input is buffered.)
+    </summary>
+
+// Program print after every read character `$` and if in input is `$`, the while loop will end.
+// `Hi!`
+// `H$i$!$`
+// `$Send $10 or $20 now!` 
+// `S$e$n$d$ $ct1 = 8, ct2 = 8` // `$` is added even newline, and `ct` is added with it, I didn't include that   
+
+Because the program uses `ch = '$'` instead of `ch == '$'`, the combined input and
+output looks like this:
+```
+Hi!
+H$i$!$
+$Send $10 or $20 now!
+S$e$n$d$ $ct1 = 9, ct2 = 9
+```
+Each character is converted to the `$` character before being printed the second
+time.Also the value of the expression `ch = $` is the code for the `$` character, hence
+nonzero, hence `true`; so `ct2` is incremented each time.
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+4. Construct logical expressions to represent the following conditions:
+
+    a. weight is greater than or equal to 115 but less than 125.
+    b. ch is q or Q.
+    c. x is even but is not 26.
+    d. x is even but is not a multiple of 26.
+    e. donation is in the range 1,000–2,000 or guest is 1.
+    f. ch is a lowercase letter or an uppercase letter. (Assume, as is true for ASCII, 
+    that lowercase letters are coded sequentially and that uppercase letters are coded 
+    sequentially but that there is a gap in the code between uppercase and lowercase.)
+
+</summary>
+
+```cpp
+weight >= 115 && weight < 125                           //a
+ch == `q` || ch == `Q`                                  //b
+x % 2 == 0 && x != 26                                   //c
+
+x % 2 == 0 && x % 26 != 0                               //d
+x % 2 == 0 && !(x % 26 == 0)                            //d
+donation >= 1000 && donation <= 2000 || guest == 1      //e
+
+(ch => `a` && ch <= z) || (ch >= `A` && ch <= `Z`)      //f
+isalpha(ch)                                             //f
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+5. In English, the statement “I will not not speak” means the same as “I will speak.” In C++, is !!x the same as x?
+    </summary>
+
+// No. Return from `!!x` is boolean/int, while `x` have defined type by programmer
+
+Not necessarily. For example, if `x` is 10, then `!x` is 0 and `!!x` is 1. However, if `x` is a
+`bool` variable, then `!!x` is `x`.
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+6. Construct a conditional expression that is equal to the absolute value of a variable.
+That is, if a variable x is positive, the value of the expression is just x, but if x is negative, the value of the expression is -x, which is positive.
+    </summary>
+
+```cpp
+// x > 0 ? x : -x
+
+(x < 0)? -x : x
+// or
+(x >= 0)? x : -x;
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+7. Rewrite the following fragment using switch:
+
+```cpp
+if (ch == 'A')
+    a_grade++;
+else if (ch == 'B')
+    b_grade++;
+else if (ch == 'C')
+    c_grade++;
+else if (ch == 'D')
+    d_grade++;
+else
+    f_grade++;
+```
+
+</summary>
+
+```cpp
+switch (ch)
+{
+    case `A`:   a_grade++;
+                break;
+    case `B`:   b_grade++;
+                break;
+    case `C`:   c_grade++;
+                break;
+    case `D`:   d_grade++;
+                break;
+    default:    f_grade++;
+                break;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+8. In Listing 6.10, what advantage would there be in using character labels, such as a and c, instead of numbers for the menu choices and switch cases? (Hint:Think about what happens if the user types q in either case and what happens if the user types 5 in either case.)
+
+```cpp
+Listing 6.10 switch.cpp
+// switch.cpp -- using the switch statement
+#include <iostream>
+    using namespace std;
+void showmenu(); // function prototypes
+void report();
+void comfort();
+int main()
+{
+    showmenu();
+    int choice;
+    cin >> choice;
+    while (choice != 5)
+    {
+        switch (choice)
+        {
+        case 1:
+            cout << "\a\n";
+            break;
+        case 2:
+            report();
+            break;
+        case 3:
+            cout << "The boss was in all day.\n";
+            break;
+        case 4:
+            comfort();
+            break;
+        default:
+            cout << "That's not a choice.\n";
+        }
+        showmenu();
+        cin >> choice;
+    }
+    cout << "Bye!\n";
+    return 0;
+}
+void showmenu()
+{
+    cout << "Please enter 1, 2, 3, 4, or 5:\n"
+            "1) alarm 2) report\n"
+            "3) alibi 4) comfort\n"
+            "5) quit\n";
+}
+void report()
+{
+    cout << "It's been an excellent week for business.\n"
+            "Sales are up 120%. Expenses are down 35%.\n";
+}
+void comfort()
+{
+    cout << "Your employees think you are the finest CEO\n"
+            "in the industry. The board of directors think\n"
+            "you are the finest CEO in the industry.\n";
+}
+```
+
+</summary>
+// Character labels would be more resistant to invalid input (characters promoted to int instead numbers);<br>
+// It would also not go into infinite loop due to buffered characters from user input <br> <br>
+
+If you use integer labels and the user types a noninteger such as q, the program
+hangs because integer input can’t process a character. But if you use character labels
+and the user types an integer such as 5, character input will process 5 as a character.
+Then the default part of the switch can suggest entering another character.
+</details>
+
+<!-- -------------------------------------------- -->
+<details style="margin-left: 35px;">
+    <summary style="margin-left: -35px;"> 
+9. Consider the following code fragment:
+
+```cpp
+int line = 0;
+char ch;
+while (cin.get(ch))
+{
+    if (ch == 'Q')
+        break;
+    if (ch != '\n')
+        continue;
+    line++;
+}
+```
+Rewrite this code without using break or continue.
+    </summary>
+
+```cpp
+int line = 0;
+char ch;
+while (cin.get(ch) && ch != 'Q')
+{
+    if (ch == '\n')
+        line++;
+}
+```
+
+</details>
+
+
+### Programming Exercises
+[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_1.cpp)
+Write a program that reads keyboard input to the @ symbol and that echoes the input except for digits, converting each uppercase character to lowercase, and vice versa. (Don’t forget the `cctype` family.)
+
+[2.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_2.cpp)
+Write a program that reads up to 10 donation values into an array of double. (Or, if you prefer, use an array template object.) The program should terminate input on non-numeric input. It should report the average of the numbers and also report how many numbers in the array are larger than the average.
+
+[3.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_3.cpp)
+Write a precursor to a menu-driven program.The program should display a menu offering four choices, each labeled with a letter. If the user responds with a letter other than one of the four valid choices, the program should prompt the user to enter a valid response until the user complies.Then the program should use a switch to select a simple action based on the user’s selection.A program run could look something like this:
+
+```
+Please enter one of the following choices:
+c) carnivore    p) pianist
+t) tree         g) game
+f
+Please enter a c, p, t, or g: q
+Please enter a c, p, t, or g: t
+A maple is a tree.
+```
+
+[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_4.cpp)
+When you join the Benevolent Order of Programmers, you can be known at BOP meetings by your real name, your job title, or your secret BOP name.Write a program that can list members by real name, by job title, by secret name, or by a member’s preference. Base the program on the following structure:
+
+```cpp
+// Benevolent Order of Programmers name structure
+struct bop
+{
+    char fullname[strsize]; // real name
+    char title[strsize];    // job title
+    char bopname[strsize];  // secret BOP name
+    int preference;         // 0 = fullname, 1 = title, 2 = bopname
+};
+```
+
+In the program, create a small array of such structures and initialize it to suitable values. Have the program run a loop that lets the user select from different alternatives:
+
+```
+a. display by name      b. display by title
+c. display by bopname   d. display by preference
+q. quit
+```
+
+Note that “display by preference” does not mean display the preference member; it means display the member corresponding to the preference number. For instance, if preference is 1, choice d would display the programmer’s job title.A sample run may look something like the following:
+
+```
+Benevolent Order of Programmers Report
+a. display by name b. display by title
+c. display by bopname d. display by preference
+q. quit
+Enter your choice: a
+Wimp Macho
+Raki Rhodes
+Celia Laiter
+Hoppy Hipman
+Pat Hand
+Next choice: d
+Wimp Macho
+Junior Programmer
+MIPS
+Analyst Trainee
+LOOPY
+Next choice: q
+Bye!
+```
+
+[5.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_5.cpp)
+The Kingdom of Neutronia, where the unit of currency is the tvarp, has the following income tax code:
+
+```
+    First 5,000 tvarps: 0% tax
+    Next 10,000 tvarps: 10% tax
+    Next 20,000 tvarps: 15% tax
+    Tvarps after 35,000: 20% tax
+```
+
+For example, someone earning 38,000 tvarps would owe 5,000 × 0.00 + 10,000 × 0.10 + 20,000 × 0.15 + 3,000 × 0.20, or 4,600 tvarps.Write a program that uses a loop to solicit incomes and to report tax owed.The loop should terminate when the user enters a negative number or non-numeric input.
+
+[6.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_6.cpp)
+
+Put together a program that keeps track of monetary contributions to the Society for the Preservation of Rightful Influence. It should ask the user to enter the number of contributors and then solicit the user to enter the name and contribution of each contributor.The information should be stored in a dynamically allocated array of structures. Each structure should have two members: a character array (or else a
+`string` object) to store the name and a `double` member to hold the amount of the contribution.After reading all the data, the program should display the names and amounts donated for all donors who contributed $10,000 or more.This list should be headed by the label Grand Patrons.After that, the program should list the remaining donors.That list should be headed Patrons. If there are no donors in one of the categories, the program should print the word “none.”Aside from displaying two categories, the program need do no sorting.
+
+[7.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_7.cpp)
+Write a program that reads input a word at a time until a lone q is entered. The program should then report the number of words that began with vowels, the number that began with consonants, and the number that fit neither of those categories. One approach is to use `isalpha()` to discriminate between words beginning with letters and those that don’t and then use an `if` or `switch` statement to further identify those passing the `isalpha()` test that begin with vowels.A sample run might look like this:
+
+```
+Enter words (q to quit):
+The 12 awesome oxen ambled
+quietly across 15 meters of lawn. q
+5 words beginning with vowels
+4 words beginning with consonants
+2 others
+```
+
+[8.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_8.cpp)
+
+Write a program that opens a text file, reads it character-by-character to the end of the file, and reports the number of characters in the file.
+
+[9.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_9.cpp)
+Do Programming Exercise 6 but modify it to get information from a file.The first item in the file should be the number of contributors, and the rest of the file should consist of pairs of lines, with the first line of each pair being a contributor’s name and the second line being a contribution.That is, the file should look like this:
+
+```
+4
+Sam Stone
+2000
+Freida Flass
+100500
+Tammy Tubbs
+5000
+Rich Raptor
+55000
+```
+
 -------------
 ```sh
 ./.refs_notes/notes_C++_C++PrimerPlus/
