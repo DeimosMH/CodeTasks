@@ -38,10 +38,9 @@ Bottom-up programming - going from lower level (eg. classes) to higher (eg. prog
 
 ## Chapter 2: Setting Out to C++
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;">
-        List of what you will learn
-    </summary>
+<details><summary>
+List of what you will learn 
+</summary>
 
 ```
     1. Creation and format of C++ program </br>
@@ -67,6 +66,19 @@ Typical program is organized to major tasks with separated functions to handle t
 
  > [myfirst.cpp](.refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp) 
 
+<details style="margin-left: 135px; text-align: left; position: relative; top: -41px;">
+  <summary></summary>
+  <figure>
+    <object data=".refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp" 
+            type="text/plain"
+            width="100%"
+            height="250px">
+      Error: Embedded data could not be displayed.
+    </object>
+  </figure>
+</details>
+
+<!-- 
 <details style="margin-left: 110px; text-align: left; position: relative; top: -32px;">
     <summary></summary>
     <figure class="video_container">
@@ -78,7 +90,7 @@ Typical program is organized to major tasks with separated functions to handle t
             width="100%">
         </iframe>
     </figure>
-</details>
+</details> -->
 
 
 ```cpp
