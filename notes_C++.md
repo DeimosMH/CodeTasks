@@ -69,7 +69,7 @@ Typical program is organized to major tasks with separated functions to handle t
 
 <details style="margin-left: 110px; text-align: left; position: relative; top: -32px;">
     <summary></summary>
-    <figure>
+    <figure class="video_container">
         <iframe 
             src=".refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp" 
             frameborder="10" 
@@ -79,6 +79,7 @@ Typical program is organized to major tasks with separated functions to handle t
         </iframe>
     </figure>
 </details>
+
 
 ```cpp
 // myfirst.cpp -- displays a message
