@@ -1,5 +1,3 @@
-[toc]
-
 # C++ :: [C++ Primer Plus](.Books\C++_Primer_Plus,_Sixth_Edition,_2012,_Stephan_Prata.pdf)
 
 ## Chapter 1: Getting Started
@@ -38,13 +36,6 @@ Bottom-up programming - going from lower level (eg. classes) to higher (eg. prog
 - *Run/Execute* - Run the program ./prog or exe
 - *Debug* - Run program with option of going  through step-by-step
 
-<button onclick="backToTop()" style="float: right;">Go to top</button>
-<script>
-    function backToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-</script>
-
 ## Chapter 2: Setting Out to C++
 
 <details style="margin-left: 35px;">
@@ -74,16 +65,16 @@ Bottom-up programming - going from lower level (eg. classes) to higher (eg. prog
 C++ program is constructed from functions "C++ building blocks".
 Typical program is organized to major tasks with separated functions to handle those tasks. Below is simple function named `main()`:
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus\/myfirst.cpp"> myfirst.cpp </a>
-    </summary>
+ > [myfirst.cpp](.refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp) 
+
+<details style="margin-left: 110px; text-align: left; position: relative; top: -32px;">
+    <summary></summary>
     <figure>
         <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus\/myfirst.cpp" 
+            src=".refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -215,7 +206,7 @@ They are called functions.
     <summary style="margin-left: -35px;"> 
 2. What does the following preprocessor directive do?
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``#include <iostream>``
+``#include <iostream>``
 
 </summary>
 
@@ -232,8 +223,8 @@ final compilation.
     <summary style="margin-left: -35px;"> 
 3. What does the following statement do?
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``using namespace std;``
-    `</summary>`
+``using namespace std;``
+    </summary>
 
 ```
 It makes definitions made in the std namespace available to a program.
@@ -311,13 +302,15 @@ current value of the cheeses variable replaces X ?
 <!-- -------------------------------------------- -->
 
 <details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+
+<summary style="margin-left: -35px;"> 
 9. What do the following function prototypes tell you about the functions?
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``int prune(void);``
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``int froop(double t);``
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``void rattle(int n);``
-    `</summary>`
+``int prune(void);``<br>
+``int froop(double t);``<br>
+``void rattle(int n);``
+
+</summary>
 
 The function froop() expects to be called with one argument, which will be type double , and that the function will return a type int value. For instance, it could be used as follows: ``int gval = froop(3.14159);``
 
@@ -348,10 +341,10 @@ return;
     <summary style="margin-left: -35px;"> 
 11. Suppose your main() function has the following line:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``cout << “Please enter your PIN: “;``
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;And suppose the compiler complains that cout is an unknown identifier.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;What is the likely cause of this complaint, and what are three ways to fix the problem?
-    `</summary>`
+``cout << “Please enter your PIN: “;``
+And suppose the compiler complains that cout is an unknown identifier.
+What is the likely cause of this complaint, and what are three ways to fix the problem?
+    </summary>
 ***Lack of caller for std library.***
 Use directive: ``using namespace std;`` or ``using std::cout`` for only `cout` or call library with `std::cout` instead of `cout`
 
@@ -414,13 +407,6 @@ Enter the number of minutes: 28
 Time: 9:28
 ```
 
-<button onclick="backToTop()" style="float: right;">Go to top</button>
-<script>
-    function backToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-</script>
-
 ## Chapter 3: Dealing with Data
 
 <details style="margin-left: 35px;">
@@ -482,7 +468,7 @@ Data
             src=".refs_notes\notes_C++_C++PrimerPlus\limits.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -538,7 +524,7 @@ Example in hexoctl.cpp
             src=".refs_notes\notes_C++_C++PrimerPlus\hexoct1.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -556,7 +542,7 @@ Example in hexoct2.cpp
             src=".refs_notes\notes_C++_C++PrimerPlus\hexoct2.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -612,7 +598,7 @@ Escape codes represent characters, that you cannot input from keyboard notrmally
             src=".refs_notes\notes_C++_C++PrimerPlus\bondini.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -680,7 +666,7 @@ The program *floatnum.cpp* display limiitations of floating-point numbers precis
             src=".refs_notes\notes_C++_C++PrimerPlus\floatnum.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -775,7 +761,7 @@ static_cast<long> (thorn)
             src=".refs_notes\notes_C++_C++PrimerPlus\typecast.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1054,7 +1040,7 @@ You can access array elements individually.The way to do this is to use a `subsc
             src=".refs_notes/notes_C++_C++PrimerPlus\arrayone.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="80%">
         </iframe>
     </figure>
@@ -1148,7 +1134,7 @@ cout << "I'd give my right ar"
             src=".refs_notes/notes_C++_C++PrimerPlus\strings.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1163,7 +1149,7 @@ cout << "I'd give my right ar"
             src=".refs_notes/notes_C++_C++PrimerPlus\instr1.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1182,7 +1168,7 @@ cout << "I'd give my right ar"
             src=".refs_notes/notes_C++_C++PrimerPlus\instr2.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1198,7 +1184,7 @@ cout << "I'd give my right ar"
             src=".refs_notes/notes_C++_C++PrimerPlus\instr3.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1213,7 +1199,7 @@ cout << "I'd give my right ar"
             src=".refs_notes/notes_C++_C++PrimerPlus\numstr.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1269,7 +1255,7 @@ the same manner as a character array:
             src=".refs_notes/notes_C++_C++PrimerPlus/strtype1.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1310,7 +1296,7 @@ str1 += str2;               // add str2 to the end of str1
             src=".refs_notes/notes_C++_C++PrimerPlus/strtype2.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1334,7 +1320,7 @@ strcat(charr1, charr2);     // append contents of charr2 to char1
             src=".refs_notes/notes_C++_C++PrimerPlus/strtype3.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1351,7 +1337,7 @@ strcat(charr1, charr2);     // append contents of charr2 to char1
             src=".refs_notes/notes_C++_C++PrimerPlus/strtype4.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1422,7 +1408,7 @@ Given that `hat` is type inflatable, you use the membership operator (.) to acce
         src=".refs_notes/notes_C++_C++PrimerPlus/structur.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1451,7 +1437,7 @@ Narrowing is not allowed.
         src=".refs_notes/notes_C++_C++PrimerPlus/assgn_st.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1481,7 +1467,7 @@ inflatable guests[2] = // initializing an array of structs
         src=".refs_notes/notes_C++_C++PrimerPlus/arrstruct.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1606,7 +1592,7 @@ The range is defined as follows. First, to find the upper limit, you take the la
         src=".refs_notes/notes_C++_C++PrimerPlus/address.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1654,7 +1640,7 @@ Applying the `*` operator, called the indirect value or the dereferencing operat
         src=".refs_notes/notes_C++_C++PrimerPlus/pointer.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1684,7 +1670,7 @@ char * str; // str points to type char
         src=".refs_notes/notes_C++_C++PrimerPlus/init_ptr.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1730,7 +1716,7 @@ We say that `pn` points to a `data object`
         src=".refs_notes/notes_C++_C++PrimerPlus/use_new.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1802,7 +1788,7 @@ delete ps; // effect is undefined, don't do it
         src=".refs_notes/notes_C++_C++PrimerPlus/arraynew.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1819,7 +1805,7 @@ delete ps; // effect is undefined, don't do it
         src=".refs_notes/notes_C++_C++PrimerPlus/addpntrs.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -1984,7 +1970,7 @@ When using these functions, you include the `cstring` or the `string.h` header f
         src=".refs_notes/notes_C++_C++PrimerPlus/ptrstr.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2030,7 +2016,7 @@ inflatable * ps = new inflatable[10];
         src=".refs_notes/notes_C++_C++PrimerPlus/newstrct.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2047,7 +2033,7 @@ inflatable * ps = new inflatable[10];
         src=".refs_notes/notes_C++_C++PrimerPlus/delete.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2073,7 +2059,7 @@ The new and delete operators provide a more flexible approach than automatic and
         src=".refs_notes/notes_C++_C++PrimerPlus/mixtypes.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2111,7 +2097,7 @@ Comparing Arrays, Vector Objects, and Array Objects
         src=".refs_notes/notes_C++_C++PrimerPlus/choices.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2409,7 +2395,7 @@ Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 
-[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_4.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string consisting of the user’s last name followed by a comma, a space, and first name. Use string objects and methods from the string header file.A sample run could look like this:
+[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_4.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string consisting of the user’s last name followed by a comma, a space, and first name. Use string objects and methods from the string header file. A sample run could look like this:
 ```
 Enter your first name: Flip
 Enter your last name: Fleming
@@ -2478,7 +2464,7 @@ for (expression; expression; expression)
         src=".refs_notes/notes_C++_C++PrimerPlus/formore.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2493,7 +2479,7 @@ for (expression; expression; expression)
         src=".refs_notes/notes_C++_C++PrimerPlus/forstr1.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2553,7 +2539,7 @@ x = *pt++; // dereference original location, then increment pointer
         src=".refs_notes/notes_C++_C++PrimerPlus/block.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2573,7 +2559,7 @@ int i, j; // comma is a separator here, not an operator
         src=".refs_notes/notes_C++_C++PrimerPlus/forstr2.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2600,7 +2586,7 @@ strcmp(word, "mate") != 0 // strings are not the same
         src=".refs_notes/notes_C++_C++PrimerPlus/compstr1.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2615,7 +2601,7 @@ strcmp(word, "mate") != 0 // strings are not the same
         src=".refs_notes/notes_C++_C++PrimerPlus/compstr2.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2632,7 +2618,7 @@ strcmp(word, "mate") != 0 // strings are not the same
         src=".refs_notes/notes_C++_C++PrimerPlus/while.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2660,7 +2646,7 @@ ctime header file (time.h on less current implementations) provides solution:
         src=".refs_notes/notes_C++_C++PrimerPlus/waiting.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2718,7 +2704,7 @@ If you make `word` an alias for `int`, `cout` treats a type `word` value as the 
         src=".refs_notes/notes_C++_C++PrimerPlus/dowhile.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2756,7 +2742,7 @@ cout << ‘\n’;
         src=".refs_notes/notes_C++_C++PrimerPlus/textin1.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2771,7 +2757,7 @@ cout << ‘\n’;
         src=".refs_notes/notes_C++_C++PrimerPlus/textin2.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2797,7 +2783,7 @@ Some systems do not support simulated EOF from the keyboard. Other systems suppo
         src=".refs_notes/notes_C++_C++PrimerPlus/textin3.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2845,7 +2831,7 @@ Similarly, you can use the `cout.put(ch)`
         src=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -2882,7 +2868,7 @@ int maxtemps[4][5] = // 2-D array
         src=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3177,7 +3163,7 @@ Enter number of rows: 5
         src=".refs_notes/notes_C++_C++PrimerPlus/if.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3193,7 +3179,7 @@ Enter number of rows: 5
         src=".refs_notes/notes_C++_C++PrimerPlus/ifelse.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3209,7 +3195,7 @@ Enter number of rows: 5
         src=".refs_notes/notes_C++_C++PrimerPlus/ifelseif.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3248,7 +3234,7 @@ C++ guarantees that when a program evaluates a logical expression, it evaluates 
         src=".refs_notes/notes_C++_C++PrimerPlus/or.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3263,7 +3249,7 @@ C++ guarantees that when a program evaluates a logical expression, it evaluates 
         src=".refs_notes/notes_C++_C++PrimerPlus/and.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3278,7 +3264,7 @@ C++ guarantees that when a program evaluates a logical expression, it evaluates 
         src=".refs_notes/notes_C++_C++PrimerPlus/more_and.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3293,7 +3279,7 @@ C++ guarantees that when a program evaluates a logical expression, it evaluates 
         src=".refs_notes/notes_C++_C++PrimerPlus/not.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3335,7 +3321,7 @@ In program `cctypes.cpp` below
         src=".refs_notes/notes_C++_C++PrimerPlus/cctypes.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3376,7 +3362,7 @@ If `expression1` is `true`, then the value of the whole conditional expression i
         src=".refs_notes/notes_C++_C++PrimerPlus/condit.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3396,7 +3382,7 @@ If `expression1` is `true`, then the value of the whole conditional expression i
         src=".refs_notes/notes_C++_C++PrimerPlus/switch.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3411,7 +3397,7 @@ If `expression1` is `true`, then the value of the whole conditional expression i
         src=".refs_notes/notes_C++_C++PrimerPlus/enum.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3431,7 +3417,7 @@ If `expression1` is `true`, then the value of the whole conditional expression i
         src=".refs_notes/notes_C++_C++PrimerPlus/jump.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3448,7 +3434,7 @@ If `expression1` is `true`, then the value of the whole conditional expression i
         src=".refs_notes/notes_C++_C++PrimerPlus/cinfish.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3463,7 +3449,7 @@ If `expression1` is `true`, then the value of the whole conditional expression i
         src=".refs_notes/notes_C++_C++PrimerPlus/cingolf.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3510,7 +3496,7 @@ Main steps for using file output:
         src=".refs_notes/notes_C++_C++PrimerPlus/outfile.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3562,7 +3548,7 @@ For program below - write `datsumafile.txt`, that should be local, or `.refs_not
         src=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
@@ -3577,7 +3563,7 @@ For program below - write `datsumafile.txt`, that should be local, or `.refs_not
         src=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp" 
             frameborder="10" 
             allowfullscreen="true" 
-            height="250px"
+            height="300px"
             width="100%">
         </iframe>
     </figure>
