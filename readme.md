@@ -11,8 +11,9 @@
 
 ----
 
-## Used editors/IDE's:
- - [MS Visual Studio Code Insiders](https://code.visualstudio.com/) 
+## Used editors/IDE's
+
+- [MS Visual Studio Code Insiders](https://code.visualstudio.com/)
    - Markdown:
      - Markdown Preview Enhanced
      - Excel to Markdown table

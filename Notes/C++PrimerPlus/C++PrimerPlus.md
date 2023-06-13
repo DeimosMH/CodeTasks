@@ -478,14 +478,16 @@ int owls = 101; // traditional C initialization, sets owls to 101
 int wrens(432); // alternative C++ syntax, set wrens to 432
 ```
 
-Not initialized variables are **indeterminate** - value is what was previously in memory, assigned to the newly declared variable;
+Not initialized variables are **indeterminate** - value is what was previously
+in memory, assigned to the newly declared variable;
 
 **C++11 initialization:**
 
 - using a braced initializer `{}`
 - braces can be left empty, in which case the variable is initialized to 0
 - it can be used with or without the = sign
-- it provides better protection against type conversion errors (more on end of this chapter)
+- it provides better protection against type conversion errors
+(more on end of this chapter)
   
 ```cpp
 int emus{7};        // set emus to 5
@@ -494,11 +496,14 @@ int rocs = {};      // set rocs to 0
 int psychics{};     // set psychics to
 ```
 
------
+---
 
-Exceeding max value (range of data type) will make value assign the lowest value possible (like odometer).  
+Exceeding max value (range of data type) will make value assign the lowest value
+possible (like odometer).  
 
-Amount of allocated memory for `int` (and thus max range/value) can differ from devices and compilers, but is *natural* (computer handles it most efficiently); `long` type is more reliable (32bit), but worse in other aspects.
+Amount of allocated memory for `int` (and thus max range/value) can differ from
+devices and compilers, but is *natural* (computer handles it most efficiently);
+`long` type is more reliable (32bit), but worse in other aspects.
 
 ### Literals
 
@@ -557,9 +562,12 @@ Example in hexoct2.cpp
 | `1500`  | 16bit int  |
 |`1500L`| 32bit long |
 
-Characters set, like **ASCII** defines which number defines character. Thus `char` is `int` data type value and operations on it like on ints can be performed. Printed characters are processed through `cout`.
+Characters set, like **ASCII** defines which number defines character.
+Thus `char` is `int` data type value and operations on it like on ints can be performed.
+Printed characters are processed through `cout`.
 
-Using single quotation marks, eg. `'A'` for character display is better, because it doesn't assume particular code.
+Using single quotation marks, eg. `'A'` for character display is better, because
+it doesn't assume particular code.
 
 Escape codes represent characters, that you cannot input from keyboard notrmally:
 
@@ -595,9 +603,12 @@ Escape codes represent characters, that you cannot input from keyboard notrmally
     </figure>
 </details> <br>
 
-**Universal Character Names** - used for international characters like French vowel. It starts with `\u` ot `\U`, eg.: ``` cout << "g\u00E2teau. ``` - **ISO 10646**
+**Universal Character Names** - used for international characters like French vowel.
+It starts with `\u` ot `\U`, eg.: ``` cout << "g\u00E2teau. ``` - **ISO 10646**
 
-`wchar_t` - wide character set - for characters that don't fit within 8-bit bute (eg.: Japanese kanji system). It is 16-bit or larger. `wchar_t` can vary from one implementation to another.
+`wchar_t` - wide character set - for characters that don't fit within 8-bit bute
+(eg.: Japanese kanji system). It is 16-bit or larger. `wchar_t` can vary from
+one implementation to another.
 
 #### C++11 types
 
@@ -606,8 +617,10 @@ Escape codes represent characters, that you cannot input from keyboard notrmally
 
 ### Member function (OOP)
 
-Eg. `cout.put()`, belongs to a class and describes a method for manipulating class data. `put()` is a class member function. `.` is **membersip operator**.
-You can use member function only with particular object in that class (in this case `ostream`), such as `cout` class object in this case.
+Eg. `cout.put()`, belongs to a class and describes a method for manipulating
+class data. `put()` is a class member function. `.` is **membersip operator**.
+You can use member function only with particular object in that class (in this
+case `ostream`), such as `cout` class object in this case.
 
 In short: class - `ostream`, class object - `cout`, function name (member function) - `put()`
 
@@ -622,7 +635,8 @@ You can use `bool` type to reprsent those values:
 bool read = true; 
 ```
 
-The literals true and false can be converted to type int by promotion, with *true* converting to 1 and *false* to 0 and vice-versa:
+The literals true and false can be converted to type int by promotion, with
+*true* converting to 1 and *false* to 0 and vice-versa:
 
 ```cpp
 int ans = true;         // ans assigned 1
@@ -633,8 +647,10 @@ bool is_tru = -500;     // any non-zero will be converted to true
 ### *const* qualifier
 
 - if attempted to change, compilator will give error
-- if value is not provided during declaration, it will be unspecified, that you cannot modify  
-- you can use *scoping rules* (chapter 9) to limit it to particular function or files (advantage over *#define*, second advantage is you can use const with elaborate types, such as *arrays* or *structures*)
+- if value is not provided during declaration, it will be unspecified, that you cannot modify
+- you can use *scoping rules* (chapter 9) to limit it to particular function or
+files (advantage over *#define*, second advantage is you can use const with elaborate types,
+such as *arrays* or *structures*)
 
 Example of use:
 `const int Months = 12;`
@@ -647,9 +663,14 @@ There is two ways of writing floating-point numbers:
 - representing floating-point values is called E notation, eg.: `-3.45E6` *= -3.4* 10^6* (where `6` - exponent, `3.45` - mantissa).
 
 **Floating-Point Types:**
-All three can be the same size. Typically, float is 32 bits, double is 64 bits, and long double is 80, 96, or 128 bits, and range in exponents for all three types is at least *–37 to +37*. You can look in the `cfloat` or `float.h` header files to find the limits for your system.
+All three can be the same size. Typically, float is 32 bits, double is 64 bits,
+and long double is 80, 96, or 128 bits, and range in exponents for all three types
+is at least *–37 to +37*. You can look in the `cfloat` or `float.h` header files to
+find the limits for your system.
 
-The program *floatnum.cpp* display limiitations of floating-point numbers precision and previews an *ostream* method called `setf()` from Chapter 17. This call forces output to stay in ***fixed-point notation*** so that you can better see the precision.
+The program *floatnum.cpp* display limiitations of floating-point numbers precision
+and previews an *ostream* method called `setf()` from Chapter 17. This call forces
+output to stay in ***fixed-point notation*** so that you can better see the precision.
 
 <details><summary>
      <a href="\programs\floatnum.cpp"> floatnum.cpp </a>
@@ -689,24 +710,32 @@ Use suffixes for declaration
 - *operands* - two values used for calculation via *operators*
 - *expression* - combined operator with operands
   
-`%` - modulo works only with integers and produces remainder of dividing first value by second. `19 % 6` is `1`, because 6 goes into 19 three times, with a remainder of 1. Practical example: [modulus.cpp](\programs\modulus.cpp)
+`%` - modulo works only with integers and produces remainder of dividing first
+value by second. `19 % 6` is `1`, because 6 goes into 19 three times, with
+remainder of 1. Practical example: [modulus.cpp](\programs\modulus.cpp)
 
-`precedence rules` - When more than one operator can be applied to the same operand, C++ uses`precedence rules` to decide which operator is used first.
+`precedence rules` - When more than one operator can be applied to the same
+operand, C++ uses`precedence rules` to decide which operator is used first.
 
 `int flyingpigs = 3 + 4 * 5; // 35 or 23?`
-The arithmetic operators follow the usual algebraic precedence, with multiplication, division, and the taking of the modulus done before addition and subtraction.
+The arithmetic operators follow the usual algebraic precedence, with multiplication,
+division, and the taking of the modulus done before addition and subtraction.
 
 Appendix D,“Operator Precedence,” - The `/` and `*` operators have the same precedence.
 `float logs = 120 / 4 * 5; // 150 or 6?`
 
-When two operators have the same precedence, C++ looks at whether the operators have a `left-to-right associativity` or a `right-to-left associativity`.
+When two operators have the same precedence, C++ looks at whether the operators
+have a `left-to-right associativity` or a `right-to-left associativity`.
+
 Appendix D shows that multiplication and division associate left-to-right.
 
 **Conversion**
 
-- truncation - discarding fractional part in `int`, when converting from floating-point to int value (eg.: `int g(1.123)`)
+- truncation - discarding fractional part in `int`, when converting from
+floating-point to int value (eg.: `int g(1.123)`)
 
-C++11 - doesn't permit *narrowing* - variable may not be able to represent the assigned value:
+C++11 - doesn't permit *narrowing* - variable may not be able to represent the
+assigned value:
 
 ```cpp
 const int code = 66;
@@ -728,7 +757,9 @@ short ducks = 35; // line 2
 short fowl = chickens + ducks; // line 3
 ```
 
-For `fowl`, `chickens` and `ducks` got converted (promoted) to `int` for calculation and then result got converted back to `short`. This is because `int` is the computer most *natural type*
+For `fowl`, `chickens` and `ducks` got converted (promoted) to `int` for
+calculation and then result got converted back to `short`. This is because `int`
+is the computer most *natural type*
 
 **Type cast conversion**
 Is explicit form of conversion
@@ -738,7 +769,9 @@ Is explicit form of conversion
 long (thorn) // returns a type long conversion of thorn
 ```
 
-The type cast doesn’t alter the thorn variable itself; instead, it creates a new value of the indicated type, which you can then use in an expression, as in the following:
+The type cast doesn’t alter the thorn variable itself; instead, it creates
+new value of the indicated type, which you can then use in an expression, as
+in the following:
 
 ```cpp
 cout << int('Q'); // displays the integer code for 'Q'
@@ -746,7 +779,9 @@ cout << int('Q'); // displays the integer code for 'Q'
 
 **Static type cast conversion**
 
-In c++ of the four, the static_cast<> operator, can be used for converting values from one numeric type to another. For example, using it to convert thorn to a type long value looks like this:
+In c++ of the four, the static_cast<> operator, can be used for converting values
+from one numeric type to another. For example, using it to convert thorn to a
+type long value looks like this:
 
 ```cpp
 static_cast<long> (thorn)
@@ -768,7 +803,8 @@ static_cast<long> (thorn)
 
 **`auto` in C++11**
 
-Just use `auto` instead of the type name in an initializing declaration, and the compiler assigns the variable the same type as that of the initializer:
+Just use `auto` instead of the type name in an initializing declaration, and the
+compiler assigns the variable the same type as that of the initializer:
 
 ```cpp
 auto n = 100; // n is int
@@ -776,7 +812,8 @@ auto x = 1.5; // x is double
 auto y = 1.3e12L; // y is long double
 ```
 
-Automatic type deduction becomes much more useful when dealing with complicated types, such as those in the **STL (Standard Template Library)**. For example:
+Automatic type deduction becomes much more useful when dealing with complicated
+types, such as those in the **STL (Standard Template Library)**. For example:
 
 C++98 code:
 
@@ -800,7 +837,10 @@ auto pv = scores.begin();
 1. Why does C++ have more than one integer type?
     </summary>
 
-Having more than one integer type lets you choose the type that is best suited to a particular need. For example, you could use `short` to conserve space or `long` to guarantee storage capacity or to find that a particular type speeds up a particular calculation.
+Having more than one integer type lets you choose the type that is best suited to
+a particular need. For example, you could use `short` to conserve space or `long
+to guarantee storage capacity or to find that a particular type speeds up a 
+particular calculation.
 
 </details>
 
@@ -853,7 +893,11 @@ char grade = 'A';
 Are they equivalent?
     </summary>
 
-The two statements are not really equivalent, although they have the same effect on some systems. Most importantly, the first statement assigns the letter `A` to grade only on a system using the `ASCII` code, while the second statement also works for other codes. Second, `65` is a type int constant, whereas `'A'` is a type char constant.
+The two statements are not really equivalent, although they have the same effect
+on some systems. Most importantly, the first statement assigns the letter `A`
+to grade only on a system using the `ASCII` code, while the second statement
+also works for other codes. Second, `65` is a type int constant, whereas `'A'`
+is a type char constant.
 </details>
 
 <details><summary>
