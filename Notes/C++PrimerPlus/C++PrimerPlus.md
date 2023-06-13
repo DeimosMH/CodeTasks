@@ -1,5 +1,7 @@
 # C++ :: [C++ Primer Plus](.Books\C++_Primer_Plus,_Sixth_Edition,_2012,_Stephan_Prata.pdf)
 
+[TOC]
+
 ## Chapter 1: Getting Started
 
 Computer language deal with 2 concepts: DATA (information) & ALGORITHMS (methods)
@@ -141,7 +143,7 @@ To store information on a computer you need:
  */
 int x;  
 
-x = 10; // - assignement statement - provide/assign value to variable/storage location 
+x = 10; // - assignement statement - provide/assign value to variable/storage location
 x = x - 1 // - arithmetic expression 
 ```
 
@@ -159,7 +161,7 @@ x = sqrt(6.25)        -->    function call                 -->    |code for sqrt
 
 Argument `6.25` is ***passed*** to a function sqrt
 
-***[function prototype](\programs\function_prototype.cpp)*** - is for function as variable declaration for variables
+***[function prototype](.\programs\function_prototype.cpp)*** - is for function as variable declaration for variables
 decribe the function interface and needs to be before function definition;
  if you use it you will need to provide prototype in source code or with #include
 
@@ -194,7 +196,7 @@ double sqrt(double);
 
 ---
 
-### Chapter Review
+### Chapter 2 Review
 
 <details><summary>      <!-- -------------------------------------------- -->
 1. What are the modules of C++ programs called?
@@ -243,7 +245,7 @@ int cheeses;
 
 <details><summary>      <!-- -------------------------------------------- -->
 6. What statement would you use to assign the value 32 to the variable cheeses ?
-    </summary>
+</summary>
 
 ```cpp
 cheeses = 32;
@@ -254,7 +256,7 @@ cheeses = 32;
 <details><summary>      <!-- -------------------------------------------- -->
 7. What statement would you use to read a value from keyboard input into the<br>
 &emsp;variable cheeses ?
-    </summary>
+</summary>
 
 ```cpp
 cin >> cheeses;
@@ -315,7 +317,7 @@ Use directive: ``using namespace std;`` or ``using std::cout`` for only
 
 ---
 
-### Exercises
+### Chapter 2 Exercises
 
 [1.](./exercises/exercise_ch2_1.cpp)
 Write a C++ program that displays your name and address (or if you value your
@@ -448,18 +450,18 @@ significant (but some platforms can have their own length limits).
 Data
 
 - *width* - term for the amount of memory used to hold variable
-- *operator* - build in language element that operates on one or more items to 
+- *operator* - build in language element that operates on one or more items to
 produce a value (addition operator `+` adds two values)
   - *sizeof* - return size in bytes of a tupe or variable
   - *climits* - header file - contain information about integer type limits,
-  check [limits.cpp](\programs\limits.cpp)
+  check [limits.cpp](.\programs\limits.cpp)
 
 <details><summary>
-     <a href="\programs\limits.cpp"> limits.cpp </a>
+     <a href=".\programs\limits.cpp"> limits.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="\programs\limits.cpp"
+            src=".\programs\limits.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -517,11 +519,11 @@ Constant values that are assigned to the constant variables.
 
 Example in hexoctl.cpp
 <details><summary>
-     <a href="\programs\hexoct1.cpp"> hexoct1.cpp </a>
+     <a href=".\programs\hexoct1.cpp"> hexoct1.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="\programs\hexoct1.cpp"
+            src=".\programs\hexoct1.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -534,11 +536,11 @@ You can `cout` manipulators `dec`, `oct`, `hex` for changing numer base.
 Example in hexoct2.cpp
 
 <details><summary>
-     <a href="\programs\hexoct2.cpp"> hexoct2.cpp </a>
+     <a href=".\programs\hexoct2.cpp"> hexoct2.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="\programs\hexoct2.cpp"
+            src=".\programs\hexoct2.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -557,10 +559,10 @@ Example in hexoct2.cpp
 `ll`, `LL` - C++11 long long constant
 `ULL` - C++11 unsigned long long constant
 
-| data  | Stored as  |
-|---|---|
+| data    | Stored as  |
+|---------|------------|
 | `1500`  | 16bit int  |
-|`1500L`| 32bit long |
+| `1500L` | 32bit long |
 
 Characters set, like **ASCII** defines which number defines character.
 Thus `char` is `int` data type value and operations on it like on ints can be performed.
@@ -590,11 +592,11 @@ Escape codes represent characters, that you cannot input from keyboard notrmally
 </details>
 
 <details><summary>
-     <a href="\programs\bondini.cpp"> Example of use: bondini.cpp </a>
+     <a href=".\programs\bondini.cpp"> Example of use: bondini.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="\programs\bondini.cpp"
+            src=".\programs\bondini.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -647,10 +649,11 @@ bool is_tru = -500;     // any non-zero will be converted to true
 ### *const* qualifier
 
 - if attempted to change, compilator will give error
-- if value is not provided during declaration, it will be unspecified, that you cannot modify
+- if value is not provided during declaration, it will be unspecified, that you
+cannot modify
 - you can use *scoping rules* (chapter 9) to limit it to particular function or
-files (advantage over *#define*, second advantage is you can use const with elaborate types,
-such as *arrays* or *structures*)
+files (advantage over *#define*, second advantage is you can use const with
+elaborate types, such as *arrays* or *structures*)
 
 Example of use:
 `const int Months = 12;`
@@ -660,9 +663,11 @@ Example of use:
 There is two ways of writing floating-point numbers:
 
 - standard, decimal-point notation, eg.: `12.34`
-- representing floating-point values is called E notation, eg.: `-3.45E6` *= -3.4* 10^6* (where `6` - exponent, `3.45` - mantissa).
+- representing floating-point values is called E notation, eg.:
+`-3.45E6` *= -3.4* 10^6* (where `6` - exponent, `3.45` - mantissa).
 
-**Floating-Point Types:**
+#### Floating-Point Types
+
 All three can be the same size. Typically, float is 32 bits, double is 64 bits,
 and long double is 80, 96, or 128 bits, and range in exponents for all three types
 is at least *–37 to +37*. You can look in the `cfloat` or `float.h` header files to
@@ -673,11 +678,11 @@ and previews an *ostream* method called `setf()` from Chapter 17. This call forc
 output to stay in ***fixed-point notation*** so that you can better see the precision.
 
 <details><summary>
-     <a href="\programs\floatnum.cpp"> floatnum.cpp </a>
+     <a href=".\programs\floatnum.cpp"> floatnum.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="\programs\floatnum.cpp"
+            src=".\programs\floatnum.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -686,25 +691,27 @@ output to stay in ***fixed-point notation*** so that you can better see the prec
     </figure>
 </details> <br>
 
-**Floating-Point Constants**
+#### Floating-Point Constants
+
 Use suffixes for declaration
 `f` or `F` - float constant, eg.: `1.234f`
 `l` or `L` - long double
 
-```
+```cpp
 1.234f // a float constant
 2.45E20F // a float constant
 2.345324E28 // a double constant
 2.2L // a long double constant
 ```
 
-**Plus and Cons of Floating-Point values**
+#### Plus and Cons of Floating-Point values
+
 `-` operations usually are *slightly slower* than integer operations
-`-` you can *lose precision* and values: example [fltadd.cpp](\programs\fltadd.cpp)
+`-` you can *lose precision* and values: example [fltadd.cpp](.\programs\fltadd.cpp)
 `+` represent *values betwewen integers*
 `+` can represent a much *greater range of values*, because of the scaling factor
 
-**C++ Arithmetic Operators**
+### C++ Arithmetic Operators
 
 - *operators*: `+`, `-`, `*`, `%`, `/`, `*`
 - *operands* - two values used for calculation via *operators*
@@ -712,7 +719,7 @@ Use suffixes for declaration
   
 `%` - modulo works only with integers and produces remainder of dividing first
 value by second. `19 % 6` is `1`, because 6 goes into 19 three times, with
-remainder of 1. Practical example: [modulus.cpp](\programs\modulus.cpp)
+remainder of 1. Practical example: [modulus.cpp](.\programs\modulus.cpp)
 
 `precedence rules` - When more than one operator can be applied to the same
 operand, C++ uses`precedence rules` to decide which operator is used first.
@@ -729,7 +736,7 @@ have a `left-to-right associativity` or a `right-to-left associativity`.
 
 Appendix D shows that multiplication and division associate left-to-right.
 
-**Conversion**
+### Conversion
 
 - truncation - discarding fractional part in `int`, when converting from
 floating-point to int value (eg.: `int g(1.123)`)
@@ -777,7 +784,7 @@ in the following:
 cout << int('Q'); // displays the integer code for 'Q'
 ```
 
-**Static type cast conversion**
+### Static type cast conversion
 
 In c++ of the four, the static_cast<> operator, can be used for converting values
 from one numeric type to another. For example, using it to convert thorn to a
@@ -788,11 +795,11 @@ static_cast<long> (thorn)
 ```
 
 <details><summary>
-     <a href="\programs\typecast.cpp"> typecast.cpp </a>
+     <a href=".\programs\typecast.cpp"> typecast.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="\programs\typecast.cpp"
+            src=".\programs\typecast.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -829,22 +836,20 @@ std::vector<double> scores;
 auto pv = scores.begin();
 ```
 
-### Chapter Review
+### Chapter 3 Review
 
-<!-- -------------------------------------------- -->
-
-<details><summary>
+<details><summary>      <!-- -------------------------------------------- -->
 1. Why does C++ have more than one integer type?
-    </summary>
+</summary>
 
 Having more than one integer type lets you choose the type that is best suited to
 a particular need. For example, you could use `short` to conserve space or `long
-to guarantee storage capacity or to find that a particular type speeds up a 
+to guarantee storage capacity or to find that a particular type speeds up a
 particular calculation.
 
-</details>
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-<details><summary>
+<details><summary>      <!-- -------------------------------------------- -->
 2. Declare variables matching the following descriptions:<br>
 &nbsp&nbsp&nbsp&nbsp&nbsp a. A short integer with the value 80<br>
 &nbsp&nbsp&nbsp&nbsp&nbsp b. An unsigned int integer with the value 42,110<br>
@@ -918,10 +923,15 @@ cout << (char)88 << endl; // old-style type cast value to char
 </details>
 
 <details><summary>
-7. Assigning a `long` value to a `float` can result in a rounding error. What about assigning `long` to `double`? `long long` to `double`?
+7. Assigning a `long` value to a `float` can result in a rounding error.
+What about assigning `long` to `double`? `long long` to `double`?
     </summary>
 
-The answer depends on how large the two types are. If `long` is 4 bytes, there is no loss. That’s because the largest `long` value would be about 2 billion, which is 10 digits. Because `double` provides at least 13 significant figures, no rounding would be needed. The `long long` type, on the other hand, can reach 19 digits, which exceeds the 13 significant figures guaranteed for `double`.
+The answer depends on how large the two types are. If `long` is 4 bytes,
+there is no loss. That’s because the largest `long` value would be about
+2 billion, which is 10 digits. Because `double` provides at least 13 significant
+figures, no rounding would be needed. The `long long` type, on the other hand,
+can reach 19 digits, which exceeds the 13 significant figures guaranteed for `double`.
 </details>
 
 <details><summary>
@@ -948,7 +958,9 @@ e. 15 % 4 is 3
 </details>
 
 <details><summary>
-9.  Suppose `x1` and `x2` are two type `double` variables that you want to add as `integers` and assign to an `integer` variable. Construct a C++ statement for doing so. What if you want to add them as type `double` and then convert to `int`?
+9.  Suppose `x1` and `x2` are two type `double` variables that you want to
+add as `integers` and assign to an `integer` variable. Construct a C++ statement
+for doing so. What if you want to add them as type `double` and then convert to `int`?
 
 </summary>
 
@@ -991,13 +1003,28 @@ e. double
 
 </details>
 
-### Programming Exercises
+### Chapter 3 Programming Exercises
 
-[1.](./exercises/exercise_ch3_1.cpp) Write a short program that asks for your height in integer inches and then converts your height to feet and inches. Have the program use the underscore character to indicate where to type the response. Also use a const symbolic constant to represent the conversion factor.
+[1.](./exercises/exercise_ch3_1.cpp) Write a short program that asks
+for your height in integer inches and then converts your height to feet and inches.
+Have the program use the underscore character to indicate where to type the response.
+Also use a const symbolic constant to represent the conversion factor.
 
-[2.](./exercises/exercise_ch3_2.cpp)  Write a short program that asks for your height in feet and inches and your weight in pounds. (Use three variables to store the information.) Have the program report your body mass index (BMI).To calculate the BMI, first convert your height in feet and inches to your height in inches (1 foot = 12 inches). Then convert your height in inches to your height in meters by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms by the square of your height in meters. Use symbolic constants to represent the various conversion factors.
+[2.](./exercises/exercise_ch3_2.cpp)  Write a short program that asks for your
+height in feet and inches and your weight in pounds. (Use three variables to store
+the information.) Have the program report your body mass index (BMI).To calculate
+the BMI, first convert your height in feet and inches to your height in inches
+(1 foot = 12 inches). Then convert your height in inches to your height in meters
+by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms
+by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms
+by the square of your height in meters. Use symbolic constants to represent the
+various conversion factors.
 
-[3.](./exercises/exercise_ch3_3.cpp) Write a program that asks the user to enter a latitude in degrees, minutes, and seconds and that then displays the latitude in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc to a degree; represent these values with symbolic constants.You should use a separate variable for each input value. A sample run should look like this:
+[3.](./exercises/exercise_ch3_3.cpp) Write a program that asks the user to enter
+a latitude in degrees, minutes, and seconds and that then displays the latitude
+in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc
+to a degree; represent these values with symbolic constants.You should use a separate
+variable for each input value. A sample run should look like this:
 
 ```cpp
 Enter a latitude in degrees, minutes, and seconds:
@@ -1007,14 +1034,23 @@ Finally, enter the seconds of arc: 19
 37 degrees, 51 minutes, 19 seconds = 37.8553 degrees
 ```
 
-[4.](./exercises/exercise_ch3_4.cpp) Write a program that asks the user to enter the number of seconds as an integer value (use type long, or, if available, long long) and that then displays the equivalent time in days, hours, minutes, and seconds. Use symbolic constants to represent the number of hours in the day, the number of minutes in an hour, and the number of seconds in a minute.The output should look like this:
+[4.](./exercises/exercise_ch3_4.cpp) Write a program that asks the user to enter
+the number of seconds as an integer value (use type long, or, if available, long long)
+and that then displays the equivalent time in days, hours, minutes, and seconds.
+Use symbolic constants to represent the number of hours in the day, the number of
+minutes in an hour, and the number of seconds in a minute.The output should look
+like this:
 
 ```cpp
 Enter the number of seconds: 31600000 
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
 ```
 
-[5.](./exercises/exercise_ch3_5.cpp) Write a program that requests the user to enter the current world population and the current population of the U.S. (or of some other nation of your choice). Store the information in variables of type long long. Have the program display the percent that the U.S. (or other nation’s) population is of the world’s population.The output should look something like this:
+[5.](./exercises/exercise_ch3_5.cpp) Write a program that requests the user to
+enter the current world population and the current population of the U.S. (or of
+some other nation of your choice). Store the information in variables of type long long.
+Have the program display the percent that the U.S. (or other nation’s) population
+is of the world’s population.The output should look something like this:
 
 ```cpp
 Enter the world's population: 6898758899
@@ -1024,18 +1060,27 @@ The population of the US is 4.50492% of the world population.
 
 You can use the Internet to get more recent figures.
 
-[6.](./exercises/exercise_ch3_6.cpp) Write a program that asks how many miles you have driven and how many gallons of gasoline you have used and then reports the miles per gallon your car has gotten. Or, if you prefer, the program can request distance in kilometers and petrol in liters and then report the result European style, in liters per 100 kilometers.
+[6.](./exercises/exercise_ch3_6.cpp) Write a program that asks how many miles you
+have driven and how many gallons of gasoline you have used and then reports the miles
+per gallon your car has gotten. Or, if you prefer, the program can request distance
+in kilometers and petrol in liters and then report the result European style,
+in liters per 100 kilometers.
 
-[7.](./exercises/exercise_ch3_7.cpp) Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S. style of miles per gallon. Note that in addition to using different units of measurement, the U.S. approach (distance / fuel) is the inverse of the European approach (fuel / distance).
-Note that 100 kilometers is 62.14 miles, and 1 gallon is 3.875 liters.Thus, 19 mpg is about 12.4 l/100 km, and 27 mpg is about 8.7 l/100 km.
+[7.](./exercises/exercise_ch3_7.cpp) Write a program that asks you to enter an
+automobile gasoline consumption figure in the European style (liters per 100 kilometers)
+and converts to the U.S. style of miles per gallon. Note that in addition to using
+different units of measurement, the U.S. approach (distance / fuel) is the
+inverse of the European approach (fuel / distance).
+Note that 100 kilometers is 62.14 miles, and 1 gallon is 3.875 liters.
+Thus, 19 mpg is about 12.4 l/100 km, and 27 mpg is about 8.7 l/100 km.
 
 ## Chapter 4: Compound Types
 
 <details><summary>
         List of what you will learn
-    </summary>
+</summary>
 
-```
+```cpp
 Creating and using arrays
 Creating and using C-style strings
 Creating and using string-class strings
@@ -1062,26 +1107,34 @@ Data form that can hold many values of one type. Declaration should indicate thr
 - The name of the array
 - The number of elements in the array
 
-`typeName arrayName[arraySize];` - *arraySize* cannot be a variable whose value is set while the program is running. However, later in this chapter you’ll learn how to use `the` new operator to get around that restriction
+`typeName arrayName[arraySize];` - *arraySize* cannot be a variable whose value
+is set while the program is running. However, later in this chapter you’ll learn
+how to use `the` new operator to get around that restriction
 
 ```cpp
 short months[12]; // creates array of 12 short
 ```
 
-An array is called a `compound` type because it is built from some other type. (C uses the term `derived` type, but because C++ uses the term `derived` for class relationships, it had to come up with a new term.)
+An array is called a `compound` type because it is built from some other type.
+(C uses the term `derived` type, but because C++ uses the term `derived` for
+class relationships, it had to come up with a new term.)
 
-You can access array elements individually.The way to do this is to use a `subscript`, or an `index`, to number the elements. C++ array numbering starts with zero. **The `index` of the last element is one less than the size of the `array`**
+You can access array elements individually.The way to do this is to use a
+`subscript`, or an `index`, to number the elements. C++ array numbering starts
+with zero. **The `index` of the last element is one less than the size of the `array`**
 
-<img src="/assets/_ch4Array.png" alt="Image description" style="display: block; margin: auto; width: 35%; height: auto; border-radius: 8px;">
+<img src="./assets/_ch4Array.png" alt="Image description"
+style="display: block; margin: auto; width: 35%; height: auto; border-radius: 8px;">
 
-*Declaring* an `array`, *assigning values* to `array` elements, and *initializing* an `array`:
+*Declaring* an `array`, *assigning values* to `array` elements,
+and *initializing* an `array`:
 
 <details><summary>
-     <a href="/arrayone.cpp"> arrayone.cpp </a>
+     <a href="./programs/arrayone.cpp"> arrayone.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="/arrayone.cpp"
+            src="./programs/arrayone.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -1092,7 +1145,8 @@ You can access array elements individually.The way to do this is to use a `subsc
 
 #### Array Initialization
 
-You can use the initialization form only when defining the array.You cannot use it later, and you cannot assign one array wholesale to another:
+You can use the initialization form only when defining the array.
+You cannot use it later, and you cannot assign one array wholesale to another:
 
 ```cpp
 int cards[4] = {3, 6, 8, 10};   // okay
@@ -1110,7 +1164,12 @@ float hotelTips[5] = {5.0, 2.5};
 short things[] = {1, 5, 3, 8};
 ```
 
-Often, letting the compiler count the number of elements is poor practice because its count can be different from what you think it should be. You could, for instance, accidently omit an initial value from the list. However, this approach can be a safe one for initializing a character array to a string, as you’ll soon see. And if your main concern is that the program, not you, knows how large an array is, you can do something like this:
+Often, letting the compiler count the number of elements is poor practice because
+its count can be different from what you think it should be. You could, for instance,
+accidently omit an initial value from the list. However, this approach can be a
+safe one for initializing a character array to a string, as you’ll soon see.
+And if your main concern is that the program, not you, knows how large an array
+is, you can do something like this:
 
 ```cpp
 short things[] = {1, 5, 3, 8};
@@ -1152,20 +1211,25 @@ char bird[11] = "Mr. Cheeps"; // the \0 is understood
 char fish[] = "Bubbles"; // let the compiler count
 ```
 
-<img src="/assets/_ch4CString.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="./assets/_ch4CString.png" alt="Image description"
+style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
 ```cpp
 char shirt_size = 'S'; // this is fine
 char shirt_size = "S"; // illegal type mismatch
 ```
 
-But `"S"` is not a character constant; it represents the string consisting of two characters, the `S` and the `\0` characters. Even worse, `"S"` actually represents the memory address at which the string is stored. So a statement like the following attempts to assign a memory address to shirt_size.
+But `"S"` is not a character constant; it represents the string consisting of
+two characters, the `S` and the `\0` characters. Even worse, `"S"` actually
+represents the memory address at which the string is stored. So a statement
+like the following attempts to assign a memory address to shirt_size.
 
 ##### Concatenating String Literals
 
 C++ enables
-you to concatenate string literals—that is, to combine two quoted  strings into one. `\0` character from the first string is replaced by the first character of the second string.
-The following output statements are equivalent to each other:
+you to concatenate string literals—that is, to combine two quoted  strings into one.
+`\0` character from the first string is replaced by the first character of the
+second string. The following output statements are equivalent to each other:
 
 ```cpp
 cout << "I'd give my right arm to be" " a great violinist.\n";
@@ -1174,12 +1238,16 @@ cout << "I'd give my right ar"
 "m to be a great violinist.\n";
 ```
 
+<img src="./assets/_ch4CString2.png" alt="Image description"
+style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+
 <details><summary>
-     <a href="/strings.cpp"> Strings in an Array strings.cpp </a>
+     <a href="./programs/strings.cpp">
+      Strings in an Array strings.cpp </a>
     </summary>
     <figure>
         <iframe
-            src="/strings.cpp"
+            src="./programs/strings.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -1189,27 +1257,12 @@ cout << "I'd give my right ar"
 </details>
 
 <details><summary>
-     <a href="/instr1.cpp"> Problem 1: instr1.cpp, reading string input via cin</a>
+     <a href="./programs/instr1.cpp">
+      Problem 1: instr1.cpp, reading string input via cin</a>
     </summary>
     <figure>
         <iframe
-            src="/instr1.cpp"
-            frameborder="10"
-            allowfullscreen="true"
-            height="300px"
-            width="100%">
-        </iframe>
-    </figure>
-</details>
-
-<img src="/assets/_ch4CString2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
-
-<details><summary>
-     <a href="/instr2.cpp"> Solution 1: instr2.cpp, Line-Oriented Input with getline()</a>
-    </summary>
-    <figure>
-        <iframe
-            src="/instr2.cpp"
+            src="./programs/instr1.cpp"
             frameborder="10"
             allowfullscreen="true"
             height="300px"
@@ -1219,7 +1272,23 @@ cout << "I'd give my right ar"
 </details>
 
 <details><summary>
-     <a href="/instr3.cpp"> Solution 2: instr3.cpp, Line-Oriented Input with get()</a>
+     <a href="./programs/instr2.cpp">
+      Solution 1: instr2.cpp, Line-Oriented Input with getline()</a>
+    </summary>
+    <figure>
+        <iframe
+            src="./programs/instr2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details>
+
+<details><summary>
+     <a href="./programs/instr3.cpp">
+     Solution 2: instr3.cpp, Line-Oriented Input with get()</a>
     </summary>
     <figure>
         <iframe
@@ -1233,7 +1302,8 @@ cout << "I'd give my right ar"
 </details>
 
 <details><summary>
-     <a href="/numstr.cpp"> numstr.cpp, Mixing String and Numeric Input</a>
+     <a href="./programs/numstr.cpp">
+     numstr.cpp, Mixing String and Numeric Input</a>
     </summary>
     <figure>
         <iframe
@@ -1279,8 +1349,8 @@ cin.get(); // or cin.get(ch);
 
 To use the string class, a program has to include the string header file.
 
-You should learn from this example that, in many ways, you can use a string object in
-the same manner as a character array:
+You should learn from this example that, in many ways, you can use a string
+object in the same manner as a character array:
 
 - You can initialize a string object to a C-style string.
 - You can use cin to store keyboard input in a string object.
@@ -1288,7 +1358,8 @@ the same manner as a character array:
 - You can use array notation to access individual characters stored in a string object.
 
 <details><summary>
-     <a href="./programs/strtype1.cpp"> strtype1.cpp, differences between string objects and character arrays.</a>
+     <a href="./programs/strtype1.cpp">
+     strtype1.cpp, differences between string objects and character arrays.</a>
     </summary>
     <figure>
         <iframe
@@ -1312,7 +1383,8 @@ string fourth_date {"Hank's Fine Eats"};
 
 #### Assignment, Concatenation, and Appending
 
-String class make *some* operations simpler. you can’t simply assign one array to  nother. But you can assign one string object to another:
+String class make *some* operations simpler. you can’t simply assign one array
+to  nother. But you can assign one string object to another:
 
 ```cpp
 char charr1[20];            // create an empty array
@@ -1328,7 +1400,8 @@ str1 += str2;               // add str2 to the end of str1
 ```
 
 <details><summary>
-     <a href="./programs/strtype2.cpp"> strtype2.cpp, assigning, adding, and appending strings.</a>
+     <a href="./programs/strtype2.cpp">
+     strtype2.cpp, assigning, adding, and appending strings.</a>
     </summary>
     <figure>
         <iframe
@@ -1343,7 +1416,8 @@ str1 += str2;               // add str2 to the end of str1
 
 #### More `string` Class operations
 
-You can use the `strcpy()` function to copy a string to a character array, and you can use the `strcat()` function to append a string to a character array:
+You can use the `strcpy()` function to copy a string to a character array,
+and you can use the `strcat()` function to append a string to a character array:
 
 ```cpp
 strcpy(charr1, charr2);     // copy charr2 to charr1
@@ -1351,7 +1425,9 @@ strcat(charr1, charr2);     // append contents of charr2 to char1
 ```
 
 <details><summary>
-     <a href="./programs/strtype3.cpp"> strtype3.cpp, compares techniques used with string objects with techniques used with character arrays.</a>
+     <a href="./programs/strtype3.cpp">
+     strtype3.cpp, compares techniques used with string objects with
+     techniques used with character arrays.</a>
     </summary>
     <figure>
         <iframe
@@ -1367,7 +1443,9 @@ strcat(charr1, charr2);     // append contents of charr2 to char1
 #### More `string` Class I/O
 
 <details><summary>
-     <a href="./programs/strtype4.cpp"> strtype4.cpp, reading a line at a time instead of a word at time uses a different syntax (class and not class).</a>
+     <a href="./programs/strtype4.cpp">
+     strtype4.cpp, reading a line at a time instead of a word at time uses
+     a different syntax (class and not class).</a>
     </summary>
     <figure>
         <iframe
@@ -1383,7 +1461,7 @@ strcat(charr1, charr2);     // append contents of charr2 to char1
 #### Other Forms of `string` Literals
 
 C++ adds: `wchar_t` in addition to `char`
-C++11 adds: `char16_t`, `char32_t` + raw string (*R* prefix) + support UTF-8 (*u8* prefix)
+C++11 adds: `char16_t`, `char32_t` + raw string (`R` prefix) + support UTF-8 (`u8` prefix)
 
 Use literals with L, u, and U prefixes:
 
@@ -1401,8 +1479,8 @@ Raw string
 The standard string literal equivalent would be this:
 `cout << "Jim \"King\" Tutt uses \" \\n\" instead of endl." << '\n';`
 
-Raw string syntax allows you to place additional characters between the opening - the statement:
-`cout << R"+*("(Who wouldn't?)", she whispered.)+*" << endl;`
+Raw string syntax allows you to place additional characters between the
+opening - the statement: `cout << R"+*("(Who wouldn't?)", she whispered.)+*" << endl;`
 would display the following: `"(Who wouldn't?)", she whispered.`
 
 ### Structures
@@ -1434,9 +1512,12 @@ struct inflatable goose;    // keyword struct required in C
 inflatable vincent;         // keyword struct not required in C++
 ```
 
-Given that `hat` is type inflatable, you use the membership operator (.) to access individual members. For example, `hat.volume` refers to the `volume` member of the structure, and `hat.price` refers to the `price` member.
+Given that `hat` is type inflatable, you use the membership operator (.)
+to access individual members. For example, `hat.volume` refers to the `volume`
+member of the structure, and `hat.price` refers to the `price` member.
 
-<img src="/assets/_ch4Structure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="./assets/_ch4Structure.png" alt="Image description"
+style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
 <details><summary>
      <a href="./programs/structur.cpp"> structur.cpp, example use of structure.</a>
@@ -1465,10 +1546,12 @@ Narrowing is not allowed.
 
 #### Other `structure` properties
 
-`memberwise assignment` - you can use the assignment operator (=) to assign one structure to another of the same type.
+`memberwise assignment` - you can use the assignment operator (=) to assign one
+structure to another of the same type.
 
 <details><summary>
-     <a href="./programs/assgn_st.cpp"> assgn_st.cpp, example use of memberwise assignment.</a>
+     <a href="./programs/assgn_st.cpp">
+     assgn_st.cpp, example use of memberwise assignment.</a>
     </summary>
 <figure>
         <iframe
@@ -1512,7 +1595,8 @@ inflatable guests[2] = // initializing an array of structs
 
 #### Bit Fields in Structures
 
-C++, like C, enables you to specify structure members that occupy a particular number of bits
+C++, like C, enables you to specify structure members that occupy
+a particular number of bits
 
 ```cpp
 struct torgle_register
@@ -1530,7 +1614,8 @@ if (tr.goodIn)
 
 #### Unions
 
-A union is a data format that can hold different data types but only one type at a time
+A union is a data format that can hold different data types but
+only one type at a time
 
 ```cpp
 union one4all
@@ -1547,8 +1632,8 @@ pail.double_val = 1.38; // store a double, int value is lost
 cout << pail.double_val;
 ```
 
-`anonymous union` - has no name; in essence, its members become variables that share
-the same address.
+`anonymous union` - has no name; in essence, its members become
+variables that share the same address.
 
 ```cpp
 struct widget
@@ -1578,8 +1663,10 @@ cin >> prize.id_char;
 enum spectrum {red, orange, yellow, green, blue, violet, indigo, ultraviolet};
 ```
 
-- It makes spectrum the name of a new type; spectrum is termed an enumeration, much as a struct variable is called a structure.
-- It establishes red, orange, yellow, and so on, as symbolic constants for the integer values 0–7.These constants are called enumerators.
+- It makes spectrum the name of a new type; spectrum is termed an enumeration,
+much as a struct variable is called a structure.
+- It establishes red, orange, yellow, and so on, as symbolic constants for the
+integer values 0–7.These constants are called enumerators.
 
 ```cpp
 spectrum band; // band a variable of type spectrum
@@ -1607,7 +1694,7 @@ enum bigstep{first, second = 100, third};
 enum {zero, null = 0, one, numero_uno = 1};
 ```
 
- **Range of enumerations**
+##### Range of enumerations
 
 ```cpp
 enum bits{one = 1, two = 2, four = 4, eight = 8};
@@ -1616,12 +1703,18 @@ bits myflag;
 myflag = bits(6); // valid, because 6 is in bits range
 ```
 
-Here 6 is not one of the enumerations, but it lies in the range the enumerations define.
-The range is defined as follows. First, to find the upper limit, you take the largest enumerator value.Then you find the smallest power of two greater than this largest value and subtract one; the result is the upper end of the range (For example, the largest `bigstep` value, as previously defined, is 101.The smallest power of two greater than this is 128, so the upper end of the range is 127.)
+Here `6` is not one of the enumerations, but it lies in the range the
+enumerations define. The range is defined as follows. First, to find
+the upper limit, you take the largest enumerator value.Then you find
+the smallest power of two greater than this largest value and subtract one;
+the result is the upper end of the range (For example, the largest `bigstep`
+value, as previously defined, is 101. The smallest power of two greater
+than this is 128, so the upper end of the range is 127.)
 
 #### Pointers and the Free Store
 
-**address operator**, represented by `&` to a variable to get its location; if `home` is a variable, `&home` is its address
+**address operator**, represented by `&` to a variable to get its location;
+if `home` is a variable, `&home` is its address
 
 <details><summary>
      <a href="./programs/address.cpp"> address.cpp</a>
@@ -1665,9 +1758,11 @@ Making runtime decisions is not unique to OOP. But C++ makes writing the code a 
 straightforward than does C.
 </details><br>
 
-A special type of variable the `pointer` — holds the address of a value. Thus, the name of the pointer represents the location
+A special type of variable the `pointer` — holds the address of a value.
+Thus, the name of the pointer represents the location
 
-Applying the `*` operator, called the indirect value or the dereferencing operator, yields the value at the location.
+Applying the `*` operator, called the indirect value or the dereferencing operator,
+yields the value at the location.
 
 <details><summary>
      <a href="./programs/pointer.cpp"> pointer.cpp</a>
@@ -1683,9 +1778,11 @@ Applying the `*` operator, called the indirect value or the dereferencing operat
     </figure>
 </details><br>
 
-<img src="/assets/_ch4Pointer.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="./assets/_ch4Pointer.png" alt="Image description"
+style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
-<img src="/assets/_ch4Pointer2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="./assets/_ch4Pointer2.png" alt="Image description"
+style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
 In C++, the combination `int *` is a compound type, pointer-to-int.
 
@@ -1700,7 +1797,8 @@ char * str; // str points to type char
 ```
 
 <details><summary>
-     <a href="./programs/init_ptr.cpp"> init_ptr.cpp, initialize a pointer to an address.</a>
+     <a href="./programs/init_ptr.cpp">
+     init_ptr.cpp, initialize a pointer to an address.</a>
     </summary>
 <figure>
         <iframe
@@ -1719,8 +1817,8 @@ char * str; // str points to type char
 long * fellow; // create a pointer-to-long
 *fellow = 223323; // place a value in never-never land
 
-// Pointer Golden Rule: Always initialize a pointer to a definite and appropriate address before
-// you apply the dereferencing operator (*) to it.
+// Pointer Golden Rule: Always initialize a pointer to a definite and
+// appropriate address before you apply the dereferencing operator (*) to it.
 
 int * pt;
 pt = 0xB8000000; // type mismatch
@@ -1844,7 +1942,8 @@ delete ps; // effect is undefined, don't do it
     </figure>
 </details><br>
 
-<img src="/assets/_ch4PointerAddition.png" alt="Image description" style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<img src="./assets/_ch4PointerAddition.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
 
 <details><summary>
      The Address of an Array
@@ -1895,11 +1994,14 @@ double * pn; // pn can point to a double value
 char * pc; // pc can point to a char value
 ```
 
-Here pn and pc are pointers, and double *and char* are the C++ notations for the types pointer-to-double and pointer-to-char.
+Here pn and pc are pointers, and double *and char* are the C++ notations for
+the types pointer-to-double and pointer-to-char.
 
 ##### Assigning Values to Pointers
 
-You should assign a memory address to a pointer.You can apply the & operator to a variable name to get an address of named memory, and the new operator returns the address of unnamed memory.
+You should assign a memory address to a pointer.You can apply the & operator
+to a variable name to get an address of named memory, and the new operator returns
+the address of unnamed memory.
 
 Here are some examples:
 
@@ -1915,7 +2017,12 @@ pa = new double[30]; // assign address of 1st element of array of 30 double to p
 
 ##### Dereferencing Pointers
 
-Dereferencing a pointer means referring to the pointed-to value.You apply the dereferencing, or indirect value, operator (*) to a pointer to dereference it.Thus, if pn is a pointer to bubble, as in the preceding example, then*pn is the pointed-to value, or 3.2, in this case.
+Dereferencing a `pointer` means referring to the pointed-to value.
+You apply the dereferencing, or indirect value, operator (`*`) to a
+`pointer` to `dereference` it. Thus, if `pn` is a `pointer` to `bubble`,
+as in the preceding example, then `*pn` is the pointed-to value, or 3.2,
+in this case.
+
 Here are some examples:
 
 ```cpp
@@ -1923,11 +2030,15 @@ cout << *pn; // print the value of bubble
 *pc = 'S'; // place 'S' into the memory location whose address is pc
 ```
 
-Array notation is a second way to dereference a pointer; for instance, pn[0] is the same as *pn.You should never dereference a pointer that has not been initialized to a proper address.
+Array notation is a second way to dereference a pointer; for instance, `pn[0]`
+is the same as `*pn`. You should never dereference a pointer that has not been
+initialized to a proper address.
 
 ##### Distinguishing Between a Pointer and the Pointed-to Value
 
-Remember, if pt is a pointer-to-int, *pt is not a pointer-to-int; instead,*pt is the complete equivalent to a type int variable. It is pt that is the pointer.
+Remember, if pt is a pointer-to-int, `*pt` is not a pointer-to-int; instead, `*pt`
+is the complete equivalent to a type int variable. It is `pt` that is the `pointer`.
+
 Here are some examples:
 
 ```cpp
@@ -1937,7 +2048,8 @@ int * pt = new int; // assigns an address to the pointer pt
 
 ##### Array Names
 
-In most contexts, C++ treats the name of an array as equivalent to the address of the first element of an array.
+In most contexts, C++ treats the name of an array as equivalent to the address
+of the first element of an array.
 
 ```cpp
 Here is an example:
@@ -1949,7 +2061,14 @@ case, sizeof returns the size of the entire array, in bytes.
 
 ##### Pointer Arithmetic
 
-C++ allows you to add an integer to a pointer.The result of adding one equals the original address value plus a value equal to the number of bytes in the pointed-to object. You can also subtract an integer from a pointer to take the difference between two pointers. The last operation, which yields an integer, is meaningful only if the two pointers point into the same array (pointing to one position past the end is allowed, too); it then yields the separation between the two elements.
+C++ allows you to add an integer to a pointer.The result of adding one equals
+the original address value plus a value equal to the number of bytes in the
+pointed-to object. You can also subtract an integer from a pointer to take
+the difference between two pointers. The last operation, which yields an integer,
+is meaningful only if the two pointers point into the same array (pointing to one
+position past the end is allowed, too); it then yields the separation between
+the two elements.
+
 Here are some examples:
 
 ```cpp
@@ -1964,14 +2083,16 @@ int diff = pe - pt; // diff is 7, the separation between
 
 ##### Dynamic Binding and Static Binding for Arrays
 
-You can use an array declaration to create an array with static binding—that is, an array
-whose size is set during the compilation process:
+You can use an array declaration to create an array with static binding—that is,
+an array  whose size is set during the compilation process:
 
 ```cpp
 int tacos[10]; // static binding, size fixed at compile time
 ```
 
-You use the new [] operator to create an array with dynamic binding (a dynamic array) that is, an array that is allocated and whose size can be set during runtime. You free the memory with delete [] when you are done:
+You use the new [] operator to create an array with dynamic binding (a dynamic array)
+that is, an array that is allocated and whose size can be set during runtime.
+You free the memory with delete [] when you are done:
 
 ```cpp
 int size;
@@ -1983,7 +2104,8 @@ delete [] pz; // free memory when finished
 
 ##### Structure pointers
 
-If the data object is a `structure` initialized with `new`, you can use the pointer dereferencing operator (`->`) to access structure members
+If the data object is a `structure` initialized with `new`, you can use the
+pointer dereferencing operator (`->`) to access structure members
 
 ```cpp
 BOP *stBOP = new BOP[5];
@@ -1995,18 +2117,26 @@ bop *stBOP = new bop;
 strcpy(stBOP->fullname, "Wimp Macho");
 ```
 
-The `.` operator works instead of the `->` operator because you are accessing the members of the `bop struct` using an `array` of `structs` (`stBOP`), not a `pointer` to a `struct`.
+The `.` operator works instead of the `->` operator because you are accessing
+the members of the `bop struct` using an `array` of `structs` (`stBOP`),
+not a `pointer` to a `struct`.
 
-When you use the array notation `stBOP[0]`, it refers to the first element of the array, which is an object of the `bop` `struct`. Therefore, you can use the `.` operator to access its members directly.
+When you use the array notation `stBOP[0]`, it refers to the first element of
+the array, which is an object of the `bop` `struct`. Therefore, you can use
+the `.` operator to access its members directly.
 
-**Use the `.` operator to access members of a `struct` or `class` directly, and use the `->` operator to access members through a pointer to a `struct` or `class`.**
+**Use the `.` operator to access members of a `struct` or `class` directly, and**
+**use the `->` operator to access members through a pointer to a `struct` or `class`.**
 
 #### Pointers and Strings
 
-With cout and with most C++ expressions, the name of an array of char, a pointer-tochar, and a quoted string constant are all interpreted as the address of the first character of a string.
+With cout and with most C++ expressions, the name of an array of char,
+a pointer-tochar, and a quoted string constant are all interpreted as the
+address of the first character of a string.
 
 The `strcpy(var_dest, var_copyFrom)` function copies a string from one location to another.
-The `strncpy(var_dest, var_copyFrom, int_sizeof_var_copyFrom)` function copies a string from one location to another with the new size of it.
+The `strncpy(var_dest, var_copyFrom, int_sizeof_var_copyFrom)` function copies
+a string from one location to another with the new size of it.
 The `strlen()` function returns the length of a string, not counting the null character
 When using these functions, you include the `cstring` or the `string.h` header file.
 
@@ -2051,7 +2181,8 @@ inflatable * ps = new inflatable;
 inflatable * ps = new inflatable[10];
 ```
 
-<img src="/assets/_ch4NewStructure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="./assets/_ch4NewStructure.png" alt="Image description"
+style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
 <details><summary>
      <a href="./programs/newstrct.cpp"> newstrct.cpp</a>
@@ -2085,12 +2216,16 @@ inflatable * ps = new inflatable[10];
 
 #### Automatic Storage, Static Storage, and Dynamic Storage
 
-Ordinary variables defined inside a function use automatic storage and are called automatic variables.
+Ordinary variables defined inside a function use automatic storage and are
+called automatic variables.
 Automatic variables typically are stored on a `stack`.
 
-Static storage is storage that exists throughout the execution of an entire program. There are two ways to make a variable static.
+Static storage is storage that exists throughout the execution of an entire program.
+There are two ways to make a variable static.
 
-The new and delete operators provide a more flexible approach than automatic and static variables.They manage a pool of memory, which C++ refers to as the `free` store or `heap`.
+The new and delete operators provide a more flexible approach than automatic
+and static variables.They manage a pool of memory, which C++ refers to as
+the `free` store or `heap`.
 
 #### Combinations of Types
 
@@ -2146,25 +2281,29 @@ Comparing Arrays, Vector Objects, and Array Objects
     </figure>
 </details><br>
 
-Pointers and arrays are closely connected. If ar is an array name, then the expression `ar[i]`is interpreted as `*(ar + i)`, with the array name interpreted as the address of the first element of the array. Thus, the array name plays the same role as a pointer.
+Pointers and arrays are closely connected. If ar is an array name, then the expression
+`ar[i]`is interpreted as `*(ar + i)`, with the array name interpreted as the address
+of the first element of the array. Thus, the array name plays the same role as a pointer.
 
-**Assign safety**
+##### Assign safety
 
 ```cpp
 // a2[-2] = .5; // still allowed (out of range)
 a2.at(1) = 2.3; // assign 2.3 to a2[1] 
 ```
 
-The difference between using bracket notation and the `at()` member function is that if you use `at()`, an invalid index is caught during runtime and the program, by default, aborts.
+The difference between using bracket notation and the `at()` member function is
+that if you use `at()`, an invalid index is caught during runtime and the program,
+by default, aborts.
 
-### Chapter Review
+### Chapter 4 Review
 
 <!-- -------------------------------------------- -->
 
 <details><summary>
 1. How would you declare each of the following?
 
-```
+```cpp
 a. actors is an array of 30 char.
 b. betsie is an array of 100 short.
 c. chuck is an array of 13 float.
@@ -2183,7 +2322,8 @@ long double dipsea[64];
 </details>
 
 <details><summary>
-2. Do Chapter Review Question 1 and use the array template class instead of built-in arrays.
+2. Do Chapter Review Question 1 and use the array template class instead of
+built-in arrays.
     </summary>
 
 ```cpp
@@ -2196,7 +2336,8 @@ array<long double, 64> dipsea;
 </details>
 
 <details><summary>
-3. Declare an array of five ints and initialize it to the first five odd positive integers
+3. Declare an array of five ints and initialize it to the first five odd
+positive integers
     </summary>
 
 ```cpp
@@ -2207,7 +2348,8 @@ array<int, 5> at {1, 3, 5, 7, 9}; // also correct
 </details>
 
 <details><summary>
-4. Write a statement that assigns the sum of the first and last elements of the array in Question 3 to the variable even.
+4. Write a statement that assigns the sum of the first and last elements of the
+array in Question 3 to the variable even.
     </summary>
 
 ```cpp
@@ -2217,7 +2359,8 @@ int even = array[0] + array[4];
 </details>
 
 <details><summary>
-5. Write a statement that displays the value of the second element in the float array ideas.
+5. Write a statement that displays the value of the second element in the float
+array ideas.
     </summary>
 
 ```cpp
@@ -2249,7 +2392,8 @@ std::string obj = "Waldorf Salad";
 </details>
 
 <details><summary>
-8. Devise a structure declaration that describes a fish.The structure should include the kind, the weight in whole ounces, and the length in fractional inches.
+8. Devise a structure declaration that describes a fish.The structure should
+include the kind, the weight in whole ounces, and the length in fractional inches.
     </summary>
 
 ```cpp
@@ -2283,7 +2427,8 @@ fish petes =
 </details>
 
 <details><summary>
-10.  Use enum to define a type called Response with the possible values Yes, No, and Maybe. Yes should be 1, No should be 0, and Maybe should be 2.
+10.  Use enum to define a type called Response with the possible values Yes,
+No, and Maybe.<br> Yes should be 1, No should be 0, and Maybe should be 2.
     </summary>
 
 ```cpp
@@ -2293,7 +2438,8 @@ enum response {No, Yes, Maybe};
 </details>
 
 <details><summary>
-11.  Suppose ted is a double variable. Declare a pointer that points to ted and use the pointer to display ted’s value.
+11.  Suppose ted is a double variable.
+Declare a pointer that points to ted and use the pointer to display ted’s value.
     </summary>
 
 ```cpp
@@ -2304,7 +2450,9 @@ std::cout << *ptrTed;
 </details>
 
 <details><summary>
-12.  Suppose treacle is an array of 10 floats. Declare a pointer that points to the first element of treacle and use the pointer to display the first and last elements of the array.
+12.  Suppose treacle is an array of 10 floats. Declare a pointer that points
+to the first element of treacle and use the pointer to display the first and
+last elements of the array.
     </summary>
 
 </details>
@@ -2318,7 +2466,9 @@ std::cout << ptrTreacle[0] << "last" << ptrTreacle[9];
 ```
 
 <details><summary>
-13. Write a code fragment that asks the user to enter a positive integer and then creates a dynamic array of that many ints. Do this by using new, then again using a vector object.
+13. Write a code fragment that asks the user to enter a positive integer and
+then creates a dynamic array of that many ints.
+Do this by using new, then again using a vector object.
     </summary>
 
 ```cpp
@@ -2352,7 +2502,8 @@ type is wide enough to hold an address.
 </details>
 
 <details><summary>
-15. Write a code fragment that dynamically allocates a structure of the type described in Question 8 and then reads a value for the `kind` member of the structure.
+15. Write a code fragment that dynamically allocates a structure of the type
+described in Question 8 and then reads a value for the `kind` member of the structure.
     </summary>
 
 ```cpp
@@ -2374,7 +2525,8 @@ int main(){
 </details>
 
 <details><summary>
-16. Listing 4.6 illustrates a problem created by following numeric input with line-oriented string input. How would replacing:
+16. Listing 4.6 illustrates a problem created by following numeric input with
+line-oriented string input. How would replacing:
 
 ```cpp
 // this:
@@ -2394,7 +2546,8 @@ the other hand, it will read just a single word, not an entire line.
 </details>
 
 <details><summary>
-17. Declare a vector object of 10 string objects and an array object of 10 string objects. Show the necessary header files and don’t use using. Do use a const for the number of strings.
+17. Declare a vector object of 10 string objects and an array object of 10 string objects.
+Show the necessary header files and don’t use using. Do use a const for the number of strings.
 </summary>
 
 ```cpp
@@ -2413,12 +2566,15 @@ std::array<std::string, Str_num> astr;
 
 </details>
 
-### Programming Exercises
+### Chapter 4 Programming Exercises
 
-[1.](./exercises/exercise_ch4_1.cpp) Write a C++ program that requests and displays information as shown in the following.
+[1.](./exercises/exercise_ch4_1.cpp)
+Write a C++ program that requests and displays
+information as shown in the following.
+
 Example of output:
 
-```
+```cpp
 What is your first name? Betty Sue
 What is your last name? Yewe
 What letter grade do you deserve? B
@@ -2428,44 +2584,79 @@ Grade: C
 Age: 22
 ```
 
-Note that the program should be able to accept first names that comprise more than one word. Also note that the program adjusts the grade downward—that is, up one letter.Assume that the user requests an A, a B, or a C so that you don’t have to worry about the gap between a D and an F.
+Note that the program should be able to accept first names that comprise more than one word.
+Also note that the program adjusts the grade downward—that is, up one letter.
+Assume that the user requests an A, a B, or a C so that you don’t have to worry
+about the gap between a D and an F.
 
-[2.](./exercises/exercise_ch4_2.cpp) Rewrite Listing 4.4, using the C++ string class instead of char arrays.
+[2.](./exercises/exercise_ch4_2.cpp)
+Rewrite Listing 4.4, using the C++ string class instead of char arrays.
 
-[3.](./exercises/exercise_ch4_3.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string, consisting of the user’s last name followed by a comma, a space, and first name. Use char arrays and
+[3.](./exercises/exercise_ch4_3.cpp)
+Write a program that asks the user to enter his or her first name and then last name,
+and that then constructs, stores, and displays a third string, consisting of the
+user’s last name followed by a comma, a space, and first name. Use char arrays and
 functions from the cstring header file.A sample run could look like this:
 
-```
+```cpp
 Enter your first name: Flip
 Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 
-[4.](./exercises/exercise_ch4_4.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string consisting of the user’s last name followed by a comma, a space, and first name. Use string objects and methods from the string header file. A sample run could look like this:
+[4.](./exercises/exercise_ch4_4.cpp)
+Write a program that asks the user to enter his or her first name and then last name,
+and that then constructs, stores, and displays a third string consisting of the user’s
+last name followed by a comma, a space, and first name. Use string objects and methods
+from the string header file. A sample run could look like this:
 
-```
+```cpp
 Enter your first name: Flip
 Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 
-[5.](./exercises/exercise_ch4_5.cpp) The CandyBar structure contains three members.The first member holds the brand name of a candy bar.The second member holds the weight (which may have a fractional part) of the candy bar, and the third member holds the number of calories
-(an integer value) in the candy bar.Write a program that declares such a structure and creates a CandyBar variable called snack, initializing its members to "Mocha Munch", 2.3, and 350, respectively.The initialization should be part of the declaration for snack. Finally, the program should display the contents of the snack variable.
+[5.](./exercises/exercise_ch4_5.cpp)
+The CandyBar structure contains three members. The first member holds the brand name of a candy bar.
+The second member holds the weight (which may have a fractional part) of the candy bar,
+and the third member holds the number of calories (an integer value) in the candy bar.
+Write a program that declares such a structure and creates a CandyBar variable called snack,
+initializing its members to "Mocha Munch", 2.3, and 350, respectively.The initialization should
+be part of the declaration for snack.
+Finally, the program should display the contents of the snack variable.
 
-[6.](./exercises/exercise_ch4_6.cpp) The CandyBar structure contains three members, as described in Programming Exercise 5.Write a program that creates an array of three CandyBar structures, initializes them to values of your choice, and then displays the contents of each structure.
+[6.](./exercises/exercise_ch4_6.cpp)
+The CandyBar structure contains three members,
+as described in Programming Exercise 5.Write a program that creates an array of
+three CandyBar structures, initializes them to values of your choice, and then
+displays the contents of each structure.
 
-[7.](./exercises/exercise_ch4_7.cpp) William Wingate runs a pizza-analysis service. For each pizza, he needs to record the following information:
+[7.](./exercises/exercise_ch4_7.cpp)
+William Wingate runs a pizza-analysis service.
+For each pizza, he needs to record the following information:
 
 - The name of the pizza company, which can consist of more than one word
 - The diameter of the pizza
 - The weight of the pizza
-Devise a structure that can hold this information and write a program that uses a structure variable of that type.The program should ask the user to enter each of the preceding items of information, and then the program should display that information. Use cin (or its methods) and cout.
 
-[8.](./exercises/exercise_ch4_8.cpp) Do Programming Exercise 7 but use new to allocate a structure instead of declaring a structure variable.Also have the program request the pizza diameter before it requests the pizza company name.
+Devise a structure that can hold this information and write a program that uses
+a structure variable of that type.The program should ask the user to enter
+each of the preceding items of information, and then the program should display
+that information. Use cin (or its methods) and cout.
 
-[9.](./exercises/exercise_ch4_9.cpp) Do Programming Exercise 6, but instead of declaring an array of three CandyBar structures, use new to allocate the array dynamically.
+[8.](./exercises/exercise_ch4_8.cpp)
+Do Programming Exercise 7 but use new to allocate a structure instead of
+declaring a structure variable. Also have the program request the pizza
+diameter before it requests the pizza company name.
 
-[10.](./exercises/exercise_ch4_10.cpp) Write a program that requests the user to enter three times for the 40-yd dash (or 40-meter, if you prefer) and then displays the times and the average. Use an array object to hold the data. (Use a built-in array if array is not available.)
+[9.](./exercises/exercise_ch4_9.cpp)
+Do Programming Exercise 6, but instead of declaring an array of three CandyBar
+structures, use new to allocate the array dynamically.
+
+[10.](./exercises/exercise_ch4_10.cpp)
+Write a program that requests the user to enter three times for the 40-yd dash
+(or 40-meter, if you prefer) and then displays the times and the average.
+Use an array object to hold the data. (Use a built-in array if array is not available.)
 
 ## Chapter 5: Loops and Relational Expressions
 
@@ -2473,7 +2664,7 @@ Devise a structure that can hold this information and write a program that uses 
         List of what you will learn
     </summary>
 
-```
+```cpp
  - The for loop 
  - Expressions and statements 
  - The increment and decrement operators: ++ and -- 
@@ -2493,7 +2684,8 @@ Devise a structure that can hold this information and write a program that uses 
 
 ### Loops, Expressions and Statements
 
-You can’t assign a for loop to a variable. In the following example, the for loop is not an expression, so it has no value and you can’t assign it:
+You can’t assign a for loop to a variable. In the following example,
+the for loop is not an expression, so it has no value and you can’t assign it:
 
 ```cpp
 int fx = for (i = 0; i< 4; i++)
@@ -2504,7 +2696,8 @@ for (expression; expression; expression)
 ```
 
 <details><summary>
-     <a href="./programs/formore.cpp"> formore.cpp - factorials in cpp </a>
+     <a href="./programs/formore.cpp">
+     formore.cpp - factorials in cpp </a>
     </summary>
 <figure>
         <iframe
@@ -2518,7 +2711,8 @@ for (expression; expression; expression)
 </details><br>
 
 <details><summary>
-     <a href="./programs/forstr1.cpp"> forstr1.cpp - (string) letters in reverse order </a>
+     <a href="./programs/forstr1.cpp">
+     forstr1.cpp - (string) letters in reverse order </a>
     </summary>
 <figure>
         <iframe
@@ -2537,15 +2731,28 @@ Consider this statement:
 y = (4 + x++) + (6 + x++);
 ```
 
-The expression `4 + x++` is not a full expression, so C++ does not guarantee that `x` will be incremented immediately after the subexpression `4 + x++` is evaluated. Here the full expression is the entire assignment statement, and the semicolon marks the sequence point, so all that C++ guarantees is that x will have been incremented twice by the time the program moves to the following statement. C++ does not specify whether x is incremented after each subexpression is evaluated or only after all the expressions have been evaluated, which is why you should avoid statements of this kind.
+The expression `4 + x++` is not a full expression, so C++ does not guarantee
+that `x` will be incremented immediately after the subexpression `4 + x++` is evaluated.
+Here the full expression is the entire assignment statement, and the semicolon marks
+the sequence point, so all that C++ guarantees is that x will have been incremented
+twice by the time the program moves to the following statement. C++ does not specify
+whether x is incremented after each subexpression is evaluated or only after all
+the expressions have been evaluated, which is why you should avoid statements
+of this kind.
 
 ### Prefix & Postfix
 
-postfix version works by first stashing a copy of the value, incrementing the value, and then returning the stashed copy.Thus, for classes, the prefix version is a bit more efficient than the postfix version.
+postfix version works by first stashing a copy of the value, incrementing the
+value, and then returning the stashed copy.Thus, for classes, the prefix version
+is a bit more efficient than the postfix version.
 
-In short, for built-in types, it most likely makes no difference which form you use. For user-defined types having user-defined increment and decrement operators, the prefix form is more efficient.
+In short, for built-in types, it most likely makes no difference which form you use.
+For user-defined types having user-defined increment and decrement operators,
+the prefix form is more efficient.
 
-The right-to-left association rule for prefix operators implies that `*++pt` means first apply `++` to `pt` (because the `++` is to the right of the `*`) and then apply `*` to the new value of pt:
+The right-to-left association rule for prefix operators implies that `*++pt`
+means first apply `++` to `pt` (because the `++` is to the right of the `*`)
+and then apply `*` to the new value of pt:
 
 ```cpp
 double x = *++pt; // increment pointer, take the value; i.e., arr[2], or 23.4
@@ -2554,10 +2761,13 @@ double x = *++pt; // increment pointer, take the value; i.e., arr[2], or 23.4
 x = *pt++; // dereference original location, then increment pointer
 ```
 
-**Incrementing and decrementing pointers follow pointer arithmetic rules. Thus, if pt points to the first member of an array, ++pt changes pt so that it points to the second member.**
+**Incrementing and decrementing pointers follow pointer arithmetic rules.**
+**Thus, if pt points to the first member of an array, ++pt changes pt so**
+**that it points to the second member.**
 
-----------
-**Assignment Operators**
+---
+
+#### Assignment Operators
 
 ```cpp
 += Assigns L + R to L
@@ -2567,7 +2777,7 @@ x = *pt++; // dereference original location, then increment pointer
 %= Assigns L % R to L
 ```
 
-**Relational Operators**
+#### Relational Operators
 
 ```cpp
 << Is less than
@@ -2581,7 +2791,8 @@ x = *pt++; // dereference original location, then increment pointer
 ### Compound Statements, or Blocks, Syntax Tricks
 
 <details><summary>
-     <a href="./programs/block.cpp"> block.cpp - Example of local code block </a>
+     <a href="./programs/block.cpp">
+     block.cpp - Example of local code block </a>
     </summary>
 <figure>
         <iframe
@@ -2600,7 +2811,8 @@ int i, j; // comma is a separator here, not an operator
 ```
 
 <details><summary>
-     <a href="./programs/forstr2.cpp"> forstr2.cpp - Example of comma separator trick </a>
+     <a href="./programs/forstr2.cpp">
+     forstr2.cpp - Example of comma separator trick </a>
     </summary>
 <figure>
         <iframe
@@ -2626,7 +2838,8 @@ strcmp(word, "mate") != 0 // strings are not the same
 ```
 
 <details><summary>
-     <a href="./programs/compstr1.cpp"> compstr1.cpp - Example comparison c-string in search for word </a>
+     <a href="./programs/compstr1.cpp">
+     compstr1.cpp - Example comparison c-string in search for word </a>
     </summary>
 <figure>
         <iframe
@@ -2640,7 +2853,8 @@ strcmp(word, "mate") != 0 // strings are not the same
 </details><br>
 
 <details><summary>
-     <a href="./programs/compstr2.cpp"> compstr2.cpp - Example comparison string class in search for word </a>
+     <a href="./programs/compstr2.cpp">
+     compstr2.cpp - Example comparison string class in search for word </a>
     </summary>
 <figure>
         <iframe
@@ -2656,7 +2870,8 @@ strcmp(word, "mate") != 0 // strings are not the same
 ### When use other loop forms
 
 <details><summary>
-     <a href="./programs/while.cpp"> while.cpp - while for verticalized and ASCIIized string class input </a>
+     <a href="./programs/while.cpp">
+     while.cpp - while for verticalized and ASCIIized string class input </a>
     </summary>
 <figure>
         <iframe
@@ -2675,18 +2890,26 @@ You can rewrite the while line this way:
 while (name[i])
 ```
 
-because when `name[i]` is an ordinary character, its value is the character code, which is nonzero, or true. But when name[i] is the null character, its character-code value is 0, or false.This notation is more concise (and more commonly used)
+because when `name[i]` is an ordinary character, its value is the character code,
+which is nonzero, or true. But when name[i] is the null character,
+its character-code value is 0, or false.This notation is more concise
+(and more commonly used)
 
 ### Time-Delay Loop
 
 ctime header file (time.h on less current implementations) provides solution:
 
-- First, it defines a symbolic constant, CLOCKS_PER_SEC, that equals the number of system time units per second. (So dividing the system time by this value yields seconds)
+- First, it defines a symbolic constant, CLOCKS_PER_SEC, that equals the number
+of system time units per second. (So dividing the system time by this value yields seconds)
 - Or you can multiply seconds by CLOCKS_PER_SEC to get time in the system units.
-- ctime establishes clock_t as an alias for the clock() return type. (See the sidebar “Type Aliases,” later in this chapter.) This means you can declare a variable as type clock_t, and the compiler converts it to long or unsigned int or whatever is the proper type for your system.
+- ctime establishes clock_t as an alias for the clock() return type.
+(See the sidebar “Type Aliases,” later in this chapter.) This means you can
+declare a variable as type clock_t, and the compiler converts it to long or
+unsigned int or whatever is the proper type for your system.
 
 <details><summary>
-     <a href="./programs/waiting.cpp"> waiting.cpp - using clock() in a time-delay loop </a>
+     <a href="./programs/waiting.cpp">
+     waiting.cpp - using clock() in a time-delay loop </a>
     </summary>
 <figure>
         <iframe
@@ -2703,28 +2926,35 @@ ctime header file (time.h on less current implementations) provides solution:
      Type Aliases
     </summary>
 
-C++ has two ways to establish a new name as an alias for a type. One is to use the preprocessor:
+C++ has two ways to establish a new name as an alias for a type.
+One is to use the preprocessor:
 
 ```cpp
 #define BYTE char // preprocessor replaces BYTE with char
 ```
 
-The preprocessor then replaces all occurrences of BYTE with char when you compile a program, thus making `BYTE` an alias for `char`.
-The second method is to use the C++ (and C) keyword `typedef` to create an alias. For example, to make byte an alias for `char`, you use this:
+The preprocessor then replaces all occurrences of BYTE with char when you
+compile a program, thus making `BYTE` an alias for `char`.
+The second method is to use the C++ (and C) keyword `typedef` to create an alias.
+For example, to make byte an alias for `char`, you use this:
 
 ```cpp
 typedef char byte; // makes byte an alias for char
 typedef typeName aliasName; // general form
 ```
 
-In other words, if you want `aliasName` to be an alias for a particular type, you declare `aliasName` as if it were a variable of that type and then prefix the declaration with the `typedef` keyword. For example, to make `byte_pointer` an alias for pointer-to-char, you could declare `byte_pointer` as a pointer-to-char and then stick `typedef` in front:
+In other words, if you want `aliasName` to be an alias for a particular type,
+you declare `aliasName` as if it were a variable of that type and then prefix
+the declaration with the `typedef` keyword. For example, to make `byte_pointer`
+an alias for pointer-to-char, you could declare `byte_pointer` as a pointer-to-char
+and then stick `typedef` in front:
 
 ```cpp
 typedef char * byte_pointer; // pointer to char type
 ```
 
-You could try something similar with #define, but that wouldn’t work if you declared a list
-of variables. For example, consider the following
+You could try something similar with #define, but that wouldn’t work if you
+declared a list of variables. For example, consider the following
 
 ```cpp
 #define FLOAT_POINTER float *
@@ -2743,7 +2973,8 @@ If you make `word` an alias for `int`, `cout` treats a type `word` value as the 
 </details><br>
 
 <details><summary>
-     <a href="./programs/dowhile.cpp"> dowhile.cpp - for user input in loop (instead strange for loops) </a>
+     <a href="./programs/dowhile.cpp">
+     dowhile.cpp - for user input in loop (instead strange for loops) </a>
     </summary>
 <figure>
         <iframe
@@ -2782,7 +3013,9 @@ cout << ‘\n’;
 ### Loops and Text Input
 
 <details><summary>
-     <a href="./programs/textin1.cpp"> textin1.cpp - reading chars with a while loop, enter # to quit - cin() PROBLEMS </a>
+     <a href="./programs/textin1.cpp">
+     textin1.cpp - reading chars with a while loop, enter # to quit
+     - cin() PROBLEMS </a>
     </summary>
 <figure>
         <iframe
@@ -2796,7 +3029,9 @@ cout << ‘\n’;
 </details><br>
 
 <details><summary>
-     <a href="./programs/textin2.cpp"> textin2.cpp - reading chars with a while loop, enter # to quit - cin.get(char) SOLUTION </a>
+     <a href="./programs/textin2.cpp">
+     textin2.cpp - reading chars with a while loop, enter # to quit
+     - cin.get(char) SOLUTION </a>
     </summary>
 <figure>
         <iframe
@@ -2811,18 +3046,26 @@ cout << ‘\n’;
 
 ### End-of-File Condition and Read data from keyboard
 
-The program to take input from the `fishtale` file instead of from the **keyboard**. The `<` symbol is the redirection operator for both Unix and the Windows Command Prompt mode.
+The program to take input from the `fishtale` file instead of from the
+**keyboard**. The `<` symbol is the redirection operator for both Unix
+and the Windows Command Prompt mode.
 
 ```sh
 gofish <fishtale
 ```
 
-When `cin` detects the `EOF`, it sets two bits (the `eofbit` and the `failbit`) to 1.You can use a member function named `eof()` to see whether the `eofbit` has been set; the call `cin.eof()` returns the bool value true if the `EOF` has been detected and false otherwise
+When `cin` detects the `EOF`, it sets two bits (the `eofbit` and the `failbit`) to 1.
+You can use a member function named `eof()` to see whether the `eofbit` has been set;
+the call `cin.eof()` returns the bool value true if the `EOF` has been detected and false otherwise
 
-Some systems do not support simulated EOF from the keyboard. Other systems support it imperfectly. If you have been using cin.get() to freeze the screen until you can read it, that won’t work here because detecting the EOF turns off further attempts to read input.
+Some systems do not support simulated EOF from the keyboard.
+Other systems support it imperfectly. If you have been using cin.get() to
+freeze the screen until you can read it, that won’t work here because detecting
+the EOF turns off further attempts to read input.
 
 <details><summary>
-     <a href="./programs/textin3.cpp"> textin3.cpp - reading chars till EOF (keyboard break) </a>
+     <a href="./programs/textin3.cpp">
+     textin3.cpp - reading chars till EOF (keyboard break) </a>
     </summary>
 <figure>
         <iframe
@@ -2835,7 +3078,8 @@ Some systems do not support simulated EOF from the keyboard. Other systems suppo
     </figure>
 </details><br>
 
-The following is the essential design of a loop intended to read text a character at a time until EOF:
+The following is the essential design of a loop intended to read text
+a character at a time until EOF:
 
 ```cpp
 cin.get(ch); // attempt to read a char
@@ -2865,11 +3109,13 @@ while (cin.get(ch)) // while input is successful
 ```
 
 The cin.get() member function with no arguments returns the next character from
-the input.That is, you use it in this way: `ch = cin.get();` (Recall that cin.get(ch) returns an object, not the character read.)
+the input.That is, you use it in this way: `ch = cin.get();`
+(Recall that cin.get(ch) returns an object, not the character read.)
 Similarly, you can use the `cout.put(ch)`
 
 <details><summary>
-     <a href="./programs/textin4.cpp"> textin4.cpp - incorporates the cin.get() and codense code </a>
+     <a href="./programs/textin4.cpp">
+     textin4.cpp - incorporates the cin.get() and codense code </a>
     </summary>
 <figure>
         <iframe
@@ -2882,11 +3128,11 @@ Similarly, you can use the `cout.put(ch)`
     </figure>
 </details><br>
 
-|Property|`cin.get(ch)`|`ch=cin.get()`|
-|---|---|---|
-|Method for conveying input character|Assign to argument ch|Use function return value to assign to `ch`|
-|Function return value for character input|A class `istream` object (true after `bool` conversion)|Code for character as type `int` value|
-|Function return value at EOF|A class `istream` object (false after `bool` conversion)|EOF|
+| Property                                  | `cin.get(ch)`                                            | `ch=cin.get()`                              |
+|-------------------------------------------|----------------------------------------------------------|---------------------------------------------|
+| Method for conveying input character      | Assign to argument ch                                    | Use function return value to assign to `ch` |
+| Function return value for character input | A class `istream` object (true after `bool` conversion)  | Code for character as type `int` value      |
+| Function return value at EOF              | A class `istream` object (false after `bool` conversion) | EOF                                         |
 
 ### Nested Loops and Two-Dimensional Arrays
 
@@ -2916,7 +3162,7 @@ int maxtemps[4][5] = // 2-D array
     </figure>
 </details><br>
 
-### Chapter Review
+### Chapter 5 Review
 
 <!-- -------------------------------------------- -->
 <details><summary>
@@ -3064,12 +3310,14 @@ isn’t used, is `024`, or `20`.
 9. How does cin >> ch differ from cin.get(ch) and ch=cin.get() in how it views
 input?
     </summary>
-//cin>>ch will omit spaces, cin.get(ch) will return bool true, false if EOF, ch=cin.get() will assign int value and EOF if EOF <br><br>
+//cin>>ch will omit spaces, cin.get(ch) will return bool true, false if EOF,
+ch=cin.get() will assign int value and EOF if EOF <br><br>
 
-The `cin >> ch` form skips over spaces, newlines, and tabs when it encounters them.The other two forms read those characters
+The `cin >> ch` form skips over spaces, newlines, and tabs when it encounters them.
+The other two forms read those characters
 </details>
 
-### Programming Exercises
+### Chapter 5 Programming Exercises
 
 [1.](./exercises/exercise_ch5_1.cpp)
 Write a program that requests the user to enter two integers.The program should
@@ -3091,14 +3339,14 @@ terminate when the user enters 0.
 Daphne invests `$100 at 10%` simple interest.That is, every year, the investment earns
 `10%` of the original investment, or `$10` each and every year:
 
-```
+```sh
 interest = 0.10 × original balance
 ```
 
 At the same time, Cleo invests `$100` at `5%` compound interest.That is, interest is `5%`
 of the current balance, including previous additions of interest:
 
-```
+```sh
 interest = 0.05 × current balance
 ```
 
@@ -3131,7 +3379,7 @@ requires some care because it alternates reading strings with numeric data (see
 Chapter 4). Finally, it should display the contents of each structure.A sample run
 should look something like the following:
 
-```
+```sh
 How many cars do you wish to catalog? 2
 Car #1:
 Please enter the make: Hudson Hornet
@@ -3149,7 +3397,7 @@ Write a program that uses an array of char and a loop to read one word at a time
 until the word done is entered.The program should then report the number of
 words entered (not counting done).A sample run could look like this:
 
-```
+```sh
 Enter words (to stop, type the word done):
 anteater birthday category dumpster
 envy finagle geometry done for sure
@@ -3172,7 +3420,7 @@ asterisks are preceded by the number of periods needed to make all the rows
 display a total number of characters equal to the number of rows.A sample run
 would look like this:
 
-```
+```sh
 Enter number of rows: 5
 ....*
 ...**
@@ -3187,7 +3435,7 @@ Enter number of rows: 5
         List of what you will learn
     </summary>
 
-```
+```cpp
  - The `if` statement
  - The `if else` statement
  - Logical operators: `&&`, `||`, and `!`
@@ -3204,7 +3452,8 @@ Enter number of rows: 5
 ### Statements and logical operators
 
 <details><summary>
-     <a href="./programs/if.cpp"> if.cpp - (count spaces in while) simple use of if statement</a>
+     <a href="./programs/if.cpp">
+     if.cpp - (count spaces in while) simple use of if statement</a>
     </summary>
 <figure>
         <iframe
@@ -3218,7 +3467,9 @@ Enter number of rows: 5
 </details><br>
 
 <details><summary>
-     <a href="./programs/ifelse.cpp"> ifelse.cpp - (simplest cipher from keyboard) simple use of if else statement</a>
+     <a href="./programs/ifelse.cpp">
+     ifelse.cpp - (simplest cipher from keyboard)
+     simple use of if else statement</a>
     </summary>
 <figure>
         <iframe
@@ -3232,7 +3483,8 @@ Enter number of rows: 5
 </details><br>
 
 <details><summary>
-     <a href="./programs/ifelseif.cpp"> ifelseif.cpp -  simple use of if elseif else statement for guess game</a>
+     <a href="./programs/ifelseif.cpp">
+     ifelseif.cpp -  simple use of if elseif else statement for guess game</a>
     </summary>
 <figure>
         <iframe
@@ -3247,14 +3499,21 @@ Enter number of rows: 5
 
 #### Conditional Operators and Bug Prevention
 
-Many programmers reverse the more intuitive expression `variable == value` to `value ==
-variable` in order to catch errors where the equality is mistyped as an assignment operator. For example, entering the conditional as follows is valid and will work properly:
-`if (3 == myNumber)`
-However, if you happen to mistype as follows, the compiler will generate an error message because it believes you are attempting to assign a value to a literal (3 always equals 3 and can’t be assigned another value):
+Many programmers reverse the more intuitive expression `variable == value` to
+`value == variable` in order to catch errors where the equality is mistyped as
+an assignment operator. For example, entering the conditional as follows is
+valid and will work properly: `if (3 == myNumber)`
+However, if you happen to mistype as follows, the compiler will generate an
+error message because it believes you are attempting to assign a value to a
+literal (3 always equals 3 and can’t be assigned another value):
 `if (3 = myNumber)`
 Suppose you made a similar mistake, using the former notation:
 `if (myNumber = 3)`
-The compiler would simply assign the value 3 to myNumber, and the block within the if would run—a very common error, and a difficult error to find. (However, many compilers will issue a warning, which you would be wise to heed.) As a general rule, writing code that allows the compiler to find errors is much easier than repairing the causes of mysterious faulty results.
+The compiler would simply assign the value 3 to myNumber, and the block within
+the if would run—a very common error, and a difficult error to find.
+(However, many compilers will issue a warning, which you would be wise to heed.)
+As a general rule, writing code that allows the compiler to find errors is much
+easier than repairing the causes of mysterious faulty results.
 
 ### Logical expressions
 
@@ -3262,11 +3521,16 @@ The compiler would simply assign the value 3 to myNumber, and the block within t
 `&&` - Logical AND Operator is true only if both of the original expressions are true.
 `!` - Logical NOT Operator negates, or reverses the truth value of, the expression that follows it.
 
-logical OR and logical AND operators have a lower precedence than relational operators.This means that an expression such as this: `x > 5 && x < 10` is interpreted this way: `(x > 5) && (x < 10)`
+logical OR and logical AND operators have a lower precedence than relational operators.
+This means that an expression such as this: `x > 5 && x < 10` is interpreted this way:
+`(x > 5) && (x < 10)`
 
-The logical AND operator has a higher precedence than the logical OR, Thus this expression: `age > 30 && age < 45 || weight > 300`, means the following: `(age > 30 && age < 45) || weight > 300`
+The logical AND operator has a higher precedence than the logical OR, Thus this
+expression: `age > 30 && age < 45 || weight > 300`, means the following:
+`(age > 30 && age < 45) || weight > 300`
 
-C++ guarantees that when a program evaluates a logical expression, it evaluates it from left to right and stops evaluation as soon as it knows what the answer is.
+C++ guarantees that when a program evaluates a logical expression, it evaluates
+it from left to right and stops evaluation as soon as it knows what the answer is.
 
 <details><summary>
      <a href="./programs/or.cpp"> or.cpp - simple use of the logical OR operator</a>
@@ -3326,19 +3590,26 @@ C++ guarantees that when a program evaluates a logical expression, it evaluates 
 
 ### Range Tests
 
-Note that each part of a range test should use the AND operator to join two complete relational expressions:
+Note that each part of a range test should use the AND operator to join
+two complete relational expressions:
 `if (age > 17 && age < 35) // OK`
 Don’t borrow from mathematics and use the following notation:
 `if (17 < age < 35) // Don't do this!`
-If you make this mistake, the compiler won’t catch it as an error because it is still valid C++ syntax. The `<` operator associates from left to right, so the previous expression means the following:
+If you make this mistake, the compiler won’t catch it as an error because
+it is still valid C++ syntax. The `<` operator associates from left to right,
+so the previous expression means the following:
 `if ( (17 < age) < 35)`
-But `17 < age` is either `true`, or `1`, or else `false`, or `0`. In either case, the expression `17 < age` is less than 35, so the entire test is always true!
+But `17 < age` is either `true`, or `1`, or else `false`, or `0`. In either case,
+the expression `17 < age` is less than 35, so the entire test is always true!
 
 ### `cctype` library of Character Functions
 
-simplify such tasks as determining whether a character is an uppercase letter or a digit or punctuation
+simplify such tasks as determining whether a character is an uppercase letter
+or a digit or punctuation
 
-Using these functions is more convenient than using the AND and OR operators. For example, here’s how you might use AND and OR to test whether a character ch is an alphabetic character:
+Using these functions is more convenient than using the AND and OR operators.
+For example, here’s how you might use AND and OR to test whether a character
+`ch` is an alphabetic character:
 
 ```cpp
 if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
@@ -3357,7 +3628,8 @@ In program `cctypes.cpp` below
 `ispunct()`,  tests for punctuation characters
 
 <details><summary>
-     <a href="./programs/cctypes.cpp"> cctypes.cpp - demonstrates some functions of the ctype.h library</a>
+     <a href="./programs/cctypes.cpp">
+     cctypes.cpp - demonstrates some functions of the ctype.h library</a>
     </summary>
 <figure>
         <iframe
@@ -3381,16 +3653,22 @@ Function Name
 - `islower()` - returns true if the argument is a lowercase letter.
 - `isprint()` - returns true if the argument is any printing character, including a space.
 - `ispunct()` - returns true if the argument is a punctuation character.
-- `isspace()` - returns true if the argument is a standard whitespace character (that is, a space, formfeed, newline, carriage return, horizontal tab, vertical tab).
+- `isspace()` - returns true if the argument is a standard whitespace character
+(that is, a space, formfeed, newline, carriage return, horizontal tab, vertical tab).
 - `isupper()` - returns true if the argument is an uppercase letter.
-- `isxdigit()` - returns true if the argument is a hexadecimal digit character (that is, 0–9, a–f, or A–F).
-- `tolower()` - If the argument is an uppercase character, tolower() returns the lowercase version of that character; otherwise, it returns the argument unaltered.
-- `toupper()` - If the argument is a lowercase character, toupper() returns the uppercase version of that character; otherwise, it returns the argument unaltered.
+- `isxdigit()` - returns true if the argument is a hexadecimal digit character
+(that is, 0–9, a–f, or A–F).
+- `tolower()` - If the argument is an uppercase character, tolower() returns
+the lowercase version of that character; otherwise, it returns the argument unaltered.
+- `toupper()` - If the argument is a lowercase character, toupper() returns the
+uppercase version of that character; otherwise, it returns the argument unaltered.
 
 ### The `?:` Operator
 
 `expression1 ? expression2 : expression3`
-If `expression1` is `true`, then the value of the whole conditional expression is the value of `expression2`. Otherwise, the value of the whole expression is the value of `expression3`.
+If `expression1` is `true`, then the value of the whole conditional expression
+is the value of `expression2`. Otherwise, the value of the whole expression
+is the value of `expression3`.
 
 ```cpp
 5 > 3 ? 10 : 12 // 5 > 3 is true, so expression value is 10
@@ -3413,10 +3691,13 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 
 ### The `switch` Statement
 
-<img src="/assets/_ch6SwitchCase.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;"> <br>
+<img src="./assets/_ch6SwitchCase.png" alt="Image description"
+style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<br>
 
 <details><summary>
-     <a href="./programs/switch.cpp"> switch.cpp - menu program, example of switch use </a>
+     <a href="./programs/switch.cpp">
+     switch.cpp - menu program, example of switch use </a>
     </summary>
 <figure>
         <iframe
@@ -3445,8 +3726,10 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 
 ### The break and continue Statements
 
-`break` statement causes program execution to pass to the next statement following the switch or the loop
-`continue` statement is used in loops and causes a program to skip the rest of the body of the loop
+`break` statement causes program execution to pass to the next statement
+following the switch or the loop
+`continue` statement is used in loops and causes a program to skip the
+rest of the body of the loop
 
 <details><summary>
      <a href="./programs/jump.cpp"> jump.cpp - using continue and break </a>
@@ -3463,7 +3746,8 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 </details><br>
 
 <details><summary>
-     <a href="./programs/cinfish.cpp"> cinfish.cpp - to terminate input before filling the array example </a>
+     <a href="./programs/cinfish.cpp">
+     cinfish.cpp - to terminate input before filling the array example </a>
     </summary>
 <figure>
         <iframe
@@ -3477,7 +3761,9 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 </details><br>
 
 <details><summary>
-     <a href="./programs/cingolf.cpp"> cingolf.cpp - to terminate input before filling the array example and reset cin to accept new input. </a>
+     <a href="./programs/cingolf.cpp">
+     cingolf.cpp - to terminate input before filling the array example and reset
+     cin to accept new input. </a>
     </summary>
 <figure>
         <iframe
@@ -3494,7 +3780,8 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 
 #### Write to file
 
-You have to declare your own `ofstream` object, choosing a name for it and associating it with a file.
+You have to declare your own `ofstream` object, choosing a name for it and
+associating it with a file.
 
 Declaration:
 
@@ -3512,7 +3799,8 @@ cin >> filename; // user specifies a name
 fout.open(filename); // fout used to read specified file
 ```
 
-Use created object (after you’ve declared an ofstream object and associated it with a file, you use it exactly as you would use cout):
+Use created object (after you’ve declared an ofstream object and associated
+it with a file, you use it exactly as you would use cout):
 
 ```cpp
 double wt = 125.8;
@@ -3544,7 +3832,8 @@ Main steps for using file output:
 
 #### Read from file
 
-You have to declare your own `ifstream` object, choosing a name for it and associating it with a file
+You have to declare your own `ifstream` object, choosing a name for it and
+associating it with a file
 
 Declaration:
 
@@ -3580,9 +3869,11 @@ if (!inFile.is_open()){
 }
 ```
 
-For program below - write `datsumafile.txt`, that should be local, or `\programs\datsumafile.txt` if compiled in `$PATH$`
+For program below - write `datsumafile.txt`, that should be local,
+or `.\programs\datsumafile.txt` if compiled in `$PATH$`
 <details><summary>
-     <a href="./programs/sumafile.cpp"> sumafile.cpp - reading double data from file. </a>
+     <a href="./programs/sumafile.cpp">
+     sumafile.cpp - reading double data from file. </a>
     </summary>
 <figure>
         <iframe
@@ -3619,7 +3910,9 @@ while (inFile.good()) // while input good and not at EOF
 }
 ```
 
-`inFile`, when placed in a context in which a `bool` value is expected, evaluates to `inFile.good()` — that is, to `true` or `false`, thus you can make above code more concise:
+`inFile`, when placed in a context in which a `bool` value is expected,
+evaluates to `inFile.good()` — that is, to `true` or `false`, thus you
+can make above code more concise:
 
 ```cpp
 // abbreviated file-reading loop design
@@ -3631,7 +3924,7 @@ while (inFile >> value) // read and test for success
 }
 ```
 
-### Chapter Review
+### Chapter 6 Review
 
 <!-- -------------------------------------------- -->
 <details><summary>
@@ -3658,7 +3951,7 @@ while (cin.get(ch)) // quit on eof
 
 What advantages, if any, does the second form have over the first?
 </summary>
-// Because version 1 checks every times both conditions, thus it's less efficient. <br>
+// Because version 1 checks every times both conditions, thus it's less efficient.<br>
 // Version 2 checks 2 condition only if first is not true.<br><br>
 
 Both versions give the same answers, but the if else version is more efficient.
@@ -3700,8 +3993,8 @@ Listing 6.2 ifelse.cpp
 // The `char` is promoted to `int`, and display numbers
 
 Both `++ch` and `ch + 1` have the same numerical value. But `++ch` is type char and
-prints as a character, while `ch + 1`, because it adds a `char` to an `int`, is type `int` and
-prints as a number.
+prints as a character, while `ch + 1`, because it adds a `char` to an `int`,
+is type `int` and prints as a number.
 
 </details>
 
@@ -3732,7 +4025,7 @@ int main()
 
 Suppose you provide the following input, pressing the Enter key at the end of each line:
 
-```
+```sh
 Hi!
 Send $10 or $20 now!
 ```
@@ -3749,7 +4042,7 @@ What is the output? (Recall that input is buffered.)
 Because the program uses `ch = '$'` instead of `ch == '$'`, the combined input and
 output looks like this:
 
-```
+```sh
 Hi!
 H$i$!$
 $Send $10 or $20 now!
@@ -3765,6 +4058,7 @@ nonzero, hence `true`; so `ct2` is incremented each time.
 <details><summary>
 4. Construct logical expressions to represent the following conditions:
 
+```cpp
     a. weight is greater than or equal to 115 but less than 125.
     b. ch is q or Q.
     c. x is even but is not 26.
@@ -3773,6 +4067,7 @@ nonzero, hence `true`; so `ct2` is incremented each time.
     f. ch is a lowercase letter or an uppercase letter. (Assume, as is true for ASCII, 
     that lowercase letters are coded sequentially and that uppercase letters are coded 
     sequentially but that there is a gap in the code between uppercase and lowercase.)
+```
 
 </summary>
 
@@ -3793,19 +4088,21 @@ isalpha(ch)                                             //f
 
 <!-- -------------------------------------------- -->
 <details><summary>
-5. In English, the statement “I will not not speak” means the same as “I will speak.” In C++, is !!x the same as x?
+5. In English, the statement “I will not not speak” means the same as
+“I will speak.” In C++, is !!x the same as x?
     </summary>
 
 // No. Return from `!!x` is boolean/int, while `x` have defined type by programmer
 
-Not necessarily. For example, if `x` is 10, then `!x` is 0 and `!!x` is 1. However, if `x` is a
-`bool` variable, then `!!x` is `x`.
+Not necessarily. For example, if `x` is 10, then `!x` is 0 and `!!x` is 1.
+However, if `x` is a `bool` variable, then `!!x` is `x`.
 </details>
 
 <!-- -------------------------------------------- -->
 <details><summary>
 6. Construct a conditional expression that is equal to the absolute value of a variable.
-That is, if a variable x is positive, the value of the expression is just x, but if x is negative, the value of the expression is -x, which is positive.
+That is, if a variable x is positive, the value of the expression is just x,
+but if x is negative, the value of the expression is -x, which is positive.
     </summary>
 
 ```cpp
@@ -3857,7 +4154,10 @@ switch (ch)
 
 <!-- -------------------------------------------- -->
 <details><summary>
-8. In Listing 6.10, what advantage would there be in using character labels, such as a and c, instead of numbers for the menu choices and switch cases? (Hint:Think about what happens if the user types q in either case and what happens if the user types 5 in either case.)
+8. In Listing 6.10, what advantage would there be in using character labels,
+such as a and c, instead of numbers for the menu choices and switch cases?
+(Hint:Think about what happens if the user types q in either case and what
+happens if the user types 5 in either case.)
 
 ```cpp
 Listing 6.10 switch.cpp
@@ -3959,18 +4259,27 @@ while (cin.get(ch) && ch != 'Q')
 
 </details>
 
-### Programming Exercises
+### Chapter 6 Programming Exercises
 
 [1.](./exercises/exercise_ch6_1.cpp)
-Write a program that reads keyboard input to the @ symbol and that echoes the input except for digits, converting each uppercase character to lowercase, and vice versa. (Don’t forget the `cctype` family.)
+Write a program that reads keyboard input to the @ symbol and that echoes the input except for digits,
+converting each uppercase character to lowercase, and vice versa. (Don’t forget the `cctype` family.)
 
 [2.](./exercises/exercise_ch6_2.cpp)
-Write a program that reads up to 10 donation values into an array of double. (Or, if you prefer, use an array template object.) The program should terminate input on non-numeric input. It should report the average of the numbers and also report how many numbers in the array are larger than the average.
+Write a program that reads up to 10 donation values into an array of double.
+(Or, if you prefer, use an array template object.) The program should terminate
+input on non-numeric input. It should report the average of the numbers and also
+report how many numbers in the array are larger than the average.
 
 [3.](./exercises/exercise_ch6_3.cpp)
-Write a precursor to a menu-driven program.The program should display a menu offering four choices, each labeled with a letter. If the user responds with a letter other than one of the four valid choices, the program should prompt the user to enter a valid response until the user complies.Then the program should use a switch to select a simple action based on the user’s selection.A program run could look something like this:
+Write a precursor to a menu-driven program.The program should display a menu
+offering four choices, each labeled with a letter. If the user responds with a
+letter other than one of the four valid choices, the program should prompt the
+user to enter a valid response until the user complies.Then the program should
+use a switch to select a simple action based on the user’s selection.
+A program run could look something like this:
 
-```
+```sh
 Please enter one of the following choices:
 c) carnivore    p) pianist
 t) tree         g) game
@@ -3981,7 +4290,10 @@ A maple is a tree.
 ```
 
 [4.](./exercises/exercise_ch6_4.cpp)
-When you join the Benevolent Order of Programmers, you can be known at BOP meetings by your real name, your job title, or your secret BOP name.Write a program that can list members by real name, by job title, by secret name, or by a member’s preference. Base the program on the following structure:
+When you join the Benevolent Order of Programmers, you can be known at BOP
+meetings by your real name, your job title, or your secret BOP name.
+Write a program that can list members by real name, by job title, by secret name,
+or by a member’s preference. Base the program on the following structure:
 
 ```cpp
 // Benevolent Order of Programmers name structure
@@ -3994,17 +4306,21 @@ struct bop
 };
 ```
 
-In the program, create a small array of such structures and initialize it to suitable values. Have the program run a loop that lets the user select from different alternatives:
+In the program, create a small array of such structures and initialize it to suitable values.
+Have the program run a loop that lets the user select from different alternatives:
 
-```
+```sh
 a. display by name      b. display by title
 c. display by bopname   d. display by preference
 q. quit
 ```
 
-Note that “display by preference” does not mean display the preference member; it means display the member corresponding to the preference number. For instance, if preference is 1, choice d would display the programmer’s job title.A sample run may look something like the following:
+Note that “display by preference” does not mean display the preference member;
+it means display the member corresponding to the preference number.
+For instance, if preference is 1, choice d would display the programmer’s
+job title.A sample run may look something like the following:
 
-```
+```sh
 Benevolent Order of Programmers Report
 a. display by name b. display by title
 c. display by bopname d. display by preference
@@ -4028,24 +4344,44 @@ Bye!
 [5.](./exercises/exercise_ch6_5.cpp)
 The Kingdom of Neutronia, where the unit of currency is the tvarp, has the following income tax code:
 
-```
+```sh
     First 5,000 tvarps: 0% tax
     Next 10,000 tvarps: 10% tax
     Next 20,000 tvarps: 15% tax
     Tvarps after 35,000: 20% tax
 ```
 
-For example, someone earning 38,000 tvarps would owe 5,000 × 0.00 + 10,000 × 0.10 + 20,000 × 0.15 + 3,000 × 0.20, or 4,600 tvarps.Write a program that uses a loop to solicit incomes and to report tax owed.The loop should terminate when the user enters a negative number or non-numeric input.
+For example, someone earning 38,000 tvarps would owe
+5,000 × 0.00 + 10,000 × 0.10 + 20,000 × 0.15 + 3,000 × 0.20, or 4,600 tvarps.
+Write a program that uses a loop to solicit incomes and to report tax owed.
+The loop should terminate when the user enters a negative number or non-numeric input.
 
 [6.](./exercises/exercise_ch6_6.cpp)
 
-Put together a program that keeps track of monetary contributions to the Society for the Preservation of Rightful Influence. It should ask the user to enter the number of contributors and then solicit the user to enter the name and contribution of each contributor.The information should be stored in a dynamically allocated array of structures. Each structure should have two members: a character array (or else a
-`string` object) to store the name and a `double` member to hold the amount of the contribution.After reading all the data, the program should display the names and amounts donated for all donors who contributed $10,000 or more.This list should be headed by the label Grand Patrons.After that, the program should list the remaining donors.That list should be headed Patrons. If there are no donors in one of the categories, the program should print the word “none.”Aside from displaying two categories, the program need do no sorting.
+Put together a program that keeps track of monetary contributions to the Society
+for the Preservation of Rightful Influence. It should ask the user to enter
+the number of contributors and then solicit the user to enter the name and
+contribution of each contributor.The information should be stored in a dynamically
+allocated array of structures. Each structure should have two members:
+a character array (or else a `string` object) to store the name and a `double`
+member to hold the amount of the contribution.After reading all the data,
+the program should display the names and amounts donated for all donors
+who contributed $10,000 or more.This list should be headed by the label
+Grand Patrons.After that, the program should list the remaining donors.
+That list should be headed Patrons. If there are no donors in one of the categories,
+the program should print the word “none.”Aside from displaying two categories,
+the program need do no sorting.
 
 [7.](./exercises/exercise_ch6_7.cpp)
-Write a program that reads input a word at a time until a lone q is entered. The program should then report the number of words that began with vowels, the number that began with consonants, and the number that fit neither of those categories. One approach is to use `isalpha()` to discriminate between words beginning with letters and those that don’t and then use an `if` or `switch` statement to further identify those passing the `isalpha()` test that begin with vowels.A sample run might look like this:
+Write a program that reads input a word at a time until a lone q is entered.
+The program should then report the number of words that began with vowels,
+the number that began with consonants, and the number that fit neither of
+those categories. One approach is to use `isalpha()` to discriminate between
+words beginning with letters and those that don’t and then use an `if` or `switch`
+statement to further identify those passing the `isalpha()` test that begin with
+vowels.A sample run might look like this:
 
-```
+```sh
 Enter words (q to quit):
 The 12 awesome oxen ambled
 quietly across 15 meters of lawn. q
@@ -4056,12 +4392,17 @@ quietly across 15 meters of lawn. q
 
 [8.](./exercises/exercise_ch6_8.cpp)
 
-Write a program that opens a text file, reads it character-by-character to the end of the file, and reports the number of characters in the file.
+Write a program that opens a text file, reads it character-by-character to the
+end of the file, and reports the number of characters in the file.
 
 [9.](./exercises/exercise_ch6_9.cpp)
-Do Programming Exercise 6 but modify it to get information from a file.The first item in the file should be the number of contributors, and the rest of the file should consist of pairs of lines, with the first line of each pair being a contributor’s name and the second line being a contribution.That is, the file should look like this:
+Do Programming Exercise 6 but modify it to get information from a file.The first
+item in the file should be the number of contributors, and the rest of the file
+should consist of pairs of lines, with the first line of each pair being a
+contributor’s name and the second line being a contribution.
+That is, the file should look like this:
 
-```
+```sh
 4
 Sam Stone
 2000
@@ -4073,7 +4414,7 @@ Rich Raptor
 55000
 ```
 
--------------
+---
 
 ```sh
 ././programs/
