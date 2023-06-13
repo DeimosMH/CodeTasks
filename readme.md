@@ -1,15 +1,32 @@
 # Daily Coding Habit Challenge
-<span style="color:green"> Start: 22.05.2023! \
-Break: \
-End: </span>
+
+----
+## Notes
+
+- [C++ Primer Plus](/Notes/C++PrimerPlus/C++PrimerPlus.md)
+- [Other - Good to know-how small projects](/Notes/_BaseNotes/notes_oth.md)
+<br>
+
+- [CodeWars](/Training/CodeWars/README.md)
+
+----
 
 ## Used editors/IDE's:
- - [MS Visual Studio Code](https://code.visualstudio.com/) 
-   - Markdown Preview Enhanced - good .md to ebook html converter
+ - [MS Visual Studio Code Insiders](https://code.visualstudio.com/) 
+   - Markdown:
+     - Markdown Preview Enhanced
+     - Excel to Markdown table
+     - Excel to Markdown table
+     - Markdown Checkboxes
+     - Markdown Paste
+     - Markdown PDF
+     - Markdown Table Prettifier
+     - Markdown+Math
+     - Path Autocomplete
+     - markdownlint
    - AWS Toolkit (CodeWhisperer)
-   - Markdown All in One
-   - Git Graph
    - Office Viewer(Markdown Editor)
+   - Git Graph
  - [MS Visual Studio](https://visualstudio.microsoft.com/) 
  - [VIM](https://www.vim.org/download.php) 
  - [Unity](https://unity.com/)
@@ -57,18 +74,18 @@ End: </span>
 
 ----
 
-## Automations
+## Automated installation and configuration
 
-Script `.helpers/install.bat`, will automatically download, install and configure:
+Script `_helpers/install.bat`, will automatically download, install and configure:
 
 C++ compiler for Windows/VS Code
-```
+
 - msys2
 - Mingw-w64 toolchain
-```
+
 
 Exaple of use:
-```
+```sh
 g++ ./01_myfirst.cpp && a.exe         
 Come up and C++ me some time.
 You wonΓÇÖt regret it!
