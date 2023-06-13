@@ -1,5 +1,9 @@
 /.Books
 
-.vscode/
+/.vscode
+
+/.trunk
+
+start.bat
 
 a.exe
