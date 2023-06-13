@@ -8,14 +8,17 @@ C++ joins three programming categories:
 
 - *C*   - Procedural language
 - *C++* - Object-oriented language, represented by: class enhancements
-- *C++* - Generic programming (eg. write function for a generic (unspecified) type once and use it for variety of actual types)
+- *C++* - Generic programming (eg. write function for a generic (unspecified) type
+once and use it for variety of actual types)
 
 **Object-Oriented Programming (OOP):**
 
-* *Class* - Defines what data is used to represent object and what operations can be performed on it; data form; [name, date, ...]
-* *Object* - data structure; [David, 19.01.2000, ...]
+- *Class* - Defines what data is used to represent object and what operations
+can be performed on it; data form; [name, date, ...]
+- *Object* - data structure; [David, 19.01.2000, ...]
 
-Bottom-up programming - going from lower level (eg. classes) to higher (eg. program design) OOP facilitates creating reusable code with:
+Bottom-up programming - going from lower level (eg. classes) to higher
+(eg. program design) OOP facilitates creating reusable code with:
 
 - *Information hiding* - safeguard from improper access
 - *Polymorphism* - allows creating multiple definitions for operators and functions
@@ -39,10 +42,10 @@ Bottom-up programming - going from lower level (eg. classes) to higher (eg. prog
 ## Chapter 2: Setting Out to C++
 
 <details><summary>
-List of what you will learn 
+List of what you will learn
 </summary>
 
-```
+```cpp
     1. Creation and format of C++ program </br>
     2. The #include directive </br>
     3. The main() function </br>
@@ -62,40 +65,19 @@ List of what you will learn
 
 ***Construction of C++ program:***
 C++ program is constructed from functions "C++ building blocks".
-Typical program is organized to major tasks with separated functions to handle those tasks. Below is simple function named `main()`:
+Typical program is organized to major tasks with separated functions to handle
+those tasks. Below is simple function named `main()`:
 
- > [myfirst.cpp](.refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp) 
+ > [myfirst.cpp](./programs/myfirst.cpp)
 
 <details style="margin-left: 135px; text-align: left; position: relative; top: -41px;">
-  <summary></summary>
-  <figure>
-    <object data=".refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp" 
-            type="text/plain"
-            width="100%"
-            height="250px">
-      Error: Embedded data could not be displayed.
-    </object>
-  </figure>
-</details>
-
-<!-- 
-<details style="margin-left: 110px; text-align: left; position: relative; top: -32px;">
-    <summary></summary>
-    <figure class="video_container">
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus/myfirst.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
-            height="300px"
-            width="100%">
-        </iframe>
-    </figure>
-</details> -->
-
+<summary></summary><figure><object
+    data="./programs/myfirst.cpp"
+    type="text/plain" width="100%" height="250px">
+</object></figure></details>
 
 ```cpp
 // myfirst.cpp -- displays a message
-
 #include <iostream>                          // a PREPROCESSOR directive
 int main()                                   // function header
 {                                            // start of function body
@@ -117,15 +99,23 @@ int main()
 }
 ```
 
-It have two parts: function header `int main()` and function body enclosed in brackets. `<br>`
+It have two parts: function header `int main()` and function body enclosed in brackets.
 
-C++ uses `preprocerssor` - Program, that process a source file before the main compilation takes place; directives whose names begins with `#`. Program above uses `#include` directive (thus they are named include files - they are included in other files/included at the beggining) of `iostream` file that is responsible with communication with external world (input/output).
+C++ uses `preprocerssor` - Program, that process a source file before the main
+compilation takes place; directives whose names begins with `#`. Program above
+uses `#include` directive (thus they are named include files - they are included
+in other files/included at the beggining) of `iostream` file that is responsible
+with communication with external world (input/output).
 
 - `using namespace std` - use all namespace directives from std library `std::`
 - `using std::cout` - use only one `std::` qualifier
 - `cout` - predefined object that knows how to display variety of things
-- ***Operator Overloading*** - the same operator with different meanings, eg.: "`<<`" is insertion operator and bitwise left-shift operator. The meaning is defined by context.
-- `endl` - Moves screen coursor to the new line; equvalent to newline character "`\n`" from C, but `endl` guarantees that output will be `flushed`. Special notations (to `cout`) like this are called `manipulators`
+- ***Operator Overloading*** - the same operator with different meanings,
+eg.: "`<<`" is insertion operator and bitwise left-shift operator.
+The meaning is defined by context.
+- `endl` - Moves screen coursor to the new line; equvalent to newline
+character "`\n`" from C, but `endl` guarantees that output will be `flushed`.
+Special notations (to `cout`) like this are called `manipulators`
 - ***tokens*** - indivisible elements in a line of code, eg.: `int`
 
 ---
@@ -158,21 +148,26 @@ x = x - 1 // - arithmetic expression
 ---
 
 *class* - data type that user defines
-*to define class* - describe what **information** it can represent and what **action** you can perform on data or in other words
+*to define class* - describe what **information** it can represent and what **action**
+ you can perform on data or in other words
 
-```
-x = sqrt(6.25)        -->    function call                 -->    |code for sqrt|   
+```cpp
+x = sqrt(6.25)        -->    function call                 -->    |code for sqrt|
                                                                         ▼
 |assign return to x|  <--    return to calling function    <--    | sqrt return |
 ```
 
 Argument `6.25` is ***passed*** to a function sqrt
 
-***[function prototype](.refs_notes\notes_C++_C++PrimerPlus\function_prototype.cpp)*** - is for function as variable declaration for variables; decribe the function interface and needs to be before function definition; if you use it you will need to provide prototype in source code or with #include
+***[function prototype](\programs\function_prototype.cpp)*** - is for function as variable declaration for variables
+decribe the function interface and needs to be before function definition;
+ if you use it you will need to provide prototype in source code or with #include
 
 ***function definition*** - code for function workings
 
-***keyword*** - vocabulary of a computer language: *int, void, return, double, etc..* - the list of them is in appendix "C++ Reserved Words"; functions and object names are not keywords
+***keyword*** - vocabulary of a computer language: *int, void, return, double,
+etc..* - the list of them is in appendix "C++ Reserved Words"; functions and
+object names are not keywords
 
 ```cpp
 //function prototype; initial double is type of returned value from sqrt; 
@@ -180,11 +175,12 @@ Argument `6.25` is ***passed*** to a function sqrt
 double sqrt(double);  
 ```
 
-***exit values*** - (tested) return values of executed program. default convention: 0 - program ran successfully; >0 - error/problem
+***exit values*** - (tested) return values of executed program. default convention:
+0 - program ran successfully; >0 - error/problem
 
 - Declaration statement — A declaration statement announces the name and the
   type of a variable used in a function.
-- Assignment statement — An assignment statement uses the assignment operator ( = )
+- Assignment statement — An assignment statement uses the assignment operator (=)
   to assign a value to a variable.
 - Message statement — A message statement sends a message to an object, initiating
   some sort of action.
@@ -200,123 +196,84 @@ double sqrt(double);
 
 ### Chapter Review
 
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>      <!-- -------------------------------------------- -->
 1. What are the modules of C++ programs called?
-    </summary>
-
-```
-They are called functions.
-```
-
-</details>
-
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-2. What does the following preprocessor directive do?
-
-``#include <iostream>``
-
 </summary>
 
-```
-It causes the contents of the iostream file to be substituted for this directive before
-final compilation.
-```
+```They are called functions.```
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-</details>
+<details><summary>      <!-- -------------------------------------------- -->
+2. What does the following preprocessor directive do?
 
-<!-- -------------------------------------------- -->
+```#include <iostream>```
+</summary>
+It causes the contents of the iostream file to be substituted for this
+directive before final compilation.
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>      <!-- -------------------------------------------- -->
 3. What does the following statement do?
 
 ``using namespace std;``
-    </summary>
-
-```
+</summary>
 It makes definitions made in the std namespace available to a program.
-```
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-</details>
-
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-4. What statement would you use to print the phrase “Hello, world” and then start a
-new line?
-    </summary>
+<details><summary>      <!-- -------------------------------------------- -->
+4. What statement would you use to print the phrase “Hello, world” and then
+start a new line?
+</summary>
 
 ``cout << "Hello, world\n";``
 or
 ``cout << "Hello, world" << endl;``
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-</details>
-
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>      <!-- -------------------------------------------- -->
 5. What statement would you use to create an integer variable with the name
 cheeses ?
-    </summary>
+</summary>
 
-```
+```cpp
 int cheeses;
 ```
 
-</details>
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>      <!-- -------------------------------------------- -->
 6. What statement would you use to assign the value 32 to the variable cheeses ?
     </summary>
 
-```
+```cpp
 cheeses = 32;
 ```
 
-</details>
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-7. What statement would you use to read a value from keyboard input into the vari-
-able cheeses ?
+<details><summary>      <!-- -------------------------------------------- -->
+7. What statement would you use to read a value from keyboard input into the<br>
+&emsp;variable cheeses ?
     </summary>
 
-```
+```cpp
 cin >> cheeses;
 ```
 
-</details>
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-8. What statement would you use to print “We have X varieties of cheese,” where the
-current value of the cheeses variable replaces X ?
+<details><summary>      <!-- -------------------------------------------- -->
+8. What statement would you use to print “We have X varieties of cheese,”<br>
+&emsp;where the current value of the cheeses variable replaces X ?
     </summary>
 
-``cout << "We have " << cheeses << " varieties of cheese\n";``
+```cpp
+cout << "We have " << cheeses << " varieties of cheese\n";
+```
 
-</details>
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-
-<summary style="margin-left: -35px;"> 
+<details><summary>      <!-- -------------------------------------------- -->
 9. What do the following function prototypes tell you about the functions?
 
 ``int prune(void);``<br>
@@ -325,33 +282,26 @@ current value of the cheeses variable replaces X ?
 
 </summary>
 
-The function froop() expects to be called with one argument, which will be type double , and that the function will return a type int value. For instance, it could be used as follows: ``int gval = froop(3.14159);``
+The function froop() expects to be called with one argument, which will be type
+double, and that the function will return a type int value. For instance, it
+could be used as follows: ``int gval = froop(3.14159);``
 
-The function rattle() has no return value and expects an int argument. For instance, it could be used as follows: ``rattle(37);``
+The function rattle() has no return value and expects an int argument.
+For instance, it could be used as follows: ``rattle(37);``
 
-The function prune() returns an int and expects to be used without an argument. For instance, it could be used as follows: ``int residue = prune();``
+The function prune() returns an int and expects to be used without an argument.
+For instance, it could be used as follows: ``int residue = prune();``
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-</details>
-
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>      <!-- -------------------------------------------- -->
 10.  When do you not have to use the keyword return when you define a function?
-    </summary>
+</summary>
 
-```
 You don’t have to use return in a function when the function has the return type
-void . However, you can use it if you don’t give a return value:
-return;
-```
+`void`. However, you can use it if you don’t give a return value: ``return;``
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
-</details>
-
-<!-- -------------------------------------------- -->
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>      <!-- -------------------------------------------- -->
 11. Suppose your main() function has the following line:
 
 ``cout << “Please enter your PIN: “;``
@@ -359,62 +309,87 @@ And suppose the compiler complains that cout is an unknown identifier.
 What is the likely cause of this complaint, and what are three ways to fix the problem?
     </summary>
 ***Lack of caller for std library.***
-Use directive: ``using namespace std;`` or ``using std::cout`` for only `cout` or call library with `std::cout` instead of `cout`
-
-</details>
+Use directive: ``using namespace std;`` or ``using std::cout`` for only
+`cout` or call library with `std::cout` instead of `cout`
+</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 
 ---
 
 ### Exercises
 
-[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch2_1.cpp) Write a C++ program that displays your name and address (or if you value yourprivacy,a fictitious name and address).
+[1.](./exercises/exercise_ch2_1.cpp)
+Write a C++ program that displays your name and address (or if you value your
+privacy,a fictitious name and address).
 
-[2.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch2_2.cpp) Write a C++ program that asks for a distance in furlongs and converts it to yards.(One furlong is 220 yards.)
+[2.](./exercises/exercise_ch2_2.cpp)
+Write a C++ program that asks for a distance in furlongs and converts it to yards.
+(One furlong is 220 yards.)
 
-[3.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch2_3.cpp) Write a C++ program that uses three user-defined functions (counting `main()` as one) and produces the following output:
+[3.](./exercises/exercise_ch2_3.cpp)
+Write a C++ program that uses three user-defined functions
+(counting `main()` as one) and produces the following output:
 
-```
+```sh
 Three blind mice
 Three blind mice
 See how they run
 See how they run
 ```
 
-One function,called two times,should produce the first two lines, and the remain-ing function, also called twice, should produce the remaining output.
+One function,called two times,should produce the first two lines, and the remain-
+ing function, also called twice, should produce the remaining output.
 
-[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch2_4.cpp) Write a program that asks the user to enter his or her age. The program then should display the age in months:
+[4.](./exercises/exercise_ch2_4.cpp)
+Write a program that asks the user to enter his or her age.
+The program then should display the age in months:
 
-```
+```sh
 Enter your age: 29
 Your age in months is 384.
 ```
 
-[5.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch2_5.cpp) Write a program that has `main()` call a user-defined function that takes a Celsius temperature value as an argument and then returns the equivalent Fahrenheit value.The program should request the Celsius value as input from the user and displaythe result,as shown in the following code:
+[5.](./exercises/exercise_ch2_5.cpp)
+Write a program that has `main()` call a user-defined function that takes a
+Celsius temperature value as an argument and then returns the equivalent
+Fahrenheit value.The program should request the Celsius value as input from
+the user and displaythe result, as shown in the following code:
 
-```
+```sh
 Please enter a Celsius value: 20
 20 degrees Celsius is 68 degrees Fahrenheit.
 ```
 
-For reference,here is the formula for making the conversion: `Fahrenheit = 1.8 × degrees Celsius + 32.0`
+For reference,here is the formula for making the conversion:
+`Fahrenheit = 1.8 × degrees Celsius + 32.0`
 
-[6.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch2_6.cpp)  Write a program that has `main()` call a user-defined function that takes a distance in light years as an argument and then returns the distance in astronomical units.The program should request the light year value as input from the user and display the result,as shown in the following code:
+[6.](./exercises/exercise_ch2_6.cpp)
+Write a program that has `main()` call a user-defined function that takes
+a distance in light years as an argument and then returns the distance
+in astronomical units.The program should request the light year value as
+input from the user and display the result,as shown in the following code:
 
-```
+```sh
 Enter the number of light years: 4.2
 4.2 light years = 265608 astronomical units.
 ```
 
-An astronomical unit is the average distance from the earth to the sun (about 150,000,000 km or 93,000,000 miles), and a light year is the distance light travels in a year (about 10 trillion kilometers or 6 trillion miles).
-(The nearest star after thesun is about 4.2 light years away.) Use type double (as in Listing 2.4 (page 51)) and this conversion factor:
+An astronomical unit is the average distance from the earth to the sun
+(about 150,000,000 km or 93,000,000 miles), and a light year is the distance
+light travels in a year (about 10 trillion kilometers or 6 trillion miles).
+(The nearest star after thesun is about 4.2 light years away.) Use type double
+(as in Listing 2.4 (page 51)) and this conversion factor:
 
-```
+```sh
 1 light year = 63,240 astronomical units
 ```
 
-[7.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch2_7.cpp) Write a program that asks the user to enter an hour value and a minute value. The `main()` function should then pass these two values to a type `void` function that displays the two values in the format shown in the following sample run:
+[7.](./exercises/exercise_ch2_7.cpp)
+Write a program that asks the user to enter an hour value and a minute value.
+The `main()` function should then pass these two values to a type `void`
+function that displays the two values in the format shown in the following
+sample run:
 
-```
+```sh
 Enter the number of hours: 9
 Enter the number of minutes: 28
 Time: 9:28
@@ -422,12 +397,11 @@ Time: 9:28
 
 ## Chapter 3: Dealing with Data
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;">
-        List of what you will learn
-    </summary>
+<details><summary>
+List of what you will learn
+</summary>
 
-```
+```sh
 - Rules for naming C++ variables
 - C++’s built-in integer types: unsigned long, long, unsigned int, int, unsigned
 short, short, char, unsigned char, signed char, bool
@@ -443,62 +417,71 @@ short, short, char, unsigned char, signed char, bool
 - Forced type conversions (type casts)
 ```
 
-</details> <br>
-
+</details><br>
 
 **Build-in C++ data types**:
- - fundamental types - integers and floating point numbers 
- - compound types - arrays, strings, pointers and structures, explained in Chapter 4
 
+- fundamental types - integers and floating point numbers
+- compound types - arrays, strings, pointers and structures, explained in Chapter 4
 
 **To store item of information on a computer you need to track**:
+
 - Where the information is stored
 - What value is kept there
 - What kind of information is stored
 
 **C++ naming rules**:
-- Only characters you can use in names are: alphabetic characters, numeric digits and underscore character
+
+- Only characters you can use in names are: alphabetic characters,
+numeric digits and underscore character
 - The first character in a name cannot be a nu,eric digit
 - Uppercase characters are considered distinct from lowercase characters
 - You can't use C++ keyword for a name
-- Names beginning with two underscore characters or with an underscore character followed by an uppercase letter are reseved for use by implementation (the compiler and the resources it uses).
-- Names beggining with single underscore character are reserved for use as global identifiers bt the implementation
-- C++ places no limits on the length of a name, and all characters in a name are significant (but some platforms can have their own length limits).
+- Names beginning with two underscore characters or with an underscore character
+followed by an uppercase letter are reseved for use by implementatio
+(the compiler and the resources it uses).
+- Names beggining with single underscore character are reserved for use a
+global identifiers bt the implementation
+- C++ places no limits on the length of a name, and all characters in a name are
+significant (but some platforms can have their own length limits).
 
-Data 
+Data
+
 - *width* - term for the amount of memory used to hold variable
-- *operator* - build in language element that operates on one or more items to produce a value (addition operator `+` adds two values)
-    - *sizeof* - return size in bytes of a tupe or variable
-    - *climits* - header file - contain information about integer type limits, check [limits.cpp](.refs_notes\notes_C++_C++PrimerPlus\limits.cpp) 
+- *operator* - build in language element that operates on one or more items to 
+produce a value (addition operator `+` adds two values)
+  - *sizeof* - return size in bytes of a tupe or variable
+  - *climits* - header file - contain information about integer type limits,
+  check [limits.cpp](\programs\limits.cpp)
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes\notes_C++_C++PrimerPlus\limits.cpp"> limits.cpp </a>
+<details><summary>
+     <a href="\programs\limits.cpp"> limits.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes\notes_C++_C++PrimerPlus\limits.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="\programs\limits.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details>
 
-
 ### Initialization
+
 Combines assignment with declaration, for example:
+
 ```cpp
 int i_sth = INT_MAX; 
 int owls = 101; // traditional C initialization, sets owls to 101
 int wrens(432); // alternative C++ syntax, set wrens to 432
-``` 
+```
 
 Not initialized variables are **indeterminate** - value is what was previously in memory, assigned to the newly declared variable;
 
 **C++11 initialization:**
+
 - using a braced initializer `{}`
 - braces can be left empty, in which case the variable is initialized to 0
 - it can be used with or without the = sign
@@ -517,26 +500,25 @@ Exceeding max value (range of data type) will make value assign the lowest value
 
 Amount of allocated memory for `int` (and thus max range/value) can differ from devices and compilers, but is *natural* (computer handles it most efficiently); `long` type is more reliable (32bit), but worse in other aspects.
 
+### Literals
 
-### Literals 
 Constant values that are assigned to the constant variables.
 
-#### Integer literals 
+#### Integer literals
 
-- *042* - octal value - base 8 
+- *042* - octal value - base 8
 - *42* - decimal value, base 10  
 - *0x42* - hexadecimal value - base 16
 
 Example in hexoctl.cpp
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes\notes_C++_C++PrimerPlus\hexoct1.cpp"> hexoct1.cpp </a>
+<details><summary>
+     <a href="\programs\hexoct1.cpp"> hexoct1.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes\notes_C++_C++PrimerPlus\hexoct1.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="\programs\hexoct1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -546,15 +528,14 @@ Example in hexoctl.cpp
 You can `cout` manipulators `dec`, `oct`, `hex` for changing numer base.
 Example in hexoct2.cpp
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes\notes_C++_C++PrimerPlus\hexoct2.cpp"> hexoct2.cpp </a>
+<details><summary>
+     <a href="\programs\hexoct2.cpp"> hexoct2.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes\notes_C++_C++PrimerPlus\hexoct2.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="\programs\hexoct2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -562,13 +543,14 @@ Example in hexoct2.cpp
 </details> <br>
 
 #### Character literals
+
 **Suffix** for constant:
 
 `l`, `L` - 32bit long constant
 `u`, `U` - unsigned int constant
-`ul` (any combination of letters) - unsigned long constant 
-`ll`, `LL` - C++11 long long constant 
-`ULL` - C++11 unsigned long long constant 
+`ul` (any combination of letters) - unsigned long constant
+`ll`, `LL` - C++11 long long constant
+`ULL` - C++11 unsigned long long constant
 
 | data  | Stored as  |
 |---|---|
@@ -581,9 +563,8 @@ Using single quotation marks, eg. `'A'` for character display is better, because
 
 Escape codes represent characters, that you cannot input from keyboard notrmally:
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	Table of escape codes
+<details><summary>
+     Table of escape codes
     </summary>
 
 |Character Name| ASCII Symbol | C++ Code | ASCII Decimal Code | ASCII Hex Code |
@@ -598,19 +579,16 @@ Escape codes represent characters, that you cannot input from keyboard notrmally
 | Question mark | ? | \\?  | 63 | 0x3F |
 | Single quote | ’ | \\' | 39 | 0x27 |
 | Double quote | ” | \\" | 34 | 0x22 |
-</details> 
+</details>
 
-
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes\notes_C++_C++PrimerPlus\bondini.cpp"> Example of use: bondini.cpp </a>
+<details><summary>
+     <a href="\programs\bondini.cpp"> Example of use: bondini.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes\notes_C++_C++PrimerPlus\bondini.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="\programs\bondini.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -622,10 +600,12 @@ Escape codes represent characters, that you cannot input from keyboard notrmally
 `wchar_t` - wide character set - for characters that don't fit within 8-bit bute (eg.: Japanese kanji system). It is 16-bit or larger. `wchar_t` can vary from one implementation to another.
 
 #### C++11 types
- - `char16_t` - unsigned 16-bits, use `u` prefix for `char16_t`, eg.: `u"good"` or `u'R'`
- - `char32_t` - unsigned 32-bits, use `U` prefix for `char32_t` 
+
+- `char16_t` - unsigned 16-bits, use `u` prefix for `char16_t`, eg.: `u"good"` or `u'R'`
+- `char32_t` - unsigned 32-bits, use `U` prefix for `char32_t`
 
 ### Member function (OOP)
+
 Eg. `cout.put()`, belongs to a class and describes a method for manipulating class data. `put()` is a class member function. `.` is **membersip operator**.
 You can use member function only with particular object in that class (in this case `ostream`), such as `cout` class object in this case.
 
@@ -634,6 +614,7 @@ In short: class - `ostream`, class object - `cout`, function name (member functi
 `cout.put()` is alternative for using `<<` operator to display character.
 
 ### *bool* type
+
 C++ interprets nonzero values as *true* and zeros values as *false*
 You can use `bool` type to reprsent those values:
 
@@ -655,30 +636,29 @@ bool is_tru = -500;     // any non-zero will be converted to true
 - if value is not provided during declaration, it will be unspecified, that you cannot modify  
 - you can use *scoping rules* (chapter 9) to limit it to particular function or files (advantage over *#define*, second advantage is you can use const with elaborate types, such as *arrays* or *structures*)
 
-Example of use: 
+Example of use:
 `const int Months = 12;`
 
 ### Floating-Point Numbers
 
 There is two ways of writing floating-point numbers:
-- standard, decimal-point notation, eg.: `12.34`
-- representing floating-point values is called E notation, eg.: `-3.45E6` *= -3.4 * 10^6* (where `6` - exponent, `3.45` - mantissa).
 
+- standard, decimal-point notation, eg.: `12.34`
+- representing floating-point values is called E notation, eg.: `-3.45E6` *= -3.4* 10^6* (where `6` - exponent, `3.45` - mantissa).
 
 **Floating-Point Types:**
 All three can be the same size. Typically, float is 32 bits, double is 64 bits, and long double is 80, 96, or 128 bits, and range in exponents for all three types is at least *–37 to +37*. You can look in the `cfloat` or `float.h` header files to find the limits for your system.
 
 The program *floatnum.cpp* display limiitations of floating-point numbers precision and previews an *ostream* method called `setf()` from Chapter 17. This call forces output to stay in ***fixed-point notation*** so that you can better see the precision.
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes\notes_C++_C++PrimerPlus\floatnum.cpp"> floatnum.cpp </a>
+<details><summary>
+     <a href="\programs\floatnum.cpp"> floatnum.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes\notes_C++_C++PrimerPlus\floatnum.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="\programs\floatnum.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -699,23 +679,24 @@ Use suffixes for declaration
 
 **Plus and Cons of Floating-Point values**
 `-` operations usually are *slightly slower* than integer operations
-`-` you can *lose precision* and values: example [fltadd.cpp](.refs_notes\notes_C++_C++PrimerPlus\fltadd.cpp)
+`-` you can *lose precision* and values: example [fltadd.cpp](\programs\fltadd.cpp)
 `+` represent *values betwewen integers*
 `+` can represent a much *greater range of values*, because of the scaling factor
 
 **C++ Arithmetic Operators**
+
 - *operators*: `+`, `-`, `*`, `%`, `/`, `*`
-- *operands* - two values used for calculation via *operators* 
+- *operands* - two values used for calculation via *operators*
 - *expression* - combined operator with operands
   
-`%` - modulo works only with integers and produces remainder of dividing first value by second. `19 % 6` is `1`, because 6 goes into 19 three times, with a remainder of 1. Practical example: [modulus.cpp](.refs_notes\notes_C++_C++PrimerPlus\modulus.cpp)
+`%` - modulo works only with integers and produces remainder of dividing first value by second. `19 % 6` is `1`, because 6 goes into 19 three times, with a remainder of 1. Practical example: [modulus.cpp](\programs\modulus.cpp)
 
-`precedence rules` - When more than one operator can be applied to the same operand, C++ uses` precedence rules` to decide which operator is used first.
+`precedence rules` - When more than one operator can be applied to the same operand, C++ uses`precedence rules` to decide which operator is used first.
 
 `int flyingpigs = 3 + 4 * 5; // 35 or 23?`
-The arithmetic operators follow the usual algebraic precedence, with multiplication, division, and the taking of the modulus done before addition and subtraction. 
+The arithmetic operators follow the usual algebraic precedence, with multiplication, division, and the taking of the modulus done before addition and subtraction.
 
-Appendix D,“Operator Precedence,” - The `/` and `*` operators have the same precedence. 
+Appendix D,“Operator Precedence,” - The `/` and `*` operators have the same precedence.
 `float logs = 120 / 4 * 5; // 150 or 6?`
 
 When two operators have the same precedence, C++ looks at whether the operators have a `left-to-right associativity` or a `right-to-left associativity`.
@@ -726,6 +707,7 @@ Appendix D shows that multiplication and division associate left-to-right.
 - truncation - discarding fractional part in `int`, when converting from floating-point to int value (eg.: `int g(1.123)`)
 
 C++11 - doesn't permit *narrowing* - variable may not be able to represent the assigned value:
+
 ```cpp
 const int code = 66;
 int x = 66;
@@ -737,23 +719,27 @@ x = 31325;
 char c5 = x; // allowed by this form of initialization
 ```
 
- - integral promotion - automatic conversion evaluates expressions, C++
-converts `bool`, `char`, `unsigned char`, `signed char`, and `short` values to `int`, eg.: 
+- integral promotion - automatic conversion evaluates expressions, C++
+converts `bool`, `char`, `unsigned char`, `signed char`, and `short` values to `int`, eg.:
+
 ```cpp
 short chickens = 20; // line 1
 short ducks = 35; // line 2
 short fowl = chickens + ducks; // line 3
 ```
-For `fowl`, `chickens` and `ducks` got converted (promoted) to `int` for calculation and then result got converted back to `short`. This is because `int` is the computer most *natural type* 
+
+For `fowl`, `chickens` and `ducks` got converted (promoted) to `int` for calculation and then result got converted back to `short`. This is because `int` is the computer most *natural type*
 
 **Type cast conversion**
 Is explicit form of conversion
+
 ```cpp
 (long) thorn // returns a type long conversion of thorn
 long (thorn) // returns a type long conversion of thorn
 ```
 
-The type cast doesn’t alter the thorn variable itself; instead, it creates a new value of the indicated type, which you can then use in an expression, as in the following: 
+The type cast doesn’t alter the thorn variable itself; instead, it creates a new value of the indicated type, which you can then use in an expression, as in the following:
+
 ```cpp
 cout << int('Q'); // displays the integer code for 'Q'
 ```
@@ -761,19 +747,19 @@ cout << int('Q'); // displays the integer code for 'Q'
 **Static type cast conversion**
 
 In c++ of the four, the static_cast<> operator, can be used for converting values from one numeric type to another. For example, using it to convert thorn to a type long value looks like this:
+
 ```cpp
 static_cast<long> (thorn)
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes\notes_C++_C++PrimerPlus\typecast.cpp"> typecast.cpp </a>
+<details><summary>
+     <a href="\programs\typecast.cpp"> typecast.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes\notes_C++_C++PrimerPlus\typecast.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="\programs\typecast.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -783,20 +769,24 @@ static_cast<long> (thorn)
 **`auto` in C++11**
 
 Just use `auto` instead of the type name in an initializing declaration, and the compiler assigns the variable the same type as that of the initializer:
+
 ```cpp
 auto n = 100; // n is int
 auto x = 1.5; // x is double
 auto y = 1.3e12L; // y is long double
 ```
 
-Automatic type deduction becomes much more useful when dealing with complicated types, such as those in the **STL (Standard Template Library)**. For example: 
+Automatic type deduction becomes much more useful when dealing with complicated types, such as those in the **STL (Standard Template Library)**. For example:
 
 C++98 code:
+
 ```cpp
 std::vector<double> scores;
 std::vector<double>::iterator pv = scores.begin();
 ```
+
 C++11 code:
+
 ```cpp
 std::vector<double> scores;
 auto pv = scores.begin();
@@ -806,19 +796,15 @@ auto pv = scores.begin();
 
 <!-- -------------------------------------------- -->
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 1. Why does C++ have more than one integer type?
     </summary>
-
 
 Having more than one integer type lets you choose the type that is best suited to a particular need. For example, you could use `short` to conserve space or `long` to guarantee storage capacity or to find that a particular type speeds up a particular calculation.
 
 </details>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 2. Declare variables matching the following descriptions:<br>
 &nbsp&nbsp&nbsp&nbsp&nbsp a. A short integer with the value 80<br>
 &nbsp&nbsp&nbsp&nbsp&nbsp b. An unsigned int integer with the value 42,110<br>
@@ -837,10 +823,10 @@ short rbis = {80}; // = is optional
 unsigned int q {42110}; // could use = {42110}
 long long ants {3000000000};
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 3. What safeguards does C++ provide to keep you from exceeding the limits of an
 integer type?
     </summary>
@@ -849,36 +835,34 @@ C++ provides no automatic safeguards to keep you from exceeding integer limits;
 you can use the climits header file to determine what the limits are.
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 4. What is the distinction between 33L and 33?
     </summary>
 
 The constant 33L is type long, whereas the constant 33 is type int.
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 5. Consider the two C++ statements that follow:
 
 ```cpp
 char grade = 65;
 char grade = 'A';
 ```
+
 Are they equivalent?
     </summary>
 
 The two statements are not really equivalent, although they have the same effect on some systems. Most importantly, the first statement assigns the letter `A` to grade only on a system using the `ASCII` code, while the second statement also works for other codes. Second, `65` is a type int constant, whereas `'A'` is a type char constant.
 </details>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 6. How could you use C++ to find out which character the code 88 represents?
 Come up with at least two ways.
     </summary>
 
 Here are four ways:
+
 ```cpp
 char c = 88;
 cout << c << endl; // char type prints as character
@@ -886,20 +870,17 @@ cout.put(char(88)); // put() prints char as character
 cout << char(88) << endl; // new-style type cast value to char
 cout << (char)88 << endl; // old-style type cast value to char
 ```
+
 </details>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 7. Assigning a `long` value to a `float` can result in a rounding error. What about assigning `long` to `double`? `long long` to `double`?
     </summary>
 
 The answer depends on how large the two types are. If `long` is 4 bytes, there is no loss. That’s because the largest `long` value would be about 2 billion, which is 10 digits. Because `double` provides at least 13 significant figures, no rounding would be needed. The `long long` type, on the other hand, can reach 19 digits, which exceeds the 13 significant figures guaranteed for `double`.
 </details>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 8. Evaluate the following expressions as C++ would:
 
 ```cpp
@@ -919,29 +900,31 @@ c. 3 / 4 * 6 is 0 * 6 is 0
 d. 6.0 * 3 / 4 is 18.0 / 4 is 4.5
 e. 15 % 4 is 3
 ```
+
 </details>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 9.  Suppose `x1` and `x2` are two type `double` variables that you want to add as `integers` and assign to an `integer` variable. Construct a C++ statement for doing so. What if you want to add them as type `double` and then convert to `int`?
 
 </summary>
 
 Either of the following would work for the first task:
+
 ```cpp
 int pos = (int) x1 + (int) x2;
 int pos = int(x1) + int(x2);
 ```
+
 To add them as type double and then convert, you could do either of the following:
+
 ```cpp
 int pos = (int) (x1 + x2);
 int pos = int(x1 + x2);
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 10.  What is the variable type for each of the following declarations?
 
 ```cpp
@@ -961,14 +944,16 @@ c. char
 d. char32_t
 e. double
 ```
+
 </details>
 
 ### Programming Exercises
-[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_1.cpp) Write a short program that asks for your height in integer inches and then converts your height to feet and inches. Have the program use the underscore character to indicate where to type the response. Also use a const symbolic constant to represent the conversion factor.
 
-[2.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_2.cpp)  Write a short program that asks for your height in feet and inches and your weight in pounds. (Use three variables to store the information.) Have the program report your body mass index (BMI).To calculate the BMI, first convert your height in feet and inches to your height in inches (1 foot = 12 inches). Then convert your height in inches to your height in meters by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms by the square of your height in meters. Use symbolic constants to represent the various conversion factors.
+[1.](./exercises/exercise_ch3_1.cpp) Write a short program that asks for your height in integer inches and then converts your height to feet and inches. Have the program use the underscore character to indicate where to type the response. Also use a const symbolic constant to represent the conversion factor.
 
-[3.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_3.cpp) Write a program that asks the user to enter a latitude in degrees, minutes, and seconds and that then displays the latitude in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc to a degree; represent these values with symbolic constants.You should use a separate variable for each input value. A sample run should look like this:
+[2.](./exercises/exercise_ch3_2.cpp)  Write a short program that asks for your height in feet and inches and your weight in pounds. (Use three variables to store the information.) Have the program report your body mass index (BMI).To calculate the BMI, first convert your height in feet and inches to your height in inches (1 foot = 12 inches). Then convert your height in inches to your height in meters by multiplying by 0.0254.Then convert your weight in pounds into your mass in kilograms by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms by the square of your height in meters. Use symbolic constants to represent the various conversion factors.
+
+[3.](./exercises/exercise_ch3_3.cpp) Write a program that asks the user to enter a latitude in degrees, minutes, and seconds and that then displays the latitude in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc to a degree; represent these values with symbolic constants.You should use a separate variable for each input value. A sample run should look like this:
 
 ```cpp
 Enter a latitude in degrees, minutes, and seconds:
@@ -978,30 +963,31 @@ Finally, enter the seconds of arc: 19
 37 degrees, 51 minutes, 19 seconds = 37.8553 degrees
 ```
 
-[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_4.cpp) Write a program that asks the user to enter the number of seconds as an integer value (use type long, or, if available, long long) and that then displays the equivalent time in days, hours, minutes, and seconds. Use symbolic constants to represent the number of hours in the day, the number of minutes in an hour, and the number of seconds in a minute.The output should look like this:
+[4.](./exercises/exercise_ch3_4.cpp) Write a program that asks the user to enter the number of seconds as an integer value (use type long, or, if available, long long) and that then displays the equivalent time in days, hours, minutes, and seconds. Use symbolic constants to represent the number of hours in the day, the number of minutes in an hour, and the number of seconds in a minute.The output should look like this:
+
 ```cpp
 Enter the number of seconds: 31600000 
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
 ```
 
-[5.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_5.cpp) Write a program that requests the user to enter the current world population and the current population of the U.S. (or of some other nation of your choice). Store the information in variables of type long long. Have the program display the percent that the U.S. (or other nation’s) population is of the world’s population.The output should look something like this:
+[5.](./exercises/exercise_ch3_5.cpp) Write a program that requests the user to enter the current world population and the current population of the U.S. (or of some other nation of your choice). Store the information in variables of type long long. Have the program display the percent that the U.S. (or other nation’s) population is of the world’s population.The output should look something like this:
+
 ```cpp
 Enter the world's population: 6898758899
 Enter the population of the US: 310783781
 The population of the US is 4.50492% of the world population.
 ```
+
 You can use the Internet to get more recent figures.
 
-[6.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_6.cpp) Write a program that asks how many miles you have driven and how many gallons of gasoline you have used and then reports the miles per gallon your car has gotten. Or, if you prefer, the program can request distance in kilometers and petrol in liters and then report the result European style, in liters per 100 kilometers.
+[6.](./exercises/exercise_ch3_6.cpp) Write a program that asks how many miles you have driven and how many gallons of gasoline you have used and then reports the miles per gallon your car has gotten. Or, if you prefer, the program can request distance in kilometers and petrol in liters and then report the result European style, in liters per 100 kilometers.
 
-[7.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch3_7.cpp) Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S. style of miles per gallon. Note that in addition to using different units of measurement, the U.S. approach (distance / fuel) is the inverse of the European approach (fuel / distance).
+[7.](./exercises/exercise_ch3_7.cpp) Write a program that asks you to enter an automobile gasoline consumption figure in the European style (liters per 100 kilometers) and converts to the U.S. style of miles per gallon. Note that in addition to using different units of measurement, the U.S. approach (distance / fuel) is the inverse of the European approach (fuel / distance).
 Note that 100 kilometers is 62.14 miles, and 1 gallon is 3.875 liters.Thus, 19 mpg is about 12.4 l/100 km, and 27 mpg is about 8.7 l/100 km.
-
 
 ## Chapter 4: Compound Types
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;">
+<details><summary>
         List of what you will learn
     </summary>
 
@@ -1021,9 +1007,11 @@ Creating dynamic structures
 Automatic, static, and dynamic storage
 The vector and array classes (an introduction)
 ```
+
 </details>
 
 ### Arrays
+
 Data form that can hold many values of one type. Declaration should indicate three things:
 
 - The type of value to be stored in each element
@@ -1040,26 +1028,25 @@ An array is called a `compound` type because it is built from some other type. (
 
 You can access array elements individually.The way to do this is to use a `subscript`, or an `index`, to number the elements. C++ array numbering starts with zero. **The `index` of the last element is one less than the size of the `array`**
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Array.png" alt="Image description" style="display: block; margin: auto; width: 35%; height: auto; border-radius: 8px;">
+<img src="/assets/_ch4Array.png" alt="Image description" style="display: block; margin: auto; width: 35%; height: auto; border-radius: 8px;">
 
 *Declaring* an `array`, *assigning values* to `array` elements, and *initializing* an `array`:
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus\arrayone.cpp"> arrayone.cpp </a>
+<details><summary>
+     <a href="/arrayone.cpp"> arrayone.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus\arrayone.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="/arrayone.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="80%">
         </iframe>
     </figure>
 </details>
 
-#### Array Initialization 
+#### Array Initialization
 
 You can use the initialization form only when defining the array.You cannot use it later, and you cannot assign one array wholesale to another:
 
@@ -1079,8 +1066,8 @@ float hotelTips[5] = {5.0, 2.5};
 short things[] = {1, 5, 3, 8};
 ```
 
-
 Often, letting the compiler count the number of elements is poor practice because its count can be different from what you think it should be. You could, for instance, accidently omit an initial value from the list. However, this approach can be a safe one for initializing a character array to a string, as you’ll soon see. And if your main concern is that the program, not you, knows how large an array is, you can do something like this:
+
 ```cpp
 short things[] = {1, 5, 3, 8};
 int num_elements = sizeof things / sizeof (short);
@@ -1102,15 +1089,18 @@ char slifs[4] {'h', 'i', 1122011, '\0'}; // not allowed
 char tlifs[4] {'h', 'i', 112, '\0'}; // allowed
 ```
 
-`vector` - STL alternative for arrays 
+`vector` - STL alternative for arrays
 `array` template class - C++11 alternative for arrays
 
 ### Strings
+
 Series of characters stored in consecutive bytes of memory.
 
 #### C-style strings
+
 C-style strings have a special feature:The last character of every string is the null
 character, written `\0`.
+
 ```cpp
 char dog[8] = { 'b', 'e', 'a', 'u', 'x', ' ', 'I', 'I'}; // not a string!
 char cat[8] = {'f', 'a', 't', 'e', 's', 's', 'a', '\0'}; // a string!
@@ -1118,19 +1108,21 @@ char bird[11] = "Mr. Cheeps"; // the \0 is understood
 char fish[] = "Bubbles"; // let the compiler count
 ```
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4CString.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
-
+<img src="/assets/_ch4CString.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
 ```cpp
 char shirt_size = 'S'; // this is fine
 char shirt_size = "S"; // illegal type mismatch
 ```
+
 But `"S"` is not a character constant; it represents the string consisting of two characters, the `S` and the `\0` characters. Even worse, `"S"` actually represents the memory address at which the string is stored. So a statement like the following attempts to assign a memory address to shirt_size.
 
 ##### Concatenating String Literals
+
 C++ enables
 you to concatenate string literals—that is, to combine two quoted  strings into one. `\0` character from the first string is replaced by the first character of the second string.
 The following output statements are equivalent to each other:
+
 ```cpp
 cout << "I'd give my right arm to be" " a great violinist.\n";
 cout << "I'd give my right arm to be a great violinist.\n";
@@ -1138,80 +1130,72 @@ cout << "I'd give my right ar"
 "m to be a great violinist.\n";
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus\strings.cpp"> Strings in an Array strings.cpp </a>
+<details><summary>
+     <a href="/strings.cpp"> Strings in an Array strings.cpp </a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus\strings.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="/strings.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus\instr1.cpp"> Problem 1: instr1.cpp, reading string input via cin</a>
+<details><summary>
+     <a href="/instr1.cpp"> Problem 1: instr1.cpp, reading string input via cin</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus\instr1.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="/instr1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details>
 
+<img src="/assets/_ch4CString2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4CString2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
-
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus\instr2.cpp"> Solution 1: instr2.cpp, Line-Oriented Input with getline()</a>
+<details><summary>
+     <a href="/instr2.cpp"> Solution 1: instr2.cpp, Line-Oriented Input with getline()</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus\instr2.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="/instr2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus\instr3.cpp"> Solution 2: instr3.cpp, Line-Oriented Input with get()</a>
+<details><summary>
+     <a href="/instr3.cpp"> Solution 2: instr3.cpp, Line-Oriented Input with get()</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus\instr3.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="/instr3.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus\numstr.cpp"> numstr.cpp, Mixing String and Numeric Input</a>
+<details><summary>
+     <a href="/numstr.cpp"> numstr.cpp, Mixing String and Numeric Input</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus\numstr.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="/numstr.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1220,7 +1204,8 @@ cout << "I'd give my right ar"
 
 <br>
 
-In short: 
+In short:
+
 ```cpp
 cin.getline(dessert, ArSize);
 
@@ -1250,7 +1235,6 @@ cin.get(); // or cin.get(ch);
 
 To use the string class, a program has to include the string header file.
 
-
 You should learn from this example that, in many ways, you can use a string object in
 the same manner as a character array:
 
@@ -1259,22 +1243,21 @@ the same manner as a character array:
 - You can use cout to display a string object.
 - You can use array notation to access individual characters stored in a string object.
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype1.cpp"> strtype1.cpp, differences between string objects and character arrays.</a>
+<details><summary>
+     <a href="./programs/strtype1.cpp"> strtype1.cpp, differences between string objects and character arrays.</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus/strtype1.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="./programs/strtype1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details>
 
-C++11 string initialization 
+C++11 string initialization
 
 ```cpp
 char first_date[] = {"Le Chapon Dodu"};
@@ -1300,15 +1283,14 @@ str3 = str1 + str2;         // assign str3 the joined strings
 str1 += str2;               // add str2 to the end of str1
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype2.cpp"> strtype2.cpp, assigning, adding, and appending strings.</a>
+<details><summary>
+     <a href="./programs/strtype2.cpp"> strtype2.cpp, assigning, adding, and appending strings.</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus/strtype2.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="./programs/strtype2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1319,37 +1301,35 @@ str1 += str2;               // add str2 to the end of str1
 
 You can use the `strcpy()` function to copy a string to a character array, and you can use the `strcat()` function to append a string to a character array:
 
-```cpp 
+```cpp
 strcpy(charr1, charr2);     // copy charr2 to charr1
 strcat(charr1, charr2);     // append contents of charr2 to char1
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype3.cpp"> strtype3.cpp, compares techniques used with string objects with techniques used with character arrays.</a>
+<details><summary>
+     <a href="./programs/strtype3.cpp"> strtype3.cpp, compares techniques used with string objects with techniques used with character arrays.</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus/strtype3.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="./programs/strtype3.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details>
 
-#### More `string` Class I/O 
+#### More `string` Class I/O
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/strtype4.cpp"> strtype4.cpp, reading a line at a time instead of a word at time uses a different syntax (class and not class).</a>
+<details><summary>
+     <a href="./programs/strtype4.cpp"> strtype4.cpp, reading a line at a time instead of a word at time uses a different syntax (class and not class).</a>
     </summary>
     <figure>
-        <iframe 
-            src=".refs_notes/notes_C++_C++PrimerPlus/strtype4.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+            src="./programs/strtype4.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1357,10 +1337,12 @@ strcat(charr1, charr2);     // append contents of charr2 to char1
 </details>
 
 #### Other Forms of `string` Literals
+
 C++ adds: `wchar_t` in addition to `char`
 C++11 adds: `char16_t`, `char32_t` + raw string (*R* prefix) + support UTF-8 (*u8* prefix)
 
 Use literals with L, u, and U prefixes:
+
 ```cpp
 wchar_t title[] = L"Chief Astrogator";      // w_char string
 char16_t name[] = u"Felonia Ripova";        // char_16 string
@@ -1375,7 +1357,7 @@ Raw string
 The standard string literal equivalent would be this:
 `cout << "Jim \"King\" Tutt uses \" \\n\" instead of endl." << '\n';`
 
-Raw string syntax allows you to place additional characters between the opening - the statement: 
+Raw string syntax allows you to place additional characters between the opening - the statement:
 `cout << R"+*("(Who wouldn't?)", she whispered.)+*" << endl;`
 would display the following: `"(Who wouldn't?)", she whispered.`
 
@@ -1410,17 +1392,16 @@ inflatable vincent;         // keyword struct not required in C++
 
 Given that `hat` is type inflatable, you use the membership operator (.) to access individual members. For example, `hat.volume` refers to the `volume` member of the structure, and `hat.price` refers to the `price` member.
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Structure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="/assets/_ch4Structure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/structur.cpp"> structur.cpp, example use of structure.</a>
+<details><summary>
+     <a href="./programs/structur.cpp"> structur.cpp, example use of structure.</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/structur.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/structur.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1435,21 +1416,21 @@ Given that `hat` is type inflatable, you use the membership operator (.) to acce
 inflatable duck {"Daphne", 0.12, 9.98}; // can omit the = in C++11
 inflatable mayor {}; // individual members being set to 0
 ```
+
 Narrowing is not allowed.
 
 #### Other `structure` properties
 
 `memberwise assignment` - you can use the assignment operator (=) to assign one structure to another of the same type.
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/assgn_st.cpp"> assgn_st.cpp, example use of memberwise assignment.</a>
+<details><summary>
+     <a href="./programs/assgn_st.cpp"> assgn_st.cpp, example use of memberwise assignment.</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/assgn_st.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/assgn_st.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1471,15 +1452,14 @@ inflatable guests[2] = // initializing an array of structs
 };
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/arrstruct.cpp"> arrstruct.cpp, array of structures.</a>
+<details><summary>
+     <a href="./programs/arrstruct.cpp"> arrstruct.cpp, array of structures.</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/arrstruct.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/arrstruct.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1504,7 +1484,7 @@ torgle_register tr = { 14, true, false };
 if (tr.goodIn)
 ```
 
-#### Unions 
+#### Unions
 
 A union is a data format that can hold different data types but only one type at a time
 
@@ -1553,7 +1533,8 @@ cin >> prize.id_char;
 ```cpp
 enum spectrum {red, orange, yellow, green, blue, violet, indigo, ultraviolet};
 ```
- - It makes spectrum the name of a new type; spectrum is termed an enumeration, much as a struct variable is called a structure.
+
+- It makes spectrum the name of a new type; spectrum is termed an enumeration, much as a struct variable is called a structure.
 - It establishes red, orange, yellow, and so on, as symbolic constants for the integer values 0–7.These constants are called enumerators.
 
 ```cpp
@@ -1581,6 +1562,7 @@ enum bits{one = 1, two = 2, four = 4, eight = 8};
 enum bigstep{first, second = 100, third};
 enum {zero, null = 0, one, numero_uno = 1};
 ```
+
  **Range of enumerations**
 
 ```cpp
@@ -1589,6 +1571,7 @@ bits myflag;
 // In this case, the following is valid:
 myflag = bits(6); // valid, because 6 is in bits range
 ```
+
 Here 6 is not one of the enumerations, but it lies in the range the enumerations define.
 The range is defined as follows. First, to find the upper limit, you take the largest enumerator value.Then you find the smallest power of two greater than this largest value and subtract one; the result is the upper end of the range (For example, the largest `bigstep` value, as previously defined, is 101.The smallest power of two greater than this is 128, so the upper end of the range is 127.)
 
@@ -1596,24 +1579,22 @@ The range is defined as follows. First, to find the upper limit, you take the la
 
 **address operator**, represented by `&` to a variable to get its location; if `home` is a variable, `&home` is its address
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/address.cpp"> address.cpp</a>
+<details><summary>
+     <a href="./programs/address.cpp"> address.cpp</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/address.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/address.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	Pointers and the C++ Philosophy 
+<details><summary>
+     Pointers and the C++ Philosophy
     </summary>
 Object-oriented programming differs from traditional procedural programming in that OOP
 emphasizes making decisions during runtime instead of during compile time. Runtime
@@ -1644,26 +1625,26 @@ A special type of variable the `pointer` — holds the address of a value. Thus,
 
 Applying the `*` operator, called the indirect value or the dereferencing operator, yields the value at the location.
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/pointer.cpp"> pointer.cpp</a>
+<details><summary>
+     <a href="./programs/pointer.cpp"> pointer.cpp</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/pointer.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/pointer.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Pointer.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="/assets/_ch4Pointer.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4Pointer2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="/assets/_ch4Pointer2.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
 In C++, the combination `int *` is a compound type, pointer-to-int.
+
 ``` cpp
 int * p_updates;
 
@@ -1674,15 +1655,14 @@ double * tax_ptr; // tax_ptr points to type double
 char * str; // str points to type char
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/init_ptr.cpp"> init_ptr.cpp, initialize a pointer to an address.</a>
+<details><summary>
+     <a href="./programs/init_ptr.cpp"> init_ptr.cpp, initialize a pointer to an address.</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/init_ptr.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/init_ptr.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1706,6 +1686,7 @@ pt = (int *) 0xB8000000; // types now match
 ```
 
 #### Allocating Memory with `new`
+
 In C, you can allocate memory with the library function `malloc()`
 
 ```cpp
@@ -1719,26 +1700,22 @@ int * pt = &higgens;
 
 We say that `pn` points to a `data object`
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/use_new.cpp"> use_new.cpp, use new.</a>
+<details><summary>
+     <a href="./programs/use_new.cpp"> use_new.cpp, use new.</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/use_new.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/use_new.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	Out of Memory?
+<details><summary>
+     Out of Memory?
     </summary>
 It’s possible that a computer might not have sufficient memory available to satisfy a new
 request. When that is the case, new normally responds by throwing an exception, an errorhandling
@@ -1751,6 +1728,7 @@ point is that C++ provides the tools to detect and respond to allocation failure
 </details><br>
 
 #### Freeing Memory with `delete`
+
 This removes the memory to which ps points; it doesn’t remove the pointer ps itself.
 Memory that you return, or `free`, can then be reused by other parts of the program
 
@@ -1792,15 +1770,14 @@ delete ps; // effect is undefined, don't do it
 - Use delete (no brackets) if you used new to allocate a single entity.
 - It’s safe to apply delete to the null pointer (nothing happens).
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/arraynew.cpp"> arraynew.cpp, use dynamic array</a>
+<details><summary>
+     <a href="./programs/arraynew.cpp"> arraynew.cpp, use dynamic array</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/arraynew.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/arraynew.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -1809,27 +1786,24 @@ delete ps; // effect is undefined, don't do it
 
 #### Pointers, Arrays, and Pointer Arithmetic
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/addpntrs.cpp"> addpntrs.cpp, pointer addition</a>
+<details><summary>
+     <a href="./programs/addpntrs.cpp"> addpntrs.cpp, pointer addition</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/addpntrs.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/addpntrs.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
+<img src="/assets/_ch4PointerAddition.png" alt="Image description" style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4PointerAddition.png" alt="Image description" style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	The Address of an Array
+<details><summary>
+     The Address of an Array
     </summary>
 
 Taking the address of an array is another case in which the name of an array is not interpreted
@@ -1846,7 +1820,7 @@ tell, is the address of a 2-byte block of memory, whereas `&tell` is the address
 byte block of memory. So the expression tell + 1 adds 2 to the address value, whereas
 `&tell + 1` adds 20 to the address value. Another way of expressing this is to say that
 tell is type pointer-to-short, or `short *`, and `&tell` is type pointer-to-array-of-20-shorts,
-or short (*)[20].
+or short [*](20).
 Now you might be wondering about the genesis of that last type description. First, here is
 how you could declare and initialize a pointer of that type:
 
@@ -1863,23 +1837,28 @@ element of the `tell` array.
 #### `pointer` Summary
 
 ##### Declaring Pointers
+
 To declare a pointer to a particular type, use this form:
+
 ```cpp
 typeName * pointerName;
 ```
 
 Here are some examples:
+
 ```cpp
 double * pn; // pn can point to a double value
 char * pc; // pc can point to a char value
 ```
 
-Here pn and pc are pointers, and double * and char * are the C++ notations for the types pointer-to-double and pointer-to-char.
+Here pn and pc are pointers, and double *and char* are the C++ notations for the types pointer-to-double and pointer-to-char.
 
 ##### Assigning Values to Pointers
+
 You should assign a memory address to a pointer.You can apply the & operator to a variable name to get an address of named memory, and the new operator returns the address of unnamed memory.
 
 Here are some examples:
+
 ```cpp
 double * pn; // pn can point to a double value
 double * pa; // so can pa
@@ -1891,34 +1870,44 @@ pa = new double[30]; // assign address of 1st element of array of 30 double to p
 ```
 
 ##### Dereferencing Pointers
-Dereferencing a pointer means referring to the pointed-to value.You apply the dereferencing, or indirect value, operator (*) to a pointer to dereference it.Thus, if pn is a pointer to bubble, as in the preceding example, then *pn is the pointed-to value, or 3.2, in this case.
+
+Dereferencing a pointer means referring to the pointed-to value.You apply the dereferencing, or indirect value, operator (*) to a pointer to dereference it.Thus, if pn is a pointer to bubble, as in the preceding example, then*pn is the pointed-to value, or 3.2, in this case.
 Here are some examples:
+
 ```cpp
 cout << *pn; // print the value of bubble
 *pc = 'S'; // place 'S' into the memory location whose address is pc
 ```
+
 Array notation is a second way to dereference a pointer; for instance, pn[0] is the same as *pn.You should never dereference a pointer that has not been initialized to a proper address.
 
 ##### Distinguishing Between a Pointer and the Pointed-to Value
-Remember, if pt is a pointer-to-int, *pt is not a pointer-to-int; instead, *pt is the complete equivalent to a type int variable. It is pt that is the pointer.
+
+Remember, if pt is a pointer-to-int, *pt is not a pointer-to-int; instead,*pt is the complete equivalent to a type int variable. It is pt that is the pointer.
 Here are some examples:
+
 ```cpp
 int * pt = new int; // assigns an address to the pointer pt
 *pt = 5; // stores the value 5 at that address
 ```
 
 ##### Array Names
+
 In most contexts, C++ treats the name of an array as equivalent to the address of the first element of an array.
+
 ```cpp
 Here is an example:
 int tacos[10]; // now tacos is the same as &tacos[0]
 ```
+
 One exception is when you use the name of an array with the sizeof operator. In that
 case, sizeof returns the size of the entire array, in bytes.
 
 ##### Pointer Arithmetic
+
 C++ allows you to add an integer to a pointer.The result of adding one equals the original address value plus a value equal to the number of bytes in the pointed-to object. You can also subtract an integer from a pointer to take the difference between two pointers. The last operation, which yields an integer, is meaningful only if the two pointers point into the same array (pointing to one position past the end is allowed, too); it then yields the separation between the two elements.
 Here are some examples:
+
 ```cpp
 int tacos[10] = {5,2,8,4,1,2,2,4,6,8};
 int * pt = tacos; // suppose pf and tacos are the address 3000
@@ -1930,6 +1919,7 @@ int diff = pe - pt; // diff is 7, the separation between
 ```
 
 ##### Dynamic Binding and Static Binding for Arrays
+
 You can use an array declaration to create an array with static binding—that is, an array
 whose size is set during the compilation process:
 
@@ -1938,6 +1928,7 @@ int tacos[10]; // static binding, size fixed at compile time
 ```
 
 You use the new [] operator to create an array with dynamic binding (a dynamic array) that is, an array that is allocated and whose size can be set during runtime. You free the memory with delete [] when you are done:
+
 ```cpp
 int size;
 cin >> size;
@@ -1959,6 +1950,7 @@ strcpy(stBOP[1].fullname, "Wimp Macho");
 bop *stBOP = new bop;
 strcpy(stBOP->fullname, "Wimp Macho");
 ```
+
 The `.` operator works instead of the `->` operator because you are accessing the members of the `bop struct` using an `array` of `structs` (`stBOP`), not a `pointer` to a `struct`.
 
 When you use the array notation `stBOP[0]`, it refers to the first element of the array, which is an object of the `bop` `struct`. Therefore, you can use the `.` operator to access its members directly.
@@ -1974,15 +1966,14 @@ The `strncpy(var_dest, var_copyFrom, int_sizeof_var_copyFrom)` function copies a
 The `strlen()` function returns the length of a string, not counting the null character
 When using these functions, you include the `cstring` or the `string.h` header file.
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/ptrstr.cpp"> ptrstr.cpp</a>
+<details><summary>
+     <a href="./programs/ptrstr.cpp"> ptrstr.cpp</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/ptrstr.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/ptrstr.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2011,24 +2002,21 @@ cout << ps << " at " << (int *) ps << endl;
 
 #### Using new to Create Dynamic Structures
 
-
 ```cpp
 inflatable * ps = new inflatable;
 inflatable * ps = new inflatable[10];
 ```
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch4NewStructure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
+<img src="/assets/_ch4NewStructure.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;">
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/newstrct.cpp"> newstrct.cpp</a>
+<details><summary>
+     <a href="./programs/newstrct.cpp"> newstrct.cpp</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/newstrct.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/newstrct.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2037,15 +2025,14 @@ inflatable * ps = new inflatable[10];
 
 ##### Using `new` and `delete`
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/delete.cpp"> delete.cpp</a>
+<details><summary>
+     <a href="./programs/delete.cpp"> delete.cpp</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/delete.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/delete.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2063,15 +2050,14 @@ The new and delete operators provide a more flexible approach than automatic and
 
 #### Combinations of Types
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/mixtypes.cpp"> mixtypes.cpp</a>
+<details><summary>
+     <a href="./programs/mixtypes.cpp"> mixtypes.cpp</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/mixtypes.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/mixtypes.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2095,28 +2081,28 @@ int n;
 cin >> n;
 vector<double> vd(n); // create an array of n doubles
 ```
+
 We say that vi is an object of type vector<int> and that vd is an object of type vector<double>.
 
 **C++11 `array` Template Class**
 
 Comparing Arrays, Vector Objects, and Array Objects
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/choices.cpp"> choices.cpp</a>
+<details><summary>
+     <a href="./programs/choices.cpp"> choices.cpp</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/choices.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/choices.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-Pointers and arrays are closely connected. If ar is an array name, then the expression `ar[i] `is interpreted as `*(ar + i)`, with the array name interpreted as the address of the first element of the array. Thus, the array name plays the same role as a pointer.
+Pointers and arrays are closely connected. If ar is an array name, then the expression `ar[i]`is interpreted as `*(ar + i)`, with the array name interpreted as the address of the first element of the array. Thus, the array name plays the same role as a pointer.
 
 **Assign safety**
 
@@ -2127,13 +2113,11 @@ a2.at(1) = 2.3; // assign 2.3 to a2[1]
 
 The difference between using bracket notation and the `at()` member function is that if you use `at()`, an invalid index is caught during runtime and the program, by default, aborts.
 
-
 ### Chapter Review
 
 <!-- -------------------------------------------- -->
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 1. How would you declare each of the following?
 
 ```
@@ -2151,10 +2135,10 @@ short betsie[100];
 float chuck[13];
 long double dipsea[64];
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 2. Do Chapter Review Question 1 and use the array template class instead of built-in arrays.
     </summary>
 
@@ -2164,10 +2148,10 @@ array<short, 100> betsie;
 array<float, 13> chuck;
 array<long double, 64> dipsea;
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 3. Declare an array of five ints and initialize it to the first five odd positive integers
     </summary>
 
@@ -2175,30 +2159,30 @@ array<long double, 64> dipsea;
 int oddly[5] = {1, 3, 5, 7, 9};
 array<int, 5> at {1, 3, 5, 7, 9}; // also correct
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 4. Write a statement that assigns the sum of the first and last elements of the array in Question 3 to the variable even.
     </summary>
 
 ```cpp
 int even = array[0] + array[4]; 
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 5. Write a statement that displays the value of the second element in the float array ideas.
     </summary>
 
 ```cpp
 std::cout << ideas[1];
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 6. Declare an array of char and initialize it to the string "cheeseburger".
     </summary>
 
@@ -2207,20 +2191,20 @@ char food[] {"cheeseburger"};
 // or
 char lunch[13] = "cheeseburger"; // number of characters + 1
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 7. Declare a string object and initialize it to the string "Waldorf Salad".
     </summary>
 
 ```cpp
 std::string obj = "Waldorf Salad";
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 8. Devise a structure declaration that describes a fish.The structure should include the kind, the weight in whole ounces, and the length in fractional inches.
     </summary>
 
@@ -2231,10 +2215,10 @@ struct fish {
     float length;
 };
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 9. Declare a variable of the type defined in Question 8 and initialize it.
     </summary>
 
@@ -2251,20 +2235,20 @@ fish petes =
 // flounder.weight = 21;
 // flounder.length = 21;
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 10.  Use enum to define a type called Response with the possible values Yes, No, and Maybe. Yes should be 1, No should be 0, and Maybe should be 2.
     </summary>
 
 ```cpp
 enum response {No, Yes, Maybe};
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 11.  Suppose ted is a double variable. Declare a pointer that points to ted and use the pointer to display ted’s value.
     </summary>
 
@@ -2272,10 +2256,10 @@ enum response {No, Yes, Maybe};
 double *ptrTed = &ted;
 std::cout << *ptrTed;
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 12.  Suppose treacle is an array of 10 floats. Declare a pointer that points to the first element of treacle and use the pointer to display the first and last elements of the array.
     </summary>
 
@@ -2288,8 +2272,8 @@ std::cout << ptrTreacle[0] << "last" << ptrTreacle[9];
 // or use:
 // std::cout << *(ptrTreacle + 1) << "last" << *(ptrTreacle + 9);
 ```
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+
+<details><summary>
 13. Write a code fragment that asks the user to enter a positive integer and then creates a dynamic array of that many ints. Do this by using new, then again using a vector object.
     </summary>
 
@@ -2301,19 +2285,20 @@ std::cin >> iUsr;
 int *sth = new int[iUsr];
 vector<int> sth(iUsr);
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 14. Is the following valid code? If so, what does it print?
 
 ```cpp
 cout << (int *) “Home of the jolly bytes”;
 ```
+
 </summary>
 
 //Yes
-//Start of memory of this Literal 
+//Start of memory of this Literal
 Yes, it is valid.The expression "Home of the jolly bytes" is a string constant;
 hence it evaluates as the address of the beginning of the string.The cout object
 interprets the address of a char as an invitation to print a string, but the type cast
@@ -2322,8 +2307,7 @@ address. In short, the statement prints the address of the string, assuming the 
 type is wide enough to hold an address.
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 15. Write a code fragment that dynamically allocates a structure of the type described in Question 8 and then reads a value for the `kind` member of the structure.
     </summary>
 
@@ -2342,10 +2326,10 @@ int main(){
     std::cin >> pole->kind;
 }
 ```
+
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 16. Listing 4.6 illustrates a problem created by following numeric input with line-oriented string input. How would replacing:
 
 ```cpp
@@ -2355,6 +2339,7 @@ cin.getline(address,80);
 cin >> address;
 // affect the working of this program?
 ```
+
 </summary>
 
 //cin >> address will read from user only to the space. Data after space will be in the queue;
@@ -2364,8 +2349,7 @@ will skip over the newline following the numeric input, avoiding that problem. O
 the other hand, it will read just a single word, not an entire line.
 </details>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 17. Declare a vector object of 10 string objects and an array object of 10 string objects. Show the necessary header files and don’t use using. Do use a const for the number of strings.
 </summary>
 
@@ -2382,11 +2366,14 @@ const int Str_num {10}; // or = 10
 std::vector<std::string> vstr(Str_num);
 std::array<std::string, Str_num> astr;
 ```
+
 </details>
 
 ### Programming Exercises
-[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_1.cpp) Write a C++ program that requests and displays information as shown in the following.
+
+[1.](./exercises/exercise_ch4_1.cpp) Write a C++ program that requests and displays information as shown in the following.
 Example of output:
+
 ```
 What is your first name? Betty Sue
 What is your last name? Yewe
@@ -2396,46 +2383,49 @@ Name: Yewe, Betty Sue
 Grade: C
 Age: 22
 ```
+
 Note that the program should be able to accept first names that comprise more than one word. Also note that the program adjusts the grade downward—that is, up one letter.Assume that the user requests an A, a B, or a C so that you don’t have to worry about the gap between a D and an F.
 
-[2.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_2.cpp) Rewrite Listing 4.4, using the C++ string class instead of char arrays.
+[2.](./exercises/exercise_ch4_2.cpp) Rewrite Listing 4.4, using the C++ string class instead of char arrays.
 
-[3.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_3.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string, consisting of the user’s last name followed by a comma, a space, and first name. Use char arrays and
+[3.](./exercises/exercise_ch4_3.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string, consisting of the user’s last name followed by a comma, a space, and first name. Use char arrays and
 functions from the cstring header file.A sample run could look like this:
+
 ```
 Enter your first name: Flip
 Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 
-[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_4.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string consisting of the user’s last name followed by a comma, a space, and first name. Use string objects and methods from the string header file. A sample run could look like this:
+[4.](./exercises/exercise_ch4_4.cpp) Write a program that asks the user to enter his or her first name and then last name, and that then constructs, stores, and displays a third string consisting of the user’s last name followed by a comma, a space, and first name. Use string objects and methods from the string header file. A sample run could look like this:
+
 ```
 Enter your first name: Flip
 Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 
-[5.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_5.cpp) The CandyBar structure contains three members.The first member holds the brand name of a candy bar.The second member holds the weight (which may have a fractional part) of the candy bar, and the third member holds the number of calories
+[5.](./exercises/exercise_ch4_5.cpp) The CandyBar structure contains three members.The first member holds the brand name of a candy bar.The second member holds the weight (which may have a fractional part) of the candy bar, and the third member holds the number of calories
 (an integer value) in the candy bar.Write a program that declares such a structure and creates a CandyBar variable called snack, initializing its members to "Mocha Munch", 2.3, and 350, respectively.The initialization should be part of the declaration for snack. Finally, the program should display the contents of the snack variable.
 
-[6.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_6.cpp) The CandyBar structure contains three members, as described in Programming Exercise 5.Write a program that creates an array of three CandyBar structures, initializes them to values of your choice, and then displays the contents of each structure.
+[6.](./exercises/exercise_ch4_6.cpp) The CandyBar structure contains three members, as described in Programming Exercise 5.Write a program that creates an array of three CandyBar structures, initializes them to values of your choice, and then displays the contents of each structure.
 
-[7.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_7.cpp) William Wingate runs a pizza-analysis service. For each pizza, he needs to record the following information:
+[7.](./exercises/exercise_ch4_7.cpp) William Wingate runs a pizza-analysis service. For each pizza, he needs to record the following information:
+
 - The name of the pizza company, which can consist of more than one word
 - The diameter of the pizza
 - The weight of the pizza
 Devise a structure that can hold this information and write a program that uses a structure variable of that type.The program should ask the user to enter each of the preceding items of information, and then the program should display that information. Use cin (or its methods) and cout.
 
-[8.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_8.cpp) Do Programming Exercise 7 but use new to allocate a structure instead of declaring a structure variable.Also have the program request the pizza diameter before it requests the pizza company name.
+[8.](./exercises/exercise_ch4_8.cpp) Do Programming Exercise 7 but use new to allocate a structure instead of declaring a structure variable.Also have the program request the pizza diameter before it requests the pizza company name.
 
-[9.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_9.cpp) Do Programming Exercise 6, but instead of declaring an array of three CandyBar structures, use new to allocate the array dynamically.
+[9.](./exercises/exercise_ch4_9.cpp) Do Programming Exercise 6, but instead of declaring an array of three CandyBar structures, use new to allocate the array dynamically.
 
-[10.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_10.cpp) Write a program that requests the user to enter three times for the 40-yd dash (or 40-meter, if you prefer) and then displays the times and the average. Use an array object to hold the data. (Use a built-in array if array is not available.)
+[10.](./exercises/exercise_ch4_10.cpp) Write a program that requests the user to enter three times for the 40-yd dash (or 40-meter, if you prefer) and then displays the times and the average. Use an array object to hold the data. (Use a built-in array if array is not available.)
 
 ## Chapter 5: Loops and Relational Expressions
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;">
+<details><summary>
         List of what you will learn
     </summary>
 
@@ -2460,6 +2450,7 @@ Devise a structure that can hold this information and write a program that uses 
 ### Loops, Expressions and Statements
 
 You can’t assign a for loop to a variable. In the following example, the for loop is not an expression, so it has no value and you can’t assign it:
+
 ```cpp
 int fx = for (i = 0; i< 4; i++)
 cout >> i; // not possible
@@ -2468,30 +2459,28 @@ for (expression; expression; expression)
     statement
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/formore.cpp"> formore.cpp - factorials in cpp </a>
+<details><summary>
+     <a href="./programs/formore.cpp"> formore.cpp - factorials in cpp </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/formore.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/formore.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/forstr1.cpp"> forstr1.cpp - (string) letters in reverse order </a>
+<details><summary>
+     <a href="./programs/forstr1.cpp"> forstr1.cpp - (string) letters in reverse order </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/forstr1.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/forstr1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2499,6 +2488,7 @@ for (expression; expression; expression)
 </details><br>
 
 Consider this statement:
+
 ```cpp
 y = (4 + x++) + (6 + x++);
 ```
@@ -2512,16 +2502,19 @@ postfix version works by first stashing a copy of the value, incrementing the va
 In short, for built-in types, it most likely makes no difference which form you use. For user-defined types having user-defined increment and decrement operators, the prefix form is more efficient.
 
 The right-to-left association rule for prefix operators implies that `*++pt` means first apply `++` to `pt` (because the `++` is to the right of the `*`) and then apply `*` to the new value of pt:
+
 ```cpp
 double x = *++pt; // increment pointer, take the value; i.e., arr[2], or 23.4
 ++*pt; // increment the pointed to value; i.e., change 23.4 to 24.4
 (*pt)++; // increment pointed-to value
 x = *pt++; // dereference original location, then increment pointer
 ```
+
 **Incrementing and decrementing pointers follow pointer arithmetic rules. Thus, if pt points to the first member of an array, ++pt changes pt so that it points to the second member.**
 
 ----------
 **Assignment Operators**
+
 ```cpp
 += Assigns L + R to L
 -= Assigns L - R to L
@@ -2531,6 +2524,7 @@ x = *pt++; // dereference original location, then increment pointer
 ```
 
 **Relational Operators**
+
 ```cpp
 << Is less than
 <= Is less than or equal to
@@ -2540,18 +2534,16 @@ x = *pt++; // dereference original location, then increment pointer
 != Is not equal to
 ```
 
-
 ### Compound Statements, or Blocks, Syntax Tricks
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/block.cpp"> block.cpp - Example of local code block </a>
+<details><summary>
+     <a href="./programs/block.cpp"> block.cpp - Example of local code block </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/block.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/block.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2563,15 +2555,14 @@ x = *pt++; // dereference original location, then increment pointer
 int i, j; // comma is a separator here, not an operator
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/forstr2.cpp"> forstr2.cpp - Example of comma separator trick </a>
+<details><summary>
+     <a href="./programs/forstr2.cpp"> forstr2.cpp - Example of comma separator trick </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/forstr2.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/forstr2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2590,30 +2581,28 @@ and not to the following:
 strcmp(word, "mate") != 0 // strings are not the same
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/compstr1.cpp"> compstr1.cpp - Example comparison c-string in search for word </a>
+<details><summary>
+     <a href="./programs/compstr1.cpp"> compstr1.cpp - Example comparison c-string in search for word </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/compstr1.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/compstr1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/compstr2.cpp"> compstr2.cpp - Example comparison string class in search for word </a>
+<details><summary>
+     <a href="./programs/compstr2.cpp"> compstr2.cpp - Example comparison string class in search for word </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/compstr2.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/compstr2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2622,15 +2611,14 @@ strcmp(word, "mate") != 0 // strings are not the same
 
 ### When use other loop forms
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/while.cpp"> while.cpp - while for verticalized and ASCIIized string class input </a>
+<details><summary>
+     <a href="./programs/while.cpp"> while.cpp - while for verticalized and ASCIIized string class input </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/while.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/while.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2638,37 +2626,37 @@ strcmp(word, "mate") != 0 // strings are not the same
 </details><br>
 
 You can rewrite the while line this way:
+
 ```cpp
 while (name[i])
 ```
+
 because when `name[i]` is an ordinary character, its value is the character code, which is nonzero, or true. But when name[i] is the null character, its character-code value is 0, or false.This notation is more concise (and more commonly used)
 
 ### Time-Delay Loop
+
 ctime header file (time.h on less current implementations) provides solution:
+
 - First, it defines a symbolic constant, CLOCKS_PER_SEC, that equals the number of system time units per second. (So dividing the system time by this value yields seconds)
 - Or you can multiply seconds by CLOCKS_PER_SEC to get time in the system units.
 - ctime establishes clock_t as an alias for the clock() return type. (See the sidebar “Type Aliases,” later in this chapter.) This means you can declare a variable as type clock_t, and the compiler converts it to long or unsigned int or whatever is the proper type for your system.
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/waiting.cpp"> waiting.cpp - using clock() in a time-delay loop </a>
+<details><summary>
+     <a href="./programs/waiting.cpp"> waiting.cpp - using clock() in a time-delay loop </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/waiting.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/waiting.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	Type Aliases
+<details><summary>
+     Type Aliases
     </summary>
 
 C++ has two ways to establish a new name as an alias for a type. One is to use the preprocessor:
@@ -2686,12 +2674,14 @@ typedef typeName aliasName; // general form
 ```
 
 In other words, if you want `aliasName` to be an alias for a particular type, you declare `aliasName` as if it were a variable of that type and then prefix the declaration with the `typedef` keyword. For example, to make `byte_pointer` an alias for pointer-to-char, you could declare `byte_pointer` as a pointer-to-char and then stick `typedef` in front:
+
 ```cpp
 typedef char * byte_pointer; // pointer to char type
 ```
 
 You could try something similar with #define, but that wouldn’t work if you declared a list
 of variables. For example, consider the following
+
 ```cpp
 #define FLOAT_POINTER float *
 FLOAT_POINTER pa, pb;
@@ -2708,15 +2698,14 @@ Notice that `typedef` doesn’t create a new type. It just creates a new name fo
 If you make `word` an alias for `int`, `cout` treats a type `word` value as the `int` it really is.
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/dowhile.cpp"> dowhile.cpp - for user input in loop (instead strange for loops) </a>
+<details><summary>
+     <a href="./programs/dowhile.cpp"> dowhile.cpp - for user input in loop (instead strange for loops) </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/dowhile.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/dowhile.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2731,13 +2720,15 @@ for (double x : prices)
     cout << x << std::endl; // Here x initially represents the first member of the prices array
 ```
 
-To modify array values, you need a different syntax for the loop variable: 
+To modify array values, you need a different syntax for the loop variable:
+
 ```cpp
 for (double &x : prices)
 x = x * 0.80; //20% off sale
 ```
 
 It can be used with initialization lists
+
 ```cpp
 for (int x : {3, 5, 2, 8, 6})
 cout << x << " ";
@@ -2746,30 +2737,28 @@ cout << ‘\n’;
 
 ### Loops and Text Input
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin1.cpp"> textin1.cpp - reading chars with a while loop, enter # to quit - cin() PROBLEMS </a>
+<details><summary>
+     <a href="./programs/textin1.cpp"> textin1.cpp - reading chars with a while loop, enter # to quit - cin() PROBLEMS </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/textin1.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/textin1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin2.cpp"> textin2.cpp - reading chars with a while loop, enter # to quit - cin.get(char) SOLUTION </a>
+<details><summary>
+     <a href="./programs/textin2.cpp"> textin2.cpp - reading chars with a while loop, enter # to quit - cin.get(char) SOLUTION </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/textin2.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/textin2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2779,6 +2768,7 @@ cout << ‘\n’;
 ### End-of-File Condition and Read data from keyboard
 
 The program to take input from the `fishtale` file instead of from the **keyboard**. The `<` symbol is the redirection operator for both Unix and the Windows Command Prompt mode.
+
 ```sh
 gofish <fishtale
 ```
@@ -2787,15 +2777,14 @@ When `cin` detects the `EOF`, it sets two bits (the `eofbit` and the `failbit`) 
 
 Some systems do not support simulated EOF from the keyboard. Other systems support it imperfectly. If you have been using cin.get() to freeze the screen until you can read it, that won’t work here because detecting the EOF turns off further attempts to read input.
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin3.cpp"> textin3.cpp - reading chars till EOF (keyboard break) </a>
+<details><summary>
+     <a href="./programs/textin3.cpp"> textin3.cpp - reading chars till EOF (keyboard break) </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/textin3.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/textin3.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2803,6 +2792,7 @@ Some systems do not support simulated EOF from the keyboard. Other systems suppo
 </details><br>
 
 The following is the essential design of a loop intended to read text a character at a time until EOF:
+
 ```cpp
 cin.get(ch); // attempt to read a char
 while (cin.fail() == false) // test for EOF
@@ -2819,9 +2809,10 @@ while (!cin.fail()) // while input has not failed  (`!` - 'not true' operator)
 while (cin) // while input is successful
 ```
 
-`cin.get(ch)` can condense loop above: 
+`cin.get(ch)` can condense loop above:
 Here, `cin.get(char)` is called once in the test condition instead of twice—once
 before the loop and once at the end of the loop.
+
 ```cpp
 while (cin.get(ch)) // while input is successful
 {
@@ -2833,24 +2824,19 @@ The cin.get() member function with no arguments returns the next character from
 the input.That is, you use it in this way: `ch = cin.get();` (Recall that cin.get(ch) returns an object, not the character read.)
 Similarly, you can use the `cout.put(ch)`
 
-
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp"> textin4.cpp - incorporates the cin.get() and codense code </a>
+<details><summary>
+     <a href="./programs/textin4.cpp"> textin4.cpp - incorporates the cin.get() and codense code </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/textin4.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
-
-
 
 |Property|`cin.get(ch)`|`ch=cin.get()`|
 |---|---|---|
@@ -2859,7 +2845,7 @@ Similarly, you can use the `cout.put(ch)`
 |Function return value at EOF|A class `istream` object (false after `bool` conversion)|EOF|
 
 ### Nested Loops and Two-Dimensional Arrays
- 
+
  Initialize
 
 ```cpp
@@ -2872,15 +2858,14 @@ int maxtemps[4][5] = // 2-D array
 };
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp"> nested.cpp - nested loops and 2-D array </a>
+<details><summary>
+     <a href="./programs/textin4.cpp"> nested.cpp - nested loops and 2-D array </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/textin4.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/textin4.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -2890,8 +2875,7 @@ int maxtemps[4][5] = // 2-D array
 ### Chapter Review
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 1. What’s the difference between an entry-condition loop and an exit-condition loop?
 Which kind is each of the C++ loops?
     </summary>
@@ -2907,9 +2891,8 @@ exit-condition loop
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;">
-2. What would the following code fragment print if it were part of a valid program? 
+<details><summary>
+2. What would the following code fragment print if it were part of a valid program?
 
 ```cpp
 int i;
@@ -2917,6 +2900,7 @@ for (i = 0; i < 5; i++)
     cout << i;
     cout << endl;
 ```
+
 </summary>
 01234
 
@@ -2925,8 +2909,7 @@ braces).
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 3. What would the following code fragment print if it were part of a valid program?
 
 ```cpp
@@ -2935,6 +2918,7 @@ for (j = 0; j < 11; j += 3)
     cout << j;
 cout << endl << j << endl;
 ```
+
 </summary>
 It would print the following:<br>
 0369<br>
@@ -2942,8 +2926,7 @@ It would print the following:<br>
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 4. What would the following code fragment print if it were part of a valid program?
 
 ```cpp
@@ -2951,6 +2934,7 @@ int j = 5;
 while ( ++j < 9)
     cout << j++ << endl;
 ```
+
 </summary>
 It would print the following:<br>
 6<br>
@@ -2958,8 +2942,7 @@ It would print the following:<br>
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 5. What would the following code fragment print if it were part of a valid program?
 
 ```cpp
@@ -2968,14 +2951,14 @@ do
     cout <<" k = " << k << endl;
 while (k++ < 5);
 ```
+
 </summary>
 It would print the following:<br>
 k = 8
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 6. Write a `for` loop that prints the values 1 2 4 8 16 32 64 by increasing the value of
 a counting variable by a factor of two in each cycle.
     </summary>
@@ -2985,11 +2968,11 @@ It’s simplest to use the *= operator:<br>
 for(int i {}; i < 65; i *= 2)
     cout << i << " ";
 ```
+
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 7. How do you make a loop body include more than one statement?
     </summary>
 //add curly braces {} <br>
@@ -2999,18 +2982,20 @@ or block.
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 8. Is the following statement valid? If not, why not? If so, what does it do?
 
 ```cpp
 int x = (1,024);
 ```
+
 What about the following?
+
 ```cpp
 int y;
 y = 1,024;
-```    
+```
+
 </summary>
 //1st is valid, but 1 will be assigned to x due to precedence and first value will do nothing <br>
 //in 2nd 1 will be assigned to y, and 024 will do nothing, but confuse. <br><br>
@@ -3020,17 +3005,18 @@ and 024—joined by a comma operator.The value is the value of the right-hand
 expression.This is 024, which is octal for 20, so the declaration assigns the value 20
 to x.The second statement is also valid. However, operator precedence causes it to
 be evaluated as follows:
+
 ```cpp
 (y = 1), 024;
 ```
+
 That is, the left expression sets y to 1, and the value of the entire expression, which
 isn’t used, is `024`, or `20`.
 
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;">
+<details><summary>
 9. How does cin >> ch differ from cin.get(ch) and ch=cin.get() in how it views
 input?
     </summary>
@@ -3040,39 +3026,44 @@ The `cin >> ch` form skips over spaces, newlines, and tabs when it encounters th
 </details>
 
 ### Programming Exercises
-[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_1.cpp)
+
+[1.](./exercises/exercise_ch5_1.cpp)
 Write a program that requests the user to enter two integers.The program should
 then calculate and report the sum of all the integers between and including the two
 integers. At this point, assume that the smaller integer is entered first. For example, if
 the user enters 2 and 9, the program should report that the sum of all the integers
 from 2 through 9 is 44.
 
-[2.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_2.cpp)
+[2.](./exercises/exercise_ch5_2.cpp)
 Redo Listing 5.4 using a type array object instead of a built-in array and type
 long double instead of long long. Find the value of 100!
 
-[3.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_3.cpp)
+[3.](./exercises/exercise_ch5_3.cpp)
 Write a program that asks the user to type in numbers.After each entry, the program
 should report the cumulative sum of the entries to date.The program should
 terminate when the user enters 0.
 
-[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_4.cpp)
+[4.](./exercises/exercise_ch5_4.cpp)
 Daphne invests `$100 at 10%` simple interest.That is, every year, the investment earns
 `10%` of the original investment, or `$10` each and every year:
+
 ```
 interest = 0.10 × original balance
 ```
+
 At the same time, Cleo invests `$100` at `5%` compound interest.That is, interest is `5%`
 of the current balance, including previous additions of interest:
+
 ```
 interest = 0.05 × current balance
 ```
+
 Cleo earns `5% of $100` the first year, giving her `$105`.The next year she earns `5%` of
 `$105`, or `$5.25`, and so on. Write a program that finds how many years it takes for
 the value of Cleo’s investment to exceed the value of Daphne’s investment and then
 displays the value of both investments at that time.
 
-[5.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_5.cpp)
+[5.](./exercises/exercise_ch5_5.cpp)
 You sell the book C++ for Fools. Write a program that has you enter a year’s worth
 of monthly sales (in terms of number of books, not of money).The program should
 use a loop to prompt you by month, using an array of char * (or an array of
@@ -3080,12 +3071,12 @@ string objects, if you prefer) initialized to the month strings and storing the 
 data in an array of int.Then, the program should find the sum of the array contents
 and report the total sales for the year.
 
-[6.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_6.cpp)
+[6.](./exercises/exercise_ch5_6.cpp)
 Do Programming Exercise 5 but use a two-dimensional array to store input for 3
 years of monthly sales. Report the total sales for each individual year and for the
 combined years.
 
-[7.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_7.cpp)
+[7.](./exercises/exercise_ch5_7.cpp)
 Design a structure called car that holds the following information about an automobile:
 its make, as a string in a character array or in a string object, and the year
 it was built, as an integer.Write a program that asks the user how many cars to catalog.
@@ -3095,6 +3086,7 @@ of more than one word) and year information for each structure. Note that this
 requires some care because it alternates reading strings with numeric data (see
 Chapter 4). Finally, it should display the contents of each structure.A sample run
 should look something like the following:
+
 ```
 How many cars do you wish to catalog? 2
 Car #1:
@@ -3108,7 +3100,7 @@ Here is your collection:
 1951 Kaiser
 ```
 
-[8.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_8.cpp)
+[8.](./exercises/exercise_ch5_8.cpp)
 Write a program that uses an array of char and a loop to read one word at a time
 until the word done is entered.The program should then report the number of
 words entered (not counting done).A sample run could look like this:
@@ -3119,15 +3111,16 @@ anteater birthday category dumpster
 envy finagle geometry done for sure
 You entered a total of 7 words.
 ```
+
 You should include the cstring header file and use the strcmp() function to
 make the comparison test.
 
-[9.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_9.cpp)
+[9.](./exercises/exercise_ch5_9.cpp)
 Write a program that matches the description of the program in Programming
 Exercise 8, but use a string class object instead of an array. Include the string
 header file and use a relational operator to make the comparison test.
 
-[10.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch5_10.cpp)
+[10.](./exercises/exercise_ch5_10.cpp)
 Write a program using nested loops that asks the user to enter a value for the
 number of rows to display. It should then display that many rows of asterisks, with
 one asterisk in the first row, two in the second row, and so on. For each row, the
@@ -3146,8 +3139,7 @@ Enter number of rows: 5
 
 ## Chapter 6: Branching Statements and Logical Operators
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;">
+<details><summary>
         List of what you will learn
     </summary>
 
@@ -3162,52 +3154,47 @@ Enter number of rows: 5
  - Number-reading loops
  - Basic file input/output
 ```
+
 </details>
 
 ### Statements and logical operators
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/if.cpp"> if.cpp - (count spaces in while) simple use of if statement</a>
+<details><summary>
+     <a href="./programs/if.cpp"> if.cpp - (count spaces in while) simple use of if statement</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/if.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/if.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/ifelse.cpp"> ifelse.cpp - (simplest cipher from keyboard) simple use of if else statement</a>
+<details><summary>
+     <a href="./programs/ifelse.cpp"> ifelse.cpp - (simplest cipher from keyboard) simple use of if else statement</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/ifelse.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/ifelse.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/ifelseif.cpp"> ifelseif.cpp -  simple use of if elseif else statement for guess game</a>
+<details><summary>
+     <a href="./programs/ifelseif.cpp"> ifelseif.cpp -  simple use of if elseif else statement for guess game</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/ifelseif.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/ifelseif.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -3237,68 +3224,64 @@ The logical AND operator has a higher precedence than the logical OR, Thus this 
 
 C++ guarantees that when a program evaluates a logical expression, it evaluates it from left to right and stops evaluation as soon as it knows what the answer is.
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/or.cpp"> or.cpp - simple use of the logical OR operator</a>
+<details><summary>
+     <a href="./programs/or.cpp"> or.cpp - simple use of the logical OR operator</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/or.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/or.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/and.cpp"> and.cpp - simple use of the logical AND operator</a>
+<details><summary>
+     <a href="./programs/and.cpp"> and.cpp - simple use of the logical AND operator</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/and.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/and.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/more_and.cpp"> more_and.cpp - range using AND operator</a>
+<details><summary>
+     <a href="./programs/more_and.cpp"> more_and.cpp - range using AND operator</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/more_and.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/more_and.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/not.cpp"> not.cpp - simple use of NOT operator</a>
+<details><summary>
+     <a href="./programs/not.cpp"> not.cpp - simple use of NOT operator</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/not.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/not.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-### Range Tests 
+### Range Tests
+
 Note that each part of a range test should use the AND operator to join two complete relational expressions:
 `if (age > 17 && age < 35) // OK`
 Don’t borrow from mathematics and use the following notation:
@@ -3308,53 +3291,57 @@ If you make this mistake, the compiler won’t catch it as an error because it i
 But `17 < age` is either `true`, or `1`, or else `false`, or `0`. In either case, the expression `17 < age` is less than 35, so the entire test is always true!
 
 ### `cctype` library of Character Functions
+
 simplify such tasks as determining whether a character is an uppercase letter or a digit or punctuation
 
 Using these functions is more convenient than using the AND and OR operators. For example, here’s how you might use AND and OR to test whether a character ch is an alphabetic character:
+
 ```cpp
 if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
 ```
+
 Is equivalent to:
+
 ```cpp
 if (isalpha(ch))
 ```
 
 In program `cctypes.cpp` below
-`isalpha()`,  tests for alphabetic characters; 
-`isdigits()`,  tests for digit characters, such as 3; 
+`isalpha()`,  tests for alphabetic characters;
+`isdigits()`,  tests for digit characters, such as 3;
 `isspace()`, tests for whitespace characters, such as newlines, spaces, and tabs;
 `ispunct()`,  tests for punctuation characters
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/cctypes.cpp"> cctypes.cpp - demonstrates some functions of the ctype.h library</a>
+<details><summary>
+     <a href="./programs/cctypes.cpp"> cctypes.cpp - demonstrates some functions of the ctype.h library</a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/cctypes.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/cctypes.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-Function Name 
- - `isalnum()` - returns true if the argument is alphanumeric (that is, a letter or a digit).
- - `isalpha()` - returns true if the argument is alphabetic.
- - `isblank()` - returns true if the argument is a space or a horizontal tab.
- - `iscntrl()` - returns true if the argument is a control character.
- - `isdigit()` - returns true if the argument is a decimal digit (0–9).
- - `isgraph()` - returns true if the argument is any printing character other than a space.
- - `islower()` - returns true if the argument is a lowercase letter.
- - `isprint()` - returns true if the argument is any printing character, including a space.
- - `ispunct()` - returns true if the argument is a punctuation character.
- - `isspace()` - returns true if the argument is a standard whitespace character (that is, a space, formfeed, newline, carriage return, horizontal tab, vertical tab).
- - `isupper()` - returns true if the argument is an uppercase letter.
- - `isxdigit()` - returns true if the argument is a hexadecimal digit character (that is, 0–9, a–f, or A–F).
- - `tolower()` - If the argument is an uppercase character, tolower() returns the lowercase version of that character; otherwise, it returns the argument unaltered.
- - `toupper()` - If the argument is a lowercase character, toupper() returns the uppercase version of that character; otherwise, it returns the argument unaltered.
+Function Name
+
+- `isalnum()` - returns true if the argument is alphanumeric (that is, a letter or a digit).
+- `isalpha()` - returns true if the argument is alphabetic.
+- `isblank()` - returns true if the argument is a space or a horizontal tab.
+- `iscntrl()` - returns true if the argument is a control character.
+- `isdigit()` - returns true if the argument is a decimal digit (0–9).
+- `isgraph()` - returns true if the argument is any printing character other than a space.
+- `islower()` - returns true if the argument is a lowercase letter.
+- `isprint()` - returns true if the argument is any printing character, including a space.
+- `ispunct()` - returns true if the argument is a punctuation character.
+- `isspace()` - returns true if the argument is a standard whitespace character (that is, a space, formfeed, newline, carriage return, horizontal tab, vertical tab).
+- `isupper()` - returns true if the argument is an uppercase letter.
+- `isxdigit()` - returns true if the argument is a hexadecimal digit character (that is, 0–9, a–f, or A–F).
+- `tolower()` - If the argument is an uppercase character, tolower() returns the lowercase version of that character; otherwise, it returns the argument unaltered.
+- `toupper()` - If the argument is a lowercase character, toupper() returns the uppercase version of that character; otherwise, it returns the argument unaltered.
 
 ### The `?:` Operator
 
@@ -3366,15 +3353,14 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 3 == 9 ? 25 : 18 // 3 == 9 is false, so expression value is 18
 ```
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/condit.cpp"> condit.cpp - example of ?: use </a>
+<details><summary>
+     <a href="./programs/condit.cpp"> condit.cpp - example of ?: use </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/condit.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/condit.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -3383,33 +3369,30 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 
 ### The `switch` Statement
 
-<img src=".refs_notes/notes_C++_C++PrimerPlus/_ch6SwitchCase.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;"> <br>
+<img src="/assets/_ch6SwitchCase.png" alt="Image description" style="display: block; margin: auto; width: 50%; height: auto; border-radius: 8px;"> <br>
 
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/switch.cpp"> switch.cpp - menu program, example of switch use </a>
+<details><summary>
+     <a href="./programs/switch.cpp"> switch.cpp - menu program, example of switch use </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/switch.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/switch.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/enum.cpp"> enum.cpp - menu program with enum labels </a>
+<details><summary>
+     <a href="./programs/enum.cpp"> enum.cpp - menu program with enum labels </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/enum.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/enum.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -3421,47 +3404,42 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 `break` statement causes program execution to pass to the next statement following the switch or the loop
 `continue` statement is used in loops and causes a program to skip the rest of the body of the loop
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/jump.cpp"> jump.cpp - using continue and break </a>
+<details><summary>
+     <a href="./programs/jump.cpp"> jump.cpp - using continue and break </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/jump.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/jump.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-
-
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/cinfish.cpp"> cinfish.cpp - to terminate input before filling the array example </a>
+<details><summary>
+     <a href="./programs/cinfish.cpp"> cinfish.cpp - to terminate input before filling the array example </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/cinfish.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/cinfish.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/cingolf.cpp"> cingolf.cpp - to terminate input before filling the array example and reset cin to accept new input. </a>
+<details><summary>
+     <a href="./programs/cingolf.cpp"> cingolf.cpp - to terminate input before filling the array example and reset cin to accept new input. </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/cingolf.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/cingolf.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -3475,18 +3453,23 @@ If `expression1` is `true`, then the value of the whole conditional expression i
 You have to declare your own `ofstream` object, choosing a name for it and associating it with a file.
 
 Declaration:
+
 ```cpp
 ofstream outFile; // outFile an ofstream object
 ofstream fout; // fout an ofstream object
 ```
+
 Association with file (`open()` method requires a C-style string as its argument):
+
 ```cpp
 outFile.open("fish.txt"); // outFile used to write to the fish.txt file
 char filename[50];
 cin >> filename; // user specifies a name
 fout.open(filename); // fout used to read specified file
 ```
+
 Use created object (after you’ve declared an ofstream object and associated it with a file, you use it exactly as you would use cout):
+
 ```cpp
 double wt = 125.8;
 outFile << wt; // write a number to fish.txt
@@ -3495,20 +3478,20 @@ fout << line << endl; // write a line of text
 ```
 
 Main steps for using file output:
+
 1. Include the fstream header file.
 2. Create an ofstream object.
 3. Associate the ofstream object with a file.
 4. Use the ofstream object in the same manner you would use cout.
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/outfile.cpp"> outfile.cpp - write data to file. </a>
+<details><summary>
+     <a href="./programs/outfile.cpp"> outfile.cpp - write data to file. </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/outfile.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/outfile.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -3536,6 +3519,7 @@ fin.open(filename); // fin used to read specified file
 ```
 
 Use created object:
+
 ```cpp
 double wt;
 inFile >> wt; // read a number from bowling.txt
@@ -3544,6 +3528,7 @@ fin.getline(line, 81); // read a line of text
 ```
 
 Check for nonexisting file (`is_open()` method)
+
 ```cpp
 inFile.open("bowling.txt");
 if (!inFile.is_open()){
@@ -3551,31 +3536,29 @@ if (!inFile.is_open()){
 }
 ```
 
-For program below - write `datsumafile.txt`, that should be local, or `.refs_notes\notes_C++_C++PrimerPlus\datsumafile.txt` if compiled in `$PATH$`
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp"> sumafile.cpp - reading double data from file. </a>
+For program below - write `datsumafile.txt`, that should be local, or `\programs\datsumafile.txt` if compiled in `$PATH$`
+<details><summary>
+     <a href="./programs/sumafile.cpp"> sumafile.cpp - reading double data from file. </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/sumafile.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
     </figure>
 </details><br>
 
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++_C++PrimerPlus/datsumafile.txt"> datsumafile.txt - data for program. </a>
+<details><summary>
+     <a href="./programs/datsumafile.txt"> datsumafile.txt - data for program. </a>
     </summary>
 <figure>
-        <iframe 
-        src=".refs_notes/notes_C++_C++PrimerPlus/sumafile.cpp" 
-            frameborder="10" 
-            allowfullscreen="true" 
+        <iframe
+        src="./programs/sumafile.cpp"
+            frameborder="10"
+            allowfullscreen="true"
             height="300px"
             width="100%">
         </iframe>
@@ -3593,6 +3576,7 @@ while (inFile.good()) // while input good and not at EOF
 ```
 
 `inFile`, when placed in a context in which a `bool` value is expected, evaluates to `inFile.good()` — that is, to `true` or `false`, thus you can make above code more concise:
+
 ```cpp
 // abbreviated file-reading loop design
 // omit pre-loop input
@@ -3606,8 +3590,7 @@ while (inFile >> value) // read and test for success
 ### Chapter Review
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 1. Consider the following two code fragments for counting spaces and newlines
 
 ```cpp
@@ -3628,6 +3611,7 @@ while (cin.get(ch)) // quit on eof
         newlines++;
 }
 ```
+
 What advantages, if any, does the second form have over the first?
 </summary>
 // Because version 1 checks every times both conditions, thus it's less efficient. <br>
@@ -3641,8 +3625,7 @@ Version 2, in the same situation, skips the newline test.
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 2. In Listing 6.2, what is the effect of replacing ++ch with ch+1?
 
 ```cpp
@@ -3667,6 +3650,7 @@ Listing 6.2 ifelse.cpp
     return 0;
 }
 ```
+
 </summary>
 
 // The `char` is promoted to `int`, and display numbers
@@ -3678,8 +3662,7 @@ prints as a number.
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 3. Carefully consider the following program:
 
 ```cpp
@@ -3704,35 +3687,38 @@ int main()
 ```
 
 Suppose you provide the following input, pressing the Enter key at the end of each line:
+
 ```
 Hi!
 Send $10 or $20 now!
 ```
+
 What is the output? (Recall that input is buffered.)
     </summary>
 
 // Program print after every read character `$` and if in input is `$`, the while loop will end.
 // `Hi!`
 // `H$i$!$`
-// `$Send $10 or $20 now!` 
-// `S$e$n$d$ $ct1 = 8, ct2 = 8` // `$` is added even newline, and `ct` is added with it, I didn't include that   
+// `$Send $10 or $20 now!`
+// `S$e$n$d$ $ct1 = 8, ct2 = 8` // `$` is added even newline, and `ct` is added with it, I didn't include that
 
 Because the program uses `ch = '$'` instead of `ch == '$'`, the combined input and
 output looks like this:
+
 ```
 Hi!
 H$i$!$
 $Send $10 or $20 now!
 S$e$n$d$ $ct1 = 9, ct2 = 9
 ```
+
 Each character is converted to the `$` character before being printed the second
 time.Also the value of the expression `ch = $` is the code for the `$` character, hence
 nonzero, hence `true`; so `ct2` is incremented each time.
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 4. Construct logical expressions to represent the following conditions:
 
     a. weight is greater than or equal to 115 but less than 125.
@@ -3762,8 +3748,7 @@ isalpha(ch)                                             //f
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 5. In English, the statement “I will not not speak” means the same as “I will speak.” In C++, is !!x the same as x?
     </summary>
 
@@ -3774,8 +3759,7 @@ Not necessarily. For example, if `x` is 10, then `!x` is 0 and `!!x` is 1. Howev
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 6. Construct a conditional expression that is equal to the absolute value of a variable.
 That is, if a variable x is positive, the value of the expression is just x, but if x is negative, the value of the expression is -x, which is positive.
     </summary>
@@ -3791,8 +3775,7 @@ That is, if a variable x is positive, the value of the expression is just x, but
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 7. Rewrite the following fragment using switch:
 
 ```cpp
@@ -3829,8 +3812,7 @@ switch (ch)
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 8. In Listing 6.10, what advantage would there be in using character labels, such as a and c, instead of numbers for the menu choices and switch cases? (Hint:Think about what happens if the user types q in either case and what happens if the user types 5 in either case.)
 
 ```cpp
@@ -3902,8 +3884,7 @@ Then the default part of the switch can suggest entering another character.
 </details>
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary>
 9. Consider the following code fragment:
 
 ```cpp
@@ -3918,6 +3899,7 @@ while (cin.get(ch))
     line++;
 }
 ```
+
 Rewrite this code without using break or continue.
     </summary>
 
@@ -3933,15 +3915,15 @@ while (cin.get(ch) && ch != 'Q')
 
 </details>
 
-
 ### Programming Exercises
-[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_1.cpp)
+
+[1.](./exercises/exercise_ch6_1.cpp)
 Write a program that reads keyboard input to the @ symbol and that echoes the input except for digits, converting each uppercase character to lowercase, and vice versa. (Don’t forget the `cctype` family.)
 
-[2.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_2.cpp)
+[2.](./exercises/exercise_ch6_2.cpp)
 Write a program that reads up to 10 donation values into an array of double. (Or, if you prefer, use an array template object.) The program should terminate input on non-numeric input. It should report the average of the numbers and also report how many numbers in the array are larger than the average.
 
-[3.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_3.cpp)
+[3.](./exercises/exercise_ch6_3.cpp)
 Write a precursor to a menu-driven program.The program should display a menu offering four choices, each labeled with a letter. If the user responds with a letter other than one of the four valid choices, the program should prompt the user to enter a valid response until the user complies.Then the program should use a switch to select a simple action based on the user’s selection.A program run could look something like this:
 
 ```
@@ -3954,7 +3936,7 @@ Please enter a c, p, t, or g: t
 A maple is a tree.
 ```
 
-[4.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_4.cpp)
+[4.](./exercises/exercise_ch6_4.cpp)
 When you join the Benevolent Order of Programmers, you can be known at BOP meetings by your real name, your job title, or your secret BOP name.Write a program that can list members by real name, by job title, by secret name, or by a member’s preference. Base the program on the following structure:
 
 ```cpp
@@ -3999,7 +3981,7 @@ Next choice: q
 Bye!
 ```
 
-[5.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_5.cpp)
+[5.](./exercises/exercise_ch6_5.cpp)
 The Kingdom of Neutronia, where the unit of currency is the tvarp, has the following income tax code:
 
 ```
@@ -4011,12 +3993,12 @@ The Kingdom of Neutronia, where the unit of currency is the tvarp, has the follo
 
 For example, someone earning 38,000 tvarps would owe 5,000 × 0.00 + 10,000 × 0.10 + 20,000 × 0.15 + 3,000 × 0.20, or 4,600 tvarps.Write a program that uses a loop to solicit incomes and to report tax owed.The loop should terminate when the user enters a negative number or non-numeric input.
 
-[6.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_6.cpp)
+[6.](./exercises/exercise_ch6_6.cpp)
 
 Put together a program that keeps track of monetary contributions to the Society for the Preservation of Rightful Influence. It should ask the user to enter the number of contributors and then solicit the user to enter the name and contribution of each contributor.The information should be stored in a dynamically allocated array of structures. Each structure should have two members: a character array (or else a
 `string` object) to store the name and a `double` member to hold the amount of the contribution.After reading all the data, the program should display the names and amounts donated for all donors who contributed $10,000 or more.This list should be headed by the label Grand Patrons.After that, the program should list the remaining donors.That list should be headed Patrons. If there are no donors in one of the categories, the program should print the word “none.”Aside from displaying two categories, the program need do no sorting.
 
-[7.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_7.cpp)
+[7.](./exercises/exercise_ch6_7.cpp)
 Write a program that reads input a word at a time until a lone q is entered. The program should then report the number of words that began with vowels, the number that began with consonants, and the number that fit neither of those categories. One approach is to use `isalpha()` to discriminate between words beginning with letters and those that don’t and then use an `if` or `switch` statement to further identify those passing the `isalpha()` test that begin with vowels.A sample run might look like this:
 
 ```
@@ -4028,11 +4010,11 @@ quietly across 15 meters of lawn. q
 2 others
 ```
 
-[8.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_8.cpp)
+[8.](./exercises/exercise_ch6_8.cpp)
 
 Write a program that opens a text file, reads it character-by-character to the end of the file, and reports the number of characters in the file.
 
-[9.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch6_9.cpp)
+[9.](./exercises/exercise_ch6_9.cpp)
 Do Programming Exercise 6 but modify it to get information from a file.The first item in the file should be the number of contributors, and the rest of the file should consist of pairs of lines, with the first line of each pair being a contributor’s name and the second line being a contribution.That is, the file should look like this:
 
 ```
@@ -4048,8 +4030,9 @@ Rich Raptor
 ```
 
 -------------
+
 ```sh
-./.refs_notes/notes_C++_C++PrimerPlus/
+././programs/
 str 287 File I/O -> 298 Summary 
 Chapter 6 Review : 9
 Chapter 6 Exercises: 9
@@ -4057,13 +4040,12 @@ Chapter 6 Exercises: 9
 ### Chapter Review
 
 <!-- -------------------------------------------- -->
-<details style="margin-left: 35px;">
-    <summary style="margin-left: -35px;"> 
+<details><summary> 
     !!!!!Question!!!!!
     </summary>
  !!!!!Answer!!!!!
 </details>
 
 ### Programming Exercises
-[1.](.refs_notes\notes_C++_C++PrimerPlus\exercise_ch4_1.cpp)
+[1.](./exercises/exercise_ch4_1.cpp)
 ```
