@@ -4425,6 +4425,9 @@ Chapter 6 Exercises: 9
 ### Chapter Review
 
 <!-- -------------------------------------------- -->
+
+Notes\C++PrimerPlus\exercises\
+
 <details><summary> 
     !!!!!Question!!!!!
     </summary>

@@ -1,21 +1,19 @@
 #include <iostream>
 #include <string>
 
-struct stSocietyPRI{
+struct stSocietyPRI
+{
     std::string name;
     double contribution;
 };
 
-void fnPrint(stSocietyPRI *pSociety, int iContrbutors){
-    
-}
-
-int main(){
+int main()
+{
     using namespace std;
     int iContrbutors{}, iCounter{};
 
     cout << "Enter the number of contributors: ";
-    
+
     while (!(cin >> iContrbutors))
     {
         cin.clear(); // reset input
@@ -42,18 +40,19 @@ int main(){
         }
         cin.get(); // clear the input buffer
     }
-    
+
     // Print Grand Patrons
     iCounter = 0;
     cout << "Grand Patrons: \n";
     for (size_t i = 0; i < iContrbutors; i++)
     {
-        if (pSociety[i].contribution >= 10000){
-            cout << "\t" << pSociety[i].name << "; \n";  
-            ++iCounter;      
+        if (pSociety[i].contribution >= 10000)
+        {
+            cout << "\t" << pSociety[i].name << "; \n";
+            ++iCounter;
         }
     }
-    if(iCounter == 0)
+    if (iCounter == 0)
         cout << "\tnone\n";
 
     // Print the rest Patrons
@@ -61,13 +60,14 @@ int main(){
     cout << "Patrons: \n";
     for (size_t i = 0; i < iContrbutors; i++)
     {
-        if (pSociety[i].contribution < 10000){
-            cout << "\t" << pSociety[i].name << "; \n";        
-            ++iCounter;      
+        if (pSociety[i].contribution < 10000)
+        {
+            cout << "\t" << pSociety[i].name << "; \n";
+            ++iCounter;
         }
     }
-    if(iCounter == 0)
+    if (iCounter == 0)
         cout << "\tnone\n";
 
-    return 0; 
+    return 0;
 }
