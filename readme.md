@@ -3,7 +3,7 @@
 ----
 ## Notes
 
-- [C++ Primer Plus](/Notes/C++PrimerPlus/C++PrimerPlus.md)
+- [C++ Primer Plus](/Notes/C++PrimerPlus/Readme.md)
 - [Other - Good to know-how small projects](/Notes/_BaseNotes/notes_oth.md)
 <br>
 
