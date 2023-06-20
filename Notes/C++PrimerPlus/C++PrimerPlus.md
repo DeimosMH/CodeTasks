@@ -317,7 +317,7 @@ Use directive: ``using namespace std;`` or ``using std::cout`` for only
 
 ---
 
-### Chapter 2 Exercises
+### Chapter 2 Programming Exercises
 
 [1.](./exercises/exercise_ch2_1.cpp)
 Write a C++ program that displays your name and address (or if you value your
@@ -1335,7 +1335,7 @@ cin.get(dessert, Arsize); // read second line
 cin.get(name, ArSize).get(); // concatenate member functions
 
 // get() (but not getline()) reads an empty
-// line, it sets something called the failbit.The implications of 
+// line, it sets something called the failbit. The implications of 
 // this act are that further input is blocked, but you can restore 
 // input with the following command:
 cin.clear();
@@ -4413,6 +4413,1207 @@ Tammy Tubbs
 Rich Raptor
 55000
 ```
+
+## Chapter 7: C++’s Programming Modules
+
+<details><summary>
+        List of what you will learn
+</summary>
+
+```cpp
+- Function basics
+- Function prototypes
+- Passing function arguments by value
+- Designing functions to process arrays
+- Using const pointer parameters
+- Designing functions to process text strings
+- Designing functions to process structures
+- Designing functions to process objects of the string class
+- Functions that call themselves (recursion)
+- Pointers to functions
+```
+
+</details> <br>
+
+### Functions
+
+You can group functions into two categories: those that don’t have return values and those that do.
+
+```cpp
+void functionName(parameterList)
+{
+    statement(s)
+    return; // optional
+}
+```
+
+<img src="./assets/_ch7FunctionReturn.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+### Prototyping
+
+Prototype describes the function interface to the compiler.That is, it tells the compiler what type of return value,
+if any, the function has, and it tells the compiler the number and type of function arguments.
+
+A function prototype is a statement, so it must have a terminating semicolon. The simplest way to get a prototype
+is to copy the function header from the function definition and add a semicolon.
+
+<details><summary>
+     <a href="./programs/protos.cpp">
+     protos.cpp - Example of using prototypes and function calls. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/protos.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+C++ Versus ANSI C Prototyping, ellypsis (...)
+</summary>
+
+ANSI C borrowed prototyping from C++, but the two languages do have some differences. The most important is that ANSI C,
+to preserve compatibility with classic C, made prototyping optional, whereas C++ makes prototyping mandatory.
+For example, consider the following function declaration:
+
+```cpp
+void say_hi();
+```
+
+In C++, leaving the parentheses empty is the same as using the keyword void within the
+parentheses. It means the function has no arguments. In ANSI C, leaving the parentheses
+empty means that you are declining to state what the arguments are. That is, it means
+you’re forgoing prototyping the argument list. The C++ equivalent for not identifying the argument
+list is to use an ellipsis:
+
+```cpp
+void say_bye(...); // C++ abdication of responsibility
+```
+
+Normally this use of an ellipsis is needed only for interfacing with C functions having a variable
+number of arguments, such as printf().
+
+</details><br>
+
+They greatly reduce the chances of program errors. In particular, prototypes ensure the following:
+
+- The compiler correctly handles the function return value.
+- The compiler checks that you use the correct number of function arguments.
+- The compiler checks that you use the correct type of arguments.
+If you don’t, it converts the arguments to the correct type, if possible.
+
+
+Prototyping takes place during compile time and is termed `static type checking`. `Static type checking`, as you’ve
+just seen, catches many errors that are much more difficult to catch during runtime.
+
+### Passing function arguments
+
+<img src="./assets/_ch7PassByValue.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+A variable that’s used to receive passed values is called a `formal argument` or `formal parameter`.
+The value passed to the function is called the `actual argument` or `actual parameter`.
+
+Variables, including parameters, declared within a function are private to the function.
+When a function is called, the computer allocates the memory needed for these variables.
+When the function terminates, the computer frees the memory that was used for those variables.
+
+Prototype examples with many arguments:
+
+```cpp
+void fifi(float a, float b) // declare each variable separately
+void fufu(float a, b) // NOT acceptable
+
+void n_chars(char c, int n); // prototype, style 1
+void n_chars(char, int); // prototype, style 2
+```
+
+<details><summary>
+     <a href="./programs/twoarg.cpp">
+     twoarg.cpp - a function with 2 arguments. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/twoarg.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/lotto.cpp">
+     lotto.cpp - calculate probability of winning. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/lotto.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Functions and Arrays
+
+```cpp
+int sum_arr(int arr[], int n) // arr = array name, n = size
+```
+
+`arr` is not really an **array**; it’s a **pointer**!
+The good news is that you can write the rest of `the` function just as if arr were an array.
+
+The design decision to use array addresses as arguments saves the time and memory needed to copy an entire array.
+
+<details><summary>
+     <a href="./programs/arrfun1.cpp">
+     arrfun1.cpp - functions with an array argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/arrfun1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/arrfun2.cpp">
+     arrfun2.cpp - functions with an array argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/arrfun2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/arrfun3.cpp">
+     arrfun3.cpp - functions with an array argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/arrfun3.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/arrfun4.cpp">
+     arrfun4.cpp - functions with an array range. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/arrfun4.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+C++ interprets an array name as the address of its first element:
+
+```cpp
+cookies == &cookies[0] // array name is address of first element
+```
+
+This suggests that the correct function header should be this:
+
+```cpp
+int sum_arr(int * arr, int n) // arr = array name, n = size
+
+arr[i] == *(ar + i) // values in two notations
+&arr[i] == ar + i // addresses in two notations
+
+// You can also lie about where the array starts when calling:
+sum = sum_arr(cookies + 4, 4);
+sum = sum_arr(cookies, cookies + 3); // first 3 elements - array ranges
+
+// Protecting array with const to keep a function from accidentally altering the contents of
+an array argument,
+void show_array(const double ar[], int n);
+```
+
+Remember that adding one to a pointer, including an array name, actually adds a value equal to the size, in bytes, of the
+type to which the pointer points
+
+<img src="./assets/_ch7PassArray.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+### Pointers and `const`
+
+Pointers of variables can't be addressed to const values.
+
+```cpp
+int age = 39;
+const int * pt = &age;
+
+*pt += 1; // INVALID because pt points to a const int
+cin >> *pt; // INVALID for the same reason
+
+*pt = 20; // INVALID because pt points to a const int
+age = 20; // VALID because age is not declared to be const
+
+const float g_earth = 9.80;
+const float * pe = &g_earth; // VALID
+
+const float g_moon = 1.63;
+float * pm = &g_moon; // INVALID
+```
+
+<details><summary>
+Using const When You Can
+    </summary>
+
+There are two strong reasons to declare pointer arguments as pointers to constant data:
+
+- It protects you against programming errors that inadvertently alter data.
+- Using `const` allows a function to process both `const` and non-`const` actual arguments,
+whereas a function that omits `const` in the prototype can accept only non-`const` data.
+
+</details><br>
+
+<img src="./assets/_ch7PointersConst.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+### Functions and Two-Dimensional Arrays
+
+```cpp
+int data[3][4] = {{1,2,3,4}, {9,8,7,6}, {2,4,6,8}};
+int total = sum(data, 3);
+
+// data is pointer-to-array-of-four-int,
+// so an appropriate prototype would be this:
+int sum(int (*ar2)[4], int size);
+
+// The simplest way is to use brackets twice, as in ar2[r][c].
+total += ar2[r][c];
+// But it is possible, if ungainly, to use the * operator twice
+ar2[r][c] == *(*(ar2 + r) + c) // same thing
+
+// To understand this, you can work out the
+// meaning of the subexpressions from the inside out:
+ar2 // pointer to first row of an array of 4 int
+ar2 + r // pointer to row r (an array of 4 int)
+*(ar2 + r) // row r (an array of 4 int, hence the name of an array,
+// thus a pointer to the first int in the row, i.e., ar2[r]
+*(ar2 +r) + c // pointer int number c in row r, i.e., ar2[r] + c
+*(*(ar2 + r) + c // value of int number c in row r, i.e. ar2[r][c]
+```
+
+### Functions and C-Style Strings
+
+You have three choices for representing a string:
+
+- An array of char
+- A quoted string constant (also called a string literal)
+- A pointer-to-char set to the address of a string
+
+```cpp
+char ghost[15] = "galloping";
+char * str = "galumphing";
+int n1 = strlen(ghost); // ghost is &ghost[0]
+int n2 = strlen(str); // pointer to char
+int n3 = strlen("gamboling"); // address of string
+```
+
+<details><summary>
+     <a href="./programs/strgfun.cpp">
+     strgfun.cpp - functions with a string argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/strgfun.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/strgback.cpp">
+     strgback.cpp - a function that returns a pointer to char. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/strgback.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Functions and Structures
+
+Defining the structure is simple:
+
+```cpp
+struct travel_time
+{
+    int hours;
+    int mins;
+};
+
+// Next, consider the prototype for a sum() function that
+// returns the sum of two such structures
+travel_time sum(travel_time t1, travel_time t2);
+```
+
+<details><summary>
+     <a href="./programs/travel.cpp">
+     travel.cpp - using structures with functions. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/travel.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/strctfun.cpp">
+     strctfun.cpp - functions with a structure argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/strctfun.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Passing Structure Addresses
+
+Suppose you want to save time and space by passing the address of a structure instead of passing the entire structure.
+
+You need to make three changes:
+
+- When calling the function, pass it the address of the structure (`&pplace`) rather than the structure itself (`pplace`).
+- Declare the formal parameter to be a pointer-to-polar—that is, type polar `*`. Because the function shouldn’t modify the
+structure, use the `const` modifier.
+- Because the formal parameter is a pointer instead of a structure, use the indirect membership operator (`->`) rather than
+the membership operator (dot).
+
+```cpp
+void show_polar (const polar * pda)
+{
+    cout << "distance = " << pda->distance;
+}
+```
+
+<details><summary>
+     <a href="./programs/strctptr.cpp">
+     strctptr.cpp - functions with a structure argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/strctptr.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Functions and string Class Objects
+
+`string` class object is more closely related to a structure than to an array.
+
+- you can assign a structure to another structure and an object to another object
+- You can pass a structure as a complete entity to a function, and you can pass an object as a complete entity.
+- you can declare a one-dimensional array of `string`
+objects instead of a two-dimensional array of `char`.
+
+<details><summary>
+     <a href="./programs/topfive.cpp">
+     topfive.cpp - handling an array of string objects. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/topfive.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Functions and array Objects
+
+Declared `array` object
+
+```cpp
+std::array<double, 4> expenses;
+
+show(expenses); // function display the contents
+show(&expenses); // if we want a function that modifies object
+
+// Prototypes
+void show(std::array<double, 4> da); // da an object
+void fill(std::array<double, 4> * pa); // pa a pointer to an object
+```
+
+<details><summary>
+     <a href="./programs/arrobj.cpp">
+     arrobj.cpp - functions with a structure argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/arrobj.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Recursion
+
+C++ function can `call` itself. This ability is termed recursion
+
+Recursive function example
+
+```cpp
+// Single Recursive Call  
+void recurs(argumentlist)
+{
+    statements1
+    if (test)
+        recurs(arguments)
+    statements2
+}
+```
+
+<details><summary>
+     <a href="./programs/recur.cpp">
+     recur.cpp - using recursion (single). </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/recur.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+This recursive approach below is sometimes called the `divide-and-conquer` strategy.
+
+<details><summary>
+     <a href="./programs/ruler.cpp">
+     ruler.cpp - using recursion to subdivide a ruler. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/ruler.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Pointers to Functions
+
+it’s possible to write a function that takes the address of another function as an argument.
+That enables the first function to find the second function and run it.
+
+You need to be able to do the following:
+
+- Obtain the address of a function.
+- Declare a pointer to a function.
+- Use a pointer to a function to invoke the function.
+
+#### Obtaining the address of a function
+
+It is simple. You just use the function name without
+trailing parentheses
+
+```cpp
+process(think); // passes address of think() to process()
+thought(think()); // passes return value of think() to thought()
+```
+
+#### Declaring a Pointer to a Function
+
+Pointer to a function has to specify to what type of function the pointer point
+
+```cpp
+double pam(int); // prototype of function to use
+double (*pf)(int); // pf points to a function that takes
+// one int argument and that
+// returns type double
+```
+
+<details><summary>
+Tip
+</summary>
+
+In general, to declare a pointer to a particular kind of function, you can first write a prototype for a regular function
+of the desired kind and then replace the function name with an expression in the form `(*pf)`. In this case, `pf` is a
+pointer to a function of that type.
+</details><br>
+
+
+```cpp
+double (*pf)(int); // pf points to a function that returns double
+double *pf(int); // pf() a function that returns a pointer-to-double
+
+double pam(int);
+double (*pf)(int);
+pf = pam; // pf now points to the pam() function
+
+double ned(double);
+int ted(int);
+double (*pf)(int);
+pf = ned; // invalid -- mismatched signature
+pf = ted; // invalid -- mismatched return types
+
+// prototype:
+void estimate(int lines, double (*pf)(int));
+
+estimate(50, pam); // function call telling estimate() to use pam()
+
+// Using a Pointer to Invoke a Function
+double pam(int);
+double (*pf)(int);
+pf = pam; // pf now points to the pam() function
+double x = pam(4); // call pam() using the function name
+double y = (*pf)(5); // call pam() using the pointer pf
+
+double y = pf(5); // also call pam() using the pointer pf
+```
+
+<details><summary>
+     <a href="./programs/fun_ptr.cpp">
+     fun_ptr.cpp - pointers to functions. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/fun_ptr.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+```cpp
+const double * f1(const double ar[], int n);
+const double * f2(const double [], int);
+const double * f3(const double *, int);
+```
+
+The signatures might look different, but they are the same.
+
+```cpp
+const double * (*p1)(const double *, int);
+//This can be combined with initialization:
+const double * (*p1)(const double *, int) = f1;
+auto p2 = f2; // C++11 automatic type deduction
+
+*pd[3] // an array of 3 pointers
+(*pd)[3] // a pointer to an array of 3 elements
+
+**&pa == *pa == pa[0]
+```
+
+<details><summary>
+     <a href="./programs/arfupt.cpp">
+     arfupt.cpp - an array of function pointers. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/arfupt.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+Appreciating auto
+    </summary>
+One of the goals of C++11 is to make C++ easier to use, letting the programmer concentrate
+more on design and less on details. Listing 7.19 surely illustrates this point:
+
+```cpp
+auto pc = &pa; // C++11 automatic type deduction
+const double *(*(*pd)[3])(const double *, int) = &pa; // C++98, do it yourself
+```
+
+The automatic type deduction feature reflects a philosophical shift in the role of the compiler.
+In C++98, the compiler uses its knowledge to tell you when you are wrong. In C++11,
+at least with this feature, it uses its knowledge to help you get the right declaration.
+There is a potential drawback. Automatic type deduction ensures that the type of the variable
+matches the type of the initializer, but it still is possible that you might provide the
+wrong type of initializer:
+
+```cpp
+auto pc = *pa; // oops! used *pa instead of &pa
+```
+
+This declaration would make pc match the type of *pa, and that would result in a compiletime
+error when Listing 7.19 later uses pc, assuming that it is of the same type as &pa.
+
+</details><br>
+
+### Simplifying with `typedef`
+
+```cpp
+typedef double real; // makes real another name for double
+
+// you can do this to make p_fun an alias for the function pointer type
+typedef const double *(*p_fun)(const double *, int); // p_fun now a type name
+p_fun p1 = f1; // p1 points to the f1() function
+
+p_fun pa[3] = {f1,f2,f3}; // pa an array of 3 function pointers
+p_fun (*pd)[3] = &pa; // pd points to an array of 3 function pointers
+```
+
+---
+
+### Chapter 7 Review
+
+<!-- -------------------------------------------- -->
+<details><summary>
+1. What are the three steps in using a function?
+</summary>
+// Definition
+// Prototype
+// Caller
+
+The three steps are defining the function, providing a prototype, and calling the function.
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+2. Construct function prototypes that match the following descriptions:
+
+- `igor()` takes no arguments and has no return value.
+- `tofu()` takes an int argument and returns a float.
+- `mpg()` takes two type double arguments and returns a double.
+- `summation()` takes the name of a long array and an array size as values and returns a long value.
+- `doctor()` takes a string argument (the string is not to be modified) and returns a double value.
+- `ofcourse()` takes a boss structure as an argument and returns nothing.
+- `plot()` takes a pointer to a map structure as an argument and returns a string.
+
+</summary>
+
+```cpp
+void igor(void); // or void igor()
+float tofu(int n); // or float tofu(int);
+double mpg(double miles, double gallons);
+long summation(long harray[], int size);
+double doctor(const char * str);
+void ofcourse(boss dude);
+char * plot(map *pmap);
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+3. Write a function that takes three arguments: the name of an int array, the array
+size, and an int value. Have the function set each element of the array to the int
+value.
+</summary>
+
+```cpp
+void set_array(int arr[], int size, int value)
+{
+    for (int i = 0; i < size; i++)
+    arr[i] = value;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+4. Write a function that takes three arguments: a pointer to the first element of a
+range in an array, a pointer to the element following the end of a range in an array,
+and an int value. Have the function set each element of the array to the int value.
+</summary>
+
+```cpp
+// // My solution -> tested 
+// fnTemp(int *begin, int *end, int val){
+//     int i{};
+//     while(*(begin + i) != *end){
+//         *(begin + i) = val;
+//         ++i;
+//     }
+// }
+
+void set_array(int * begin, int * end, int value)
+{
+    for (int * pt = begin; pt != end; pt++)
+    pt* = value;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+5. Write a function that takes a double array name and an array size as arguments and
+returns the largest value in that array. Note that this function shouldn’t alter the
+contents of the array.
+</summary>
+
+```cpp
+// // My solution -> tested 
+// double fnTemp(const double name[], int size){
+//     double max = name[0];
+//     for(int i {}; i < size; ++i)
+//         if(name[i] > max)
+//             max = name[i];
+//     return max;
+// }
+
+double biggest (const double foot[], int size)
+{
+    double max;
+    if (size < 1)
+    {
+        cout << "Invalid array size of " << size << endl;
+        cout << "Returning a value of 0\n";
+        return 0;
+    }
+    else // not necessary because return terminates program
+    {
+        max = foot[0];
+        for (int i = 1; i < size; i++)
+        if (foot[i] > max)
+        max = foot[i];
+        return max;
+    }
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+6. Why don’t you use the const qualifier for function arguments that are one of the fundamental types?
+</summary>
+You use the const qualifier with pointers to protect the original pointed-to data from being altered.
+When a program passes a fundamental type such as an int or a double, it passes it by value so that the function
+works with a copy. Thus, the original data is already protected.
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+7. What are the three forms a C-style string can take in a C++ program?
+</summary>
+
+```cpp
+char str[]; 
+"asdf";
+char *ptr = &str;
+```
+
+A string can be stored in a `char array`, it can be represented by a string constant in double quotation marks, and it can
+be represented by a pointer pointing to the first character of a string.
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+8. Write a function that has this prototype:
+
+```cpp
+int replace(char * str, char c1, char c2);
+```
+
+Have the function replace every occurrence of c1 in the string str with c2, and have the function return the number
+of replacements it makes.
+</summary>
+
+```cpp
+int replace(char * str, char c1, char c2)
+{
+    int count = 0;
+    while (*str) // while not at end of string
+    {
+        if (*str == c1)
+        {
+            *str = c2;
+            count++;
+        }
+        str++; // advance to next character
+    }
+return count;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+9. What does the expression *"pizza" mean? What about "taco"[2]?
+</summary>
+
+Because C++ interprets `"pizza"` as the address of its first element, applying the `*` operator yields the value of that
+first element, which is the character `p`. Because C++ interprets `"taco"` as the address of its first element, it interprets
+`"taco"[2]` as the value of the element two positions down the line that is, as the character `c`. In other words, the string
+constant acts the same as an array name
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+10. C++ enables you to pass a structure by value, and it lets you
+pass the address of a structure. If glitz is a structure variable, how would you pass it by value?
+How would you pass its address? What are the trade-offs of the two approaches?
+</summary>
+
+```sh
+// my answer
+By value: fun(glitz)
+- it copies everything from glitz to local structure - less efficient
+
+By address: fun(*glitz)
+- operates on original data - more prone to data corruption 
+- less understandable, use indirect membership operator (->)
+```
+
+To pass it by value, you just pass the structure name `glitz`. To pass its address, you use the address operator `&glitz`.
+Passing by the value automatically protects the original data, but it takes time and memory.
+Passing by address saves time and memory but doesn’t protect the original data unless you use the const modifier for the
+function parameter. Also passing by value means you can use ordinary structure member notation, but passing a pointer
+means you have to remember to use the indirect membership operator.
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+11. The function `judge()` has a type `int` return value. As an argument, it takes the
+address of a function. The function whose address is passed, in turn, takes a pointer
+to a const char as an argument and returns an int. Write the function prototype.
+
+</summary>
+
+```cpp
+int judge (int (*pf)(const char *));
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+12. Suppose we have the following structure declaration:
+
+```cpp
+struct applicant {
+    char name[30];
+    int credit_ratings[3];
+};
+```
+
+- Write a function that takes an applicant structure as an argument and displays its contents.
+- Write a function that takes the address of an applicant structure as an argument and displays the contents of the
+pointed-to structure
+
+</summary>
+
+```cpp
+// my answer
+fnTemp(applicant)(
+    std::cout << applicant.name << "  " << applicant.credit_ratings;
+)
+
+fnTemp(*applicant)(
+    std::cout << applicant->name << "  " << applicant->credit_ratings;
+)
+```
+
+a. Note that if ap is an applicant structure, then ap.credit_ratings is an array name and ap.credit_ratings[i]
+is an array element.
+
+```cpp
+void display(applicant ap)
+{
+    cout << ap.name << endl;
+    for (int i = 0; i < 3; i++)
+        cout << ap.credit_ratings[i] << endl;
+}
+```
+
+b. Note that if pa is a pointer to an applicant structure, then `pa->credit_ratings` is an array name and
+`pa->credit_ratings[i]` is an array element.
+
+```cpp
+void show(const applicant * pa)
+{
+    cout << pa->name << endl;
+    for (int i = 0; i < 3; i++)
+        cout << pa->credit_ratings[i] << endl;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+13. Suppose the functions `f1()` and `f2()` have the following prototypes:
+
+```cpp
+void f1(applicant * a);
+const char * f2(const applicant * a1, const applicant * a2);
+```
+
+Declare `p1` as a pointer that points to `f1` and `p2` as a pointer to `f2`.
+Declare `ap` as an array of five pointers of the same type as `p1`,
+and declare `pa` as a pointer to an array of ten pointers of the same type as `p2`.
+Use `typedef` as an aid.
+
+</summary>
+
+```cpp
+typedef void (*p_f1)(applicant *);
+p_f1 p1 = f1;
+typedef const char * (*p_f2)(const applicant *, const applicant *);
+p_f2 p2 = f2;
+p_f1 ap[5];
+p_f2 (*pa)[10];
+```
+
+</details>
+
+### Chapter 7 Programming Exercises
+
+[1.](./exercises/exercise_ch7_1.cpp)
+Write a program that repeatedly asks the user to enter pairs of numbers until at least one of the pair is 0.
+For each pair, the program should use a function to calculate the harmonic mean of the numbers.
+The function should return the answer to `main()`, which should report the result. The harmonic mean of the
+numbers is the inverse of the average of the inverses and can be calculated as follows:
+$$HarmonicMean = 2.0 × x × y / (x + y)$$
+
+[2.](./exercises/exercise_ch7_2.cpp)
+Write a program that asks the user to enter up to 10 golf scores, which are to be
+stored in an array.You should provide a means for the user to terminate input prior
+to entering 10 scores.The program should display all the scores on one line and
+report the average score. Handle input, display, and the average calculation with
+three separate array-processing functions
+
+[3.](./exercises/exercise_ch7_3.cpp)
+Here is a structure declaration:
+
+```cpp
+struct box
+{
+    char maker[40];
+    float height;
+    float width;
+    float length;
+    float volume;
+};
+```
+
+- Write a function that passes a `box` structure by value and that displays the
+value of each member.
+- Write a function that passes the address of a `box` structure and that sets the
+`volume` member to the product of the other three dimensions.
+- Write a simple program that uses these two functions.
+
+[4.](./exercises/exercise_ch7_4.cpp)
+Many state lotteries use a variation of the simple lottery portrayed by Listing 7.4 (lotto). In
+these variations you choose several numbers from one set and call them the field
+numbers. For example, you might select five numbers from the field of 1–47).You
+also pick a single number (called a mega number or a power ball, etc.) from a second
+range, such as 1–27. To win the grand prize, you have to guess all the picks correctly.
+The chance of winning is the product of the probability of picking all the
+field numbers times the probability of picking the mega number. For instance, the
+probability of winning the example described here is the product of the probability
+of picking 5 out of 47 correctly times the probability of picking 1 out of 27 correctly.
+Modify Listing 7.4 to calculate the probability of winning this kind of lottery.
+
+[5.](./exercises/exercise_ch7_5.cpp)
+Define a recursive function that takes an integer argument and returns the factorial
+of that argument. Recall that 3 factorial, written 3!, equals 3 × 2!, and so on, with 0!
+defined as 1. In general, if n is greater than zero, n! = n * (n - 1)!.Test your function
+in a program that uses a loop to allow the user to enter various values for which the
+program reports the factorial
+
+[6.](./exercises/exercise_ch7_6.cpp)
+Write a program that uses the following functions:
+
+`Fill_array()` takes as arguments the name of an array of double values and an
+array size. It prompts the user to enter double values to be entered in the array. It
+ceases taking input when the array is full or when the user enters non-numeric
+input, and it returns the actual number of entries.
+
+`Show_array()` takes as arguments the name of an array of double values and an
+array size and displays the contents of the array.
+
+`Reverse_array()` takes as arguments the name of an array of double values and an
+array size and reverses the order of the values stored in the array.
+The program should use these functions to fill an array, show the array, reverse the
+array, show the array, reverse all but the first and last elements of the array, and then
+show the array.
+
+[7.](./exercises/exercise_ch7_7.cpp)
+Redo Listing 7.7 (arrfun3), modifying the three array-handling functions to each use two
+pointer parameters to represent a range. The `fill_array()` function, instead of
+returning the actual number of items read, should return a pointer to the location
+after the last location filled; the other functions can use this pointer as the second
+argument to identify the end of the data.
+
+[8.](./exercises/exercise_ch7_8.cpp)
+Redo Listing 7.15 (arrobj) without using the array class. Do two versions:
+
+a. Use an ordinary array of `const char *` for the strings representing the season
+names, and use an ordinary array of double for the expenses.
+
+b. Use an ordinary array of `const char *` for the strings representing the season
+names, and use a structure whose sole member is an ordinary array of
+double for the expenses. (This design is similar to the basic design of the
+array class.)
+
+[9.](./exercises/exercise_ch7_9.cpp)
+This exercise provides practice in writing functions dealing with arrays and structures.
+The following is a program skeleton. Complete it by providing the described
+functions:
+
+```cpp
+#include <iostream>
+using namespace std;
+const int SLEN = 30;
+
+struct student
+{
+    char fullname[SLEN];
+    char hobby[SLEN];
+    int ooplevel;
+};
+
+// getinfo() has two arguments: a pointer to the first element of
+// an array of student structures and an int representing the
+// number of elements of the array. The function solicits and
+// stores data about students. It terminates input upon filling
+// the array or upon encountering a blank line for the student
+// name. The function returns the actual number of array elements
+// filled.
+int getinfo(student pa[], int n);
+
+// display1() takes a student structure as an argument
+// and displays its contents
+void display1(student st);
+
+// display2() takes the address of student structure as an
+// argument and displays the structure’s contents
+void display2(const student *ps);
+
+// display3() takes the address of the first element of an array
+// of student structures and the number of array elements as
+// arguments and displays the contents of the structures
+void display3(const student pa[], int n);
+
+int main()
+{
+    cout << "Enter class size : ";
+    int class_size;
+    cin >> class_size;
+    while (cin.get() != '\n')
+        continue;
+
+    student *ptr_stu = new student[class_size];
+    int entered = getinfo(ptr_stu, class_size);
+    for (int i = 0; i < entered; i++)
+    {
+        display1(ptr_stu[i]);
+        display2(&ptr_stu[i]);
+    }
+    display3(ptr_stu, entered);
+    delete[] ptr_stu;
+    cout << "Done\n";
+    return 0;
+}
+```
+
+[10.](./exercises/exercise_ch7_10.cpp)
+Design a function `calculate()` that takes two type `double` values and a pointer to
+a function that takes two `double` arguments and returns a double.The
+`calculate()` function should also be type double, and it should return the value
+that the pointed-to function calculates, using the double arguments to
+`calculate()`. For example, suppose you have this definition for the `add()`
+function:
+
+```cpp
+double add(double x, double y)
+{
+    return x + y;
+}
+```
+
+Then, the function call in the following would cause `calculate()` to pass the values
+2.5 and 10.4 to the `add()` function and then return the `add()` return value
+(12.9):
+
+```cpp
+double q = calculate(2.5, 10.4, add);
+```
+
+Use these functions and at least one additional function in the `add()` mold in a
+program.The program should use a loop that allows the user to enter pairs of numbers.
+For each pair, use `calculate()` to invoke `add()` and at least one other function.
+If you are feeling adventurous, try creating an array of pointers to add()-style
+functions and use a loop to successively apply `calculate()` to a series of functions
+by using these pointers. Hint: Here’s how to declare such an array of three pointers:
+
+```cpp
+double (*pf[3])(double, double);
+```
+
+You can initialize such an array by using the usual array initialization syntax and
+function names as addresses.
 
 ---
 

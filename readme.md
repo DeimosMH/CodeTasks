@@ -17,7 +17,6 @@
    - Markdown:
      - Markdown Preview Enhanced
      - Excel to Markdown table
-     - Excel to Markdown table
      - Markdown Checkboxes
      - Markdown Paste
      - Markdown PDF
