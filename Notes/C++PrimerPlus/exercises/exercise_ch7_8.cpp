@@ -1,47 +1,49 @@
 /// A version /// -----------
-// #include <iostream>
-// #include <string>
+/*
+#include <iostream>
+#include <string>
 
-// // constant data
-// const int Seasons = 4;
-// const char Snames[Seasons][10] =
-//     {"Spring", "Summer", "Fall", "Winter"};
+// constant data
+const int Seasons = 4;
+const char Snames[Seasons][10] =
+    {"Spring", "Summer", "Fall", "Winter"};
 
-// // function to modify array object
-// void fill(double t.expenses[],const int Seasons);
-// // function that uses array object without modifying it
-// void show(double t.expenses[],const int Seasons);
+// function to modify array object
+void fill(double t.expenses[],const int Seasons);
+// function that uses array object without modifying it
+void show(double t.expenses[],const int Seasons);
 
-// int main()
-// {
-//     double expenses[Seasons]{};
-//     fill(expenses, Seasons);
-//     show(expenses, Seasons);
-//     return 0;
-// }
+int main()
+{
+    double expenses[Seasons]{};
+    fill(expenses, Seasons);
+    show(expenses, Seasons);
+    return 0;
+}
 
-// void fill(double t.expenses[],const int Seasons)
-// {
-//     using namespace std;
-//     for (int i = 0; i < Seasons; i++)
-//     {
-//         cout << "Enter " << Snames[i] << " expenses: ";
-//         cin >> t.expenses[i];
-//     }
-// }
+void fill(double t.expenses[],const int Seasons)
+{
+    using namespace std;
+    for (int i = 0; i < Seasons; i++)
+    {
+        cout << "Enter " << Snames[i] << " expenses: ";
+        cin >> t.expenses[i];
+    }
+}
 
-// void show(double t.expenses[],const int Seasons)
-// {
-//     using namespace std;
-//     double total = 0.0;
-//     cout << "\nEXPENSES\n";
-//     for (int i = 0; i < Seasons; i++)
-//     {
-//         cout << Snames[i] << ": $" << t.expenses[i] << endl;
-//         total += t.expenses[i];
-//     }
-//     cout << "Total Expenses: $" << total << endl;
-// }
+void show(double t.expenses[],const int Seasons)
+{
+    using namespace std;
+    double total = 0.0;
+    cout << "\nEXPENSES\n";
+    for (int i = 0; i < Seasons; i++)
+    {
+        cout << Snames[i] << ": $" << t.expenses[i] << endl;
+        total += t.expenses[i];
+    }
+    cout << "Total Expenses: $" << total << endl;
+}
+*/
 
 /// B version /// -----------
 #include <iostream>
