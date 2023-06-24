@@ -5615,6 +5615,960 @@ double (*pf[3])(double, double);
 You can initialize such an array by using the usual array initialization syntax and
 function names as addresses.
 
+## Chapter 8: Adventures in Functions
+
+<details><summary>
+        List of what you will learn
+</summary>
+
+```cpp
+- Inline functions
+- Reference variables
+- How to pass function arguments by reference
+- Default arguments
+- Function overloading
+- Function templates
+- Function template specializations
+```
+
+</details> <br>
+
+### Inline functions
+
+<img src="./assets/_ch8Inline.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+<details><summary>
+     <a href="./programs/inline.cpp">
+     inline.cpp - using an inline function. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/inline.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+Inline Versus Macros
+    </summary>
+<figure>
+
+The `inline` facility is an addition to C++. C uses the preprocessor `#define` statement to
+provide *macros*, which are crude implementations of inline code. For example, here’s a
+macro for squaring a number:
+
+```cpp
+#define SQUARE(X) X*X
+```
+
+This works not by passing arguments but through text substitution, with the `X` acting as a
+symbolic label for the “argument”:
+
+```cpp
+a = SQUARE(5.0); is replaced by a = 5.0*5.0;
+b = SQUARE(4.5 + 7.5); is replaced by b = 4.5 + 7.5 * 4.5 + 7.5;
+d = SQUARE(c++); is replaced by d = c++*c++;
+```
+
+Only the first example here works properly. You can improve matters with a liberal application
+of parentheses:
+
+Still, the problem remains that macros don’t pass by value. Even with this new definition,
+SQUARE(c++) increments c twice, but the inline square() function in Listing 8.1 evaluates
+c, passes that value to be squared, and then increments c once.
+
+```cpp
+#define SQUARE(X) ((X)*(X))
+```
+
+Still, the problem remains that macros don’t pass by value. Even with this new definition,
+`SQUARE(c++)` increments `c` twice, but the inline `square()` function in Listing 8.1 evaluates
+c, passes that value to be squared, and then increments `c` once.
+
+The intent here is not to show you how to write C macros. Rather, it is to suggest that if you
+have been using C macros to perform function-like services, you should consider converting
+them to C++ inline functions
+
+</figure>
+</details><br>
+
+### Reference Variables
+
+reference is a name that acts as an alias, or an alternative name, for a previously defined variable. For
+example, if you make `twain` a reference to the `clemens` variable, you can use `twain` and `clemens` interchangeably
+to represent that variable.
+
+Unlike po0inters you can’t declare the reference and then assign it a value later the way you can with a pointer:
+
+```cpp
+int rat;
+int & rodent;
+rodent = rat; // No, you can't do this.
+```
+
+<details><summary>
+     <a href="./programs/firstref.cpp">
+     firstref.cpp - defining and using a reference. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/firstref.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/secref.cpp">
+     secref.cpp - defining and using a reference. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/secref.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<img src="./assets/_ch8PassingReference.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+<details><summary>
+     <a href="./programs/swaps.cpp">
+     swaps.cpp - swapping with references and with pointers. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/swaps.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/cubes.cpp">
+     cubes.cpp - regular and reference arguments. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/cubes.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Temporary Variables, Reference Arguments, and `const`
+
+First, when is a temporary variable created? Provided that the reference parameter is a
+const, the compiler generates a temporary variable in two kinds of situations:
+
+- When the actual argument is the correct type but isn’t an **lvalue**
+- When the actual argument is of the wrong type, but it’s of a type that can be converted
+to the correct type
+
+An argument that’s an `lvalue` is a data object that can be referenced
+by `address`. For example, a variable, an array element, a structure member, a reference, and
+a dereferenced pointer are lvalues.
+Non-lvalues include literal constants (aside from quoted strings,
+which are represented by their addresses) and expressions with multiple terms.
+
+Regular variable can be further characterized as being a
+`modifiable lvalue` and the const variable as a `non-modifiable lvalue`.
+
+```cpp
+double refcube(const double &ra)
+{
+return ra * ra * ra;
+}
+
+double side = 3.0;
+double * pd = &side;
+double & rd = side;
+long edge = 5L;
+double lens[4] = { 2.0, 5.0, 10.0, 12.0};
+double c1 = refcube(side); // ra is side
+double c2 = refcube(lens[2]); // ra is lens[2]
+double c3 = refcube(rd); // ra is rd is side
+double c4 = refcube(*pd); // ra is *pd is side
+double c5 = refcube(edge); // ra is temporary variable
+double c6 = refcube(7.0); // ra is temporary variable
+double c7 = refcube(side + 10.0); // ra is temporary variable
+```
+
+<details><summary>
+Note
+    </summary>
+<figure>
+
+If a function call argument isn’t an `lvalue` or does not match the type of the corresponding
+`const` reference parameter, C++ creates an anonymous variable of the correct type, assigns
+the value of the function call argument to the anonymous variable, and has the parameter
+refer to that variable.
+
+</figure>
+</details><br>
+
+<details><summary>
+Use `const` When You Can
+    </summary>
+<figure>
+
+There are three strong reasons to declare reference arguments as references to constant data:
+
+- Using `const` protects you against programming errors that inadvertently alter data.
+- Using `const` allows a function to process both `const` and `non-const` actual arguments,
+whereas a function that omits `const` in the prototype only can accept nonconst
+data.
+- Using a `const` reference allows the function to generate and use a temporary variable
+appropriately.
+
+You should declare formal reference arguments as `const` whenever it’s appropriate to do so.
+
+</figure>
+</details><br>
+
+C++11 introduces a second kind of reference, called an rvalue reference, that can refer to
+an rvalue. It’s declared using &&:
+
+```cpp
+double && rref = std::sqrt(36.00); // not allowed for double &
+double j = 15.0;
+double && jref = 2.0* j + 18.5; // not allowed for double &
+std::cout << rref << '\n'; // display 6.0
+std::cout << jref << '\n'; // display 48.5;
+```
+
+The `rvalue` reference was introduced mainly to help library designers provide more
+efficient implementations of certain operations. Chapter 18,“Visiting will the New C++
+Standard,” discusses how rvalue references are used to implement an approach called move
+semantics.The original reference type (the one declared using a single &) is now called an
+`lvalue` reference.
+
+### Using References with a Structure
+
+References work wonderfully with `structures` and `classes`
+References were introduced primarily for use with these types, not for use with the
+basic built-in types.
+
+Suppose we have the following definition of a structure:
+
+```cpp
+struct free_throws
+{
+    std::string name;
+    int made;
+    int attempts;
+    float percent;
+};
+```
+
+Then a function using a reference to this type could be prototyped as follows:
+
+```cpp
+void set_pc(free_throws & ft); // use a reference to a structure
+```
+
+If the intent is that the function doesn’t alter the structure, use const:
+
+```cpp
+void display(const free_throws & ft); // don't allow changes to structure
+```
+
+<details><summary>
+     <a href="./programs/strc_ref.cpp">
+     strc_ref.cpp - using structure references. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/strc_ref.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+A function that returns a reference is actually an alias for the referred-to variable.
+
+#### Being Careful About What a Return Reference Refers To
+
+```cpp
+const free_throws & clone2(free_throws & ft)
+{
+    free_throws newguy; // first step to big error
+    newguy = ft; // copy info
+    return newguy; // return reference to copy
+}
+```
+
+This has the unfortunate effect of returning a reference to a temporary variable
+(newguy) that passes from existence as soon as the function terminates.
+
+Here’s how you could do something similar with a reference:
+
+```cpp
+const free_throws & clone(free_throws & ft)
+{
+    free_throws * pt;
+    *pt = ft; // copy info
+    return *pt; // return reference to copy
+}
+```
+
+### Using References with a Class Object
+
+The general idea is to create a function that adds a given string
+to each end of another string. Listing 8.7 (strquote) provides three functions that are intended to do
+this. However, one of the designs is so flawed that it may cause the program to crash or
+even not compile.
+
+<details><summary>
+     <a href="./programs/strquote.cpp">
+     strquote.cpp - different designs. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/strquote.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+Passing a C-Style String Argument to a string Object Reference Parameter
+    </summary>
+<figure>
+
+You may have noticed a rather interesting fact about the `version1()` function: Both formal
+parameters (`s1` and `s2`) are type const string `&`, but the actual arguments (`input` and
+`"***"`) are type string and `const char *`, respectively. Because `input` is type `string`,
+there is no problem having `s1` refer to it. But how is it that the program accepts passing a
+`pointer-to-char` argument to a string reference?
+
+Two things are going on here. One is that the `string` class defines a `char *-to-string`
+conversion, which makes it possible to initialize a string `object` to a C-style string. The second
+is a property of `const` reference formal parameters that is discussed earlier in this
+chapter. Suppose the actual argument type doesn’t match the reference parameter type but
+can be converted to the reference type. Then the program creates a temporary variable of
+the correct type, initializes it to the converted value, and passes a reference to the temporary
+variable. Earlier this chapter you saw, for instance, that a `const double &` parameter
+can handle an int argument in this fashion. Similarly, a `const string &` parameter can
+handle a `char *` or `const char *` argument in this fashion.
+
+The convenient outcome of this is that if the formal parameter is type `const string &`, the
+actual argument used in the function call can be a `string` object or a C-style string, such as
+a quoted string literal, a null-terminated array of `char`, or a pointer variable that points to a
+`char`. Hence the following works fine:
+
+```cpp
+result = version1(input, "***");
+```
+
+### Another Object Lesson: Objects, Inheritance, and References
+
+The language feature that makes it possible to pass
+features from one class to another is called **inheritance**.
+Eg.: objects of the `ofstream` type can use `ostream` methods, allowing file input/output to use the
+same forms as console input/output.
+
+<details><summary>
+     <a href="./programs/filefunc.cpp">
+     filefunc.cpp - function with ostream & parameter. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/filefunc.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### When to Use Reference/Pointer/Value Arguments
+
+There are two main reasons for using reference arguments:
+
+- To allow you to alter a data object in the calling function
+- To speed up a program by passing a reference instead of an entire data object
+
+So when should you use a reference? Use a pointer? Pass by value?
+The following are some guidelines.
+A function uses passed data without modifying it:
+
+- If the data object is small, such as a built-in data type or a small structure, pass it
+by value.
+- If the data object is an array, use a pointer because that’s your only choice. Make the
+pointer a pointer to `const`.
+- If the data object is a good-sized structure, use a `const` pointer or a `const` reference
+to increase program efficiency.You save the time and space needed to copy a structure
+or a class design. Make the pointer or reference `const`.
+- If the data object is a class object, use a `const` reference.The semantics of class
+
+design often require using a reference, which is the main reason C++ added this
+feature.Thus, the standard way to pass class object arguments is by reference.
+A function modifies data in the calling function:
+
+- If the data object is a built-in data type, use a pointer. If you spot code like
+`fixit(&x)`, where `x` is an `int`, it’s pretty clear that this function intends to modify `x`.
+- If the data object is an array, use your only choice: a pointer.
+- If the data object is a structure, use a reference or a pointer.
+- If the data object is a class object, use a reference.
+
+### Default Arguments
+
+`default argument` is a value that’s used automatically if you omit the corresponding actual argument
+from a function call.
+
+You must use the function prototype. Because the compiler looks at the prototype to see how many
+arguments a function uses, the function prototype also has to alert the program to the possibility
+of default arguments. The method is to assign a value to the argument in the prototype.
+For example, here’s the prototype fitting this description of `left()`:
+
+```cpp
+char * left(const char * str, int n = 1);
+
+int harpo(int n, int m = 4, int j = 5); // VALID
+int chico(int n, int m = 6, int j); // INVALID
+int groucho(int k = 1, int m = 2, int n = 3); // VALID
+
+beeps = harpo(2); // same as harpo(2,4,5)
+beeps = harpo(1,8); // same as harpo(1,8,5)
+beeps = harpo (8,7,6); // no default arguments used
+
+beeps = harpo(3, ,8); // invalid, doesn't set m to 4
+```
+
+<details><summary>
+     <a href="./programs/left.cpp">
+     left.cpp - string function with a default argument. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/left.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Function Overloading
+
+`Function polymorphism` is a neat C++ addition to C’s capabilities. Whereas default arguments
+let you call the same function by using varying numbers of arguments, function polymorphism,
+also called `function overloading`, lets you use multiple functions sharing the same name.
+
+You can use function overloading to design a family
+of functions that do essentially the same thing but using different argument lists.
+
+```cpp
+void print(const char * str, int width); // #1
+void print(double d, int width); // #2
+void print(long l, int width); // #3
+void print(int i, int width); // #4
+void print(const char *str); // #5
+
+print("Pancakes", 15); // use #1
+print("Syrup"); // use #5
+print(1999.0, 10); // use #2
+print(1999, 12); // use #4
+print(1999L, 15); // use #3
+```
+
+<details><summary>
+Overloading Reference Parameters
+    </summary>
+<figure>
+Class designs and the STL often use reference parameters, and it’s useful to know how
+overloading works with different reference types. Consider the following three prototypes:
+
+```cpp
+void sink(double & r1); // matches modifiable lvalue
+void sank(const double & r2); // matches modifiable or const lvalue, rvalue
+void sunk(double && r3); // matches rvalue
+```
+
+The lvalue reference parameter `r1` matches a modifiable lvalue argument, such as a
+double variable. The `const` lvalue reference parameter `r2` matches a modifiable lvalue
+argument, a `const` lvalue argument, and an rvalue argument, such as the sum of two
+double values. Finally, the rvalue reference `r3` matches an rvalue. Note how `r2` can match
+the same sort of arguments that `r1` and `r3` match. This raises the question of what happens
+when you overload a function on these three types of parameters. The answer is that
+the more exact match is made:
+
+```cpp
+void staff(double & rs); // matches modifiable lvalue
+void staff(const double & rcs); // matches rvalue, const lvalue
+void stove(double & r1); // matches modifiable lvalue
+void stove(const double & r2); // matches const lvalue
+void stove(double && r3); // matches rvalue
+```
+
+This allows you to customize the behavior of a function based on the `lvalue`, `const`, or
+rvalue nature of the argument:
+
+```cpp
+double x = 55.5;
+const double y = 32.0;
+stove(x); // calls stove(double &)
+stove(y); // calls stove(const double &)
+stove(x+y); // calls stove(double &&)
+```
+
+If, say, you omit the `stove(double &&)` function, then `stove(x+y)` will call the
+`stove(const double &)` function instead.
+
+</figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/leftover.cpp">
+     leftover.cpp - overloading the left() function. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/leftover.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+You might find function overloading fascinating, but you shouldn’t overuse it. You should
+reserve function overloading for functions that perform basically the same task but with
+different forms of data.
+
+```cpp
+char * left(const char * str, unsigned n); // two arguments
+char * left(const char * str); // one argument
+```
+
+<details><summary>
+What Is Name Decoration?
+    </summary>
+<figure>
+
+How does C++ keep track of which overloaded function is which? It assigns a secret identity
+to each of these functions. When you use the editor of your C++ development tool to write
+and compile programs, your C++ compiler performs a bit of magic on your behalf—known as
+name decoration or name mangling—through which each function name is encrypted, based
+on the formal parameter types specified in the function’s prototype. Consider the following
+undecorated function prototype:
+
+```cpp
+long MyFunctionFoo(int, float);
+```
+
+This format is fine for us humans; we know that the function accepts two arguments of type
+`int` and `float`, and it returns a value of type `long`. For its own use, the compiler documents
+this interface by transforming the name into an internal representation with a more
+unsightly appearance, perhaps something like this:
+
+```cpp
+?MyFunctionFoo@@YAXH
+```
+
+The apparent gibberish decorating the original name (or mangling it, depending on your attitude)
+encodes the number and types of parameters. A different function signature would
+result in a different set of symbols being added, and different compilers would use different
+conventions for their efforts at decorating.
+
+</figure>
+</details><br>
+
+### Function Templates
+
+A function template is a generic function description; that is, it defines a function
+in terms of a generic type for which a specific type, such as int or double, can be substituted.
+By passing a type as a parameter to a template, you cause the compiler to generate a
+function for that particular type.
+
+Because templates let you program in terms of a generic
+type instead of a specific type, the process is sometimes termed **generic programming**.
+
+Because types are represented by parameters, the template feature is sometimes referred to
+as parameterized types.
+
+Function templates enable you to define a function in terms of some arbitrary type. For
+example, you can set up a swapping template like this:
+
+```cpp
+template <typename AnyType>
+void Swap(AnyType &a, AnyType &b)
+{
+    AnyType temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+```
+
+The first line specifies that you are setting up a template and that you’re naming the
+arbitrary type AnyType.The keywords `template` and `typename` are obligatory, except that
+you can use the keyword `class` instead of `typename`. Also you must use the angle brackets.
+
+<details><summary>
+Tip
+    </summary>
+<figure>
+
+You should use templates if you need functions that apply the same algorithm to a variety of
+types. If you aren’t concerned with backward compatibility and can put up with the effort of
+typing a longer word, you can use the keyword `typename` rather than `class` when you
+declare type parameters.
+</figure>
+</details><br>
+
+To let the compiler know that you need a particular form of swap function, you just
+use a function called Swap() in your program.
+
+<details><summary>
+     <a href="./programs/funtemp.cpp">
+     funtemp.cpp - using a function template. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/funtemp.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Overloaded Templates
+
+You use templates when you need functions that apply the same algorithm to a variety of types.
+To handle this possibility, you can overload template definitions, just as you overload
+regular function definitions.
+
+<details><summary>
+     <a href="./programs/twotemps.cpp">
+     twotemps.cpp - using overloaded template functions. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/twotemps.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Template Limitations
+
+Suppose you have a template function:
+
+```cpp
+template <class T> // or template <typename T>
+void f(T a, T b)
+{...}
+```
+
+Often the code makes assumptions about what operations are possible for the type. For
+instance, the following statement assumes that assignment is defined, and this would not be
+true if type T is a built-in array type:
+
+```cpp
+a = b;
+```
+
+Similarly, the following assumes > is defined, which is not true if T is an ordinary
+structure:
+
+```cpp
+if (a > b)
+```
+
+Also the > operator is defined for array names, but because array names are addresses, it
+compares the addresses of the arrays, which may not be what you have in mind.And the
+following assumes the multiplication operator is defined for type T, which is not the case
+if T is an array, a pointer, or a structure:
+
+```cpp
+T c = a*b;
+```
+
+In short, it’s easy to write a template function that cannot handle certain types
+
+### Explicit Specializations
+
+You can supply a specialized function definition, called an explicit
+specialization, with the required code. If the compiler finds a specialized definition that
+exactly matches a function call, it uses that definition without looking for templates.
+The specialization mechanism has changed with the evolution of C++.We’ll look
+
+#### Third-Generation Specialization (ISO/ANSI C++ Standard)
+
+After some youthful experimentation with other approaches, the C++98 Standard settled
+on this approach:
+
+- For a given function name, you can have a non template function, a template function,
+and an explicit specialization template function, along with overloaded versions
+of all of these.
+- The prototype and definition for an explicit specialization should be preceded by
+`template <>` and should mention the specialized type by name.
+- A specialization overrides the regular template, and a non template function overrides
+both
+
+Here’s how prototypes for swapping type job structures would look for these three forms:
+
+```cpp
+// non template function prototype
+void Swap(job &, job &);
+
+// template prototype
+template <typename T>
+void Swap(T &, T &);
+
+// explicit specialization for the job type
+template <> void Swap<job>(job &, job &);
+```
+
+<details><summary>
+     <a href="./programs/twoswap.cpp">
+     twoswap.cpp - specialization overrides a template. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/twoswap.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Instantiations and Specializations
+
+To extend your understanding of templates, let’s investigate the terms `instantiation` and `specialization`.
+Keep in mind that including a function template in your code does not in itself
+generate a function definition. It’s merely a plan for generating a function definition.
+
+```cpp
+template void Swap<int>(int, int); // explicit instantiation
+template <> void Swap<int>(int &, int &); // explicit specialization
+template <> void Swap(int &, int &); // explicit specialization
+```
+
+Caution
+It is an error to try to use both an explicit instantiation and an explicit specialization for the
+same type(s) in the same file, or, more generally, the same translation unit.
+
+```cpp
+template <class T>
+void Swap (T &, T &); // template prototype
+template <> void Swap<job>(job &, job &); // explicit specialization for job
+int main(void)
+{
+    template void Swap<char>(char &, char &); // explicit instantiation for char
+    short a, b;
+    ...
+    Swap(a,b); // implicit template instantiation for short
+    job n, m;
+    ...
+    Swap(n, m); // use explicit specialization for job
+    char g, h;
+    ...
+    Swap(g, h); // use explicit template instantiation for char
+    ...
+}
+```
+
+### Which Function Version Does the Compiler Pick?
+
+What with function overloading, function templates, and function template overloading,
+C++ needs, and has, a well-defined strategy for deciding which function definition to use
+for a function call, particularly when there are multiple arguments.The process is called
+overload resolution. Detailing the complete strategy would take a small chapter, so let’s take
+just a broad look at how the process works:
+
+- Phase 1—Assemble a list of candidate functions.These are functions and template
+functions that have the same names as the called functions.
+- Phase 2—From the candidate functions, assemble a list of viable functions.These
+are functions with the correct number of arguments and for which there is an
+implicit conversion sequence, which includes the case of an exact match for each
+type of actual argument to the type of the corresponding formal argument. For
+example, a function call with a type `float` argument could have that value converted
+to a `double` to match a type `double` formal parameter, and a template could
+generate an instantiation for float.
+- Phase 3—Determine whether there is a best viable function. If so, you use that
+function. Otherwise, the function call is an error.
+
+#### A Partial Ordering Rules Example
+
+Let’s examine a complete program that uses the partial ordering rules for identifying
+which template definition to use.
+
+If you remove Template B from the program, the compiler then uses Template A for
+listing the contents of `pd`, so it lists the addresses instead of the values.
+
+<details><summary>
+     <a href="./programs/tempover.cpp">
+     tempover.cpp - template overloading. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/tempover.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+In some circumstances, you can lead the compiler to make the choice you want by suitably
+writing the function call. Consider Listing 8.15, which, by the way, eliminates the
+template prototype and places the template function definition at the top of the file
+
+<details><summary>
+     <a href="./programs/choicesTemplate.cpp">
+     choicesTemplate.cpp - choosing a template. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/choicesTemplate.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### The `decltype` Keyword (C++11)
+
+It can be used in this way:
+
+```cpp
+int x;
+decltype(x) y; // make y the same type as x
+
+// The argument to decltype can be an expression, so in the ft() example, we could use
+this code:
+decltype(x + y) xpy; // make xpy the same type as x + y
+xpy = x + y;
+
+// Alternatively, we could combine these two statements into an initialization:
+decltype(x + y) xpy = x + y;
+
+//--------
+// We can fix the ft() template this way:
+template<class T1, class T2>
+void ft(T1 x, T2 y)
+{
+    ...
+    decltype(x + y) xpy = x + y;
+    ...
+}
+
+
+// Stage 1: If expression is an unparenthesized identifier (that is, no additional parentheses),
+// then var is of the same type as the identifier, including qualifiers such as const:
+double x = 5.5;
+double y = 7.9;
+double &rx = x;
+const double * pd;
+decltype(x) w; // w is type double
+decltype(rx) u = y; // u is type double &
+decltype(pd) v; // v is type const double *
+
+// Stage 2: If expression is a function call, then var has the type of the function
+return type:
+long indeed(int);
+decltype (indeed(3)) m; // m is type int
+
+// Stage 3: If expression is an lvalue, then var is a reference to the expression type.
+// This might seem to imply that earlier examples such as w should have been reference
+// types, given that w is an lvalue. However, keep in mind that case was already captured in
+// Stage 1. For this stage to apply, expression can’t be an unparenthesized identifier. So
+// what can it be? One obvious possibility is a parenthesized identifier:
+double xx = 4.4;
+decltype ((xx)) r2 = xx; // r2 is double &
+decltype(xx) w = xx; // w is double (Stage 1 match)
+
+// Stage 4: If none of the preceding special cases apply, var is of the same type as
+// expression:
+int j = 3;
+int &k = j
+int &n = j;
+decltype(j+6) i1; // i1 type int
+decltype(100L) i2; // i2 type long
+decltype(k+n) i3; // i3 type int;
+```
+
+### Alternative Function Syntax (C++11 Trailing Return Type)
+
+The decltype mechanism by itself leaves another related problem unsolved. Consider this
+incomplete template function:
+
+```cpp
+template<class T1, class T2>
+?type? gt(T1 x, T2 y)
+{
+    ...
+    return x + y;
+}
+```
+
+C++11 allows a new syntax for declaring and defining
+functions. Here’s how it works using built-in types.The prototype
+
+```cpp
+double h(int x, float y);
+```
+
+can be written with this alternative syntax:
+
+```cpp
+auto h(int x, float y) -> double;
+```
+
+This moves the return type to after the parameter declarations.The combination ->
+double is called a `trailing return type`.
+
+```cpp
+template<class T1, class T2>
+auto gt(T1 x, T2 y) -> decltype(x + y)
+{
+...
+return x + y;
+}
+```
+
 ---
 
 ```sh
