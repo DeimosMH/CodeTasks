@@ -5987,6 +5987,9 @@ a quoted string literal, a null-terminated array of `char`, or a pointer variabl
 result = version1(input, "***");
 ```
 
+</figure>
+</details><br>
+
 ### Another Object Lesson: Objects, Inheritance, and References
 
 The language feature that makes it possible to pass
@@ -6569,13 +6572,328 @@ return x + y;
 }
 ```
 
----
+### Chapter 8 Review
 
+<!-- -------------------------------------------- -->
+<details><summary>
+1. What kinds of functions are good candidates for inline status?
+</summary>
+// Short ones.
+// The ones, that are not repeatable
+
+Short, nonrecursive functions that can fit in one line of code are good candidates for `inline status`.
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+2. Suppose the song() function has this prototype:
+
+```cpp
+void song(const char * name, int times);
+```
+
+- How would you modify the prototype so that the default value for `times` is `1`?
+- What changes would you make in the function definition?
+- Can you provide a default value of `"O, My Papa"` for name?
+
+</summary>
+
+a.
+
+```cpp
+void song(const char * name, int times = 1);
+```
+
+b. None. Only prototypes contain the default value information.
+
+c. Yes, provided that you retain the default value for times:
+
+```cpp
+void song(char * name = "O, My Papa", int times = 1);
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+3. Write overloaded versions of iquote(), a function that displays its argument
+enclosed in double quotation marks. Write three versions: one for an `int` argument,
+one for a `double` argument, and one for a `string` argument.
+</summary>
+
+You can use either the string "\"" or the character '"' to print a quotation mark.
+The following functions show both methods:
+
+```cpp
+#include <iostream.h>
+void iquote(int arg){
+    cout << "\"" << arg << "\"" << endl;
+}
+
+void iquote(double arg){
+    cout << "\"" << arg << "\"" << endl;
+}
+
+void iquote(const char * str){
+    cout << "\"" << arg << "\"" << endl;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+4. The following is a structure template:
+
+```cpp
+struct box
+{
+    char maker[40];
+    float height;
+    float width;
+    float length;
+    float volume;
+};
+```
+
+- Write a function that has a reference to a `box` structure as its formal argument
+and displays the value of each member.
+- Write a function that has a reference to a `box` structure as its formal argument
+and sets the `volume` member to the product of the other three dimensions.
+
+</summary>
+
+a. This function shouldn’t alter the structure members, so use the const qualifier:
+
+```cpp
+void show_box(const box & container)
+{
+    cout << "Made by " << container. maker << endl;
+    cout << "Height = " << container.height << endl;
+    cout << "Width = " << container.width << endl;
+    cout << "Length = " << container.length << endl;
+    cout << "Volume = " << container.volume << endl;
+}
+```
+
+b.
+
+```cpp
+void set_volume(box & crate)
+{
+    crate.volume = crate.height * crate.width * crate.length;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+5. What changes would need be made to Listing 7.15 (arrobj) so that the functions `fill()`
+and `show()` use reference parameters?
+</summary>
+
+Note that show() should use const to protect the object from being modified.
+Next, within main(), change the fill() call to this:
+
+Note that (*pa)[i] gets changed to the simpler pa[i].
+Finally, the only change to show() is to the function header.
+
+```cpp
+// arrobj.cpp -- functions with array objects (C++11)
+#include <iostream>
+#include <array>
+#include <string>
+
+// constant data
+const int Seasons = 4;
+const std::array<std::string, Seasons> Snames =
+    {"Spring", "Summer", "Fall", "Winter"};
+
+// function to modify array object
+void fill(std::array<double, Seasons> &pa);
+// function that uses array object without modifying it
+void show(const std::array<double, Seasons> &da);
+
+int main()
+{
+    std::array<double, Seasons> expenses;
+    fill(expenses);
+    show(expenses);
+    return 0;
+}
+
+void fill(std::array<double, Seasons> &pa)
+{
+    using namespace std;
+    for (int i = 0; i < Seasons; i++)
+    {
+        cout << "Enter " << Snames[i] << " expenses: ";
+        cin >> pa[i];
+    }
+}
+
+void show(const std::array<double, Seasons> &da)
+{
+    using namespace std;
+    double total = 0.0;
+    cout << "\nEXPENSES\n";
+    for (int i = 0; i < Seasons; i++)
+    {
+        cout << Snames[i] << ": $" << da[i] << endl;
+        total += da[i];
+    }
+    cout << "Total Expenses: $" << total << endl;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+6. The following are some desired effects. Indicate whether each can be accomplished
+with default arguments, function overloading, both, or neither. Provide
+appropriate prototypes.
+
+- `mass(density, volume)` returns the mass of an object having a density of
+`density` and a volume of `volume`, whereas `mass(density)` returns the mass
+having a density of `density` and a volume of 1.0 cubic meters. All quantities
+are type `double`.
+- repeat(10, "I'm OK") displays the indicated string 10 times, and
+repeat("But you're kind of stupid") displays the indicated string 5
+times.
+- average(3,6) returns the int average of two int arguments, and
+average(3.0, 6.0) returns the double average of two double values.
+- mangle("I'm glad to meet you") returns the character I or a pointer to
+the string "I'm mad to gleet you", depending on whether you assign the
+return value to a char variable or to a char* variable.
+
+</summary>
+
+```cpp
+// My answer
+double mass(double density, double volume = 1);
+
+void repeat(int num, const char * words[]);
+void repeat(const char * words[], int num = 5);
+
+int average(int numA, int numB);
+double average(double numA, double numB);
+
+???
+```
+
+```cpp
+// a. This can be done by using a default value for the second argument:
+double mass(double d, double v = 1.0);
+It can also be done by using function overloading:
+double mass(double d, double v);
+double mass(double d);
+
+// b. You can’t use a default for the repeat value because you have to provide
+// default values from right to left. You can use overloading:
+void repeat(int times, const char * str);
+void repeat(const char * str);
+
+// c. You can use function overloading:
+int average(int a, int b);
+double average(double x, double y);
+
+// d. You can’t do this because both versions would have the same signature.
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+7. Write a function template that returns the larger of its two arguments.
+</summary>
+
+```cpp
+// My answer
+template <typename t1, typpename t2>
+auto(t1 myTypeA, t2 myTypeB){
+    return myTypeA > myTypeB ? myTypeA : myTypeB;
+}
+```
+
+```cpp
+template<class T>
+T max(T t1, T t2) // or T max(const T & t1, const T & t2)
+{
+    return t1 > t2? t1 : t2;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+8. Given the template of Chapter Review Question 7 and the box structure of Chapter
+Review Question 4, provide a template specialization that takes two box arguments
+and returns the one with the larger volume.
+</summary>
+
+```cpp
+template<> box max(box b1, box b2)
+{
+    return b1.volume > b2.volume? b1 : b2;
+}
+```
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+9. What types are assigned to v1, v2, v3, v4, and v5 in the following code (assuming
+the code is part of a complete program)?
+
+```cpp
+int g(int x);
+...
+float m = 5.5f;
+float & rm = m;
+decltype(m) v1 = m;
+decltype(rm) v2 = m;
+decltype((m)) v3 = m;
+decltype (g(100)) v4;
+decltype (2.0 * m) v5;
+```
+
+</summary>
+v1 = float
+v2 = float &
+v3 = float
+v4 = int
+v5 = double (The literal 2.0 is type double)
+</details>
+
+---
+<!-- --------------------------------------------------------------------------------- -->
 ```sh
 ././programs/
-str 287 File I/O -> 298 Summary 
-Chapter 6 Review : 9
-Chapter 6 Exercises: 9
+Chapter 8 Review : 9
+Chapter 8 Exercises: 7
+
+str 447 Begin (ch 9) -> 497 Summary 
+Chapter 9 Review : 7
+Chapter 9 Exercises: 4
+
+str 505 Begin (ch 10) -> 557 Summary 
+Chapter 10 Review : 10
+Chapter 10 Exercises: 8
+
+str 563 Begin (ch 11) -> 621 Summary 
+Chapter 11 Review : 7
+Chapter 11 Exercises: 7
+
+ch 12 - dynamic memory
+ch 13 - class inheritance 
+ch 14 - reusing code in c++ 
+ch 15 - friends, exemptions, and more
+ch 16 - string class and STL 
+ch 17 - input, output and files 
+ch 18 - the new c++ standard
 
 ### Chapter Review
 
