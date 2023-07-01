@@ -1,5 +1,10 @@
 # C++ :: [C++ Primer Plus](.Books\C++_Primer_Plus,_Sixth_Edition,_2012,_Stephan_Prata.pdf)
 
+- C++ Primer Plus - AIO
+- [Exercises - Exercises with questions](./Exercises.md)
+- [Reviews - Reviews (for html)](./Reviews.md)
+- [Readme - only links to exercise code](./Readme.md)
+
 [TOC]
 
 ## Chapter 1: Getting Started
@@ -4508,7 +4513,6 @@ They greatly reduce the chances of program errors. In particular, prototypes ens
 - The compiler checks that you use the correct type of arguments.
 If you don’t, it converts the arguments to the correct type, if possible.
 
-
 Prototyping takes place during compile time and is termed `static type checking`. `Static type checking`, as you’ve
 just seen, catches many errors that are much more difficult to catch during runtime.
 
@@ -4997,7 +5001,6 @@ In general, to declare a pointer to a particular kind of function, you can first
 of the desired kind and then replace the function name with an expression in the form `(*pf)`. In this case, `pf` is a
 pointer to a function of that type.
 </details><br>
-
 
 ```cpp
 double (*pf)(int); // pf points to a function that returns double
@@ -6693,11 +6696,11 @@ void set_volume(box & crate)
 and `show()` use reference parameters?
 </summary>
 
-Note that show() should use const to protect the object from being modified.
-Next, within main(), change the fill() call to this:
+Note that `show()` should use const to protect the object from being modified.
+Next, within `main()`, change the `fill()` call to this:
 
-Note that (*pa)[i] gets changed to the simpler pa[i].
-Finally, the only change to show() is to the function header.
+Note that `(*pa)[i]` gets changed to the simpler `pa[i]`.
+Finally, the only change to `show()` is to the function header.
 
 ```cpp
 // arrobj.cpp -- functions with array objects (C++11)
@@ -6868,7 +6871,86 @@ v4 = int
 v5 = double (The literal 2.0 is type double)
 </details>
 
+### Chapter 8: Programming Exercises
+
+[1.](./exercises/exercise_ch8_1.cpp)
+Write a function that normally takes one argument, the address of a string, and
+prints that string once. However, if a second, type int, argument is provided and is
+nonzero, the function should print the string a number of times equal to the number
+of times that function has been called at that point. (Note that the number of
+times the string is printed is not equal to the value of the second argument; it is
+equal to the number of times the function has been called.) Yes, this is a silly function,
+but it makes you use some of the techniques discussed in this chapter. Use the
+function in a simple program that demonstrates how the function works.
+
+[2.](./exercises/exercise_ch8_2.cpp)
+The `CandyBar` structure contains three members.The first member holds the brand
+name of a candy bar.The second member holds the weight (which may have a fractional
+part) of the candy bar, and the third member holds the number of calories
+(an integer value) in the candy bar.Write a program that uses a function that takes
+as arguments a reference to CandyBar, a pointer-to-char, a double, and an `int` and
+uses the last three values to set the corresponding members of the structure. The last
+three arguments should have default values of “Millennium Munch,” 2.85, and 350.
+Also the program should use a function that takes a reference to a `CandyBar` as an
+argument and displays the contents of the structure. Use `const` where appropriate.
+
+[3.](./exercises/exercise_ch8_3.cpp)
+Write a function that takes a reference to a `string` object as its parameter and that
+converts the contents of the `string` to uppercase. Use the `toupper()` function
+described in Table 6.4 of Chapter 6.Write a program that uses a loop which allows
+you to test the function with different input.A sample run might look like this:
+
+```sh
+Enter a string (q to quit): go away
+GO AWAY
+Next string (q to quit): good grief!
+GOOD GRIEF!
+Next string (q to quit): q
+Bye.
+```
+
+[4.](./exercises/exercise_ch8_4.cpp)
+The following is a program skeleton:
+
+```cpp
+#include <iostream>
+using namespace std;
+#include <cstring> // for strlen(), strcpy()
+struct stringy
+{
+    char *str; // points to a string
+    int ct;    // length of string (not counting '\0')
+};
+// prototypes for set(), show(), and show() go here
+int main()
+{
+    stringy beany;
+    char testing[] = "Reality isn't what it used to be.";
+    set(beany, testing); // first argument is a reference,
+    // allocates space to hold copy of testing,
+    // sets str member of beany to point to the
+    // new block, copies testing to new block,
+    // and sets ct member of beany
+    show(beany);    // prints member string once
+    show(beany, 2); // prints member string twice
+    testing[0] = 'D';
+    testing[1] = 'u';
+    show(testing);    // prints testing string once
+    show(testing, 3); // prints testing string thrice
+    show("Done!");
+    return 0;
+}
+```
+
+Complete this skeleton by providing the described functions and prototypes. Note
+that there should be two `show()` functions, each using default arguments. Use
+`const` arguments when appropriate. Note that `set()` should use `new` to allocate
+sufficient space to hold the designated string.The techniques used here are similar
+to those used in designing and implementing classes. (You might have to alter the
+header filenames and delete the `using` directive, depending on your compiler.)
+
 ---
+
 <!-- --------------------------------------------------------------------------------- -->
 ```sh
 ././programs/
