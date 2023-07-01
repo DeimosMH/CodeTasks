@@ -1,6 +1,7 @@
-# Daily Coding Habit Challenge
+# Daily Coding Habit
 
 ----
+
 ## Notes
 
 - [C++ Primer Plus](/Notes/C++PrimerPlus/Readme.md)
@@ -14,63 +15,73 @@
 ## Used editors/IDE's
 
 - [MS Visual Studio Code Insiders](https://code.visualstudio.com/)
-   - Markdown:
-     - Markdown Preview Enhanced
-     - Excel to Markdown table
-     - Markdown Checkboxes
-     - Markdown Paste
-     - Markdown PDF
-     - Markdown Table Prettifier
-     - Markdown+Math
-     - Path Autocomplete
-     - markdownlint
-   - AWS Toolkit (CodeWhisperer)
-   - Office Viewer(Markdown Editor)
-   - Git Graph
- - [MS Visual Studio](https://visualstudio.microsoft.com/) 
- - [VIM](https://www.vim.org/download.php) 
- - [Unity](https://unity.com/)
- - [Unreal Engine 5](https://www.unrealengine.com/en-US)
+  - Markdown:
+    - Markdown Preview Enhanced
+    - Excel to Markdown table
+    - Markdown Checkboxes
+    - Markdown Paste
+    - Markdown PDF
+    - Markdown Table Prettifier
+    - Markdown+Math
+    - Path Autocomplete
+    - Markdownlint
+  - AWS Toolkit (CodeWhisperer)
+  - Office Viewer(Markdown Editor)
+  - Git Graph
+
+- [MS Visual Studio](https://visualstudio.microsoft.com/)
+- [VIM](https://www.vim.org/download.php)
+- [Unity](https://unity.com/)
+- [Unreal Engine 5](https://www.unrealengine.com/en-US)
 
 ## Habits Maintenance
- - [Habitica](https://habitica.com/)
 
-## Used data-serialization languages:
- - YAML (HAOS)
+- [Habitica](https://habitica.com/)
 
-## Used programming languages:
- - C/C++
- - C#
- - Shell / Powershell / Batch 
- - Python
+## Used data-serialization languages
+
+- YAML (HAOS)
+
+## Used programming languages
+
+- C/C++
+- C#
+- Shell / Powershell / Batch
+- Python
 
 ----
 
 ## Training
 
 ### Sites
-* [Codewars](https://www.codewars.com/)
-* [HakerRank](https://www.hackerrank.com/)
-* [CodeInGame](https://www.codingame.com/start)
-* [TryHackMe](https://tryhackme.com/)
+
+- [Codewars](https://www.codewars.com/)
+- [HakerRank](https://www.hackerrank.com/)
+- [CodeInGame](https://www.codingame.com/start)
+- [TryHackMe](https://tryhackme.com/)
 
 ### Books
-#### C~C++ 
-* **"C++ Primer Plus", Sixth Edition, 2012, Stephan Prata**
 
-#### C# 
-* **"Essential C# 8.0", Seventh Edition, 2021, Mark Michaelis**
-* "C# Programming Cookbook", 2016, Dirk Strauss
+#### C~C++
 
-#### Bash & Security 
-* **"Linux® Command Line and Shell Scripting Bible", Third Edition, 2015, John Wiley & Sons**
-* "Hacklog Volume 1 Anonymity IT Security & Ethical Hacking Handbook", 2017, Stefano Novelli
-* "Gray Hat Hacking The Ethical Hacker’s Handbook", 2018, McGraw-Hill
-* "Beginning Ethical Hacking with Kali Linux Computational Techniques for Resolving Security Issues", 2018, Sanjib Sinha
+- **"C++ Primer Plus", Sixth Edition, 2012, Stephan Prata**
+
+#### C#
+
+- **"Essential C# 8.0", Seventh Edition, 2021, Mark Michaelis**
+- "C# Programming Cookbook", 2016, Dirk Strauss
+
+#### Bash & Security
+
+- **"Linux® Command Line and Shell Scripting Bible", Third Edition, 2015, John Wiley & Sons**
+- "Hacklog Volume 1 Anonymity IT Security & Ethical Hacking Handbook", 2017, Stefano Novelli
+- "Gray Hat Hacking The Ethical Hacker’s Handbook", 2018, McGraw-Hill
+- "Beginning Ethical Hacking with Kali Linux Computational Techniques for Resolving Security Issues", 2018, Sanjib Sinha
 
 #### Unity
-* **"Unity In Action, Multiplatform game developement in C#", 2018, Joseph Hocking** 
-* "C# Game Programming Cookbook for Unity 3D", 2014,Jeff W. Murray
+
+- **"Unity In Action, Multiplatform game developement in C#", 2018, Joseph Hocking**
+- "C# Game Programming Cookbook for Unity 3D", 2014,Jeff W. Murray
 
 ----
 
@@ -83,8 +94,8 @@ C++ compiler for Windows/VS Code
 - msys2
 - Mingw-w64 toolchain
 
-
 Exaple of use:
+
 ```sh
 g++ ./01_myfirst.cpp && a.exe         
 Come up and C++ me some time.
@@ -104,13 +115,12 @@ You wonΓÇÖt regret it!
 
 ```
 
-
 ### Data fetch & display template (necessary security off)
 
-```
+```html
 <details style="margin-left: 35px;">
     <summary style="margin-left: -35px;"> 
-    	<a href=".refs_notes/notes_C++/01_myfirst.cpp"> myfirst.cpp </a>
+        <a href=".refs_notes/notes_C++/01_myfirst.cpp"> myfirst.cpp </a>
     </summary>
     <figure>
         <iframe 
@@ -125,7 +135,7 @@ You wonΓÇÖt regret it!
 
 ### Wrapping template
 
-```
+```html
 <details style="margin-left: 35px;">
     <summary style="margin-left: -35px;">
         List of what you will learn
@@ -141,9 +151,9 @@ You wonΓÇÖt regret it!
 </details> <br> 
 ```
 
-### Back to top button template 
+### Back to top button template
 
-```
+```html
 <button onclick="backToTop()">Go to top</button>
 <script>
     function backToTop() {
