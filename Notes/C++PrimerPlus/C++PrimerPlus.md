@@ -6949,6 +6949,29 @@ sufficient space to hold the designated string.The techniques used here are simi
 to those used in designing and implementing classes. (You might have to alter the
 header filenames and delete the `using` directive, depending on your compiler.)
 
+[5.](./exercises/exercise_ch8_5.cpp)
+Write a template function `max5()` that takes as its argument an array of five items
+of type `T` and returns the largest item in the array. (Because the size is fixed, it can
+be hard-coded into the loop instead of being passed as an argument.) Test it in a
+program that uses the function with an array of five int value and an array of five
+double values.
+
+[6.](./exercises/exercise_ch8_6.cpp)
+Write a template function `maxn()` that takes as its arguments an array of items of
+type T and an integer representing the number of elements in the array and that
+returns the largest item in the array.Test it in a program that uses the function template
+with an array of six int value and an array of four double values.The program
+should also include a specialization that takes an array of pointers-to-char as
+an argument and the number of pointers as a second argument and that returns the
+address of the longest string. If multiple strings are tied for having the longest
+length, the function should return the address of the first one tied for longest.Test
+the specialization with an array of five string pointers.
+
+[7.](./exercises/exercise_ch8_7.cpp)
+Modify Listing 8.14 (tempover) so that it uses two template functions called `SumArray()` to
+return the sum of the array contents instead of displaying the contents.The program
+now should report the total number of things and the sum of all the debts
+
 ---
 
 <!-- --------------------------------------------------------------------------------- -->
