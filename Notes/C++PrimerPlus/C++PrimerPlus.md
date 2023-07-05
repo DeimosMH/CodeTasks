@@ -6972,15 +6972,587 @@ Modify Listing 8.14 (tempover) so that it uses two template functions called `Su
 return the sum of the array contents instead of displaying the contents.The program
 now should report the total number of things and the sum of all the debts
 
+## Chapter 9 Memory Models and Namespaces
+
+<details><summary>
+        List of what you will learn
+</summary>
+
+```cpp
+- Separate compilation of programs
+- Storage duration, scope, and linkage
+- Placement new
+- Namespaces
+```
+
+</details>
+
+### Separate Compilation
+
+Unix and Linux systems, for example, have make programs, which keep track of which files a program depends on and when
+they were last modified. If you run make, and it detects that you’ve changed one or more source files since the last compilation,
+make remembers the proper steps needed to reconstitute the program. Most integrated development environments (IDEs),
+including Embarcadero C++ Builder, Microsoft Visual C++,Apple Xcode, and Freescale CodeWarrior, provide similar
+facilities with their Project menus.
+
+`#include` - Instead of placing the structure declarations
+in each file, you can place them in a header file and then include that header file in each source code file.
+
+You can divide the original program into three parts:
+
+- A header file that contains the structure declarations and prototypes for functions
+that use those structures
+- A source code file that contains the code for the structure-related functions
+- A source code file that contains the code that calls the structure-related functions
+
+Things commonly found in header files:
+
+- Function prototypes
+- Symbolic constants defined using `#define` or `const`
+- Structure declarations
+- Class declarations
+- Template declarations
+- Inline functions
+
+It’s okay to put structure declarations in a header file because they don’t create variables;
+
+`"coordin.h"` - if the filename is enclosed in double quotation marks, the compiler first looks at the current working
+directory or at the source code directory
+
+`<coordin.h>` - filename is enclosed in angle brackets, the C++ compiler looks at the part of the host system’s
+file system that holds the standard header files
+
+<details><summary>
+     <a href="./programs/coordin.h">
+     coordin.h - structure templates and function prototypes. </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/coordin.h"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+Header File Management
+</summary>
+
+You should include a header file just once in a file. That might seem to be an easy thing to
+remember, but it’s possible to include a header file several times without knowing you did
+so. For example, you might use a header file that includes another header file. There’s a
+standard C/C++ technique for avoiding multiple inclusions of header files. It’s based on the
+preprocessor `#ifndef` (for if not defined) directive. A code segment like the following
+means “process the statements between the `#ifndef` and #endif only if the name
+`COORDIN_H_` has not been defined previously by the preprocessor #define directive”:
+
+```cpp
+#ifndef COORDIN_H_
+...
+#endif
+```
+
+Normally, you use the #define statement to create symbolic constants, as in the following:
+
+```cpp
+#define MAXIMUM 4096
+```
+
+But simply using `#define` with a name is enough to establish that a name is defined, as in
+the following:
+
+```cpp
+#define COORDIN_H_
+```
+
+The technique that Listing 9.1 uses is to wrap the file contents in an #ifndef:
+
+```cpp
+#ifndef COORDIN_H_
+#define COORDIN_H_
+// place include file contents here
+#endif
+```
+
+The first time the compiler encounters the file, the name `COORDIN_H_` should be undefined.
+(I chose a name based on the include filename, with a few underscore characters tossed
+in to create a name that is unlikely to be defined elsewhere.) That being the case, the compiler
+looks at the material between the #ifndef and the `#endif`, which is what you want.
+In the process of looking at the material, the compiler reads the line defining `COORDIN_H_`.
+If it then encounters a second inclusion of `coordin.h` in the same file, the compiler notes
+that `COORDIN_H_` is defined and skips to the line following the `#endif`. Note that this
+method doesn’t keep the compiler from including a file twice. Instead, it makes the compiler
+ignore the contents of all but the first inclusion. Most of the standard C and C++ header
+files use this guarding scheme. Otherwise you might get the same structure defined twice in
+one file, and that will produce a compile error.
+
+</details><br>
+
+Link it `g++ .\Notes\C++PrimerPlus\programs\file1.cpp .\Notes\C++PrimerPlus\programs\file2.cpp`
+
+<details><summary>
+     <a href="./programs/file1.cpp">
+     file1.cpp - example of a three-file program </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/file1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/file2.cpp">
+     file2.cpp - contains functions called in file1.cpp </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/file2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<img src="./assets/_ch9CompileMultipleFiles.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+C++ Standard uses the term `translation unit` instead of `file` in order to preserve greater generality;
+the file metaphor is not the only possible way to organize information for a computer. For
+simplicity, this book will use the term file, but feel free to translate that to `translation unit`.
+
+<details><summary>
+Multiple Library Linking
+    </summary>
+<figure>
+
+The C++ Standard allows each compiler designer the latitude to implement name decoration
+or mangling (see the sidebar “What Is Name Decoration?” in Chapter 8, “Adventures in
+Functions”) as it sees fit, so you should be aware that binary modules (object-code files)
+created with different compilers will, most likely, not link properly. That is, the two compilers
+will generate different decorated names for the same function. This name difference will
+prevent the linker from matching the function call generated by one compiler with the function
+definition generated by a second compiler. When attempting to link compiled modules,
+you should make sure that each object file or library was generated with the same compiler.
+If you are provided with the source code, you can usually resolve link errors by recompiling
+the source with your compiler.
+    </figure>
+</details><br>
+
+### Storage Duration, Scope, and Linkage
+
+memory. C++ uses three separate schemes (four under C++11) for storing data, and the schemes differ in how long they preserve
+data in memory:
+
+- Automatic storage duration—Variables declared inside a function definition—
+including function parameters—have automatic storage duration.They are created
+when program execution enters the function or block in which they are defined,
+and the memory used for them is freed when execution leaves the function or
+block. C++ has two kinds of automatic storage duration variables.
+- Static storage duration—Variables defined outside a function definition or else
+by using the keyword `static` have static storage duration.They persist for the entire
+time a program is running. C++ has three kinds of static storage duration variables.
+- Thread storage duration (C++11)—These days multicore processors are common.
+These are CPUs that can handle several execution tasks simultaneously.This
+allows a program to split computations into separate threads that can be processed
+concurrently.Variables declared with the `thread_local` keyword have storage that
+persists for as long as the containing thread lasts.This book does not venture into
+concurrent programming.
+- Dynamic storage duration—Memory allocated by the `new` operator persists
+until it is freed with the `delete` operator or until the program ends, whichever
+comes first.This memory has dynamic storage duration and sometimes is termed
+the free store or the heap.
+
+### Scope and Linkage
+
+`Scope` describes how widely visible a name is in a file (translation unit).
+`Linkage` describes how a name can be shared in different units.
+
+A name with external linkage can be shared across files, and a name with internal linkage can be shared by functions
+within a single file. Names of automatic variables have no linkage because they are not shared. A C++ variable can
+have one of several scopes.A variable that has local scope (also termed block scope) is known only within the block
+in which it is defined.
+
+#### Automatic Storage Duration
+
+Function parameters and variables declared inside a function have, by default, automatic storage duration.
+They also have local scope and no linkage.That is, if you declare a variable called texas in `main()` and you declare
+another variable with the same name in a function called `oil()`, you’ve created two independent variables, each known
+only in the function in which it’s defined. Anything you do to the texas in `oil()` has no effect on the texas in main(),
+and vice versa.
+
+<details><summary>
+     <a href="./programs/autoscp.cpp">
+     autoscp.cpp - illustrating scope of automatic variables </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/autoscp.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+Changes to auto in C++11
+    </summary>
+<figure>
+
+In C++11, the keyword auto is used for automatic type deduction, as you have seen in
+Chapters 3, 7, and 8. But in C and in prior versions of C++, `auto` has an entirely different
+meaning. It’s used to explicitly identify a variable as having automatic storage:
+
+```cpp
+int froob(int n)
+{
+    auto float ford; // ford has automatic storage
+    ...
+}
+```
+
+Because programmers can use the `auto` keyword only with variables that are already automatic
+by default, they rarely bother using it. Its main function is to document that you really
+wanted to use a local automatic variable.
+In C++11, this usage no longer is valid. The people who prepare standards are reluctant to
+introduce new keywords because doing so might invalidate existing code that already uses
+that word for other purposes. In this case, it was felt that the old use of `auto` was rare
+enough that it was better to repurpose this keyword rather than introduce a new one.
+</details><br>
+
+#### Automatic Variables and the Stack
+
+The usual means is to set aside a section of memory and treat it as a stack for managing
+the flow and ebb of variables. It’s called a stack because new data is figuratively
+stacked atop old data (that is, at an adjacent location, not at the same location) and then
+removed from the stack when a program is finished with it.The default size of the stack
+depends on the implementation, but a compiler typically provides the option of changing
+the size.The program keeps track of the stack by using two pointers. One points to the
+base of the stack, where the memory set aside for the stack begins, and one points to the
+top of the stack, which is the next free memory location.When a function is called, its
+automatic variables are added to the stack, and the pointer to the top points to the next
+available free space following the variables
+
+A stack is a LIFO (last-in, first-out) design, meaning the last variables added to the
+stack are the first to go.The design simplifies argument passing
+
+#### Register Variables
+
+C originally introduced the `register` keyword to suggest that the compiler use a CPU
+register to store an automatic variable:
+
+```cpp
+register int count_fast; // request for a register variable
+```
+
+The idea was that this would allow faster access to the variable.
+Prior to C++11, C++ used the keyword in the same fashion, except that as hardware
+and compilers developed in sophistication, the hint was generalized to mean that the variable
+was heavily used and perhaps the compiler could provide some sort of special treatment.
+
+With C++11, that hint is being deprecated, leaving `register` as just a way to
+explicitly **identify a variable as being automatic**.
+
+#### Static Duration Variables
+
+storage duration variables with three kinds of linkage: external
+linkage (accessible across files), internal linkage (accessible to functions within a single
+file), and no linkage (accessible to just one function or to one block within a function). All
+three last for the duration of the program; they are less ephemeral than automatic variables.
+Because the number of static variables doesn’t change as the program runs, the program
+doesn’t need a special device such as a stack to manage them. Instead, the compiler
+allocates a fixed block of memory to hold all the static variables, and those variables stay
+present as long as the program executes. Also if you don’t explicitly initialize a static variable,
+the compiler sets it to 0. Static arrays and structures have all the bits of each element
+or member set to 0 by default.
+
+<img src="./assets/_ch9VariableStorage.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+##### Initializing Static Variables
+
+Static variables may be zero-initialized, they may undergo constant expression initialization,
+and they may undergo dynamic initialization.As you may have surmised, zero-initialization
+means setting the variable to the value zero
+
+`Zero-initialization` and `constant-expression` initialization collectively are called `static initialization`.
+This means the variable is initialized when the compiler processes the file (or
+translation unit). Dynamic initialization means the variable is initialized later
+
+```cpp
+#include <cmath>
+int x; // zero-initialization
+int y = 5; // constant-expression initialization
+long z = 13 * 13; // constant-expression initialization
+const double pi = 4.0 * atan(1.0); // dynamic initialization
+```
+
+C++11 introduces a new keyword, `constexpr`, to expand the options for creating constant
+expressions; this is one of the new C++11 features that this book does not pursue
+further
+
+#### Static Duration, External Linkage
+
+Variables with external linkage are often simply called `external variables`
+You can use an external variable in any function that follows
+the external variable’s definition in the file.Thus, external variables are also termed global
+variables, in contrast to automatic variables, which are local variables.
+
+##### The One Definition Rule
+
+On the one hand, an external variable has to be declared in each file that uses the variable.
+On the other hand, C++ has the “one definition rule” (also known as odr), which states
+that there can be only one definition of a variable.
+To satisfy these requirements, C++ has two kinds of variable declarations. One is the `defining declaration` or, simply,
+a `definition`. The second is the referencing declaration or, simply, a declaration. It does not cause storage to be
+allocated because it refers to an existing variable.
+
+A referencing declaration uses the keyword extern and does not provide initialization.
+Otherwise, a declaration is a definition and causes storage to be allocated:
+
+```cpp
+double up; // definition, up is 0
+extern int blem; // blem defined elsewhere
+extern char gr = 'z'; // definition because initialized
+```
+
+<img src="./assets/_ch9Extern.png" alt="Image description"
+style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
+<br>
+
+<details><summary>
+     <a href="./programs/_ch9_external.cpp">
+     _ch9_external.cpp - external variables </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/_ch9_external.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/_ch9_support.cpp">
+     _ch9_support.cpp - use external variable </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/_ch9_support.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+Global Versus Local Variables
+    </summary>
+
+Now that you have a choice of using global or local variables, which should you use? At first,
+global variables have a seductive appeal—because all functions have access to a global
+variable, you don’t have to bother passing arguments. But this easy access has a heavy
+price: unreliable programs. Computing experience has shown that the better job your program
+does of isolating data from unnecessary access, the better job the program does in
+preserving the integrity of the data. Most often, you should use local variables and pass
+data to functions on a need-to-know basis rather than make data available indiscriminately
+by using global variables. As you will see, OOP takes this data isolation a step further.
+Global variables do have their uses, however. For example, you might have a block of data
+that’s to be used by several functions, such as an array of month names or the atomic
+weights of the elements. The external storage class is particularly suited to representing
+constant data because you can use the keyword `const` to protect the data from change:
+
+```cpp
+const char * const months[12] =
+{
+    "January", "February", "March", "April", "May",
+    "June", "July", "August", "September", "October",
+    "November", "December"
+};
+```
+
+In this example, the first `const` protects the strings from change, and the second `const`
+makes sure that each pointer in the array remains pointing to the same string to which it
+pointed initially.
+</details><br>
+
+#### Static Duration, Internal Linkage
+
+Applying the static modifier to a file-scope variable gives it internal linkage.The difference
+between internal linkage and external linkage becomes meaningful in multifile programs.
+In that context, a variable with internal linkage is local to the file that contains it.
+But a regular external variable has external linkage, meaning that it can be used in different
+files, as the previous example showed.
+
+Declaration of a static external variable that has the same name as an ordinary
+external variable declared in another file, the static version is the one in scope for that file:
+
+<details><summary>
+     <a href="./programs/_ch9_twofile1.cpp">
+     _ch9_twofile1.cpp - variables with external and internal linkage </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/_ch9_twofile1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/_ch9_twofile2.cpp">
+     _ch9_twofile2.cpp - variables with internal and external linkage </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/_ch9_twofile2.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+```cpp
+// file1
+int errors = 20; // external declaration
+...
+---------------------------------------------
+// file2
+static int errors = 5; // known to file2 only
+void froobish()
+{
+cout << errors; // uses errors defined in file2
+...
+```
+
+This doesn’t violate the one definition rule because the keyword static establishes
+that the identifier errors has internal linkage, so no attempt is made to bring in an external
+definition.
+
+#### Static Storage Duration, No Linkage
+
+You create such a variable by applying the static modifier
+to a variable defined inside a block.When you use it inside a block, static causes a local
+variable to have static storage duration.This means that even though the variable is known
+within that block, it exists even while the block is inactive.Thus a static local variable can
+preserve its value between function calls.
+
+<details><summary>
+     <a href="./programs/static.cpp">
+     static.cpp - variables with external and internal linkage </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/static.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Specifiers and Qualifiers
+
+Certain C++ keywords, called `storage class specifiers` and `cv-qualifiers`, provide additional
+information about storage. Here’s a list of the storage class specifiers:
+
+```cpp
+auto (eliminated as a specifier in C++11)
+register
+static
+extern
+thread_local (added by C++11)
+mutable
+```
+
+A `thread_local` variable is to a thread much as a regular static variable is to the whole program.The keyword `mutable`
+is explained in terms of `const`, so let’s look at the cv-qualifiers first before returning to `mutable`.
+
+#### Cv-Qualifiers
+
+```cpp
+const
+volatile
+```
+
+(As you may have guessed, cv stands for `const` and `volatile`.) The most commonly used
+cv-qualifier is `const`, and you’ve already seen its purpose: It indicates that memory, after initialized,
+should not be altered by a program.
+
+The `volatile` keyword indicates that the value in a memory location can be altered
+even though nothing in the program code modifies the contents.
+
+#### `mutable`
+
+```cpp
+struct data
+{
+    char name[30];
+    mutable int accesses;
+    ...
+};
+const data veep = {"Claybourne Clodde", 0, ... };
+strcpy(veep.name, "Joye Joux"); // not allowed
+veep.accesses++; // allowed
+```
+
+The `const` qualifier to `veep` prevents a program from changing veep’s members, but
+the `mutable` specifier to the `accesses` member shields `accesses` from that restriction.
+This book doesn’t use `volatile` or mutable, but there is more to learn about const
+
+#### More About `const`
+
+In C++ (but not C), the const modifier alters the default storage classes slightly.Whereas
+a global variable has external linkage by default, a const global variable has internal linkage
+by default.That is, C++ treats a global const definition, such as in the following code
+fragment, as if the static specifier had been used:
+
+```cpp
+const int fingers = 10; // same as static const int fingers = 10;
+int main(void)
+{
+
+// extern would be required if const had external linkage
+extern const int fingers; // can't be initialized
+extern const char * warning;
+
+// If, for some reason, you want to make a constant have external linkage, you can use the
+// extern keyword to override the default internal linkage:
+extern const int states = 50; // definition with external linkage
+...
+```
+
 ---
 
 <!-- --------------------------------------------------------------------------------- -->
 ```sh
 ././programs/
-Chapter 8 Review : 9
-Chapter 8 Exercises: 7
 
-str 447 Begin (ch 9) -> 497 Summary 
+str 447 Begin (ch 9) 473 -> 497 Summary 
 Chapter 9 Review : 7
 Chapter 9 Exercises: 4
 
@@ -6999,6 +7571,19 @@ ch 15 - friends, exemptions, and more
 ch 16 - string class and STL 
 ch 17 - input, output and files 
 ch 18 - the new c++ standard
+
+
+## Chapter 4
+
+<details><summary>
+        List of what you will learn
+</summary>
+
+```cpp
+
+```
+
+</details>
 
 ### Chapter Review
 
