@@ -7546,13 +7546,356 @@ extern const int states = 50; // definition with external linkage
 ...
 ```
 
+<details><summary>
+Where C++ Finds Functions
+</summary>
+<figure>
+Suppose you call a function in a particular file in a program. Where does C++ look for the
+function definition? If the function prototype in that file indicates that the function is static,
+the compiler looks only in that file for the function definition. Otherwise, the compiler (and
+the linker, too) looks in all the program files. If it finds two definitions, the compiler sends
+you an error message because you can have only one definition for an external function. If it
+fails to find any definition in the files, the function then searches the libraries. This implies
+that if you define a function that has the same name as a library function, the compiler
+uses your version rather than the library version. (However, C++ reserves the names of the
+standard library functions, so you shouldn’t reuse them.) Some compiler-linkers need
+explicit instructions to identify which libraries to search.
+**One definition rule** - use one definition for function.
+</figure>
+</details><br>
+
+#### Language Linking
+
+suppose you want to use a precompiled function from a C library in a C++ program?
+For example, suppose you have this code:
+
+```cpp
+spiff(22); // want spiff(int) from a C library
+```
+
+Its hypothetical symbolic name in the C library file is `_spiff`, but for our hypothetical
+linker, the C++ look-up convention is to look for the symbolic name `_spiff_i`. To get
+around this problem, you can use the function prototype to indicate which protocol to use:
+
+```cpp
+extern "C" void spiff(int); // use C protocol for name look-up
+extern void spoff(int); // use C++ protocol for name look-up
+extern "C++" void spaff(int); // use C++ protocol for name look-up```
+```
+
+### The Placement `new` Operator
+
+With `new` header file, you can create your own memory-management
+procedures or to deal with hardware that is accessed via a particular address or to construct objects in a particular
+memory location.
+
+```cpp
+#include <new>
+
+struct chaff
+{
+    char dross[20];
+    int slag;
+};
+
+char buffer1[50];
+char buffer2[500];
+
+int main()
+{
+    chaff *p1, *p2;
+    int *p3, *p4;
+    // first, the regular forms of new
+    p1 = new chaff; // place structure in heap
+    p3 = new int[20]; // place int array in heap
+    // now, the two forms of placement new
+    p2 = new (buffer1) chaff; // place structure in buffer1
+    p4 = new (buffer2) int[20]; // place int array in buffer2
+    ...
+
+// ----
+// Just as regular new invokes a new function with one argument, the 
+// standard placement new invokes a new function with two arguments:
+int * pi = new int; // invokes new(sizeof(int))
+int * p2 = new(buffer) int; // invokes new(sizeof(int), buffer)
+int * p3 = new(buffer) int[40]; // invokes new(40*sizeof(int), buffer)
+```
+
+<details><summary>
+     <a href="./programs/newplace.cpp">
+     newplace.cpp - using placement new </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/newplace.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+### Namespaces
+
+You might want the `List` class from one library and the `Tree` from the other, and each might expect its own version of Node.
+Such conflicts are termed `namespace problems`.
+
+`declarative region` - region in which declarations can be made
+`potential scope` - for a variable it begins at its point of declaration and extends to the end of its declarative region.
+So the potential scope is more limited than the declarative region because you can’t use a variable above the point
+where it is first defined. However, a variable might not be visible everywhere in its potential scope.
+`scope` - The portion of the program that can actually see the variable
+
+#### Traditional C++ Namespaces
+
+C++’s rules about global and local variables define a kind of namespace hierarchy. Each
+declarative region can declare names that are independent of names declared in other
+declarative regions. A local variable declared in one function doesn’t conflict with a local
+variable declared in a second function.
+
+#### New Namespace Features
+
+C++ now adds the ability to create named namespaces by defining a new kind of declarative
+region, one whose main purpose is to provide an area in which to declare names.
+
+New keyword `namespace` to create two namespaces, `Jack` and `Jill`:
+
+```cpp
+namespace Jack {
+    double pail;    // variable declaration
+    void fetch();   // function prototype
+    int pal;        // variable declaration
+    struct Well { ... }; // structure declaration
+}
+
+namespace Jill {
+    double bucket(double n) { ... } // function definition
+    double fetch;   // variable declaration
+    int pal;        // variable declaration
+    struct Hill { ... }; // structure declaration
+}
+```
+
+The simplest way is to use `::`, the `scope-resolution operator`, to qualify a name with its namespace:
+
+```cpp
+Jack::pail = 12.34; // use a variable
+Jill::Hill mole;    // create a type Hill structure
+Jack::fetch();      // use a function
+```
+
+An unadorned name, such as `pail`, is termed the `unqualified name`, whereas a name with
+the namespace, as in `Jack::pail`, is termed a `qualified name`.
+
+One thing to keep in mind about using directives and using declarations is that they
+increase the possibility of name conflicts
+
+```cpp
+using jack::pal;
+using jill::pal;
+pal = 4; // which one? now have a conflict
+```
+
+##### `using` Declarations and `using` Directives
+
+A `using` declaration, then, makes a single name available. In contrast, the `using` directive
+makes all the names available
+
+Having to qualify names every time they are used is not always an appealing prospect, so
+C++ provides two mechanisms—the `using declaration` and the `using directive` — to simplify
+`using` namespace names.
+
+`using` directive in a function treats the
+namespace names as being declared outside the function, it doesn’t make those names
+available to other functions in the file.
+
+###### `using` Declaration
+
+For example, the using declaration of `Jill::fetch` in `main()` adds fetch to the
+declarative region defined by `main()`.
+
+After making this declaration, you can use the name `fetch` instead of `Jill::fetch`.
+
+```cpp
+namespace Jill {
+    double bucket(double n) { ... }
+    double fetch;
+    struct Hill { ... };
+}
+char fetch;
+int main()
+{
+using Jill::fetch;  // put fetch into local namespace
+    double fetch;   // Error! Already have a local fetch
+    cin >> fetch;   // read a value into Jill::fetch
+    cin >> ::fetch; // read a value into global fetch
+    ...
+}
+```
+
+###### `using` Directive
+
+```cpp
+using namespace Jack; // make all the names in Jack available
+```
+
+##### More Namespace Features
+
+You can nest namespace declarations, like this:
+
+```cpp
+namespace elements
+{
+    namespace fire
+    {
+        int flame;
+        ...
+    }
+    float water;
+}
+```
+
+Also you can use using directives and using declarations inside namespaces, like this:
+
+```cpp
+namespace myth
+{
+    using Jill::fetch;
+    using namespace elements;
+    using std::cout;
+    using std::cin;
+}
+```
+
+Suppose you want to access `Jill::fetch`. Because `Jill::fetch` is now part of the
+`myth` namespace, where it can be called `fetch`, you can access it this way:
+
+```cpp
+std::cin >> myth::fetch;
+std::cout << Jill::fetch; // display value read into myth::fetch
+```
+
+`unnamed namespace`:
+
+```cpp
+namespace // unnamed namespace
+{
+    int ice; // internal linkage
+    int bandycoot;
+}
+```
+
+This code behaves as if it were followed by a using directive; that is, the names
+declared in this namespace are in potential scope until the end of the declarative region
+that contains the unnamed namespace
+
+##### Namespace's Program Example
+
+<details><summary>
+Explanation:
+</summary>
+
+The first file in this example (see Listing 9.11) is a header file that contains some
+items normally found in header files—constants, structure definitions, and function prototypes.
+In this case, the items are placed in two namespaces.The first namespace, pers, contains
+a definition of a Person structure, plus prototypes for a function that fills a structure
+with a person’s name and a function that displays the structure’s contents.The second
+namespace, debts, defines a structure for storing the name of a person and the amount of
+money owed to that person.This structure uses the Person structure, so the debts namespace
+has a using directive to make the names in the pers namespace available in the
+debts namespace.The debts namespace also contains some prototypes.
+
+The second file in this example (see Listing 9.12) follows the usual pattern of having a
+source code file provide definitions for functions prototyped in a header file.The function
+names, which are declared in a namespace, have namespace scope, so the definitions need
+to be in the same namespace as the declarations.This is where the open nature of namespaces
+comes in handy.The original namespaces are brought in by including namesp.h
+(refer to Listing 9.11).The file then adds the function definitions to the two namespaces,
+as shown in Listing 9.12.Also the namesp.cpp file illustrates bringing in elements of the
+std namespace with the using declaration and the scope-resolution operator.
+
+Finally, the third file of this program (see Listing 9.13) is a source code file that uses
+the structures and functions declared and defined in the namespaces. Listing 9.13 shows
+several methods of making the namespace identifiers available.
+
+</details><br>
+
+<details><summary>
+     <a href="./programs/namesp.h">
+     namesp.h </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/newplace.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/namesp.cpp">
+     namesp.cpp - namespaces </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/namesp.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/usenmsp.cpp">
+     usenmsp.cpp - using namespaces </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/usenmsp.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+##### Namespace's using guidlines
+
+- Use variables in a named namespace instead of using external global variables.
+- Use variables in an unnamed namespace instead of using static global variables.
+- If you develop a library of functions or classes, place them in a namespace. Indeed,
+C++ currently already calls for placing standard library functions in a namespace
+called std.This extends to functions brought in from C. For example, the `math.c`
+header file, which is C-compatible, doesn’t use namespaces, but the C++ `cmath`
+header file should place the various math library functions in `the` std namespace.
+- Use the `using` directive only as a temporary means of converting old code to
+namespace usage.
+- Don’t use `using` directives in header files; for one thing, doing so conceals which
+names are being made available.Also the ordering of header files may affect
+behavior. If you use a `using` directive, place it after all the preprocessor `#include`
+directives.
+- Preferentially import names by using the scope-resolution operator or a `using`
+declaration.
+- Preferentially use local scope instead of global scope for `using` declarations.
+
+Bear in mind that the main motivation for using namespaces is to simplify management
+of large programming projects. For simple, one-file programs, using a `using` directive
+is no great sin.
+
 ---
 
 <!-- --------------------------------------------------------------------------------- -->
 ```sh
 ././programs/
 
-str 447 Begin (ch 9) 473 -> 497 Summary 
+# str 447 Begin (ch 9) 501 -> 497 Summary 
 Chapter 9 Review : 7
 Chapter 9 Exercises: 4
 
