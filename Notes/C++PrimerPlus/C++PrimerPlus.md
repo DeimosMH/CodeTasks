@@ -7891,7 +7891,7 @@ is no great sin.
 
 ---
 
-### Chapter Review
+### Chapter 9: Review
 
 <!-- -------------------------------------------- -->
 <details><summary>
@@ -8152,6 +8152,154 @@ void other()
 
 </details>
 
+### Chapter 9: Programming Exercises
+
+[1. Protos](./exercises/exercise_ch9_1.cpp)
+[1. Main](./exercises/exercise_ch9_1_main.cpp)
+[1. Header](./exercises/exercise_ch9_1_golf.h)
+
+Here is a header file:
+```cpp
+// golf.h -- for pe9-1.cpp
+const int Len = 40;
+struct golf
+{
+    char fullname[Len];
+    int handicap;
+};
+// non-interactive version:
+// function sets golf structure to provided name, handicap
+// using values passed as arguments to the function
+void setgolf(golf & g, const char * name, int hc);
+
+// interactive version:
+// function solicits name and handicap from user
+// and sets the members of g to the values entered
+// returns 1 if name is entered, 0 if name is empty string
+int setgolf(golf & g);
+
+// function resets handicap to new value
+void handicap(golf & g, int hc);
+
+// function displays contents of golf structure
+void showgolf(const golf & g);
+```
+
+Note that setgolf() is overloaded. Using the first version of setgolf() would
+look like this:
+
+```cpp
+golf ann;
+setgolf(ann, "Ann Birdfree", 24);
+```
+
+The function call provides the information that’s stored in the ann structure. Using
+the second version of setgolf() would look like this:
+
+```cpp
+golf andy;
+setgolf(andy);
+```
+
+The function would prompt the user to enter the name and handicap and store
+them in the andy structure.This function could (but doesn’t need to) use the first
+version internally.
+
+Put together a multifile program based on this header. One file, named golf.cpp,
+should provide suitable function definitions to match the prototypes in the header
+file.A second file should contain `main()` and demonstrate all the features of the
+prototyped functions. For example, a loop should solicit input for an array of golf
+structures and terminate when the array is full or the user enters an empty string
+for the golfer’s name. The `main()` function should use only the prototyped functions
+to access the golf structures.
+
+[2.](./exercises/exercise_ch9_2.cpp)
+
+Redo Listing 9.9 (`static.cpp`), replacing the character array with a string object.The program
+should no longer have to check whether the input string fits, and it can compare
+the input string to "" to check for an empty line.
+
+[3.](./exercises/exercise_ch9_3.cpp)
+
+Begin with the following structure declaration:
+
+```cpp
+struct chaff
+{
+    char dross[20];
+    int slag;
+};
+```
+
+Write a program that uses placement new to place an array of two such structures in
+a buffer.Then assign values to the structure members (remembering to use
+strcpy() for the char array) and use a loop to display the contents. Option 1 is to
+use a static array, like that in Listing 9.10, for the buffer. Option 2 is to use regular
+new to allocate the buffer.
+
+[4.](./exercises/exercise_ch9_4.cpp)
+
+Write a three-file program based on the following namespace:
+
+```cpp
+namespace SALES
+{
+    const int QUARTERS = 4;
+    struct Sales
+    {
+        double sales[QUARTERS];
+        double average;
+        double max;
+        double min;
+    };
+    // copies the lesser of 4 or n items from the array ar
+    // to the sales member of s and computes and stores the
+    // average, maximum, and minimum values of the entered items;
+    // remaining elements of sales, if any, set to 0
+    void setSales(Sales & s, const double ar[], int n);
+    // gathers sales for 4 quarters interactively, stores them
+    // in the sales member of s and computes and stores the
+    // average, maximum, and minimum values
+    void setSales(Sales & s);
+    // display all information in structure s
+    void showSales(const Sales & s);
+}
+```
+
+The first file should be a header file that contains the namespace.The second file
+should be a source code file that extends the namespace to provide definitions for
+the three prototyped functions.The third file should declare two Sales objects. It
+should use the interactive version of setSales() to provide values for one structure
+and the non-interactive version of setSales() to provide values for the second
+structure. It should display the contents of both structures by using
+showSales().
+
+
+
+## Chapter 10: 
+
+<details><summary>
+List of what you will learn
+</summary>
+
+```sh
+ - Procedural and object-oriented programming
+ - The concept of classes
+ - How to define and implement a class
+ - Public and private class access
+ - Class data members
+ - Class methods (also called class function members)
+ - Creating and using class objects
+ - Class constructors and destructors
+ - const member functions
+ - The this pointer
+ - Creating arrays of objects
+ - Class scope
+ - Abstract data types
+```
+
+</details><br>
+
 ---
 
 <!-- --------------------------------------------------------------------------------- -->
@@ -8159,7 +8307,7 @@ void other()
 ././programs/
 
 # str 447 Begin (ch 9) 501 -> 497 Summary 
-Chapter 9 Review : 7
+# Chapter 9 Review : 7
 Chapter 9 Exercises: 4
 
 str 505 Begin (ch 10) -> 557 Summary 

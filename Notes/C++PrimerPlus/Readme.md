@@ -16,7 +16,6 @@
 
 [7. Exercise](./exercises/exercise_ch2_7.cpp)
 
-
 ## Chapter 3 Programming Exercises
 
 [1. Exercise](./exercises/exercise_ch3_1.cpp)
