@@ -26,8 +26,8 @@
     - Path Autocomplete
     - Markdownlint
   - AWS Toolkit (CodeWhisperer)
-  - Office Viewer(Markdown Editor)
-  - Git Graph
+  - Office Viewer (Markdown Editor)
+  - Git Lens Supercharged
 
 - [MS Visual Studio](https://visualstudio.microsoft.com/)
 - [VIM](https://www.vim.org/download.php)
@@ -55,30 +55,31 @@
 
 ### Sites
 
-- [Codewars](https://www.codewars.com/)
+- [Codility](https://www.codility.com/)
 - [HakerRank](https://www.hackerrank.com/)
 - [CodeInGame](https://www.codingame.com/start)
-- [TryHackMe](https://tryhackme.com/)
+- [Codewars](https://www.codewars.com/)
+- [RootMe](https://www.root-me.org/?lang=en)
 
 ### Books
 
-#### C~C++
+#### _C~C++_
 
 - **"C++ Primer Plus", Sixth Edition, 2012, Stephan Prata**
 
-#### C#
+#### _C#_
 
 - **"Essential C# 8.0", Seventh Edition, 2021, Mark Michaelis**
 - "C# Programming Cookbook", 2016, Dirk Strauss
 
-#### Bash & Security
+#### _Bash & Security_
 
 - **"Linux® Command Line and Shell Scripting Bible", Third Edition, 2015, John Wiley & Sons**
 - "Hacklog Volume 1 Anonymity IT Security & Ethical Hacking Handbook", 2017, Stefano Novelli
 - "Gray Hat Hacking The Ethical Hacker’s Handbook", 2018, McGraw-Hill
 - "Beginning Ethical Hacking with Kali Linux Computational Techniques for Resolving Security Issues", 2018, Sanjib Sinha
 
-#### Unity
+#### _Unity_
 
 - **"Unity In Action, Multiplatform game developement in C#", 2018, Joseph Hocking**
 - "C# Game Programming Cookbook for Unity 3D", 2014,Jeff W. Murray

@@ -3336,8 +3336,8 @@ Redo Listing 5.4 using a type array object instead of a built-in array and type
 long double instead of long long. Find the value of 100!
 
 [3.](./exercises/exercise_ch5_3.cpp)
-Write a program that asks the user to type in numbers.After each entry, the program
-should report the cumulative sum of the entries to date.The program should
+Write a program that asks the user to type in numbers. After each entry, the program
+should report the cumulative sum of the entries to date. The program should
 terminate when the user enters 0.
 
 [4.](./exercises/exercise_ch5_4.cpp)
@@ -7638,7 +7638,8 @@ int * p3 = new(buffer) int[40]; // invokes new(40*sizeof(int), buffer)
 
 ### Namespaces
 
-You might want the `List` class from one library and the `Tree` from the other, and each might expect its own version of Node.
+You might want the `List` class from one library and the `Tree` from the other,
+and each might expect its own version of Node.
 Such conflicts are termed `namespace problems`.
 
 `declarative region` - region in which declarations can be made
@@ -8154,11 +8155,12 @@ void other()
 
 ### Chapter 9: Programming Exercises
 
-[1. Protos](./exercises/exercise_ch9_1.cpp)
-[1. Main](./exercises/exercise_ch9_1_main.cpp)
-[1. Header](./exercises/exercise_ch9_1_golf.h)
+1. [Main](./exercises/exercise_ch9_1_main.cpp) [golf.cpp - Prototypes](./exercises/exercise_ch9_1_golf.cpp) [holf.h - Headers](./exercises/exercise_ch9_1_golf.h)
+
+(compile: `g++ exercise_ch9_1_golf.cpp exercise_ch9_1_main.cpp`)
 
 Here is a header file:
+
 ```cpp
 // golf.h -- for pe9-1.cpp
 const int Len = 40;
@@ -8202,12 +8204,12 @@ setgolf(andy);
 ```
 
 The function would prompt the user to enter the name and handicap and store
-them in the andy structure.This function could (but doesn’t need to) use the first
+them in the `andy` structure. This function could (but doesn’t need to) use the first
 version internally.
 
-Put together a multifile program based on this header. One file, named golf.cpp,
+Put together a multifile program based on this header. One file, named `golf.cpp`,
 should provide suitable function definitions to match the prototypes in the header
-file.A second file should contain `main()` and demonstrate all the features of the
+file. A second file should contain `main()` and demonstrate all the features of the
 prototyped functions. For example, a loop should solicit input for an array of golf
 structures and terminate when the array is full or the user enters an empty string
 for the golfer’s name. The `main()` function should use only the prototyped functions
@@ -8215,7 +8217,7 @@ to access the golf structures.
 
 [2.](./exercises/exercise_ch9_2.cpp)
 
-Redo Listing 9.9 (`static.cpp`), replacing the character array with a string object.The program
+Redo Listing 9.9 (`static.cpp`), replacing the character array with a string object. The program
 should no longer have to check whether the input string fits, and it can compare
 the input string to "" to check for an empty line.
 
@@ -8232,7 +8234,7 @@ struct chaff
 ```
 
 Write a program that uses placement new to place an array of two such structures in
-a buffer.Then assign values to the structure members (remembering to use
+a buffer. Then assign values to the structure members (remembering to use
 strcpy() for the char array) and use a loop to display the contents. Option 1 is to
 use a static array, like that in Listing 9.10, for the buffer. Option 2 is to use regular
 new to allocate the buffer.
@@ -8274,9 +8276,7 @@ and the non-interactive version of setSales() to provide values for the second
 structure. It should display the contents of both structures by using
 showSales().
 
-
-
-## Chapter 10: 
+## Chapter 10
 
 <details><summary>
 List of what you will learn
@@ -8352,4 +8352,5 @@ Notes\C++PrimerPlus\exercises\
 </details>
 
 ### Programming Exercises
+
 [1.](./exercises/exercise_ch4_1.cpp)

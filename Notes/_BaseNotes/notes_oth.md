@@ -1,6 +1,8 @@
 [toc]
 
-# GIT
+# Oth Notes
+
+## GIT
 
 Merge all commits into one:
 
@@ -12,14 +14,14 @@ Merge all commits into one:
 
 2. Then `squash` all without first one
 
-# DNS
+## DNS
 
 [Cloudflare](https://blog.cloudflare.com/introducing-1-1-1-1-for-families/)
 
 - Cloudflare with malware filter: 1.1.1.2, 1.0.0.2
 - Cloudflare with malware and adult content filter: 1.1.1.3,  1.0.0.3
 
-# PI-HOLE (MIM ad block)
+## PI-HOLE (MIM ad block)
 
 1. Install and go through config
 
@@ -35,7 +37,7 @@ Merge all commits into one:
 <img src="assets\notes_oth_RouterDHCPconfig.png" alt="Image description"
 style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8px;">
 
-# SAMBASHARE (SAFE) - port 445
+## SAMBASHARE (SAFE) - port 445
 
 1. Mount devices
 
@@ -132,7 +134,7 @@ style="display: block; margin: auto; width: 60%; height: auto; border-radius: 8p
 
 ---
 
-## Auto-device mount
+### Auto-device mount
 
 ```sh
 /dev/<device_name> <mount_point> <filesystem_type> defaults 0 0
@@ -141,7 +143,7 @@ sudo sh -c "echo '/dev/sda1 /mnt/usb1 ntfs defaults 0 0' >> /etc/fstab"
 sudo sh -c "echo '/dev/sdb2 /mnt/usb2 ntfs defaults 0 0' >> /etc/fstab"
 ```
 
-# DISKPART
+## DISKPART
 
 - list disk
 - select disk 0
@@ -150,9 +152,9 @@ sudo sh -c "echo '/dev/sdb2 /mnt/usb2 ntfs defaults 0 0' >> /etc/fstab"
 - active
 - format fs=fat32 quick
 
-# QEMU
+## QEMU
 
-## Windows
+### Windows
 
 1. [Install](https://www.qemu.org/download/)
 2. Create Environmental Variable with installation Path (short run: systempropertiesadvanced)
@@ -179,9 +181,42 @@ sudo sh -c "echo '/dev/sdb2 /mnt/usb2 ntfs defaults 0 0' >> /etc/fstab"
     qemu-system_x86_64 -hda archlinux-2022.08.05-x86_64.iso -accel hax -boot menu=on -drive file=Arch.iso
     ```
 
-# OTH
+## NVChad
 
-## merge all md files
+### Installation - Linux (Ubuntu)
+
+1. Install fonts
+
+    ```sh
+    mkdir -p ~/.local/share/fonts
+    cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
+    ```
+
+2. Install `nvim` > 9.0
+
+    ```sh
+    sudo snap install nvim --classic
+    ```
+
+3. Install `nvchad`
+
+    ```sh
+    git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
+    ```
+
+4. Run `nvim` and wait for packages to install. For configuration query set `no`.
+
+### Installation - Windows
+
+NVChad
+
+### Theming
+
+`Space` + `t` + `h`
+
+## OTH
+
+### merge all md files
 
 01_preface.md
 02_introduction.md
