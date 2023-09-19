@@ -210,9 +210,57 @@ sudo sh -c "echo '/dev/sdb2 /mnt/usb2 ntfs defaults 0 0' >> /etc/fstab"
 
 NVChad
 
+### Cheat sheet
+
+`Space` + `c` + `h`
+`Space` - hold for available commands
+
 ### Theming
 
 `Space` + `t` + `h`
+
+### Syntax highlighting
+
+Installation fo language
+
+```sh
+:TSInstall <language name>
+```
+
+### File tree (nvim tree)
+
+`Ctrl` + `n`
+
+`m` - marks file
+`a` - create new file
+`c` - copy
+`p` - paste
+`r` - rename
+
+### File navigation
+
+`Space` + `f` + `f` - search all files
+`Space` + `f` + `b` - search open file
+
+### Window navigation
+
+`ctrl` + `j`
+`ctrl` + `i`
+`ctrl` + `k`
+`ctrl` + `l`
+
+`:vsp` - vertical split
+`:sp` - split
+
+### Buffer tab
+
+`tab`
+`shift + tab`
+
+### Terminal
+
+`Space` + `h` - open horizontal window
+`Space` + `v` - open vertical window
 
 ## OTH
 
