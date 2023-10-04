@@ -1,44 +1,48 @@
 # Reviews
 
-[TOC]
-
 ## Chapter 2 Review
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 1. What are the modules of C++ programs called?
 </summary>
+They are called functions
+</details>
 
-```They are called functions.```
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 2. What does the following preprocessor directive do?
 
 ```#include <iostream>```
 </summary>
 It causes the contents of the iostream file to be substituted for this
 directive before final compilation.
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 3. What does the following statement do?
 
 ``using namespace std;``
 </summary>
 It makes definitions made in the std namespace available to a program.
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 4. What statement would you use to print the phrase “Hello, world” and then
 start a new line?
 </summary>
 
-``cout << "Hello, world\n";``
-or
-``cout << "Hello, world" << endl;``
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+```cpp
+cout << "Hello, world\n";
+```
 
-<details><summary>      <!-- -------------------------------------------- -->
+or
+
+```cpp
+cout << "Hello, world" << endl;
+```
+
+</details>
+
+<details><summary>
 5. What statement would you use to create an integer variable with the name
 cheeses ?
 </summary>
@@ -47,9 +51,9 @@ cheeses ?
 int cheeses;
 ```
 
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 6. What statement would you use to assign the value 32 to the variable cheeses ?
 </summary>
 
@@ -57,9 +61,9 @@ int cheeses;
 cheeses = 32;
 ```
 
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 7. What statement would you use to read a value from keyboard input into the<br>
 &emsp;variable cheeses ?
 </summary>
@@ -68,9 +72,9 @@ cheeses = 32;
 cin >> cheeses;
 ```
 
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 8. What statement would you use to print “We have X varieties of cheese,”<br>
 &emsp;where the current value of the cheeses variable replaces X ?
     </summary>
@@ -79,14 +83,16 @@ cin >> cheeses;
 cout << "We have " << cheeses << " varieties of cheese\n";
 ```
 
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 9. What do the following function prototypes tell you about the functions?
 
-``int prune(void);``<br>
-``int froop(double t);``<br>
-``void rattle(int n);``
+```cpp
+int prune(void);
+int froop(double t);
+void rattle(int n);
+```
 
 </summary>
 
@@ -99,17 +105,17 @@ For instance, it could be used as follows: ``rattle(37);``
 
 The function prune() returns an int and expects to be used without an argument.
 For instance, it could be used as follows: ``int residue = prune();``
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 10.  When do you not have to use the keyword return when you define a function?
 </summary>
 
 You don’t have to use return in a function when the function has the return type
 `void`. However, you can use it if you don’t give a return value: ``return;``
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 11. Suppose your main() function has the following line:
 
 ``cout << “Please enter your PIN: “;``
@@ -119,13 +125,13 @@ What is the likely cause of this complaint, and what are three ways to fix the p
 ***Lack of caller for std library.***
 Use directive: ``using namespace std;`` or ``using std::cout`` for only
 `cout` or call library with `std::cout` instead of `cout`
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
 ---
 
 ## Chapter 3 Review
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 1. Why does C++ have more than one integer type?
 </summary>
 
@@ -134,9 +140,9 @@ a particular need. For example, you could use `short` to conserve space or `long
 to guarantee storage capacity or to find that a particular type speeds up a
 particular calculation.
 
-</details>              <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+</details>
 
-<details><summary>      <!-- -------------------------------------------- -->
+<details><summary>
 2. Declare variables matching the following descriptions:<br>
 &nbsp&nbsp&nbsp&nbsp&nbsp a. A short integer with the value 80<br>
 &nbsp&nbsp&nbsp&nbsp&nbsp b. An unsigned int integer with the value 42,110<br>
@@ -292,7 +298,6 @@ e. double
 
 ## Chapter 4 Review
 
-<!-- -------------------------------------------- -->
 
 <details><summary>
 1. How would you declare each of the following?
@@ -562,7 +567,6 @@ std::array<std::string, Str_num> astr;
 
 ## Chapter 5 Review
 
-<!-- -------------------------------------------- -->
 <details><summary>
 1. What’s the difference between an entry-condition loop and an exit-condition loop?
 Which kind is each of the C++ loops?
@@ -578,7 +582,6 @@ The for and while loops are entry-condition loops, and the do while loop is an
 exit-condition loop
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 2. What would the following code fragment print if it were part of a valid program?
 
@@ -596,7 +599,6 @@ Note that cout << endl; is not part of the loop body (because there are no
 braces).
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 3. What would the following code fragment print if it were part of a valid program?
 
@@ -613,7 +615,6 @@ It would print the following:<br>
 12<br>
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 4. What would the following code fragment print if it were part of a valid program?
 
@@ -629,7 +630,6 @@ It would print the following:<br>
 8
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 5. What would the following code fragment print if it were part of a valid program?
 
@@ -645,7 +645,6 @@ It would print the following:<br>
 k = 8
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 6. Write a `for` loop that prints the values 1 2 4 8 16 32 64 by increasing the value of
 a counting variable by a factor of two in each cycle.
@@ -659,7 +658,6 @@ for(int i {}; i < 65; i *= 2)
 
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 7. How do you make a loop body include more than one statement?
     </summary>
@@ -669,7 +667,6 @@ You enclose the statements within paired braces to form a single compound statem
 or block.
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 8. Is the following statement valid? If not, why not? If so, what does it do?
 
@@ -703,7 +700,6 @@ isn’t used, is `024`, or `20`.
 
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 9. How does cin >> ch differ from cin.get(ch) and ch=cin.get() in how it views
 input?
@@ -717,7 +713,6 @@ The other two forms read those characters
 
 ## Chapter 6 Review
 
-<!-- -------------------------------------------- -->
 <details><summary>
 1. Consider the following two code fragments for counting spaces and newlines
 
@@ -752,7 +747,6 @@ program has already established that ch is a space and hence could not be a newl
 Version 2, in the same situation, skips the newline test.
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 2. In Listing 6.2, what is the effect of replacing ++ch with ch+1?
 
@@ -789,7 +783,6 @@ is type `int` and prints as a number.
 
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 3. Carefully consider the following program:
 
@@ -845,7 +838,6 @@ time.Also the value of the expression `ch = $` is the code for the `$` character
 nonzero, hence `true`; so `ct2` is incremented each time.
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 4. Construct logical expressions to represent the following conditions:
 
@@ -877,7 +869,6 @@ isalpha(ch)                                             //f
 
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 5. In English, the statement “I will not not speak” means the same as
 “I will speak.” In C++, is !!x the same as x?
@@ -889,7 +880,6 @@ Not necessarily. For example, if `x` is 10, then `!x` is 0 and `!!x` is 1.
 However, if `x` is a `bool` variable, then `!!x` is `x`.
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 6. Construct a conditional expression that is equal to the absolute value of a variable.
 That is, if a variable x is positive, the value of the expression is just x,
@@ -906,7 +896,6 @@ but if x is negative, the value of the expression is -x, which is positive.
 
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 7. Rewrite the following fragment using switch:
 
@@ -943,7 +932,6 @@ switch (ch)
 
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 8. In Listing 6.10, what advantage would there be in using character labels,
 such as a and c, instead of numbers for the menu choices and switch cases?
@@ -1018,7 +1006,6 @@ and the user types an integer such as 5, character input will process 5 as a cha
 Then the default part of the switch can suggest entering another character.
 </details>
 
-<!-- -------------------------------------------- -->
 <details><summary>
 9. Consider the following code fragment:
 

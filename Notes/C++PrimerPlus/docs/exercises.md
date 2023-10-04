@@ -1,18 +1,59 @@
 # Exercises
 
-[TOC]
+<button id="toggle-admonitions" class="md-button">Collapse All/Expand All Code</button>
+<button id="collapse-all-code" class="md-button">Collapse All</button>
+
+<script>
+document.getElementById('toggle-admonitions').addEventListener('click', function(event) {
+  event.preventDefault();
+  var admonitions = document.querySelectorAll('.note');
+  var anyOpen = false;
+  admonitions.forEach(function(admonition) {
+    if (admonition.hasAttribute('open')) {
+      admonition.removeAttribute('open');
+    } else {
+      admonition.setAttribute('open', '');
+      anyOpen = true;
+    }
+  });
+  var button = document.getElementById('toggle-admonitions');
+  if (anyOpen) {
+    button.textContent = 'Toggle - Collapse All';
+  } else {
+    button.textContent = 'Toggle - Expand All';
+  }
+});
+
+document.getElementById('collapse-all-code').addEventListener('click', function(event) {
+  event.preventDefault();
+  var admonitions = document.querySelectorAll('.note');
+    admonitions.forEach(function(admonition) {
+        if (admonition.hasAttribute('open')) {
+        admonition.removeAttribute('open');
+        }
+    });
+});
+</script>
 
 ## Chapter 2 Programming Exercises
 
-[1.](./exercises/exercise_ch2_1.cpp)
+1 -
 Write a C++ program that displays your name and address (or if you value your
 privacy,a fictitious name and address).
 
-[2.](./exercises/exercise_ch2_2.cpp)
-Write a C++ program that asks for a distance in furlongs and converts it to yards.
-(One furlong is 220 yards.)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch2_1.cpp)
+    <!--/codeinclude-->
 
-[3.](./exercises/exercise_ch2_3.cpp)
+2 - Write a C++ program that asks for a distance in furlongs and converts it to yards.
+(One furlong is 220 yards.)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch2_2.cpp)
+    <!--/codeinclude-->
+
+3 -
 Write a C++ program that uses three user-defined functions
 (counting `main()` as one) and produces the following output:
 
@@ -26,7 +67,12 @@ See how they run
 One function,called two times,should produce the first two lines, and the remain-
 ing function, also called twice, should produce the remaining output.
 
-[4.](./exercises/exercise_ch2_4.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch2_3.cpp)
+    <!--/codeinclude-->
+
+4 -
 Write a program that asks the user to enter his or her age.
 The program then should display the age in months:
 
@@ -35,7 +81,12 @@ Enter your age: 29
 Your age in months is 384.
 ```
 
-[5.](./exercises/exercise_ch2_5.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch2_4.cpp)
+    <!--/codeinclude-->
+
+5 -
 Write a program that has `main()` call a user-defined function that takes a
 Celsius temperature value as an argument and then returns the equivalent
 Fahrenheit value.The program should request the Celsius value as input from
@@ -49,7 +100,11 @@ Please enter a Celsius value: 20
 For reference,here is the formula for making the conversion:
 `Fahrenheit = 1.8 × degrees Celsius + 32.0`
 
-[6.](./exercises/exercise_ch2_6.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch2_5.cpp)
+    <!--/codeinclude-->
+6 -
 Write a program that has `main()` call a user-defined function that takes
 a distance in light years as an argument and then returns the distance
 in astronomical units.The program should request the light year value as
@@ -70,7 +125,12 @@ light travels in a year (about 10 trillion kilometers or 6 trillion miles).
 1 light year = 63,240 astronomical units
 ```
 
-[7.](./exercises/exercise_ch2_7.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch2_6.cpp)
+    <!--/codeinclude-->
+
+7 -
 Write a program that asks the user to enter an hour value and a minute value.
 The `main()` function should then pass these two values to a type `void`
 function that displays the two values in the format shown in the following
@@ -82,15 +142,24 @@ Enter the number of minutes: 28
 Time: 9:28
 ```
 
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch2_7.cpp)
+    <!--/codeinclude-->
+
 ## Chapter 3 Programming Exercises
 
-[1.](./exercises/exercise_ch3_1.cpp)
+1 -
 Write a short program that asks
 for your height in integer inches and then converts your height to feet and inches.
 Have the program use the underscore character to indicate where to type the response.
 Also use a const symbolic constant to represent the conversion factor.
 
-[2.](./exercises/exercise_ch3_2.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_1.cpp)
+    <!--/codeinclude-->
+2 -
 Write a short program that asks for your
 height in feet and inches and your weight in pounds. (Use three variables to store
 the information.) Have the program report your body mass index (BMI).To calculate
@@ -101,7 +170,12 @@ by dividing by 2.2. Finally, compute your BMI by dividing your mass in kilograms
 by the square of your height in meters. Use symbolic constants to represent the
 various conversion factors.
 
-[3.](./exercises/exercise_ch3_3.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_2.cpp)
+    <!--/codeinclude-->
+
+3 -
 Write a program that asks the user to enter
 a latitude in degrees, minutes, and seconds and that then displays the latitude
 in decimal format.There are 60 seconds of arc to a minute and 60 minutes of arc
@@ -116,7 +190,12 @@ Finally, enter the seconds of arc: 19
 37 degrees, 51 minutes, 19 seconds = 37.8553 degrees
 ```
 
-[4.](./exercises/exercise_ch3_4.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_3.cpp)
+    <!--/codeinclude-->
+
+4 -
 Write a program that asks the user to enter
 the number of seconds as an integer value (use type long, or, if available, long long)
 and that then displays the equivalent time in days, hours, minutes, and seconds.
@@ -129,7 +208,12 @@ Enter the number of seconds: 31600000
 31600000 seconds = 365 days, 17 hours, 46 minutes, 40 seconds
 ```
 
-[5.](./exercises/exercise_ch3_5.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_4.cpp)
+    <!--/codeinclude-->
+
+5 -
 Write a program that requests the user to
 enter the current world population and the current population of the U.S. (or of
 some other nation of your choice). Store the information in variables of type long long.
@@ -144,14 +228,24 @@ The population of the US is 4.50492% of the world population.
 
 You can use the Internet to get more recent figures.
 
-[6.](./exercises/exercise_ch3_6.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_5.cpp)
+    <!--/codeinclude-->
+
+6 -
 Write a program that asks how many miles you
 have driven and how many gallons of gasoline you have used and then reports the miles
 per gallon your car has gotten. Or, if you prefer, the program can request distance
 in kilometers and petrol in liters and then report the result European style,
 in liters per 100 kilometers.
 
-[7.](./exercises/exercise_ch3_7.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_6.cpp)
+    <!--/codeinclude-->
+
+7 -
 Write a program that asks you to enter an
 automobile gasoline consumption figure in the European style (liters per 100 kilometers)
 and converts to the U.S. style of miles per gallon. Note that in addition to using
@@ -160,9 +254,14 @@ inverse of the European approach (fuel / distance).
 Note that 100 kilometers is 62.14 miles, and 1 gallon is 3.875 liters.
 Thus, 19 mpg is about 12.4 l/100 km, and 27 mpg is about 8.7 l/100 km.
 
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_7.cpp)
+    <!--/codeinclude-->
+
 ## Chapter 4 Programming Exercises
 
-[1.](./exercises/exercise_ch4_1.cpp)
+1 -
 Write a C++ program that requests and displays
 information as shown in the following.
 
@@ -183,10 +282,20 @@ Also note that the program adjusts the grade downward—that is, up one letter.
 Assume that the user requests an A, a B, or a C so that you don’t have to worry
 about the gap between a D and an F.
 
-[2.](./exercises/exercise_ch4_2.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch3_7.cpp)
+    <!--/codeinclude-->
+
+2 -
 Rewrite Listing 4.4, using the C++ string class instead of char arrays.
 
-[3.](./exercises/exercise_ch4_3.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_2.cpp)
+    <!--/codeinclude-->
+
+3 -
 Write a program that asks the user to enter his or her first name and then last name,
 and that then constructs, stores, and displays a third string, consisting of the
 user’s last name followed by a comma, a space, and first name. Use char arrays and
@@ -198,7 +307,12 @@ Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 
-[4.](./exercises/exercise_ch4_4.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_3.cpp)
+    <!--/codeinclude-->
+
+4 -
 Write a program that asks the user to enter his or her first name and then last name,
 and that then constructs, stores, and displays a third string consisting of the user’s
 last name followed by a comma, a space, and first name. Use string objects and methods
@@ -210,7 +324,12 @@ Enter your last name: Fleming
 Here’s the information in a single string: Fleming, Flip
 ```
 
-[5.](./exercises/exercise_ch4_5.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_4.cpp)
+    <!--/codeinclude-->
+
+5 -
 The CandyBar structure contains three members. The first member holds the brand name of a candy bar.
 The second member holds the weight (which may have a fractional part) of the candy bar,
 and the third member holds the number of calories (an integer value) in the candy bar.
@@ -219,13 +338,23 @@ initializing its members to "Mocha Munch", 2.3, and 350, respectively.The initia
 be part of the declaration for snack.
 Finally, the program should display the contents of the snack variable.
 
-[6.](./exercises/exercise_ch4_6.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_5.cpp)
+    <!--/codeinclude-->
+
+6 -
 The CandyBar structure contains three members,
 as described in Programming Exercise 5.Write a program that creates an array of
 three CandyBar structures, initializes them to values of your choice, and then
 displays the contents of each structure.
 
-[7.](./exercises/exercise_ch4_7.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_6.cpp)
+    <!--/codeinclude-->
+
+7 -
 William Wingate runs a pizza-analysis service.
 For each pizza, he needs to record the following information:
 
@@ -238,39 +367,74 @@ a structure variable of that type.The program should ask the user to enter
 each of the preceding items of information, and then the program should display
 that information. Use cin (or its methods) and cout.
 
-[8.](./exercises/exercise_ch4_8.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_7.cpp)
+    <!--/codeinclude-->
+
+8 -
 Do Programming Exercise 7 but use new to allocate a structure instead of
 declaring a structure variable. Also have the program request the pizza
 diameter before it requests the pizza company name.
 
-[9.](./exercises/exercise_ch4_9.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_8.cpp)
+    <!--/codeinclude-->
+
+9 -
 Do Programming Exercise 6, but instead of declaring an array of three CandyBar
 structures, use new to allocate the array dynamically.
 
-[10.](./exercises/exercise_ch4_10.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_9.cpp)
+    <!--/codeinclude-->
+
+10 -
 Write a program that requests the user to enter three times for the 40-yd dash
 (or 40-meter, if you prefer) and then displays the times and the average.
 Use an array object to hold the data. (Use a built-in array if array is not available.)
 
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch4_10.cpp)
+    <!--/codeinclude-->
+
 ## Chapter 5 Programming Exercises
 
-[1.](./exercises/exercise_ch5_1.cpp)
+1 -
 Write a program that requests the user to enter two integers.The program should
 then calculate and report the sum of all the integers between and including the two
 integers. At this point, assume that the smaller integer is entered first. For example, if
 the user enters 2 and 9, the program should report that the sum of all the integers
 from 2 through 9 is 44.
 
-[2.](./exercises/exercise_ch5_2.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_1.cpp)
+    <!--/codeinclude-->
+
+2 -
 Redo Listing 5.4 using a type array object instead of a built-in array and type
 long double instead of long long. Find the value of 100!
 
-[3.](./exercises/exercise_ch5_3.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_2.cpp)
+    <!--/codeinclude-->
+
+3 -
 Write a program that asks the user to type in numbers.After each entry, the program
 should report the cumulative sum of the entries to date.The program should
 terminate when the user enters 0.
 
-[4.](./exercises/exercise_ch5_4.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_3.cpp)
+    <!--/codeinclude-->
+
+4 -
 Daphne invests `$100 at 10%` simple interest.That is, every year, the investment earns
 `10%` of the original investment, or `$10` each and every year:
 
@@ -290,7 +454,12 @@ Cleo earns `5% of $100` the first year, giving her `$105`.The next year she earn
 the value of Cleo’s investment to exceed the value of Daphne’s investment and then
 displays the value of both investments at that time.
 
-[5.](./exercises/exercise_ch5_5.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_4.cpp)
+    <!--/codeinclude-->
+
+5 -
 You sell the book C++ for Fools. Write a program that has you enter a year’s worth
 of monthly sales (in terms of number of books, not of money).The program should
 use a loop to prompt you by month, using an array of char * (or an array of
@@ -298,12 +467,22 @@ string objects, if you prefer) initialized to the month strings and storing the 
 data in an array of int.Then, the program should find the sum of the array contents
 and report the total sales for the year.
 
-[6.](./exercises/exercise_ch5_6.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_5.cpp)
+    <!--/codeinclude-->
+
+6 -
 Do Programming Exercise 5 but use a two-dimensional array to store input for 3
 years of monthly sales. Report the total sales for each individual year and for the
 combined years.
 
-[7.](./exercises/exercise_ch5_7.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_6.cpp)
+    <!--/codeinclude-->
+
+7 -
 Design a structure called car that holds the following information about an automobile:
 its make, as a string in a character array or in a string object, and the year
 it was built, as an integer.Write a program that asks the user how many cars to catalog.
@@ -327,7 +506,12 @@ Here is your collection:
 1951 Kaiser
 ```
 
-[8.](./exercises/exercise_ch5_8.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_7.cpp)
+    <!--/codeinclude-->
+
+8 -
 Write a program that uses an array of char and a loop to read one word at a time
 until the word done is entered.The program should then report the number of
 words entered (not counting done).A sample run could look like this:
@@ -342,12 +526,22 @@ You entered a total of 7 words.
 You should include the cstring header file and use the strcmp() function to
 make the comparison test.
 
-[9.](./exercises/exercise_ch5_9.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_8.cpp)
+    <!--/codeinclude-->
+
+9 -
 Write a program that matches the description of the program in Programming
 Exercise 8, but use a string class object instead of an array. Include the string
 header file and use a relational operator to make the comparison test.
 
-[10.](./exercises/exercise_ch5_10.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_9.cpp)
+    <!--/codeinclude-->
+
+10 -
 Write a program using nested loops that asks the user to enter a value for the
 number of rows to display. It should then display that many rows of asterisks, with
 one asterisk in the first row, two in the second row, and so on. For each row, the
@@ -364,19 +558,34 @@ Enter number of rows: 5
 *****
 ```
 
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch5_10.cpp)
+    <!--/codeinclude-->
+
 ## Chapter 6 Programming Exercises
 
-[1.](./exercises/exercise_ch6_1.cpp)
+1 -
 Write a program that reads keyboard input to the @ symbol and that echoes the input except for digits,
 converting each uppercase character to lowercase, and vice versa. (Don’t forget the `cctype` family.)
 
-[2.](./exercises/exercise_ch6_2.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_1.cpp)
+    <!--/codeinclude-->
+
+2 -
 Write a program that reads up to 10 donation values into an array of double.
 (Or, if you prefer, use an array template object.) The program should terminate
 input on non-numeric input. It should report the average of the numbers and also
 report how many numbers in the array are larger than the average.
 
-[3.](./exercises/exercise_ch6_3.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_2.cpp)
+    <!--/codeinclude-->
+
+3 -
 Write a precursor to a menu-driven program.The program should display a menu
 offering four choices, each labeled with a letter. If the user responds with a
 letter other than one of the four valid choices, the program should prompt the
@@ -394,7 +603,12 @@ Please enter a c, p, t, or g: t
 A maple is a tree.
 ```
 
-[4.](./exercises/exercise_ch6_4.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_3.cpp)
+    <!--/codeinclude-->
+
+4 -
 When you join the Benevolent Order of Programmers, you can be known at BOP
 meetings by your real name, your job title, or your secret BOP name.
 Write a program that can list members by real name, by job title, by secret name,
@@ -446,7 +660,12 @@ Next choice: q
 Bye!
 ```
 
-[5.](./exercises/exercise_ch6_5.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_4.cpp)
+    <!--/codeinclude-->
+
+5 -
 The Kingdom of Neutronia, where the unit of currency is the tvarp, has the following income tax code:
 
 ```sh
@@ -461,8 +680,12 @@ For example, someone earning 38,000 tvarps would owe
 Write a program that uses a loop to solicit incomes and to report tax owed.
 The loop should terminate when the user enters a negative number or non-numeric input.
 
-[6.](./exercises/exercise_ch6_6.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_5.cpp)
+    <!--/codeinclude-->
 
+6 -
 Put together a program that keeps track of monetary contributions to the Society
 for the Preservation of Rightful Influence. It should ask the user to enter
 the number of contributors and then solicit the user to enter the name and
@@ -477,7 +700,12 @@ That list should be headed Patrons. If there are no donors in one of the categor
 the program should print the word “none.”Aside from displaying two categories,
 the program need do no sorting.
 
-[7.](./exercises/exercise_ch6_7.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_6.cpp)
+    <!--/codeinclude-->
+
+7 -
 Write a program that reads input a word at a time until a lone q is entered.
 The program should then report the number of words that began with vowels,
 the number that began with consonants, and the number that fit neither of
@@ -495,12 +723,21 @@ quietly across 15 meters of lawn. q
 2 others
 ```
 
-[8.](./exercises/exercise_ch6_8.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_7.cpp)
+    <!--/codeinclude-->
 
+8 -
 Write a program that opens a text file, reads it character-by-character to the
 end of the file, and reports the number of characters in the file.
 
-[9.](./exercises/exercise_ch6_9.cpp)
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_8.cpp)
+    <!--/codeinclude-->
+
+9 -
 Do Programming Exercise 6 but modify it to get information from a file.The first
 item in the file should be the number of contributors, and the rest of the file
 should consist of pairs of lines, with the first line of each pair being a
@@ -518,3 +755,8 @@ Tammy Tubbs
 Rich Raptor
 55000
 ```
+
+??? note "Code"
+    <!--codeinclude-->
+    [](../exercises/exercise_ch6_9.cpp)
+    <!--/codeinclude-->
