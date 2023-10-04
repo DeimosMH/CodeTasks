@@ -4,15 +4,18 @@
 
 ## Notes
 
-- [C++ Primer Plus](/Notes/C++PrimerPlus/Readme.md)
-- [Other - Good to know-how small projects](/Notes/_BaseNotes/notes_oth.md)
+- [Training: CodeWars](/Training/CodeWars/README.md)
 <br>
 
-- [CodeWars](/Training/CodeWars/README.md)
+- [Notes: Other - Good to know-how small projects](/Notes/_BaseNotes/notes_oth.md)
+- [Notes: Subrepo: DCH C++ Primer Plus](https://github.com/DeimosMH/DCH_CppPrimerPlus)
+- [Notes: GH-Page: DCH C++ Primer Plus](https://deimosmh.github.io/DCH_CppPrimerPlus/)
 
 ----
 
-## Used editors/IDE's
+## Developement suite
+
+### Used editors/IDE's
 
 - [MS Visual Studio Code Insiders](https://code.visualstudio.com/)
   - Markdown:
@@ -34,19 +37,19 @@
 - [Unity](https://unity.com/)
 - [Unreal Engine 5](https://www.unrealengine.com/en-US)
 
-## Documentation
+### Documentation
 
 - [mkDocs](https://www.mkdocs.org/user-guide/installation/)
 
-## Habits Maintenance
+### Habits Maintenance
 
 - [Habitica](https://habitica.com/)
 
-## Used data-serialization languages
+### Used data-serialization languages
 
 - YAML (HAOS)
 
-## Used programming languages
+### Used programming languages
 
 - C/C++
 - C#
