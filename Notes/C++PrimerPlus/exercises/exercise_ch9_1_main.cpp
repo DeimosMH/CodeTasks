@@ -4,7 +4,7 @@
 void fnPrintMenu()
 {
     std::cout
-        << "\nPlease select version of program:\n"
+        << "\nPlease select:\n"
         << "\ta) non-interactive version\tb) interactive version\n"
         << "\tc) print all players\t\td) change number of players\n"
         << "\te) quit" << std::endl;

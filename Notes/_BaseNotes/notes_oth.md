@@ -183,6 +183,10 @@ sudo sh -c "echo '/dev/sdb2 /mnt/usb2 ntfs defaults 0 0' >> /etc/fstab"
 
 ## NVChad
 
+Video tutorials:
+
+- [https://www.youtube.com/watch?v=Mtgo-nP_r8Y](Turn VIM into a full featured IDE with only one command)
+
 ### Installation - Linux (Ubuntu)
 
 1. Install fonts
@@ -244,10 +248,11 @@ Installation fo language
 
 ### Window navigation
 
-`ctrl` + `j`
-`ctrl` + `i`
-`ctrl` + `k`
-`ctrl` + `l`
+`Ctrl` + `w`,
+ `ctrl` + `j`
+ `ctrl` + `i`
+ `ctrl` + `k`
+ `ctrl` + `l`
 
 `:vsp` - vertical split
 `:sp` - split
@@ -261,6 +266,13 @@ Installation fo language
 
 `Space` + `h` - open horizontal window
 `Space` + `v` - open vertical window
+`Ctrl` + `\`, `Ctrl` + `n` - go to normal mode in terminal
+
+### Customization
+
+In path: `~/.config/nvim/lua/custom`
+`chadrc.lua` - override default config of nvchad
+`init.lua` - override default config of nvim configuration
 
 ## OTH
 

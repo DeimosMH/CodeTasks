@@ -7,7 +7,43 @@ struct chaff
 };
 
 int main(){
+
+    // [1] Static array
+
+    // [2] New keyword
     chaff *myStr = new chaff[2];
+
+    for (int i = 0; i < 2; ++i)
+    {
+
+        std::cout << "\nEnter new name   for [" << i << "] dross : \t";
+        std::cin.getline(myStr[i].dross, 20);
+
+        std::cout << "Enter new number for [" << i << "] slag  : \t";
+        while (!(std::cin >> myStr[i].slag))
+        {
+            std::cin.clear(); // reset input
+            while (std::cin.get() != '\n')
+                continue; // get rid of bad input
+            std::cout << "Please enter a number: ";
+        }
+
+        std::cin.clear(); // reset input
+        while (std::cin.get() != '\n')
+            continue; // get rid of bad input
+    }
+
+    std::cout << "\n";
+
+    for (int i = 0; i < 2; ++i)
+    {
+        std::cout << "\nName of [" << i << "] dross :    " << myStr[i].dross;
+        std::cout << "; \t\t["       << i << "] slag  :    "  << myStr[i].slag;
+    }
+
+    std::cout << "\n";
+
+    delete[] myStr;
 
     return 0;
 }

@@ -8236,10 +8236,10 @@ struct chaff
 Write a program that uses placement new to place an array of two such structures in
 a buffer. Then assign values to the structure members (remembering to use
 strcpy() for the char array) and use a loop to display the contents. Option 1 is to
-use a static array, like that in Listing 9.10, for the buffer. Option 2 is to use regular
+use a static array, like that in Listing 9.10 ([newplace.cpp](./programs/newplace.cpp)), for the buffer. Option 2 is to use regular
 new to allocate the buffer.
 
-[4.](./exercises/exercise_ch9_4.cpp)
+[4.](./exercises/exercise_ch9_4.cpp) [Prototypes](./exercises/exercise_ch9_4_sales.cpp) [Headers](./exercises/exercise_ch9_4_sales.h)
 
 Write a three-file program based on the following namespace:
 
@@ -8270,7 +8270,7 @@ namespace SALES
 
 The first file should be a header file that contains the namespace.The second file
 should be a source code file that extends the namespace to provide definitions for
-the three prototyped functions.The third file should declare two Sales objects. It
+the three prototyped functions. The third file should declare two Sales objects. It
 should use the interactive version of setSales() to provide values for one structure
 and the non-interactive version of setSales() to provide values for the second
 structure. It should display the contents of both structures by using
@@ -8300,11 +8300,410 @@ List of what you will learn
 
 </details><br>
 
+Object-oriented programming (OOP) is a particular conceptual approach to designing
+programs, and C++ has enhanced C with features that ease the way to applying that
+approach.The following are the most important OOP features:
+
+- Abstraction
+- Encapsulation and data hiding
+- Polymorphism
+- Inheritance
+- Reusability of code
+
+### Abstraction and Classes
+
+Abstraction is the crucial step of representing information in terms of its interface with the user. That is, you
+abstract the essential operational features of a problem and express a solution in those
+terms. In the softball statistics example, the interface describes how the user initializes,
+updates, and displays the data. From abstraction, it is a short step to the user-defined type,
+which in C++ is a class design that implements the abstract interface
+
 ---
+
+Basic data type does three things:
+
+- It determines how much memory is needed for a data object.
+- It determines how the bits in memory are interpreted. (A long and a float might
+use the same number of bits in memory, but they are translated into numeric values
+differently.)
+- It determines what operations, or methods, can be performed using the data object.
+
+`class` is a C++ vehicle for translating an abstraction to a user-defined type. It combines
+data representation and methods for manipulating that data into one neat package.
+
+`Interface` - shared framework for interactions between two systems—for instance,
+between a computer and a printer or between a user and a computer program.
+
+### Access Control
+
+Also new are the keywords private and public. These labels describe access control for
+class members.Any program that uses an object of a particular class can access the public
+portions directly. A program can access the private members of an object only by using the
+public member functions.
+This insulation of data from direct access by a pro-
+gram is called `data hiding`
+
+### Implementing Class Member Functions
+
+Member function
+definitions are much like regular function definitions. Each has a function header and a
+function body. Member function definitions can have return types and arguments. But
+they also have two special characteristics:
+
+- When you define a member function, you use the scope-resolution operator (::) to
+identify the class to which the function belongs.
+- Class methods can access the private components of the class.
+
+This notation means you are defining the `update()` function that is a member of the `Stock` class:
+
+```cpp
+void Stock::update(double price)
+```
+
+Method can access the private members of a class.
+
+Any function with a definition in the class declaration automatically becomes an inline function.
+
+You can define a member function outside the class declaration and still
+make it inline.To do so, you just use the inline qualifier
+
+---
+
+-- 001 png 
+
+<details><summary>
+The Client/Server model
+</summary>
+
+OOP programmers often discuss program design in terms of a client/server model. In this
+conceptualization, the client is a program that uses the class. The class declaration, includ-
+ing the class methods, constitute the server, which is a resource that is available to the pro-
+grams that need it. The client uses the server through the publicly defined interface only.
+This means that the client’s only responsibility, and, by extension, the client’s programmer’s
+only responsibility, is to know that interface. The server’s responsibility, and, by extension,
+the server’s designer’s responsibility, is to see that the server reliably and accurately per-
+forms according to that interface.
+
+</details>
+
+Change of precision for vars
+
+```cpp
+void Stock::show()
+{
+    using std::cout;
+    using std::ios_base;
+
+    // set format to #.###
+    ios_base::fmtflags orig =
+    cout.setf(ios_base::fixed, ios_base::floatfield);
+    std::streamsize prec = cout.precision(3);
+    cout << "Company: " << company
+    << " Shares: " << shares << ‘\n’;
+    cout << " Share Price: $" << share_val;
+
+    // set format to #.##
+    cout.precision(2);
+    cout << " Total Worth: $" << total_val << ‘\n’;
+
+    // restore original format
+    cout.setf(orig, ios_base::floatfield);
+    cout.precision(prec);
+}
+```
+
+### Class Constructors and Destructors
+
+you need to devise an appropriate member function if you’re to suc-
+ceed in initializing an object. (You could initialize a class object as just shown if you made
+the data members public instead of private, but making the data public goes against one of
+the main justifications for using classes: data hiding.)
+
+C++ uses a class constructor whenever you create an object of that class, even when
+you use new for dynamic memory allocation. Here’s how to use the constructor with new:
+
+```cpp
+Stock *pstock = new Stock("Electroshock Games", 18, 19.0);
+```
+
+A `default constructor` is a constructor that is used to create an object when you don’t provide
+explicit initialization values.That is, it’s a constructor used for declarations like this:
+
+```cpp
+Stock fluffy_the_cat;
+// uses the default constructor
+```
+
+The `destructor` should clean
+up any debris, so it actually serves a useful purpose. For example, if your constructor uses
+`new` to allocate memory, the `destructor` should use delete to free that memory.
+
+A destructor must have no arguments. Thus, the prototype for a Stock
+destructor must be this:
+
+```cpp
+~Stock();
+```
+
+Because a Stock destructor has no vital duties, you can code it as a do-nothing function:
+
+```cpp
+Stock::~Stock()
+{
+}
+```
+
+<details><summary>
+Member Names and Parameter Names
+</summary>
+Often those new to constructors try to use the class member names as parameter names
+in the constructor, as in this example:
+
+```cpp
+// NO!
+Stock::Stock(const string & company, long shares, double share_val)
+{...}
+```
+
+This is wrong. The constructor arguments don’t represent the class members; they repre-
+sent values that are assigned to the class members. Thus, they must have distinct names,
+or you end up with confusing code like this:
+
+```cpp
+shares = shares;
+```
+
+</details>
+
+<details><summary>
+     <a href="./programs/stock10.cpp">
+     stock10.cpp - Implementation of a Stock class program file </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/stock10.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+     <a href="./programs/usestock1.cpp">
+     usestock1.cpp - Client file </a>
+    </summary>
+<figure>
+        <iframe
+        src="./programs/usestock1.cpp"
+            frameborder="10"
+            allowfullscreen="true"
+            height="300px"
+            width="100%">
+        </iframe>
+    </figure>
+</details><br>
+
+<details><summary>
+Note
+</summary>
+
+You may have noticed that `Client file` has an extra brace at the beginning and near the end
+of main(). Automatic variables such as stock1 and stock2 expire when the program exits
+the block that contains their definitions. Without the extra braces, that block would be the
+body of main(), so the destructors would not be called until after main() completed execu-
+tion. In a windowing environment, this would mean that the window would close before the
+last two destructor calls, preventing you from seeing the last two messages. But with the
+braces, the last two destructor calls occur before the return statement is reached, so the
+messages are displayed.
+</details>
+
+### C++11 List Initialization
+
+With C++11, can you use the list-initialization syntax with classes? Yes, you can, providing
+the brace contents match the argument list of a constructor:
+
+```cpp
+Stock hot_tip = {"Derivatives Plus Plus", 100, 45.0};
+Stock jock {"Sport Age Storage, Inc"};
+Stock temp {};
+```
+
+The braced lists in the first two declarations match the following constructor:
+Therefore, that constructor will be used to create the two objects.
+
+```cpp
+Stock::Stock(const std::string & co, long n = 0, double pr = 0.0);
+```
+
+### const Member Functions
+
+Consider the following code snippet:
+
+```cpp
+const Stock land = Stock("Kludgehorn Properties");
+land.show();
+```
+
+With current C++, the compiler should object to the second line.Why? Because the
+code for show() fails to guarantee that it won’t modify the invoking object, which,
+because it is const, should not be altered.
+
+That is, the show() declaration should look like this:
+
+```cpp
+void show() const;          // promises not to change invoking object
+```
+
+Similarly, the beginning of the function definition should look like this:
+
+```cpp
+void stock::show() const    // promises not to change invoking object
+```
+
+Class functions declared and defined this way are called const member functions.
+
+### The `this` Pointer
+
+Suppose, then, that you want to compare the Stock objects stock1 and stock2 and
+assign the one with the greater total value to the object top.You can use either of the fol-
+lowing statements to do so:
+
+```cpp
+top = stock1.topval(stock2);
+top = stock2.topval(stock1);
+```
+
+Here’s a partial implementation that highlights the problem:
+
+```cpp
+const Stock & Stock::topval(const Stock & s) const
+{
+    if (s.total_val > total_val)
+        return s;       // argument object
+    else
+        return ?????;   // invoking object -> should be *this
+}
+```
+
+`*this` is as an alias for the invoking object.
+The fact that the return type is a reference means that the returned object is the
+invoking object itself rather than a copy passed by the return mechanism.
+
+### An Array of Objects
+
+```cpp
+Stock mystuff[4]; // creates an array of 4 Stock object
+const Stock * tops = mystuff[2].topval(mystuff[1]);
+    // compare 3rd and 2nd elements and set tops
+    // to point at the one with a higher total value
+
+    // You can use a constructor to initialize the array elements
+const int STKS = 4;
+Stock stocks[STKS] = {
+    Stock("NanoSmart", 12.5, 20),
+    Stock("Boffo Objects", 200, 2.0),
+    Stock("Monolithic Obelisks", 130, 3.25),
+    Stock("Fleep Enterprises", 60, 6.5)
+};
+```
+
+### Abstract Data Types
+
+Using classes is a good way to implement what computer scientists describe as abstract data types (ADTs)
+ADT describes a data type in a general fashion without bringing in language or implementa-
+tion details.
+
+---
+
+### Chapter 10: Review
+
+<!-- -------------------------------------------- -->
+<details><summary>
+1. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
+<details><summary>
+2. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
+<details><summary>
+3. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
+<details><summary>
+4. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
+<details><summary>
+5. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+<details><summary>
+6. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
+<details><summary>
+7. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
+<details><summary>
+8. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
+<details><summary>
+1. What is a class?</br></br>
+
+</summary>
+
+</details>
+
+<!-- -------------------------------------------- -->
+
 
 <!-- --------------------------------------------------------------------------------- -->
 ```sh
-././programs/
+./programs/
 
 # str 447 Begin (ch 9) 501 -> 497 Summary 
 # Chapter 9 Review : 7
