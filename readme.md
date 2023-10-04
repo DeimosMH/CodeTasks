@@ -34,6 +34,10 @@
 - [Unity](https://unity.com/)
 - [Unreal Engine 5](https://www.unrealengine.com/en-US)
 
+## Documentation
+
+- [mkDocs](https://www.mkdocs.org/user-guide/installation/)
+
 ## Habits Maintenance
 
 - [Habitica](https://habitica.com/)

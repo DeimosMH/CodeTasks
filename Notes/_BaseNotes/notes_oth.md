@@ -14,6 +14,37 @@ Merge all commits into one:
 
 2. Then `squash` all without first one
 
+## mkDocs
+
+[Docs](https://squidfunk.github.io/mkdocs-material/)
+
+Install
+
+```sh
+pip install mkdocs-material
+pip install mkdocs-include-markdown-plugin
+pip install mkdocs-codeinclude-plugin
+pip install mkdocs-glightbox
+```
+
+Create new base for documentation in current PATH
+
+```sh
+mkdocs new .
+```
+
+Run local web server for documentation
+
+```sh
+mkdocs serve
+```
+
+Compile solution
+
+```sh
+mkdocs build
+```
+
 ## DNS
 
 [Cloudflare](https://blog.cloudflare.com/introducing-1-1-1-1-for-families/)
