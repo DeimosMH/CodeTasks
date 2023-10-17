@@ -169,3 +169,24 @@ You wonΓÇÖt regret it!
 }
 </script>
 ```
+
+----
+
+### Test of useful tools
+
+- [Blackbox AI](https://www.useblackbox.io/chat) - tool designed for automating the coding process using artificial intelligence. It's often used when
+you want to generate code snippets, automate repetitive tasks, or when you need help with debugging. It can be particularly helpful if you're working
+on a large project and need to speed up the process Blackbox AI.
+- [Sourcegraph](https://sourcegraph.com/get-cody) - developer platform that helps you understand your code. It provides features like code search,
+code navigation, and code intelligence. It's particularly useful when you're dealing with large codebases and need to quickly understand and navigate
+through the code. Sourcegraph also integrates with many popular code hosting platforms, making it a versatile tool for any developer.
+- [Phind](https://www.phind.com) - help developers find and fix bugs in their code. It uses machine learning algorithms to analyze your code and
+provide suggestions for potential fixes. Phind can also help you understand complex code by providing detailed explanations of what each part of your
+code does
+- [Perplexity](https://www.perplexity.ai/) - Phind alternative
+
+When to use them:
+
+- Use `Blackbox` AI when you want to automate parts of your coding process, especially for large projects.
+- Use `Sourcegraph` when dealing with large codebases and you need to quickly understand and navigate through the code.
+- Use `Phind` to find and fix bugs in the code.
