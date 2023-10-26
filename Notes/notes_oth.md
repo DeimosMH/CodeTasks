@@ -1,6 +1,19 @@
+# Oth Notes
+
 [toc]
 
-# Oth Notes
+## MegaSync
+
+`Excludied` files & format names to synchronize:
+(PATH: Settings -> Folders -> Excluded File ...)
+
+```sh
+*.sb-????????-??????
+*.tmp
+desktop.ini
+Thumbs.db
+~*
+```
 
 ## GIT
 

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../DCH_CppPrimerPlus"
+		},
+		{
+			"name": "DCH_nRF_Connect_SDK",
+			"path": "../DCH_nRF_Connect_SDK"
+		}
+	]
+}
