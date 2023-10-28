@@ -10,5 +10,13 @@
 			"name": "DCH_nRF_Connect_SDK",
 			"path": "../DCH_nRF_Connect_SDK"
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"iosfwd": "cpp",
+			"xiosbase": "cpp",
+			"cmath": "cpp",
+			"iostream": "cpp"
+		}
+	}
 }
