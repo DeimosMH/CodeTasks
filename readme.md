@@ -7,7 +7,7 @@
 - [Training: CodeWars](/Training/CodeWars/README.md)
 <br>
 
-- [Notes: Other - Good to know-how small projects](/Notes/_BaseNotes/notes_oth.md)
+- [Notes: Other - Good to know-how small projects](/Notes/notes_oth.md)
 - [Notes: Subrepo: DCH C++ Primer Plus](https://github.com/DeimosMH/DCH_CppPrimerPlus)
 - [Notes: GH-Page: DCH C++ Primer Plus](https://deimosmh.github.io/DCH_CppPrimerPlus/)
 
