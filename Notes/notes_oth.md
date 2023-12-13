@@ -73,6 +73,21 @@ pip install pip-review
 pip-review --local --auto
 ```
 
+## Python
+
+Update specific `pip` package
+
+```sh
+pip install --upgrade <pcg name>
+```
+
+Auto-updater in `pip`
+
+```sh
+pip install pip-review
+pip-review --local --auto
+```
+
 ## DNS
 
 [Cloudflare](https://blog.cloudflare.com/introducing-1-1-1-1-for-families/)
