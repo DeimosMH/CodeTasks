@@ -38,6 +38,7 @@ pip install mkdocs-material
 pip install mkdocs-include-markdown-plugin
 pip install mkdocs-codeinclude-plugin
 pip install mkdocs-glightbox
+pip install mkdocs-print-site-plugin
 ```
 
 Create new base for documentation in current PATH
