@@ -33,6 +33,10 @@ Avoid creating intermediate variables if adding them doesn't increase readabilit
 String interpolation provides an improvement over string concatenation by reducing the number of characters required in some situations.
 You can combine string interpolation and verbatim literals by combining the symbols for each and using that as a prefix for the string template.
 
+- `()` - method invocation operator required to execute a method
+- `.` - member access operator.
+- What is an object?  - It's instance of a class.
+
 ### VSCode + C#
 
 Requirements:
@@ -48,3 +52,4 @@ Build aplication:
 
 Run application:
 `dotnet run`
+
