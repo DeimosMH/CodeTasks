@@ -745,3 +745,20 @@ Arrange: Set up the object to be tested and the input.
 Act: Invoke the method on the object.
 Assert: Verify that the action of the method performed as expected.
 In both examples, the tests are self-contained, meaning they don't depend on the state from other tests or external factors. This is a good practice because it ensures that tests can be run in any order and won't fail due to side effects from other tests.
+
+### UART data to txt
+
+Save Serial/UART data from /dev/ttyUSB0 to .txt (Ubuntu/Debian) via `screen`
+
+To quit: `Ctrl + A, D`
+
+```sh
+sudo apt update
+sudo apt install screen
+
+screen /dev/ttyUSB0 115200
+screen -L -Logfile data2.txt /dev/ttyUSB0 115200
+
+ps -Af | grep '/dev/ttyUSB0' | grep -v grep | awk '{print $2}'
+kill -9 $(ps -Af | grep '/dev/ttyUSB0' | grep -v grep | awk '{print $2}')
+```
