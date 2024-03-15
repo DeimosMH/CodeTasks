@@ -45,6 +45,22 @@ conditional operator `?:`
 The `Remove()` method works like the `Substring()` method, except that it deletes the specified characters in the string.
 The `Replace()` method swaps all instances of a string with a new string.
 
+Given the method signature, `void Print(string name, string number = "", bool member = false)`, correctly uses named and optional arguments: `Print("Tony", member: true);`
+
+Given the following method signature, `void SetHealth(string health)`, why don't operations inside the method affect the original input string health?
+Strings can't be altered once assigned, they can only be overwritten with a new value.
+
+What is the purpose of defining an optional parameter in a method? To simplify the required parameters when a parameter isn't significant to the result.
+
+testing could be divided into the following subcategories:
+- Functional testing: - Unit testing - Integration testing - System testing - Acceptance testing
+- Nonfunctional testing: - Security testing - Performance testing - Usability testing - Compatibility testing
+
+What is code debugging? A process to isolate and fix issues in code logic.
+
+"In C#, errors in the program at runtime are propagated through the program by using a mechanism called exceptions. Exceptions are thrown by code that encounters an error and caught by code that can correct the error. Exceptions can be thrown by the .NET runtime or by code in a program. Exceptions are represented by classes derived from Exception. Each class identifies the type of exception and contains properties that have details about the exception."
+
+The type of exception determines the information it contains.
 
 ```c#
 Array.Resize(ref pallets, 6);
@@ -55,7 +71,6 @@ char[] valueArray = value.ToCharArray();
 Array.Reverse(valueArray);
 string result = String.Join(",", valueArray); // 3,2,1,c,b,a
 string[] items = result.Split(',');
-
 
 decimal measurement = 123456.78912m;
 Console.WriteLine($"Measurement: {measurement:N4} units"); // Measurement: 123,456.7891 units // formatted as number
@@ -91,7 +106,73 @@ string updatedData = data.Remove(5, 20);
 message = message.Replace("--", " ");
 
 decimal.TryParse(numberString, out myConvert) // To safely test a cast operation
+
+// 2D array method
+string[,] AssignGroup(int groups = 6) 
+{
+    string[,] result = new string[groups, pettingZoo.Length/groups];
+
+    for (int i = 0; i < groups; i++) 
+    {
+        for (int j = 0; j < result.GetLength(1); j++) 
+        {
+
+        }
+    }
+
+    return result;
+}
+
+try
+{   
+   // try code block - code that may generate an exception
+}
+catch
+{   
+   // catch code block - code to handle an exception
+   /*The catch code block contains the code that's executed when an exception is caught. The catch block can handle the exception, log it, or ignore it. A catch block can be configured to execute when any exception type occurs, or only when a specific type of exception occurs.*/
+}
+finally
+{   
+   // finally code block - code to clean up resources
+   /*The finally code block contains code that executes whether an exception occurs or not. The finally block is often used to clean up any resources that are allocated in a try block. For example, ensuring that a variable has the correct or required value assigned to it.*/
+}
+
+...
+catch (NullReferenceException ex)
+{
+    Console.WriteLine("Error: The reference is null." + ex.Message);
+}
+catch (IndexOutOfRangeException ex)
+{
+    Console.WriteLine("Error: Index out of range." + ex.Message);
+}
+...
+
+// Configure and throw customized exceptions 
+//  Message property of an exception is readonly // StackTrace property is often used to track the origin of the exception
+catch (FormatException)
+{
+    FormatException invalidFormatException = new FormatException("FormatException: User input values in 'BusinessProcess1' must be valid integers");
+    throw invalidFormatException;
+}
+
+//  throw can be used re-throw an exception from inside a catch code block
+    throw;
+// When you re-throw an exception, the original exception object is used, so you don't lose any information about the exception. 
+
 ```
+
+### Compiler-generated exceptions
+
+`ArrayTypeMismatchException`: Thrown when an array can't store a given element because the actual type of the element is incompatible with the actual type of the array.
+`DivideByZeroException`: Thrown when an attempt is made to divide an integral value by zero.
+`FormatException`: Thrown when the format of an argument is invalid.
+`IndexOutOfRangeException`: Thrown when an attempt is made to index an array when the index is less than zero or outside the bounds of the array.
+`InvalidCastException`: Thrown when an explicit conversion from a base type to an interface or to a derived type fails at runtime.
+`NullReferenceException`: Thrown when an attempt is made to reference an object whose value is null.
+`OverflowException`: Thrown when an arithmetic operation in a checked context overflows.
+
 
 ### VSCode + C#
 
