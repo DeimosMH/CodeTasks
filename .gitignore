@@ -1,13 +1,8 @@
+/.vscode
+/_helpers/Windows/ghidra*
+
 /_Books
 /_Tasks
-/_helpers/ghidra*
+/_Notes
 
-/.vscode
 
-/.trunk
-
-start.bat
-
-a.exe
-
-Training/Other/
